@@ -1,18 +1,18 @@
 ---
-import { Picture } from "astro:assets"
+import { Picture } from "astro:assets";
 
-const { testimonial } = Astro.props
+const { testimonial } = Astro.props;
 
 const baseStyle =
-  "w-full h-full rounded-2xl transition-all duration-300 ease-out p-7 h-fit text-sm"
+  "w-full h-full rounded-2xl transition-all duration-300 ease-out p-7 h-fit text-sm";
 
-const layoutStyle = "flex flex-col gap-3"
+const layoutStyle = "flex flex-col gap-3";
 
 const borderStyle =
-  "border border-1 border-solid border-neutral-200 dark:border-neutral-800"
+  "border border-1 border-solid border-neutral-200 dark:border-neutral-800";
 
 const hoverStyle =
-  "hover:shadow-neutral-100 dark:hover:shadow-black hover:shadow-lg hover:-translate-y-1"
+  "hover:shadow-neutral-100 dark:hover:shadow-black hover:shadow-lg hover:-translate-y-1";
 ---
 
 <div class:list={[baseStyle, layoutStyle, hoverStyle, borderStyle]}>
@@ -29,9 +29,10 @@ const hoverStyle =
       </path>
     </svg>
   </div>
-  <p class="text-neutral-600 dark:text-neutral-400">
-    {testimonial.text}
-  </p>
+  <p
+    class="text-neutral-600 dark:text-neutral-400"
+    set:html={testimonial.text}
+  />
 
   <div class="flex items-center gap-3">
     <Picture
@@ -42,7 +43,9 @@ const hoverStyle =
       height="40"
       class=`rounded-full object-cover transition-all duration-300 ease-out border-2 border-solid border-transparent`
     />
-    <div
+    <a
+      href={testimonial.linkedin}
+      target="_blank"
       class="text-xs flex flex-col gap-0 text-neutral-900 font-medium dark:text-neutral-200"
     >
       <div>
@@ -51,6 +54,6 @@ const hoverStyle =
       <div class="font-normal">
         {testimonial.designation}
       </div>
-    </div>
+    </a>
   </div>
 </div>

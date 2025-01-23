@@ -1,15 +1,14 @@
 ---
-import HeroSection from "../components/hero-section.astro"
-import PortfolioGrid from "../components/portfolio-grid.astro"
-import SideProjectsGrid from "../components/side-projects-grid.astro"
-import Testimonials from "../components/testimonials.astro"
-import Writings from "../components/writings.astro"
-import Layout from "../layouts/main.astro"
-
+import Layout from "../layouts/main.astro";
+import Writings from "../components/writings.astro";
+import HeroSection from "../components/hero-section.astro";
+import Testimonials from "../components/testimonials.astro";
+import PortfolioGrid from "../components/portfolio-grid.astro";
+import SideProjectsGrid from "../components/side-projects-grid.astro";
 ---
 
 <Layout title="Abhinay">
-<div class="grid grid-cols-1 auto-rows-max gap-28">
+  <div class="grid grid-cols-1 auto-rows-max gap-28">
     <HeroSection />
     <PortfolioGrid count={6} />
     <Testimonials />

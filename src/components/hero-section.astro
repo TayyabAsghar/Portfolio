@@ -1,10 +1,12 @@
 ---
-import Button from "./button.astro"
-import WidgetMusicPlayer from "./widgets/music-player.astro"
-import WidgetProjects from "./widgets/projects.astro"
+import Button from "./button.astro";
+import WidgetMusicPlayer from "./widgets/music-player.astro";
+import WidgetProjects from "./widgets/projects.astro";
 ---
 
-<section class="max-w-4xl mx-auto px-7 lg:px-0 mt-16 md:mt-24 lg:mt-32 relative">
+<section
+  class="max-w-4xl mx-auto px-7 lg:px-0 mt-16 md:mt-24 lg:mt-32 relative"
+>
   <div
     class="grid grid-cols-1 md:grid-cols-2 auto-rows-max items-center gap-10"
   >
@@ -42,13 +44,13 @@ import WidgetProjects from "./widgets/projects.astro"
       <h1
         class="mb-5 text-4xl font-bold leading-tight md:text-4xl lg:text-6xl dark:text-white"
       >
-        Hello, <br />I'm Abhinay.
+        Hello, <br />I'm Tayyab Asghar.
       </h1>
       <h2
         class="font-semibold mb-6 text-lg text-neutral-600 dark:text-neutral-400"
       >
-        Sr. Frontend Engineer | Building High-Performance, User-Friendly Web
-        Apps
+        Full Stack Engineer | Building High-Performance, User-Friendly Web Apps
+        and SaaS Platforms
       </h2>
       <p class="mb-6 text-base text-neutral-600 dark:text-neutral-400">
         I'm a Senior Frontend Engineer passionate about crafting web
@@ -78,8 +80,8 @@ import WidgetProjects from "./widgets/projects.astro"
       <div class="flex items-center gap-2 py-5">
         <!-- <Button text="Follow me on 𝕏" link="https://twitter.com/gamesbyabhinay" /> -->
         <Button
-          text="Schedule a meeting"
-          link="https://calendar.app.google/T8V2fr9b9mxMGyzAA"
+          text="Connect"
+          link="mailto:muhammadtayyabasghar@gmail.com"
           target="_blank"
         />
         <Button
@@ -93,7 +95,6 @@ import WidgetProjects from "./widgets/projects.astro"
     <div class="relative hidden md:block scale-[80%]">
       <WidgetProjects />
       <WidgetMusicPlayer />
-      <p class="text-center mt-20 text-neutral-400">UI Components Example</p>
     </div>
   </div>
 </section>

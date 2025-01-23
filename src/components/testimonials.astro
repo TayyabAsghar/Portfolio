@@ -1,23 +1,23 @@
 ---
-import testimonials from "../data/testimonials.json"
-import SectionHeader from "./section-header.astro"
-import TestimonialTile from "./testimonial-tile.astro"
+import SectionHeader from "./section-header.astro";
+import testimonials from "../data/testimonials.json";
+import TestimonialTile from "./testimonial-tile.astro";
 
 interface Props {
-  className?: string
+  className?: string;
 }
 
-const columns: any = [[], []]
+const columns: any = [[], []];
 
 testimonials.forEach((testimonial, index) => {
-  columns[index % columns.length].push(testimonial)
-})
+  columns[index % columns.length].push(testimonial);
+});
 ---
 
 <section id="testimonials" class="max-w-4xl mx-auto px-7 lg:px-0">
   <SectionHeader
     heading="Testimonials"
-    subheading="Here's what some of my recent clients have to say about working with me. Their experiences showcase the value and quality I bring to every project."
+    subheading="Here's what some of the experienced people who work in the industry have to say about working with me. Their experiences showcase the value and quality I bring to every project and team."
   />
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-7 items-start">
     {

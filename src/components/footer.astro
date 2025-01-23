@@ -1,7 +1,8 @@
 ---
-import Logo from "../components/logo.astro"
-import Button from "./button.astro"
-import { Icon } from "astro-icon/components"
+import Button from "./button.astro";
+import Logo from "../components/logo.astro";
+import { Icon } from "astro-icon/components";
+const currentYear = new Date().getFullYear();
 ---
 
 <section
@@ -14,30 +15,29 @@ import { Icon } from "astro-icon/components"
     <p
       class="mt-4 text-sm text-neutral-700 dark:text-neutral-100 sm:ml-4 sm:pl-4 sm:border-l sm:border-neutral-300 dark:sm:border-neutral-700 sm:mt-0"
     >
-      &copy; 2024 Abhinay Thakur. All rights are reserved.
+      &copy; {currentYear} Tayyab Asghar. All rights are reserved.
     </p>
     <div
       class="flex flex-col sm:flex-row items-center justify-center mt-4 gap-5 sm:ml-auto sm:mt-0 sm:justify-start"
     >
       <Button
-        text="Schedule a meeting"
-        link="https://calendar.app.google/T8V2fr9b9mxMGyzAA"
+        text="Connect"
+        link="mailto:muhammadtayyabasghar@gmail.com"
         target="_blank"
         class="!mt-0"
       />
 
       <div class="flex items-center gap-5">
         <a
-          href="https://twitter.com/thisisabhinay"
+          href="https://www.linkedin.com/in/tayyabasghar"
           target="_blank"
           class="text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
         >
-          <span class="sr-only">𝕏</span>
-          <Icon name="x" class="text-3xl" />
+          <span class="sr-only">LinkedIn</span>
+          <Icon name="linkedin" class="text-3xl" />
         </a>
-
         <a
-          href="https://github.com/thisisabhinay"
+          href="https://github.com/tayyabasghar"
           target="_blank"
           class="text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
         >

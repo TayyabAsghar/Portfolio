@@ -1,12 +1,12 @@
 ---
-import { latestPosts } from "../utils/posts"
-import ImageTile from "./image-tile.astro"
+import ImageTile from "./image-tile.astro";
+import { latestPosts } from "../utils/posts";
 
-const { count } = Astro.props
-const listPosts = latestPosts.slice(0, count)
+const { count } = Astro.props;
+const listPosts = latestPosts.slice(0, count);
 
 const textHoverStyle =
-  "group-hover:text-neutral-900 dark:group-hover:text-neutral-100"
+  "group-hover:text-neutral-900 dark:group-hover:text-neutral-100";
 ---
 
 <div class="divide-y dividerline">
@@ -50,7 +50,7 @@ const textHoverStyle =
             />
           </div>
         </div>
-      )
+      );
     })
   }
 </div>
