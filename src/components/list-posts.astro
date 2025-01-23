@@ -1,0 +1,56 @@
+---
+import { latestPosts } from "../utils/posts"
+import ImageTile from "./image-tile.astro"
+
+const { count } = Astro.props
+const listPosts = latestPosts.slice(0, count)
+
+const textHoverStyle =
+  "group-hover:text-neutral-900 dark:group-hover:text-neutral-100"
+---
+
+<div class="divide-y dividerline">
+  {
+    listPosts.map(({ slug, data }) => {
+      return (
+        <div
+          class="relative cursor-pointer group py-4 first:pt-0 last:pb-0 grid grid-rows-1 grid-cols-1 sm:grid-cols-[3fr_1fr] gap-7 justify-items-end"
+          onclick={`location.href = '/blog/${slug}'`}
+        >
+          <div>
+            <h2 class="flex items-start gap-1 mb-3">
+              <a
+                href={`/blog/${slug}`}
+                class="text-xl font-bold leading-tight tracking-tight sm:text-2xl dark:text-neutral-100"
+              >
+                {data.title}
+              </a>
+            </h2>
+            <p
+              class="text-sm text-neutral-600 dark:text-neutral-400 line-clamp-3"
+              class:list={[textHoverStyle]}
+            >
+              <span>{data.excerpt}</span>
+            </p>
+            <div
+              class="mt-2.5 text-xs text-neutral-500 dark:text-neutral-500"
+              class:list={[textHoverStyle]}
+            >
+              {data.publishDate}
+            </div>
+          </div>
+
+          <div class="flex w-full h-full">
+            <ImageTile
+              image={data.image}
+              alt="Portfolio project thumbnail"
+              width="200"
+              height="200"
+              coverSize="h-full w-full sm:size-36"
+            />
+          </div>
+        </div>
+      )
+    })
+  }
+</div>

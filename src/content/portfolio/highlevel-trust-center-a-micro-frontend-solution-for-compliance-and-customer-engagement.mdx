@@ -1,0 +1,120 @@
+---
+title: "Trust Center: A Micro Frontend Solution for Compliance and Customer Engagement"
+description: "Trust Center is a web application built on micro frontend architecture, designed to simplify compliance with global telephony and messaging regulations while enhancing customer engagement."
+publishDate: "2023-07-14T16:39:36.050Z"
+image: "/assets/project/hl-trust-centre-mf/cover.jpeg"
+company: "HighLevel"
+author: "Abhinay Thakur"
+tags: [webdev, thoughts, coding, essay]
+pinned: true
+---
+
+import Stack from "../../components/stack.astro"
+import LightBoxImage from "../../components/light-box-image.astro"
+
+<LightBoxImage src="/assets/project/hl-trust-centre-mf/cover.jpeg" alt="Screenshot" noBorder />
+
+<Stack 
+  heading="Technology Stack"
+  list={[
+    {name: "firebase", title: "Firebase"},
+    {name: "github", title: "GitHub"},
+    {name: "gcp", title: "Google cloud"},
+    {name: "jenkins", title: "Jenkins CI/CD"},
+    {name: "jest", title: "Jest"},
+    {name: "kubernetes", title: "Kubernetes"},
+    {name: "mongodb", title: "Mongo DB"},
+    {name: "nestjs", title: "Nest.js"},
+    {name: "pinia", title: "Pinia"},
+    {name: "postman", title: "Postman"},
+    {name: "tailwind", title: "Tailwind CSS"},
+    {name: "ts", title: "Typescript"},
+    {name: "vue", title: "Vue3"},
+    {name: "webpack", title: "Webpack"},
+  ]}
+/>
+
+## Project Overview
+Trust Center is an innovative web app we recently launched at HighLevel to help our customers navigate the complex landscape of SMS and voice call regulations in the United States and other countries. Built on a micro frontend architecture, this suite of products aims to improve customer engagement throughput and brand recognition by making it easy for businesses to comply with key regulatory frameworks like A2P 10DLC, Shaken/STIR, and CNAM. 
+
+The project was born out of a need to simplify the onboarding process for our customers. Previously, agencies signing up for HighLevel had to separately create a Twilio account and integrate it into the CRM, which required advanced technical knowledge. Trust Center solves this by providing a user-friendly, out-of-the-box solution for SMS and voice compliance.
+
+## Objectives
+The main goals of the Trust Center project were:
+
+1. Streamline the process for HighLevel customers to comply with U.S. regulations for A2P 10DLC SMS messaging and voice calling
+2. Eliminate the need for agencies to manage a separate Twilio account and integration 
+3. Provide an intuitive user experience for brand and campaign registration to enable 10DLC messaging
+4. Facilitate Shaken/STIR and CNAM compliance through easy caller ID verification and registration
+5. Deliver a high-quality, reliable product leveraging micro frontend architecture
+
+## Domain and Industry Context
+In the world of cloud communications, providers like Twilio offer platforms that allow developers to integrate SMS, voice, video and other channels into their applications. Managing the complex networks and routing involved requires deep expertise.
+
+However, both providers and their customers must adhere to an array of regulations that vary by country and phone number type. In the U.S., this includes rules around A2P 10DLC, a system that enables businesses to send SMS messages from local 10-digit numbers. Shaken/STIR combats illegal caller ID spoofing on voice calls. CNAM ensures caller names are accurately displayed. 
+
+Failure to comply with these frameworks can lead to phone numbers being blocked and urgent escalations from regulators. Many HighLevel customers found the process of managing compliance on their own to be daunting, creating a barrier to adoption.
+
+## Features
+
+Trust Center offers a set of products designed to help businesses comply with United States regulations for sending SMS messages, specifically those related to A2P 10DLC (Application-to-Person 10-Digit Long Code).
+
+And assists businesses in registering their brand and campaigns, enabling them to send SMS messages using 10-digit long code numbers (either local or national) to recipients with U.S. phone numbers.
+
+<LightBoxImage src="/assets/project/hl-trust-centre-mf/ss1.png" alt="Screenshot" />
+<LightBoxImage src="/assets/project/hl-trust-centre-mf/ss2.png" alt="Screenshot" />
+<LightBoxImage src="/assets/project/hl-trust-centre-mf/ss3.png" alt="Screenshot" />
+<LightBoxImage src="/assets/project/hl-trust-centre-mf/ss4.png" alt="Screenshot" />
+<LightBoxImage src="/assets/project/hl-trust-centre-mf/ss5.png" alt="Screenshot" />
+
+### Shaken/STIR Registration
+
+Shaken/STIR is a framework in the United States that verifies caller ID information. When you use Shaken/STIR, your phone number undergoes a verification process to confirm that you are the one placing the call. This helps reduce spam calls and increases the likelihood that recipients will answer the phone.
+
+In HighLevel, the system is designed to facilitate adherence to Shaken/STIR compliance requirements through a user-friendly experience, making it easier for businesses to ensure their outgoing calls are verified and trusted.
+
+<LightBoxImage src="/assets/project/hl-trust-centre-mf/ss6.png" alt="Screenshot" />
+
+### CNAM Registration
+
+CNAM, which stands for Caller ID Name, is a technology that associates phone numbers with alphanumeric data that appears on caller ID systems. While CNAM can help prevent fraud, it can also be used to perpetuate fraudulent activities.
+
+In HighLevel, the system is designed to facilitate CNAM registration through a user-friendly experience, making it easier for businesses to ensure their caller ID information is accurately displayed when making outbound calls.
+
+<LightBoxImage src="/assets/project/hl-trust-centre-mf/ss7.png" alt="Screenshot" />
+
+### A2P Messaging Registration
+
+A2P Messaging, short for Application-to-Person Messaging, refers to automated messages sent from a business application to a mobile phone user. This type of messaging is commonly used for business communication and marketing purposes. To ensure that messages are delivered and not blocked by carriers due to spam concerns, A2P registration is mandatory.
+
+HighLevel facilitates the A2P registration process through a user-friendly experience, making it easier for businesses to comply with the requirements and maintain effective communication with their customers via automated messages.
+
+<LightBoxImage src="/assets/project/hl-trust-centre-mf/ss8.png" alt="Screenshot" />
+<LightBoxImage src="/assets/project/hl-trust-centre-mf/ss9.png" alt="Screenshot" />
+<LightBoxImage src="/assets/project/hl-trust-centre-mf/ss10.png" alt="Screenshot" />
+<LightBoxImage src="/assets/project/hl-trust-centre-mf/ss11.png" alt="Screenshot" />
+<LightBoxImage src="/assets/project/hl-trust-centre-mf/ss12.png" alt="Screenshot" />
+<LightBoxImage src="/assets/project/hl-trust-centre-mf/ss13.png" alt="Screenshot" />
+<LightBoxImage src="/assets/project/hl-trust-centre-mf/ss14.png" alt="Screenshot" />
+
+## Outcome
+
+The successful implementation of Trust Center has significantly streamlined the process of compliance and communication setup for businesses using the HighLevel platform. By providing an intuitive interface for complex registration processes and integrating the LC Phone System, we've reduced the time and technical expertise required for businesses to start engaging with their customers effectively.
+
+One of the main challenges we faced was designing a user interface that could guide users through the complex compliance processes without overwhelming them. We overcame this by implementing a step-by-step wizard interface with clear explanations at each stage. This approach not only simplified the user experience but also educated users about the importance of each compliance measure.
+
+A key lesson learned during this project was the importance of close collaboration with legal and compliance experts. Their insights were crucial in ensuring that our system accurately reflected the latest regulatory requirements and provided appropriate guidance to users.
+
+Looking ahead, we see potential for further improvements in areas such as:
+
+1. Implementing machine learning algorithms to predict and prevent potential compliance issues
+2. Expanding the platform to support international compliance regulations
+3. Developing more advanced analytics tools to help businesses optimize their communication strategies
+
+## Conclusion
+
+Working on the Trust Center project has been a significant milestone in my career as a senior frontend engineer. It challenged me to think beyond just creating a functional user interface and consider the broader implications of our work on businesses and their customers. The project deepened my understanding of micro frontend architecture and its benefits in creating scalable, maintainable applications.
+
+Moreover, this project highlighted the importance of bridging the gap between complex technical systems and user-friendly interfaces. It reinforced my belief that as developers, our role extends beyond writing code – we are responsible for creating solutions that empower users and solve real-world problems.
+
+The Trust Center project has not only enhanced my technical skills but also broadened my perspective on the intersection of technology, business, and regulatory compliance. It's a testament to how frontend development can drive significant improvements in business operations and customer relationships.

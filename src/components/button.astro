@@ -1,0 +1,23 @@
+---
+import { Icon } from "astro-icon/components"
+
+const {
+  link,
+  text,
+  target = "_self",
+  class: className,
+  iconLeft,
+  iconRight,
+} = Astro.props
+---
+
+<a
+  href={link}
+  class="w-max mt-5 btn-rounded no-underline"
+  class:list={[className]}
+  target={target}
+>
+  {iconLeft ? <Icon class="text-base" name={iconLeft} /> : ""}
+  {text}
+  {iconRight ? <Icon class="text-base" name={iconRight} /> : ""}
+</a>

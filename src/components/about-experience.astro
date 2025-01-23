@@ -1,0 +1,44 @@
+---
+const { logo, dates, role, company, description, hideLogo } = Astro.props
+---
+
+<div id="experience" class="relative flex flex-col justify-start pl-12">
+  {
+    !hideLogo ? (
+      <div class="absolute top-0 left-0 z-40 flex items-center justify-center -translate-x-1/2 bg-white border rounded-full dark:bg-neutral-950 w-14 h-14 border-neutral-300 dark:border-neutral-700">
+        <img src={logo} alt={company} class="w-8 h-8" />
+      </div>
+    ) : null
+  }
+  <p
+    class="text-xs uppercase text-neutral-400 dark:text-neutral-500 trackign-widest"
+  >
+    {dates}
+  </p>
+  <div class="space-y-0 mb-3">
+    <h3 class="text-lg font-bold dark:text-neutral-100">{role}</h3>
+    <p class="text-base font-medium dark:text-neutral-300">{company}</p>
+  </div>
+  <div class="flex flex-col gap-1">
+    <p class="grid auto-rows-max grid-cols-[64px_1fr] gap-3 text-sm font-normal text-neutral-600 dark:text-neutral-400">
+      <span class="block text-neutral-400 dark:text-neutral-500 text-right">Challenge:</span>
+      <span class="flex"><Fragment set:html={description.challenge} /></span>
+    </p>
+    <p class="grid auto-rows-max grid-cols-[64px_1fr] gap-3 text-sm font-normal text-neutral-600 dark:text-neutral-400">
+      <span class="block text-neutral-400 dark:text-neutral-500 text-right">Action:</span>
+      <span class="flex"><Fragment set:html={description.action} /></span>
+    </p>
+    <p class="grid auto-rows-max grid-cols-[64px_1fr] gap-3 text-sm font-normal text-neutral-600 dark:text-neutral-400">
+      <span class="block text-neutral-400 dark:text-neutral-500 text-right">Result:</span>
+      <span class="flex"><Fragment set:html={description.result} /></span>
+    </p>
+  </div>
+</div>
+
+<style is:global>
+  #experience strong {
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 0.25rem;
+  }
+</style>

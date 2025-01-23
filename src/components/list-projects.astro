@@ -1,0 +1,49 @@
+---
+import Project from "../components/project.astro"
+import Separator from "../components/separator.astro"
+import { latestPortfolio } from "../utils/portfolio"
+
+interface Props {
+  count?: number
+  className?: string
+  company?: string
+  brandLogo?: string
+}
+
+const { count, company, brandLogo, className = "" } = Astro.props
+
+let portfolio
+portfolio = company
+  ? latestPortfolio.filter((project) => project.data.company === company)
+  : latestPortfolio
+
+portfolio = count ? portfolio.slice(0, count) : portfolio
+
+const collection = portfolio
+
+---
+
+{company ? <Separator text={company} brandLogo={brandLogo} /> : null}
+
+<div
+  class="divide-y dividerline"
+  class:list={[className, !company ? "mt-20" : ""]}
+>
+  {
+    collection.map((project: any) => {
+      return (
+        <div class="py-4 first:pt-0">
+          <Project
+            name={project.data.title}
+            description={project.data.description}
+            image={project.data.image}
+            company={project.data.company}
+            slug={project.slug}
+            hrefBase="portfolio"
+            layout="list"
+          />
+        </div>
+      )
+    })
+  }
+</div>

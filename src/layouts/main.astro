@@ -1,0 +1,57 @@
+---
+import "../assets/css/main.css"
+import Footer from "../components/footer.astro"
+import Header from "../components/header.astro"
+import SquareLines from "../components/square-lines.astro"
+const { title } = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="p:domain_verify" content="70c58a6597b091ed1aa21054f3800753"/>
+    <title>{title}</title>
+
+    <!-- Used to add dark mode right away, adding here prevents any flicker -->
+    <script>
+      if (typeof Storage !== "undefined") {
+        if (
+          localStorage.getItem("dark_mode") &&
+          localStorage.getItem("dark_mode") == "true"
+        ) {
+          document.documentElement.classList.add("dark")
+        }
+      }
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      is:inline
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-FE1RECDFFZ"
+    >
+    </script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag("js", new Date())
+
+      gtag("config", "G-FE1RECDFFZ")
+    </script>
+    
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.png" />
+    <Fragment set:html={import.meta.env.HEADER_INJECT} />
+  </head>
+  <body class="antialiased bg-white dark:bg-neutral-950">
+    <SquareLines />
+    <Header />
+    <slot />
+    <Footer />
+    <script src="../assets/js/main.js"></script>
+    <Fragment set:html={import.meta.env.FOOTER_INJECT} />
+  </body>
+</html>

@@ -1,0 +1,86 @@
+---
+import ImageTile from "./image-tile.astro"
+
+const {
+  name,
+  description,
+  slug,
+  image,
+  company,
+  layout = "card",
+  hrefBase,
+} = Astro.props
+
+const baseStyle = "w-full h-full rounded-xl"
+
+const layoutStyle: any = {
+  card: "flex flex-col gap-3",
+  list: "flex flex-row-reverse gap-3 justify-between",
+}
+
+const coverSize: any = {
+  card: "h-48 md:h-36",
+  list: "h-48 md:h-44",
+}
+
+const headingStyle: any = {
+  card: "text-base line-clamp-2",
+  list: "text-lg",
+}
+
+const descriptionClamp: any = {
+  card: "line-clamp-5 md:line-clamp-3",
+  list: "line-clamp-4 md:line-clamp-3",
+}
+
+const visibility: any = {
+  card: "!hidden",
+  list: "",
+}
+
+const transitionStyle = "transition-all duration-700 ease-out"
+
+const textHoverStyle =
+  "group-hover:text-neutral-900 dark:group-hover:text-neutral-100"
+---
+
+<a
+  data-layout={layout}
+  href={`${hrefBase}/${slug}`}
+  class="relative flex flex-col w-full items-stretch group rounded-xl"
+  class:list={[transitionStyle]}
+>
+  <div class:list={[baseStyle, layoutStyle[layout]]}>
+    <ImageTile
+      image={image}
+      alt="Portfolio project thumbnail"
+      width="800"
+      height="450"
+      coverSize={coverSize[layout]}
+    />
+    <div class="block w-full divide-y-4 divide-transparent">
+      <div
+        class="flex relative gap-2 items-start justify-start mb-0 font-semibold tracking-tight text-neutral-800 hover:text-black dark:text-neutral-100 dark:hver:text-white"
+        class:list={[headingStyle[layout]]}
+      >
+        <div class="line-clamp-2" title={name}>{name}</div>
+      </div>
+      <div
+        class="text-sm text-neutral-900 font-medium dark:text-neutral-400"
+        class:list={[visibility[layout]]}
+      >
+        {company}
+      </div>
+      <div
+        class="text-sm text-neutral-600 dark:text-neutral-400"
+        class:list={[
+          descriptionClamp[layout],
+          visibility[layout],
+          textHoverStyle,
+        ]}
+      >
+        {description}
+      </div>
+    </div>
+  </div>
+</a>

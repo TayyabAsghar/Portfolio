@@ -1,0 +1,43 @@
+---
+interface Props {
+  text: string
+  type?: "default" | "dark" | "red" | "green" | "yellow"
+}
+
+const { text, type = "default" } = Astro.props
+
+const divStyle = {
+  default: "text-blue-800 bg-blue-100  dark:bg-blue-900 dark:text-blue-300",
+  dark: "text-gray-800 bg-gray-100 dark:bg-gray-700 dark:text-gray-300",
+  red: "text-red-800 bg-red-100 rounded dark:bg-red-900 dark:text-red-300",
+  green:
+    "text-green-800 bg-green-100 rounded dark:bg-green-900 dark:text-green-300",
+  yellow:
+    "text-amber-800 bg-amber-100 rounded dark:bg-amber-900 dark:text-amber-300",
+}
+
+const textStyle = {
+  default: "text-blue-500",
+  dark: "text-gray-500 dark:text-gray-400",
+  red: "text-red-500",
+  green: "text-green-500",
+  yellow: "text-amber-500",
+}
+
+const dotStyle = {
+  default: "bg-blue-500",
+  dark: "bg-gray-500 dark:bg-gray-400",
+  red: "bg-red-500",
+  green: "bg-green-500",
+  yellow: "bg-amber-500",
+}
+---
+
+<div
+  id=`status-${type}`
+  class="rounded-full inline-flex items-center px-1.5 py-0.5 text-xs font-medium"
+  class:list={divStyle[type]}
+>
+  <div class="size-1.5 rounded-full mr-1" class:list={dotStyle[type]}></div>
+  <div class:list={textStyle[type]}>{text}</div>
+</div>

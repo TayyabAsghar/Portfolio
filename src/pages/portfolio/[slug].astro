@@ -1,0 +1,75 @@
+---
+import MainLayout from "../../layouts/main.astro"
+import type { CollectionEntry } from "astro:content"
+import { getCollection } from "astro:content"
+
+interface Props {
+  portfolio: CollectionEntry<"portfolio">
+}
+
+export async function getStaticPaths() {
+  const list = await getCollection("portfolio")
+
+  return list.map((portfolio) => ({
+    params: { slug: portfolio.slug },
+    props: { portfolio },
+  }))
+}
+
+const { portfolio } = Astro.props
+
+const { Content } = await portfolio.render()
+---
+
+<MainLayout title={portfolio.data.title}>
+  <main
+    id="page-portfolio"
+    class="relative z-30 max-w-4xl pb-1 mx-auto mt-10 bg-white dark:bg-neutral-950 md:rounded-t-md text-neutral-900"
+  >
+    <div
+      class="relative flex flex-col px-5 pb-6 md:pb-0 pt-6 border-t border-b-0 md:border-r md:border-l md:pt-20 lg:px-0 justify-stretch md:rounded-t-2xl border-neutral-200 dark:border-neutral-800"
+    >
+      <div
+        class="absolute top-0 left-0 hidden w-px h-full mt-1 -translate-x-px md:block bg-gradient-to-b from-transparent to-white dark:to-neutral-950"
+      >
+      </div>
+      <div
+        class="absolute top-0 right-0 hidden w-px h-full mt-1 translate-x-px md:block bg-gradient-to-b from-transparent to-white dark:to-neutral-950"
+      >
+      </div>
+      <div
+        class="flex flex-col items-start gap-7 mx-auto w-full max-w-2xl md:mb-12"
+      >
+        <h1
+          class="text-3xl font-bold leading-tight tracking-tighter text-left md:text-4xl dark:text-neutral-100 lg:text-5xl md:leading-none"
+        >
+          {portfolio.data.title}
+        </h1>
+        <p
+          class="text-sm leading-6 text-neutral-500 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
+        >
+          {portfolio.data.description}
+        </p>
+      </div>
+    </div>
+
+    <article
+      class="w-full max-w-2xl mx-auto mb-20 prose-sm prose px-7 sm:px-0 lg:prose-lg dark:prose-invert"
+    >
+      <Content />
+    </article>
+  </main>
+</MainLayout>
+
+<style is:global>
+  @media (min-width: 1024px) {
+    #page-portfolio article p:has(img) {
+      margin-left: -8rem;
+      margin-right: -8rem;
+    }
+
+    #page-portfolio article p:has(img):first-child {
+      margin-bottom: 3rem;
+    }
+  }
+</style>

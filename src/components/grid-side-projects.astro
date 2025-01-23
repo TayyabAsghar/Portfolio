@@ -1,0 +1,40 @@
+---
+import SideProject from "../components/side-project.astro"
+import { pinnedSideProjects } from "../utils/side-projects"
+
+interface Props {
+  count: number
+  className?: string
+}
+
+const { count, className = "" } = Astro.props
+
+const sideProjects = count
+  ? pinnedSideProjects.slice(0, count)
+  : pinnedSideProjects
+
+---
+
+<div
+  class="grid w-full grid-rows-1 grid-cols-1 sm:grid-cols-2 gap-7 md:grid-cols-3"
+  class:list={[className]}
+>
+  {
+    sideProjects.map((project: any) => {
+      return (
+        <>
+          <SideProject
+            name={project.data.title}
+            description={project.data.description}
+            image={project.data.image}
+            domains={project.data.domains}
+            slug={project.slug}
+            status={project.data.status}
+            layout="card"
+            hrefBase="side-projects"
+          />
+        </>
+      )
+    })
+  }
+</div>

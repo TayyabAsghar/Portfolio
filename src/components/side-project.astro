@@ -1,0 +1,111 @@
+---
+import ImageTile from "./image-tile.astro"
+import StatusTag from "./status-tag.astro"
+
+type Tag = "default" | "dark" | "red" | "green" | "yellow"
+type Status = "Planning" | "Backlog" | "On hold" | "Live" | "In progress"
+type TagMap = {
+  [K in Status]: Tag
+}
+
+const {
+  name,
+  description,
+  slug,
+  image,
+  domains,
+  layout = "card",
+  status,
+  hrefBase,
+} = Astro.props
+
+const baseStyle = "w-full h-full rounded-2xl"
+
+const statusMap = {
+  "In progress": "default",
+  "Live": "green",
+  "Backlog": "dark",
+  "On hold": "red",
+  "Planning": "yellow",
+} as TagMap
+
+const layoutStyle: any = {
+  card: "flex flex-col gap-3",
+  list: "flex flex-row-reverse gap-3 justify-between",
+}
+
+const coverSize: any = {
+  card: "w-full h-48 md:h-36",
+  list: "w-full h-48 md:h-44",
+}
+
+const headingStyle: any = {
+  card: "text-base line-clamp-2",
+  list: "text-lg",
+}
+
+const clampStyle: any = {
+  card: "line-clamp-5 md:line-clamp-3",
+  list: "line-clamp-4 md:line-clamp-3",
+}
+
+const statusCardLayout: any = {
+  card: "block -mt-2",
+  list: "hidden",
+}
+
+const statusListLayout: any = {
+  card: "hidden",
+  list: "block",
+}
+
+const visibility: any = {
+  card: "!hidden",
+  list: "",
+}
+
+const transitionStyle = "transition-all duration-700 ease-out"
+
+const textHoverStyle =
+  "group-hover:text-neutral-900 dark:group-hover:text-neutral-100"
+---
+
+<a
+  data-layout={layout}
+  href={`${hrefBase}/${slug}`}
+  class="relative flex flex-col w-full items-stretch group h-100 rounded-2xl"
+  class:list={[transitionStyle]}
+>
+  <div class:list={[baseStyle, layoutStyle[layout]]}>
+    <ImageTile
+      image={image}
+      alt="Side project thumbnail"
+      width="800"
+      height="450"
+      coverSize={coverSize[layout]}
+    />
+    <div class="block w-full divide-y-4 divide-transparent">
+      <div
+        class="flex relative gap-2 items-start justify-start mb-0 font-semibold tracking-tight text-neutral-900 dark:text-neutral-100"
+        class:list={[headingStyle[layout]]}
+      >
+        <div class="line-clamp-2">{name}</div>
+      </div>
+      <div class="text-sm text-neutral-900 font-medium dark:text-neutral-400">
+        {domains}
+      </div>
+      <div
+        class="text-sm text-neutral-600 dark:text-neutral-400"
+        class:list={[clampStyle[layout], visibility[layout], textHoverStyle]}
+      >
+        {description}
+      </div>
+      <div class:list={[statusListLayout[layout], visibility[layout]]}>
+        <StatusTag text={status} type={statusMap[status as Status]} />
+      </div>
+    </div>
+    <div class:list={[statusCardLayout[layout], visibility[layout]]}>
+      <StatusTag text={status} type={statusMap[status as Status]} />
+    </div>
+  </div>
+</a>

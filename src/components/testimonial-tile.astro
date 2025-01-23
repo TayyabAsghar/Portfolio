@@ -1,0 +1,56 @@
+---
+import { Picture } from "astro:assets"
+
+const { testimonial } = Astro.props
+
+const baseStyle =
+  "w-full h-full rounded-2xl transition-all duration-300 ease-out p-7 h-fit text-sm"
+
+const layoutStyle = "flex flex-col gap-3"
+
+const borderStyle =
+  "border border-1 border-solid border-neutral-200 dark:border-neutral-800"
+
+const hoverStyle =
+  "hover:shadow-neutral-100 dark:hover:shadow-black hover:shadow-lg hover:-translate-y-1"
+---
+
+<div class:list={[baseStyle, layoutStyle, hoverStyle, borderStyle]}>
+  <div class="size-7 text-neutral-300 dark:text-neutral-600">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="currentColor"
+      class="bi bi-quote"
+      viewBox="0 0 16 16"
+    >
+      <path
+        d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388q0-.527.062-1.054.093-.558.31-.992t.559-.683q.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 9 7.558V11a1 1 0 0 0 1 1zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612q0-.527.062-1.054.094-.558.31-.992.217-.434.559-.683.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 3 7.558V11a1 1 0 0 0 1 1z"
+      >
+      </path>
+    </svg>
+  </div>
+  <p class="text-neutral-600 dark:text-neutral-400">
+    {testimonial.text}
+  </p>
+
+  <div class="flex items-center gap-3">
+    <Picture
+      src={testimonial.profile}
+      formats={["avif", "webp", "jpg"]}
+      alt="Side project thumbnail"
+      width="40"
+      height="40"
+      class=`rounded-full object-cover transition-all duration-300 ease-out border-2 border-solid border-transparent`
+    />
+    <div
+      class="text-xs flex flex-col gap-0 text-neutral-900 font-medium dark:text-neutral-200"
+    >
+      <div>
+        {testimonial.name}
+      </div>
+      <div class="font-normal">
+        {testimonial.designation}
+      </div>
+    </div>
+  </div>
+</div>

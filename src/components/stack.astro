@@ -1,0 +1,31 @@
+---
+export type Skill = {
+  name: string
+  title: string
+}
+
+interface Props {
+  list: Skill[]
+  heading?: string
+}
+
+const { list, heading } = Astro.props
+---
+
+<h2 id="heading-tech-stack" class="">{heading}</h2>
+<div id="tech-stack" class="flex flex-wrap items-start justify-start gap-8">
+  {
+    list?.map((skill) => (
+      <div class="shrink-0 flex flex-col items-center gap-1">
+        <img
+          class="!m-0 !rounded-sm size-16 object-cover"
+          src={`/assets/images/stack/${skill.name}.svg`}
+          alt={skill.title}
+        />
+        <div class="w-min text-center text-xs capitalize text-slate-600 dark:text-slate-400">
+          {skill.title}
+        </div>
+      </div>
+    ))
+  }
+</div>

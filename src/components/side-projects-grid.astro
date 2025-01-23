@@ -1,0 +1,27 @@
+---
+import Button from "./button.astro"
+import GridSideProjects from "./grid-side-projects.astro"
+import SectionHeader from "./section-header.astro"
+
+interface Props {
+  count: number
+  className?: string
+}
+
+const { count } = Astro.props
+---
+
+<section id="side-projects" class="max-w-4xl mx-auto px-7 lg:px-0">
+  <SectionHeader
+    heading="Side Projects"
+    subheading="Dive into my latest side projects and explore the cutting-edge tools, frameworks, and techniques I've used to bring these ideas to life."
+  />
+
+  <div class="grid items-stretch w-full gap-7 pb-7">
+    <GridSideProjects count={count} />
+  </div>
+
+  <div class="flex items-center justify-center w-full py-0">
+    <Button text="View All Side Projects" link="/side-projects" />
+  </div>
+</section>

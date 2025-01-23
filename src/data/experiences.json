@@ -1,0 +1,57 @@
+[
+	{
+		"dates": "Dec 2022 · Present",
+		"role": "Sr. Software Development Engineer - SDE 3 (Vue3, Nest.js)",
+		"company": "HighLevel",
+		"description": {
+      "challenge": "Legacy monolithic frontend architecture hindered system agility and responsiveness, requiring a transformation into agile micro-frontends to improve performance and efficiency.",
+      "action": "Implemented micro-frontend architecture, increasing system agility and responsiveness.",
+      "result": "Contributed to the product's scalability by ensuring the frontend could handle the increase from 15k to 75k sub-accounts within a year."
+    },
+		"logo": "/assets/company/highlevel.png"
+	},
+	{
+		"dates": "May 2021 · Dec 2022",
+		"role": "Sr. Frontend Developer (React.js and Typescript)",
+		"company": "Attryb",
+		"description": {
+      "challenge": "Company needed to expand offerings, accelerate time-to-market, and foster growth in a team of junior.",
+      "action": "Led product development, launched new products, and mentored junior developers.",
+      "result": "Helped increase company valuation by 10x and cultivated an efficient work environment."
+    },
+		"logo": "/assets/company/attryb.png"
+	},
+  {
+		"dates": "May 2021 · Dec 2022",
+		"role": "Product Designer",
+		"company": "Attryb",
+		"description": {
+      "challenge": "Platform required enhancements to improve user engagement and performance through comprehensive, user-friendly products.",
+      "action": "Designed product features that enhanced the platform's utility and user experience.",
+      "result": "Significantly improved user engagement and overall platform experience."
+    },
+		"logo": "/assets/company/attryb.png"
+	},
+  {
+		"dates": "Feb 2019 · Apr 2022",
+		"role": "Sr. UX/UI Designer",
+		"company": "VDB - Virtual Diamond Boutique",
+		"description": {
+      "challenge": "Design processes were time-consuming and resource-intensive, requiring enhancements to automate processes and simplify workflow.",
+      "action": "Developed a centralised design system and introduced process automation.",
+      "result": "Saved time and resources, boosted efficiency, and improved collaboration across teams."
+    },
+		"logo": "/assets/company/vdb.png"
+	},
+  {
+		"dates": "Jul 2017 · Feb 2019",
+		"role": "UX/UI Designer and Developer",
+		"company": "Orgzit",
+		"description": {
+      "challenge": "Web application needed new features and improved onboarding to enrich product functionality and reduce the learning curve for new users.",
+      "action": "Built and maintained new frontend features; pioneered intuitive onboarding flow.",
+      "result": "Enriched product functionality; reduced learning curve for new users. Validated product-market fit for this bootstrapped company. Enterprise clients increased from 1 to 10."
+    },
+		"logo": "/assets/company/orgzit.png"
+	}
+]

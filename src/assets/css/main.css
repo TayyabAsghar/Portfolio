@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add Your Custom CSS Here */
+
+#sun {
+  transform: translate3d(0, 0px, 0);
+}
+#moon {
+  transform: translate3d(0, 0px, 0);
+}
+
+#darkToggle:hover #sun {
+  transform: translate3d(0, 10px, 0);
+}
+
+#darkToggle:hover #moon {
+  transform: translate3d(0, 10px, 0);
+}
+
+html.dark #darkToggle:hover .horizon {
+  border-color: #718096 !important;
+}
+
+.horizon .setting {
+  animation: 1s ease 0s 1 setting;
+}
+.horizon .rising {
+  animation: 1s ease 0s 1 rising;
+}
+
+@keyframes setting {
+  0% {
+    transform: translate3d(0, 10px, 0);
+  }
+
+  40% {
+    transform: translate3d(0, -2px, 0);
+  }
+
+  to {
+    transform: translate3d(0, 30px, 0);
+  }
+}
+
+@keyframes rising {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+  }
+
+  40% {
+    opacity: 1;
+    transform: translate3d(0, -2px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 10, 0);
+  }
+}
+
+#widget-music-player{
+  @apply relative z-20 top-5 left-20
+}
+
+#widget-projects{
+  @apply relative z-10 top-20
+}
+
+@layer utilities {
+  .hover-fx {
+    @apply duration-300 ease-out border border-solid border-neutral-100 dark:border-neutral-800 group-hover:ring-4 group-hover:ring-neutral-50 dark:group-hover:ring-neutral-800;
+  }
+
+  .hover-fx--no-ring {
+    @apply hover-fx group-hover:ring-0;
+  }
+
+  .btn {
+    @apply flex items-center gap-2 w-fit px-4 py-2 text-xs font-semibold text-center duration-300 ease-out border rounded bg-neutral-900 dark:bg-neutral-100 dark:hover:border-neutral-700 dark:text-neutral-800 dark:hover:bg-neutral-300  text-neutral-100 border-neutral-900 hover:bg-neutral-700;
+  }
+
+  .btn-rounded {
+    @apply btn !rounded-full;
+  }
+
+  .btn-secondary {
+    @apply !bg-transparent hover:!bg-transparent dark:!bg-transparent dark:hover:!bg-transparent !border-neutral-900 hover:!border-neutral-600 dark:!border-neutral-100 dark:hover:!border-neutral-300  !text-neutral-900 hover:!text-neutral-600 dark:!text-neutral-100 dark:hover:!text-neutral-300  ;
+  }
+
+  .project-screenshot {
+    @apply ring-2 ring-slate-100 p-3 dark:ring-slate-700;
+  }
+
+  .dividerline {
+    @apply divide-neutral-200/50 dark:divide-neutral-700/50 
+  }
+
+  .dividerline-bg {
+    @apply bg-neutral-200/50 dark:bg-neutral-700/50 
+  }
+}
+
+

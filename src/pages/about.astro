@@ -1,0 +1,77 @@
+---
+import experiences from "../data/experiences.json"
+import AboutExperience from "../components/about-experience.astro"
+import PageHeading from "../components/page-heading.astro"
+import Layout from "../layouts/main.astro"
+import Button from "../components/button.astro"
+---
+
+<Layout title="About Me">
+  <section class="relative z-20 max-w-2xl mx-auto my-12 px-7 lg:px-0">
+    <PageHeading
+      title="About Me"
+      description="Hello 👋 I'm Abhinay, a senior frontend engineer from India with expertise in Vue.js, React.js, and JavaScript. I thrive on tackling challenges and delivering high-performance, scalable web applications. With a passion for lean product development and a drive to continuously learn and grow, I'm always excited to work on innovative projects that make a real impact."
+    />
+
+    <img
+      src="/assets/images/about.avif"
+      class="relative z-30 w-full my-10 rounded-xl"
+    />
+
+    <!-- <h2 class="mb-2 text-2xl font-bold dark:text-neutral-200">Short Bio</h2>
+    <p
+      class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
+    >
+      I'm a passionate Senior Frontend Engineer specializing in Vue.js,
+      React.js, and JavaScript, with a proven track record of delivering
+      innovative solutions that drive business growth and enhance user
+      experiences for companies like HighLevel and Attryb.
+    </p> -->
+
+    <h2
+      class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200"
+    >
+      Experience
+    </h2>
+    <div class="px-5 pt-10">
+      {
+        experiences.map((experience, loop) => {
+          return (
+            <div class="pb-10 border-l last:border-none border-gray-200 dark:border-neutral-700">
+              <AboutExperience
+                dates={experience.dates}
+                role={experience.role}
+                company={experience.company}
+                description={experience.description}
+                logo={experience.logo}
+                hideLogo={experiences[loop - 1]?.company === experience.company}
+              />
+            </div>
+          )
+        })
+      }
+    </div>
+
+    <h2
+      class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200"
+    >
+      Let's Connect
+    </h2>
+    <p
+      class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
+    >
+      If you want to stay up to date with my work be sure to
+      <a
+        href="https://twitter.com/thisisabhinay"
+        target="_blank"
+        class="text-indigo-600 underline"
+      >follow me on twitter</a>, or want to discuss a project? You can schedule a 1-on-1 meeting with me.
+
+      <Button
+        text="Schedule a meeting"
+        link="https://calendar.app.google/T8V2fr9b9mxMGyzAA"
+        target="_blank"
+      />
+    </p>
+  </section>
+</Layout>

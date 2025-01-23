@@ -1,0 +1,38 @@
+[
+	{
+		"name": "Shubham Pal",
+		"profile": "/assets/testimonials/shubham.jpeg",
+    "designation": "Career Coach | Founder at Talento Hub",
+    "text": "I couldn't be more happier with the website that Abhinay has created for me. From start to finish, his work ethic was impeccable. He was always punctual, attentive, and dedicated to making sure every detail was just right. What really stood out was his willingness to go beyond just building the site; he actively engaged in brainstorming sessions, offering creative ideas that truly enhanced the final product. His flexibility was also remarkable, as he effortlessly adapted to any changes or new ideas that came up along the way. I highly recommend Abhinay for anyone looking to bring their product to life through a professional, knowledgeable, and experienced frontend engineer."
+	},
+  {
+		"name": "Ashutosh Anand",
+		"profile": "/assets/testimonials/ashutosh.jpeg",
+    "designation": "Director of Engineering | HighLevel",
+    "text": "Abhinay has been really thoughtful in every work that he took responsibility for. His architecture and design patterns in the frontend technology is one of the best I've seen personally. He is able to manage the application and it's implementation in a complete fashion by taking in multiple scenarios in picture. During his tenure he was able to handle migration of entire app to new stack and created the base for the application which helped scale it in future. He was able to handle the responsibilities entrusted on him and deliver on same."
+	},
+  {
+		"name": "Maksim Krivoruchko",
+		"profile": "/assets/testimonials/maksim.jpeg",
+    "designation": "Design Lead",
+    "text": "Abhinay is a thoughtful, competent, and enthusiastic designer/developer who thinks deeply into user problems and provides interesting and reasonable solutions. He is always ready to support the team, and his extensive knowledge in front-end development has repeatedly proved useful in making design decisions. He fully devotes himself not only to exceptional and complex design tasks but also gives himself completely to critically important day-to-day design routine. I'm really grateful for the experience we shared working together!"
+	},
+  {
+		"name": "Nitin Verma",
+		"profile": "/assets/testimonials/nitin.jpeg",
+    "designation": "Co-Founder | Orgzit",
+    "text": "Abhinay has a great feel and eye for user experience and user interface design. He was key at the early stages of our startup (Orgzit) to develop core front-end user-facing functionalities. He is a reliable team player who knows how to deliver results."
+	},
+  {
+		"name": "Pavan Verma",
+		"profile": "/assets/testimonials/pavan.jpeg",
+    "designation": "Co-Founder | Orgzit",
+    "text": "Abhinay is an awesome web application frontend developer. While working on Orgzit, his work spanned UX, UI design, UI development. Abhinay is very easy to work with, brings a lot of energy to the team and is keen to upgrade his skills by learning new things. I wholeheartedly recommend Abhinay for frontend projects."
+	},
+  {
+		"name": "Ishan",
+		"profile": "/assets/testimonials/ishan.jpeg",
+    "designation": "Senior Software Engineer | Zynga",
+    "text": "Abhinay is a great designer. His works on UX/UI design is practical as well as forward looking. Combined with technical accumen, he is a great member of any team. He has interest and talent for game design. He is one of the very few people I know who have a clear picture of what's important and what's not. This specific quality alone will take him far in his career."
+	}
+]
