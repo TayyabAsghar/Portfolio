@@ -1,5 +1,5 @@
 ---
-const { logo, dates, role, company, description, hideLogo } = Astro.props
+const { logo, dates, role, company, description, hideLogo } = Astro.props;
 ---
 
 <div id="experience" class="relative flex flex-col justify-start pl-12">
@@ -11,7 +11,7 @@ const { logo, dates, role, company, description, hideLogo } = Astro.props
     ) : null
   }
   <p
-    class="text-xs uppercase text-neutral-400 dark:text-neutral-500 trackign-widest"
+    class="text-xs uppercase text-neutral-400 dark:text-neutral-500 tracking-widest"
   >
     {dates}
   </p>
@@ -20,16 +20,28 @@ const { logo, dates, role, company, description, hideLogo } = Astro.props
     <p class="text-base font-medium dark:text-neutral-300">{company}</p>
   </div>
   <div class="flex flex-col gap-1">
-    <p class="grid auto-rows-max grid-cols-[64px_1fr] gap-3 text-sm font-normal text-neutral-600 dark:text-neutral-400">
-      <span class="block text-neutral-400 dark:text-neutral-500 text-right">Challenge:</span>
+    <p
+      class="grid auto-rows-max grid-cols-[64px_1fr] gap-3 text-sm font-normal text-neutral-600 dark:text-neutral-400"
+    >
+      <span class="block text-neutral-400 dark:text-neutral-500 text-right">
+        Challenge:
+      </span>
       <span class="flex"><Fragment set:html={description.challenge} /></span>
     </p>
-    <p class="grid auto-rows-max grid-cols-[64px_1fr] gap-3 text-sm font-normal text-neutral-600 dark:text-neutral-400">
-      <span class="block text-neutral-400 dark:text-neutral-500 text-right">Action:</span>
+    <p
+      class="grid auto-rows-max grid-cols-[64px_1fr] gap-3 text-sm font-normal text-neutral-600 dark:text-neutral-400"
+    >
+      <span class="block text-neutral-400 dark:text-neutral-500 text-right">
+        Action:
+      </span>
       <span class="flex"><Fragment set:html={description.action} /></span>
     </p>
-    <p class="grid auto-rows-max grid-cols-[64px_1fr] gap-3 text-sm font-normal text-neutral-600 dark:text-neutral-400">
-      <span class="block text-neutral-400 dark:text-neutral-500 text-right">Result:</span>
+    <p
+      class="grid auto-rows-max grid-cols-[64px_1fr] gap-3 text-sm font-normal text-neutral-600 dark:text-neutral-400"
+    >
+      <span class="block text-neutral-400 dark:text-neutral-500 text-right">
+        Result:
+      </span>
       <span class="flex"><Fragment set:html={description.result} /></span>
     </p>
   </div>

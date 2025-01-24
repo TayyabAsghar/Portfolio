@@ -1,0 +1,46 @@
+---
+const { logo, dates, institute, website, location, degree, coursework } =
+  Astro.props;
+---
+
+<div id="education" class="relative flex flex-col justify-start pl-12">
+  <div
+    class="absolute top-0 left-0 z-40 flex items-center justify-center -translate-x-1/2 bg-white border rounded-full dark:bg-neutral-950 w-14 h-14 border-neutral-300 dark:border-neutral-700"
+  >
+    <a href={website} target="_blank">
+      <img
+        src={logo}
+        alt={institute}
+        class="transition-all duration-700 ease-out hover:scale-110 w-8 h-8"
+      />
+    </a>
+  </div>
+  <p
+    class="text-xs uppercase text-neutral-400 dark:text-neutral-500 tracking-widest flex justify-between"
+  >
+    <span>{dates}</span>
+    <span>{location}</span>
+  </p>
+  <div class="space-y-0 mb-3">
+    <h3 class="text-lg font-bold dark:text-neutral-100">{degree}</h3>
+    <a href={website} target="_blank" class="block w-fit">
+      <p class="text-base font-medium dark:text-neutral-300">{institute}</p>
+    </a>
+  </div>
+  <p
+    class="grid auto-rows-max grid-cols-[64px_1fr] gap-3 text-sm font-normal text-neutral-600 dark:text-neutral-400"
+  >
+    <span class="block text-neutral-400 dark:text-neutral-500 text-right">
+      Courses:
+    </span>
+    <span class="">{coursework}</span>
+  </p>
+</div>
+
+<style is:global>
+  #education strong {
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 0.25rem;
+  }
+</style>
