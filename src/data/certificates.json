@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Angular (Basic) Certificate",
+    "organization": "HackerRank",
+    "issueDate": "May 2024",
+    "expirationDate": "",
+    "credentialID": "954D2577F196",
+    "logo": "/assets/images/certificate/hackerrank_logo.jpeg",
+    "media": "/assets/images/certificate/angular-basic-certificate.png",
+    "credentialURL": "https://www.hackerrank.com/certificates/954d2577f196"
+  },
+  {
+    "name": "JavaScript (Intermediate) Certificate",
+    "organization": "HackerRank",
+    "issueDate": "May 2024",
+    "expirationDate": "",
+    "credentialID": "A766D4FD1EEA",
+    "logo": "/assets/images/certificate/hackerrank_logo.jpeg",
+    "media": "/assets/images/certificate/javascript-Intermediate-certificate.png",
+    "credentialURL": "https://www.hackerrank.com/certificates/a766d4fd1eea"
+  },
+  {
+    "name": "Problem Solving (Intermediate) Certificate",
+    "organization": "HackerRank",
+    "issueDate": "May 2024",
+    "expirationDate": "",
+    "credentialID": "3CDBC5CCF985",
+    "logo": "/assets/images/certificate/hackerrank_logo.jpeg",
+    "media": "/assets/images/certificate/problem-solving-Intermediate-certificate.png",
+    "credentialURL": "https://www.hackerrank.com/certificates/3cdbc5ccf985"
+  },
+  {
+    "name": "React (Basic) Certificate",
+    "organization": "HackerRank",
+    "issueDate": "May 2024",
+    "expirationDate": "",
+    "credentialID": "B8993A29C3B7",
+    "logo": "/assets/images/certificate/hackerrank_logo.jpeg",
+    "media": "/assets/images/certificate/react-basic-certificate.png",
+    "credentialURL": "https://www.hackerrank.com/certificates/b8993a29c3b7"
+  },
+  {
+    "name": "SQL (Intermediate) Certificate",
+    "organization": "HackerRank",
+    "issueDate": "May 2024",
+    "expirationDate": "",
+    "credentialID": "5651744D887A",
+    "logo": "/assets/images/certificate/hackerrank_logo.jpeg",
+    "media": "/assets/images/certificate/sql-intermediate-certificate.png",
+    "credentialURL": "https://www.hackerrank.com/certificates/5651744d887a"
+  },
+  {
+    "name": "Introduction to Prompt Engineering for Generative AI",
+    "organization": "LinkedIn",
+    "issueDate": "April 2024",
+    "expirationDate": "",
+    "credentialID": "",
+    "logo": "/assets/images/certificate/linkedin_logo.jpeg",
+    "media": "/assets/images/certificate/propmt-engineering.jpeg",
+    "credentialURL": "https://www.linkedin.com/learning/certificates/2b0ba23e383526a7a8f18d3350d36a690b4e718c762789a1229868f22bad6b39"
+  },
+  {
+    "name": "Software Engineer Intern Certificate",
+    "organization": "HackerRank",
+    "issueDate": "April 2024",
+    "expirationDate": "",
+    "credentialID": "8BA79E4C3FE5",
+    "logo": "/assets/images/certificate/hackerrank_logo.jpeg",
+    "media": "/assets/images/certificate/software-engineer-intern-certificate.png",
+    "credentialURL": "https://www.hackerrank.com/certificates/8ba79e4c3fe5"
+  },
+  {
+    "name": "MTA: Database Fundamentals - Certified 2021",
+    "organization": "Microsoft",
+    "issueDate": "Dec 2020",
+    "expirationDate": "",
+    "credentialID": "",
+    "logo": "/assets/images/certificate/microsoft_logo.jpeg",
+    "media": "/assets/images/certificate/mta-database-fundamentals.png",
+    "credentialURL": "https://www.youracclaim.com/badges/353201fb-754f-455a-ae4f-45719e1a4fae?source=linked_in_profile"
+  }
+]

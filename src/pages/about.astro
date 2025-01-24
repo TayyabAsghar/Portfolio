@@ -3,9 +3,11 @@ import Layout from "../layouts/main.astro";
 import education from "../data/education.json";
 import Button from "../components/button.astro";
 import experiences from "../data/experiences.json";
+import certificates from "../data/certificates.json";
 import PageHeading from "../components/page-heading.astro";
 import AboutEducation from "../components/about-education.astro";
 import AboutExperience from "../components/about-experience.astro";
+import AboutCertificate from "../components/about-certificate.astro";
 ---
 
 <Layout title="About Me">
@@ -72,6 +74,32 @@ import AboutExperience from "../components/about-experience.astro";
     <h2
       class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200"
     >
+      Certificates
+    </h2>
+    <div class="px-5 pt-10">
+      {
+        certificates.map((cert) => {
+          return (
+            <div class="pb-10 border-l last:border-none border-gray-200 dark:border-neutral-700">
+              <AboutCertificate
+                name={cert.name}
+                logo={cert.logo}
+                media={cert.media}
+                issueDate={cert.issueDate}
+                organization={cert.organization}
+                credentialID={cert.credentialID}
+                credentialURL={cert.credentialURL}
+                expirationDate={cert.expirationDate}
+              />
+            </div>
+          );
+        })
+      }
+    </div>
+
+    <h2
+      class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200"
+    >
       Let's Connect
     </h2>
     <p
@@ -81,13 +109,17 @@ import AboutExperience from "../components/about-experience.astro";
       <a
         href="https://www.linkedin.com/in/tayyabasghar"
         target="_blank"
-        class="text-indigo-600 underline">LinkedIn</a
-      > and
+        class="text-indigo-600 underline"
+      >
+        LinkedIn
+      </a> and
       <a
         href="https://github.com/TayyabAsghar"
         target="_blank"
-        class="text-indigo-600 underline">Github</a
-      >, or want to discuss a project? You can just click the connect button.
+        class="text-indigo-600 underline"
+      >
+        Github
+      </a>, or want to discuss a project? You can just click the connect button.
 
       <Button
         text="Connect"

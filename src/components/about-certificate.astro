@@ -1,0 +1,57 @@
+---
+const {
+  name,
+  logo,
+  media,
+  issueDate,
+  organization,
+  credentialID,
+  credentialURL,
+  expirationDate,
+} = Astro.props;
+---
+
+<div id="education" class="relative flex flex-col justify-start pl-12">
+  <div
+    class="absolute top-0 left-0 z-40 flex items-center justify-center -translate-x-1/2 bg-white border rounded-full dark:bg-neutral-950 w-14 h-14 border-neutral-300 dark:border-neutral-700"
+  >
+    <a href={credentialURL} target="_blank">
+      <img
+        src={logo}
+        alt={organization}
+        class="transition-all duration-700 ease-out hover:scale-110 w-8 h-8"
+      />
+    </a>
+  </div>
+  <p
+    class="text-xs uppercase text-neutral-400 dark:text-neutral-500 tracking-widest flex justify-between"
+  >
+    <span>{issueDate} {!!expirationDate && `· ${expirationDate}`}</span>
+    {!!credentialID && <span>ID: {credentialID} </span>}
+  </p>
+  <div class="space-y-0 mb-3 flex justify-between gap-3">
+    <div>
+      <a href={credentialURL} target="_blank" class="block w-fit">
+        <h3 class="text-lg font-bold dark:text-neutral-100">{name}</h3>
+      </a>
+      <p class="text-base font-medium dark:text-neutral-300">{organization}</p>
+    </div>
+    <div class="block w-fit">
+      <a href={credentialURL} target="_blank">
+        <img
+          src={media}
+          alt={name}
+          class="transition-all duration-700 ease-out hover:scale-110 w-32 h-32 shadow-lg"
+        />
+      </a>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  #education strong {
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 0.25rem;
+  }
+</style>
