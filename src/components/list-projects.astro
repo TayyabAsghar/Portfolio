@@ -1,34 +1,30 @@
 ---
-import Project from "../components/project.astro"
-import Separator from "../components/separator.astro"
-import { latestPortfolio } from "../utils/portfolio"
+import Project from "../components/project.astro";
+import { latestPortfolio } from "../utils/portfolio";
+import Separator from "../components/separator.astro";
 
 interface Props {
-  count?: number
-  className?: string
-  company?: string
-  brandLogo?: string
+  count?: number;
+  className?: string;
+  company?: string;
+  brandLogo?: string;
 }
 
-const { count, company, brandLogo, className = "" } = Astro.props
+const { count, company, brandLogo, className = "" } = Astro.props;
 
-let portfolio
+let portfolio;
 portfolio = company
   ? latestPortfolio.filter((project) => project.data.company === company)
-  : latestPortfolio
+  : latestPortfolio;
 
-portfolio = count ? portfolio.slice(0, count) : portfolio
+portfolio = count ? portfolio.slice(0, count) : portfolio;
 
-const collection = portfolio
-
+const collection = portfolio;
 ---
 
 {company ? <Separator text={company} brandLogo={brandLogo} /> : null}
 
-<div
-  class="divide-y dividerline"
-  class:list={[className, !company ? "mt-20" : ""]}
->
+<div class="divide-y divider" class:list={[className, !company ? "mt-20" : ""]}>
   {
     collection.map((project: any) => {
       return (
@@ -43,7 +39,7 @@ const collection = portfolio
             layout="list"
           />
         </div>
-      )
+      );
     })
   }
 </div>

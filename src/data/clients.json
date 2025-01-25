@@ -1,14 +1,10 @@
 [
   {
-    "name": "HighLevel",
-    "logo": "/assets/company/highlevel.png"
+    "name": "Ensemble",
+    "logo": "/assets/images/company/ensemble.jpeg"
   },
   {
-    "name": "Attryb",
-    "logo": "/assets/company/attryb.png"
-  },
-  {
-    "name": "Orgzit",
-    "logo": "/assets/company/orgzit.png"
+    "name": "LexCheck",
+    "logo": "/assets/images/company/lexcheck.svg"
   }
 ]
