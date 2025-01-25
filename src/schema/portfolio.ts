@@ -3,6 +3,7 @@ import { z } from "astro:content";
 const portfolioSchema = z.object({
   title: z.string(),
   description: z.string(),
+  bgGradient:z.string(),
   author: z.string().trim(),
   company: z.string().trim(),
   draft: z.boolean().optional(),

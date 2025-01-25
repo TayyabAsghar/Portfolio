@@ -12,8 +12,8 @@ import ListProjects from "../../components/list-projects.astro";
       description="I am passionate about transforming new ideas into reality through innovative projects. Explore this portfolio to see my latest works, showcasing both my creativity and technical expertise."
     />
     {
-      companies?.map(({ name, logo }) => (
-        <ListProjects company={name} brandLogo={logo} />
+      companies?.map(({ name, logo, link }) => (
+        <ListProjects link={link} company={name} brandLogo={logo} />
       ))
     }
   </section>

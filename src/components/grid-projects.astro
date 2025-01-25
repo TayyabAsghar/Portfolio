@@ -1,17 +1,15 @@
 ---
-import Project from "../components/project.astro"
-import { pinnedPortfolio } from "../utils/portfolio"
+import Project from "../components/project.astro";
+import { pinnedPortfolio } from "../utils/portfolio";
 
 interface Props {
-  count: number
-  className?: string
+  count: number;
+  className?: string;
 }
 
-const { count, className = "" } = Astro.props
+const { count, className = "" } = Astro.props;
 
-const portfolio = count ? pinnedPortfolio.slice(0, count) : pinnedPortfolio
-
-console.log(portfolio.map((p) => p.data.title))
+const portfolio = count ? pinnedPortfolio.slice(0, count) : pinnedPortfolio;
 ---
 
 <div
@@ -24,6 +22,7 @@ console.log(portfolio.map((p) => p.data.title))
         <Fragment>
           <Project
             name={project.data.title}
+            gradient={project.data.bgGradient}
             description={project.data.description}
             image={project.data.image}
             company={project.data.company}
@@ -32,7 +31,7 @@ console.log(portfolio.map((p) => p.data.title))
             hrefBase="portfolio"
           />
         </Fragment>
-      )
+      );
     })
   }
 </div>

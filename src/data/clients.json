@@ -1,10 +1,12 @@
 [
   {
     "name": "Ensemble",
-    "logo": "/assets/images/company/ensemble.jpeg"
+    "logo": "/assets/images/company/ensemble.jpeg",
+    "link": "https://ensembleui.com"
   },
   {
     "name": "LexCheck",
-    "logo": "/assets/images/company/lexcheck.svg"
+    "logo": "/assets/images/company/lexcheck.svg",
+    "link": "https://www.lexcheck.com"
   }
 ]

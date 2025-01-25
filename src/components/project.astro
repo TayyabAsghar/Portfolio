@@ -1,5 +1,5 @@
 ---
-import ImageTile from "./image-tile.astro"
+import ImageTile from "./image-tile.astro";
 
 const {
   name,
@@ -7,41 +7,42 @@ const {
   slug,
   image,
   company,
+  gradient,
   layout = "card",
   hrefBase,
-} = Astro.props
+} = Astro.props;
 
-const baseStyle = "w-full h-full rounded-xl"
+const baseStyle = "w-full h-full rounded-xl";
 
 const layoutStyle: any = {
   card: "flex flex-col gap-3",
   list: "flex flex-row-reverse gap-3 justify-between",
-}
+};
 
 const coverSize: any = {
   card: "h-48 md:h-36",
   list: "h-48 md:h-44",
-}
+};
 
 const headingStyle: any = {
   card: "text-base line-clamp-2",
   list: "text-lg",
-}
+};
 
 const descriptionClamp: any = {
   card: "line-clamp-5 md:line-clamp-3",
   list: "line-clamp-4 md:line-clamp-3",
-}
+};
 
 const visibility: any = {
   card: "!hidden",
   list: "",
-}
+};
 
-const transitionStyle = "transition-all duration-700 ease-out"
+const transitionStyle = "transition-all duration-700 ease-out";
 
 const textHoverStyle =
-  "group-hover:text-neutral-900 dark:group-hover:text-neutral-100"
+  "group-hover:text-neutral-900 dark:group-hover:text-neutral-100";
 ---
 
 <a
@@ -53,6 +54,7 @@ const textHoverStyle =
   <div class:list={[baseStyle, layoutStyle[layout]]}>
     <ImageTile
       image={image}
+      gradient={gradient}
       alt="Portfolio project thumbnail"
       width="800"
       height="450"
