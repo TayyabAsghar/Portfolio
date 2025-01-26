@@ -1,22 +1,18 @@
 [
-	{
-		"name": "Home",
-		"url": "/"
-	},
-	{
-		"name": "Blog",
-		"url": "/blog"
-	},
-	{
-		"name": "Portfolio",
-		"url": "/portfolio"
-	},
   {
-		"name": "Side Projects",
-		"url": "/side-projects"
-	},
-	{
-		"name": "About",
-		"url": "/about"
-	}
+    "name": "Home",
+    "url": "/"
+  },
+  {
+    "name": "Blog",
+    "url": "/blog"
+  },
+  {
+    "name": "Portfolio",
+    "url": "/portfolio"
+  },
+  {
+    "name": "About",
+    "url": "/about"
+  }
 ]

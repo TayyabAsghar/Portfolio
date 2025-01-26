@@ -3,16 +3,18 @@ import Layout from "../layouts/main.astro";
 import Writings from "../components/writings.astro";
 import HeroSection from "../components/hero-section.astro";
 import Testimonials from "../components/testimonials.astro";
+import Technologies from "../components/technologies.astro";
 import PortfolioGrid from "../components/portfolio-grid.astro";
-import SideProjectsGrid from "../components/side-projects-grid.astro";
+// import SideProjectsGrid from "../components/side-projects-grid.astro";
 ---
 
 <Layout title="Tayyab Asghar">
   <div class="grid grid-cols-1 auto-rows-max gap-28">
     <HeroSection />
+    <Technologies />
     <PortfolioGrid count={6} />
     <Testimonials />
-    <SideProjectsGrid count={3} />
+    <!-- <SideProjectsGrid count={3} /> -->
     <Writings />
   </div>
 </Layout>
