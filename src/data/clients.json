@@ -8,5 +8,10 @@
     "name": "LexCheck",
     "logo": "/assets/images/company/lexcheck.svg",
     "link": "https://www.lexcheck.com"
+  },
+  {
+    "name": "Side Project",
+    "logo": "/assets/images/me.jpeg",
+    "link": "https://github.com/TayyabAsghar"
   }
 ]

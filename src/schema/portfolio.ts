@@ -4,6 +4,7 @@ const portfolioSchema = z.object({
   title: z.string(),
   description: z.string(),
   bgGradient:z.string(),
+  priority:z.number(),  //TODO: Remove after dividing the projects into side projects.
   author: z.string().trim(),
   company: z.string().trim(),
   draft: z.boolean().optional(),

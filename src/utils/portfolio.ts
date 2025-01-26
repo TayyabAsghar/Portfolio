@@ -6,9 +6,9 @@ export const latestPortfolio = (
     return data.draft !== true;
   })
 ).sort(
-  (a, b) =>
-    new Date(b.data.publishDate).valueOf() -
-    new Date(a.data.publishDate).valueOf()
+  (a, b) => a.data.priority - b.data.priority //TODO: Remove after dividing the projects into side projects.
+    // new Date(b.data.publishDate).valueOf() -
+    // new Date(a.data.publishDate).valueOf()
 );
 
 export const pinnedPortfolio = latestPortfolio?.filter(
