@@ -19,6 +19,11 @@
     "title": "AWS",
     "website": "https://aws.amazon.com"
   },
+  "AzureBoards": {
+    "name": "azure-boards",
+    "title": "Azure Boards",
+    "website": "https://azure.microsoft.com/en-us/products/devops/boards"
+  },
   "AzureDevOps": {
     "name": "azure-devops",
     "title": "Azure DevOps",
@@ -58,6 +63,11 @@
     "name": "d3",
     "title": "D3",
     "website": "https://d3js.org"
+  },
+  "Discord": {
+    "name": "discord",
+    "title": "Discord",
+    "website": "https://discord.com"
   },
   "Django": {
     "name": "django",
@@ -108,6 +118,11 @@
     "name": "github-actions",
     "title": "Github Actions",
     "website": "https://github.com/features/actions"
+  },
+  "GithubBoards": {
+    "name": "github",
+    "title": "Github Boards",
+    "website": "https://github.com/features/issues"
   },
   "Github": {
     "name": "github",
@@ -254,10 +269,20 @@
     "title": "Sass",
     "website": "https://sass-lang.com"
   },
+  "Scrum": {
+    "name": "scrum",
+    "title": "Scrum",
+    "website": "https://www.scrum.org/resources/ways-learn-about-scrum"
+  },
   "Shadcn": {
     "name": "shadcn",
     "title": "shadcn/ui",
     "website": "https://ui.shadcn.com"
+  },
+  "Slack": {
+    "name": "slack",
+    "title": "Slack",
+    "website": "https://slack.com"
   },
   "SonarQube": {
     "name": "sonarqube",
