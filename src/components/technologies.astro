@@ -1,4 +1,5 @@
 ---
+import Stack from "./stack.astro";
 import SectionHeader from "./section-header.astro";
 ---
 
@@ -7,5 +8,94 @@ import SectionHeader from "./section-header.astro";
     heading="Technologies"
     subheading="These are the tools, frameworks, and technologies that I have worked with, each playing a key role in bringing ideas to life."
   />
-  <div class="grid items-stretch w-full gap-7 pb-7"></div>
+  <div class="grid items-stretch w-full gap-7 pb-7">
+    <Stack
+      heading="Frontend"
+      iconName="frontend"
+      className="text-xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100"
+      list={[
+        { name: "next", title: "Next" },
+        { name: "react", title: "React" },
+        { name: "redux", title: "Redux" },
+        { name: "angular", title: "Angular" },
+        { name: "rxjs", title: "RxJS/NgRx" },
+        { name: "electron", title: "Electron" },
+        { name: "js", title: "JavaScript" },
+        { name: "ts", title: "TypeScript" },
+        { name: "html", title: "HTML5" },
+        { name: "css", title: "CSS3" },
+        { name: "sass", title: "Sass" },
+        { name: "ant-design", title: "Ant Design" },
+        { name: "antv", title: "Ant Charts" },
+        { name: "mui", title: "Material UI" },
+        { name: "kendo", title: "Kendo UI" },
+        { name: "shadcn", title: "shadcn/ui" },
+        { name: "tailwind", title: "tailwindcss" },
+        { name: "rquery", title: "React Query" },
+      ]}
+    />
+    <Stack
+      heading="Backend"
+      iconName="datastore"
+      className="text-xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100"
+      list={[
+        { name: "node", title: "Node.js" },
+        { name: "express", title: "Express" },
+        { name: "postman", title: "Postman" },
+        { name: "swagger", title: "Swagger" },
+        { name: "mongoose", title: "mongoose" },
+      ]}
+    />
+    <Stack
+      heading="Databases"
+      iconName="database"
+      className="text-xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100"
+      list={[
+        { name: "sql", title: "SQL" },
+        { name: "mongodb", title: "MongoDB" },
+        { name: "firebase", title: "FireStore" },
+      ]}
+    />
+    <Stack
+      heading="Services"
+      iconName="services"
+      className="text-xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100"
+      list={[
+        { name: "clerk", title: "Clerk" },
+        { name: "vercel", title: "Vercel" },
+        { name: "render", title: "Render" },
+        { name: "heroku", title: "Heroku" },
+        { name: "cloudinary", title: "Cloudinary" },
+      ]}
+    />
+    <Stack
+      heading="Tools"
+      iconName="tools"
+      className="text-xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100"
+      list={[
+        { name: "webpack", title: "Bundle Analyzer" },
+        { name: "git", title: "Git" },
+        { name: "github", title: "Github" },
+        { name: "github-actions", title: "Github Actions" },
+        { name: "bitbucket", title: "Bitbucket" },
+        { name: "azure-devops", title: "Azure DevOps" },
+        { name: "jira", title: "Jira" },
+        { name: "figma", title: "Figma" },
+        { name: "vscode", title: "VSCode" },
+        { name: "eslint", title: "ESLint" },
+        { name: "prettier", title: "Prettier" },
+        { name: "sonarqube", title: "SonarQube" },
+        { name: "npm", title: "NPM" },
+      ]}
+    />
+    <Stack
+      heading="Testing"
+      iconName="testing"
+      className="text-xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100"
+      list={[
+        { name: "jest", title: "Jest" },
+        { name: "storybook", title: "Storybook" },
+      ]}
+    />
+  </div>
 </section>
