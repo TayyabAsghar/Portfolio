@@ -2,6 +2,7 @@
 export type Skill = {
   name: string;
   title: string;
+  website: string;
 };
 
 interface Props {
@@ -29,7 +30,12 @@ const { list, className, iconName, heading } = Astro.props;
 <div id="tech-stack" class="flex flex-wrap items-start justify-start gap-8">
   {
     list?.map((skill) => (
-      <div class="shrink-0 flex flex-col items-center gap-1">
+      <a
+        target="_blank"
+        title={skill.title}
+        href={skill.website}
+        class="shrink-0 flex flex-col items-center gap-1 relative duration-75 transition hover:translate-y-2"
+      >
         <img
           class="!m-0 !rounded-sm size-16 object-cover"
           src={`/assets/images/stack/${skill.name}.svg`}
@@ -38,7 +44,7 @@ const { list, className, iconName, heading } = Astro.props;
         <div class="w-min text-center text-xs capitalize text-slate-600 dark:text-slate-400">
           {skill.title}
         </div>
-      </div>
+      </a>
     ))
   }
 </div>

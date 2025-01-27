@@ -1,0 +1,317 @@
+{
+  "Angular": {
+    "name": "angular",
+    "title": "Angular",
+    "website": "https://angular.dev"
+  },
+  "AntDesign": {
+    "name": "ant-design",
+    "title": "Ant Design",
+    "website": "https://ant.design"
+  },
+  "AntV": {
+    "name": "antv",
+    "title": "Ant Charts",
+    "website": "https://ant-design-charts.antgroup.com"
+  },
+  "AWS": {
+    "name": "aws",
+    "title": "AWS",
+    "website": "https://aws.amazon.com"
+  },
+  "AzureDevOps": {
+    "name": "azure-devops",
+    "title": "Azure DevOps",
+    "website": "https://azure.microsoft.com/en-us/products/devop"
+  },
+  "Backbone": {
+    "name": "backbone",
+    "title": "Backbone",
+    "website": "https://backbonejs.org"
+  },
+  "Bitbucket": {
+    "name": "bitbucket",
+    "title": "Bitbucket",
+    "website": "https://bitbucket.org/product"
+  },
+  "Bootstrap": {
+    "name": "bootstrap",
+    "title": "Bootstrap",
+    "website": "https://getbootstrap.com"
+  },
+  "Clerk": {
+    "name": "clerk",
+    "title": "Clerk",
+    "website": "https://clerk.com"
+  },
+  "Cloudinary": {
+    "name": "cloudinary",
+    "title": "Cloudinary",
+    "website": "https://cloudinary.com"
+  },
+  "CSS": {
+    "name": "css",
+    "title": "CSS3",
+    "website": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+  },
+  "D3": {
+    "name": "d3",
+    "title": "D3",
+    "website": "https://d3js.org"
+  },
+  "Django": {
+    "name": "django",
+    "title": "Django",
+    "website": "https://www.djangoproject.com"
+  },
+  "Elasticsearch": {
+    "name": "elasticsearch",
+    "title": "Elasticsearch",
+    "website": "https://www.elastic.co/elasticsearch"
+  },
+  "Electron": {
+    "name": "electron",
+    "title": "Electron",
+    "website": "https://www.electronjs.org"
+  },
+  "ESlint": {
+    "name": "eslint",
+    "title": "ESlint",
+    "website": "https://eslint.org"
+  },
+  "Express": {
+    "name": "express",
+    "title": "Express",
+    "website": "https://expressjs.com"
+  },
+  "Figma": {
+    "name": "figma",
+    "title": "Figma",
+    "website": "https://www.figma.com"
+  },
+  "Firebase": {
+    "name": "firebase",
+    "title": "Firestore",
+    "website": "https://firebase.google.com/docs/firestore"
+  },
+  "GCP": {
+    "name": "gcp",
+    "title": "Google Cloud",
+    "website": "https://cloud.google.com"
+  },
+  "Git": {
+    "name": "git",
+    "title": "Git",
+    "website": "https://git-scm.com"
+  },
+  "GithubActions": {
+    "name": "github-actions",
+    "title": "Github Actions",
+    "website": "https://github.com/features/actions"
+  },
+  "Github": {
+    "name": "github",
+    "title": "Github",
+    "website": "https://github.com"
+  },
+  "Grunt": {
+    "name": "grunt",
+    "title": "Grunt",
+    "website": "https://gruntjs.com"
+  },
+  "Heroku": {
+    "name": "heroku",
+    "title": "Heroku",
+    "website": "https://www.heroku.com"
+  },
+  "Html": {
+    "name": "html",
+    "title": "HTML5",
+    "website": "https://html.spec.whatwg.org"
+  },
+  "Jenkins": {
+    "name": "jenkins",
+    "title": "Jenkins",
+    "website": "https://www.jenkins.io"
+  },
+  "Jest": {
+    "name": "jest",
+    "title": "Jest",
+    "website": "https://jestjs.io"
+  },
+  "Jira": {
+    "name": "jira",
+    "title": "Jira",
+    "website": "https://www.atlassian.com/software/jira"
+  },
+  "JQuery": {
+    "name": "jquery",
+    "title": "JQuery",
+    "website": "https://jquery.com"
+  },
+  "JS": {
+    "name": "js",
+    "title": "JavaScript",
+    "website": "https://www.w3schools.com/js"
+  },
+  "Kendo": {
+    "name": "kendo",
+    "title": "Kendo UI",
+    "website": "https://www.telerik.com/kendo-ui"
+  },
+  "Less": {
+    "name": "less",
+    "title": "Less",
+    "website": "https://lesscss.org"
+  },
+  "Lodash": {
+    "name": "lodash",
+    "title": "Lodash",
+    "website": "https://lodash.com"
+  },
+  "Markdown": {
+    "name": "md",
+    "title": "Markdown",
+    "website": "https://www.markdownguide.org"
+  },
+  "MongoDB": {
+    "name": "mongodb",
+    "title": "MongoDB",
+    "website": "https://www.mongodb.com"
+  },
+  "Mongoose": {
+    "name": "mongoose",
+    "title": "Mongoose",
+    "website": "https://mongoosejs.com"
+  },
+  "MUI": {
+    "name": "mui",
+    "title": "Material UI",
+    "website": "https://mui.com"
+  },
+  "Nest": {
+    "name": "nestjs",
+    "title": "Nest",
+    "website": "https://nestjs.com"
+  },
+  "Next": {
+    "name": "next",
+    "title": "Next",
+    "website": "https://nextjs.org"
+  },
+  "Node": {
+    "name": "node",
+    "title": "Node",
+    "website": "https://nodejs.org"
+  },
+  "NPM": {
+    "name": "npm",
+    "title": "NPM",
+    "website": "https://www.npmjs.com"
+  },
+  "Pinia": {
+    "name": "pinia",
+    "title": "Pinia",
+    "website": "https://pinia.vuejs.org"
+  },
+  "Postman": {
+    "name": "postman",
+    "title": "Postman",
+    "website": "https://www.postman.com"
+  },
+  "Prettier": {
+    "name": "prettier",
+    "title": "Prettier",
+    "website": "https://prettier.io"
+  },
+  "ReactQuery": {
+    "name": "react-query",
+    "title": "React Query",
+    "website": "https://tanstack.com/query/latest"
+  },
+  "React": {
+    "name": "react",
+    "title": "React",
+    "website": "https://react.dev"
+  },
+  "Redux": {
+    "name": "redux",
+    "title": "Redux",
+    "website": "https://redux.js.org"
+  },
+  "Render": {
+    "name": "render",
+    "title": "Render",
+    "website": "https://render.com"
+  },
+  "RxJs": {
+    "name": "rxjs",
+    "title": "RxJs/NgRx",
+    "website": "https://rxjs.dev"
+  },
+  "Sass": {
+    "name": "sass",
+    "title": "Sass",
+    "website": "https://sass-lang.com"
+  },
+  "Shadcn": {
+    "name": "shadcn",
+    "title": "shadcn/ui",
+    "website": "https://ui.shadcn.com"
+  },
+  "SonarQube": {
+    "name": "sonarqube",
+    "title": "SonarQube",
+    "website": "https://www.sonarsource.com/products/sonarqube"
+  },
+  "Sql": {
+    "name": "sql",
+    "title": "Sql",
+    "website": "https://www.w3schools.com/sql"
+  },
+  "Storybook": {
+    "name": "storybook",
+    "title": "Storybook",
+    "website": "https://storybook.js.org"
+  },
+  "Svg": {
+    "name": "react",
+    "title": "React",
+    "website": "https://react.dev"
+  },
+  "Swagger": {
+    "name": "swagger",
+    "title": "Swagger",
+    "website": "https://swagger.io"
+  },
+  "Tailwindcss": {
+    "name": "tailwind",
+    "title": "tailwindcss",
+    "website": "https://tailwindcss.com"
+  },
+  "TS": {
+    "name": "ts",
+    "title": "TypeScript",
+    "website": "https://www.typescriptlang.org"
+  },
+  "Vercel": {
+    "name": "vercel",
+    "title": "Vercel",
+    "website": "https://vercel.com"
+  },
+  "VSCode": {
+    "name": "vscode",
+    "title": "VSCode",
+    "website": "https://code.visualstudio.com"
+  },
+  "Vue": {
+    "name": "vue",
+    "title": "Vue",
+    "website": "https://vuejs.org"
+  },
+  "Webpack": {
+    "name": "webpack",
+    "title": "Webpack Analyzer",
+    "website": "https://webpack.js.org"
+  }
+}
