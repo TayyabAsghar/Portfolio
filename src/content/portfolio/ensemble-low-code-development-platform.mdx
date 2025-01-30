@@ -1,6 +1,6 @@
 ---
 title: "Ensemble | A Low Code Development Platform"
-description: "Maintained, enhanced, and later revamped the LexCheck SaaS platform as a Full Stack Developer. Designed and implemented new features, integrated interactive components, and ensured seamless animations while optimizing performance. Delivered a responsive and intuitive user experience that effectively showcased the capabilities of their AI-powered contract review software across all devices."
+description: "Ensemble is a low-code platform designed to simplify application development for everyone, from experienced developers to those with no coding background. By reimagining apps as composable components and leveraging a declarative, metadata-driven approach, Ensemble enables users to build, modify, and publish applications effortlessly—entirely within a browser. With a vision to turn ideas into fully functional apps in hours or days, the platform integrates AI-driven tools, natural language interactions, and seamless cross-platform deployment. Ensemble is not just a tool; it’s a movement to make app development accessible, efficient, and future-ready."
 publishDate: "2023-07-09T12:39:36.050Z"
 image: "/assets/images/projects/ensemble/cover.png"
 company: "Ensemble"
@@ -11,12 +11,16 @@ tags: [PaaS, WebApp, Web Studio, Coding, Startup]
 pinned: true
 ---
 
+import stacks from "../../data/stacks.json";
 import Stack from "../../components/stack.astro";
+import LiveButtons from "../../components/live-buttons.astro"
 import LightBoxImage from "../../components/light-box-image.astro";
+
+<LiveButtons primary="https://ensembleui.com" secondary="https://github.com/EnsembleUI" />
 
 <LightBoxImage
   noBorder
-  alt="Screenshot"
+  alt="Ensemble"
   gradient="bg-gradient-to-r from-violet-400 to-purple-300"
   src="/assets/images/projects/ensemble/cover.png"
 />
@@ -24,25 +28,27 @@ import LightBoxImage from "../../components/light-box-image.astro";
 <Stack
   heading="Technology Stack"
   list={[
-    { name: "aws", title: "AWS" },
-    { name: "css", title: "CSS3" },
-    { name: "express", title: "Express" },
-    { name: "figma", title: "Figma" },
-    { name: "github", title: "GitHub" },
-    { name: "html", title: "HTML5" },
-    { name: "js", title: "JavaScript" },
-    { name: "md", title: "Markdown" },
-    { name: "nodejs", title: "NodeJS" },
-    { name: "react", title: "React" },
-    { name: "svg", title: "SVG" },
+    stacks.React,
+    stacks.Electron,
+    stacks.ReactQuery,
+    stacks.Firebase,
+    stacks.Tailwindcss,
+    stacks.Node,
+    stacks.Express,
+    stacks.Jest,
+    stacks.GitHub,
+    stacks.GitHubBoards,
   ]}
 />
 
 ## Project Overview
+At **Ensemble**, as a Software Developer, I contributed to the development of a **desktop application** for their web-based 
+studio, extending the platform’s accessibility beyond browsers. My role involved **building the desktop application using 
+Electron**, ensuring a seamless and responsive experience for users across different operating systems.
 
-As a senior frontend engineer, I had the opportunity to lead the design and development of a responsive website for Attryb, a cutting-edge SaaS company offering an AI-powered Marketing Stack. This project was not just about creating a visually appealing website; it was about crafting a digital experience that effectively communicates Attryb's unique value proposition and showcases their innovative solutions for hyper-personalized customer journeys.
-
-The Attryb SaaS website project encompassed a wide range of features, from an engaging landing page to detailed product showcases and a content-rich blog section. Our primary focus was on delivering an exceptional user experience across all devices, leveraging interactive components and smooth animations to captivate visitors and encourage deeper exploration of Attryb's offerings.
+A key focus of the project was **optimizing API communication** by transitioning API calls from the front end to structured 
+**API endpoints in Node.js**. This approach improved performance, scalability, and maintainability while enhancing the overall 
+developer experience.
 
 ## Objectives
 
