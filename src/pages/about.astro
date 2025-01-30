@@ -1,9 +1,9 @@
 ---
 import Layout from "../layouts/main.astro";
 import education from "../data/education.json";
-import Button from "../components/button.astro";
 import experiences from "../data/experiences.json";
 import certificates from "../data/certificates.json";
+import LinkButton from "../components/link-button.astro";
 import PageHeading from "../components/page-heading.astro";
 import AboutEducation from "../components/about-education.astro";
 import AboutExperience from "../components/about-experience.astro";
@@ -76,7 +76,7 @@ import AboutCertificate from "../components/about-certificate.astro";
     >
       Certificates
     </h2>
-    <div class="px-5 pt-10">
+    <div id="certificates" class="px-5 pt-10">
       {
         certificates.map((cert) => {
           return (
@@ -95,6 +95,7 @@ import AboutCertificate from "../components/about-certificate.astro";
           );
         })
       }
+      <LinkButton text="Show all Certificates" />
     </div>
 
     <h2
@@ -121,7 +122,7 @@ import AboutCertificate from "../components/about-certificate.astro";
         GitHub
       </a>, or want to discuss a project? You can just click the connect button.
 
-      <Button
+      <LinkButton
         text="Connect"
         link="mailto:muhammadtayyabasghar@gmail.com"
         target="_blank"

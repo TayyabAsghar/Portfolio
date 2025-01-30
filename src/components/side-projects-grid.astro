@@ -1,14 +1,14 @@
 ---
-import Button from "./button.astro"
-import GridSideProjects from "./grid-side-projects.astro"
-import SectionHeader from "./section-header.astro"
+import LinkButton from "./link-button.astro";
+import SectionHeader from "./section-header.astro";
+import GridSideProjects from "./grid-side-projects.astro";
 
 interface Props {
-  count: number
-  className?: string
+  count: number;
+  className?: string;
 }
 
-const { count } = Astro.props
+const { count } = Astro.props;
 ---
 
 <section id="side-projects" class="max-w-4xl mx-auto px-7 lg:px-0">
@@ -22,6 +22,6 @@ const { count } = Astro.props
   </div>
 
   <div class="flex items-center justify-center w-full py-0">
-    <Button text="View All Side Projects" link="/side-projects" />
+    <LinkButton text="View All Side Projects" link="/side-projects" />
   </div>
 </section>

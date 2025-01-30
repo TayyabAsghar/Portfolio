@@ -1,20 +1,20 @@
 ---
-import Button from "./button.astro"
+import LinkButton from "./link-button.astro";
 
 interface Props {
-  primary?: string
-  secondary?: string
-  iconPrimary?: string
-  iconSecondary?: string
+  primary?: string;
+  secondary?: string;
+  iconPrimary?: string;
+  iconSecondary?: string;
 }
 
-const { primary, secondary, iconPrimary, iconSecondary } = Astro.props
+const { primary, secondary, iconPrimary, iconSecondary } = Astro.props;
 ---
 
 <div class="flex items-center gap-2 mb-12">
   {
     primary ? (
-      <Button
+      <LinkButton
         text="Live Preview"
         link={primary}
         target="_blank"
@@ -25,11 +25,11 @@ const { primary, secondary, iconPrimary, iconSecondary } = Astro.props
   }
   {
     secondary ? (
-      <Button
+      <LinkButton
         text="GitHub Code"
         link={secondary}
         target="_blank"
-        iconRight={iconSecondary?? "github"}
+        iconRight={iconSecondary ?? "github"}
         class="btn btn-secondary !mt-[-1rem]"
       />
     ) : null

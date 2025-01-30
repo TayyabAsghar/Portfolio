@@ -1,5 +1,5 @@
 ---
-import Button from "./button.astro";
+import LinkButton from "./link-button.astro";
 import WidgetProjects from "./widgets/projects.astro";
 import WidgetMusicPlayer from "./widgets/music-player.astro";
 ---
@@ -78,12 +78,12 @@ import WidgetMusicPlayer from "./widgets/music-player.astro";
       </ul>
 
       <div class="flex items-center gap-2 py-5">
-        <Button
+        <LinkButton
           text="Connect"
           link="mailto:muhammadtayyabasghar@gmail.com"
           target="_blank"
         />
-        <Button
+        <LinkButton
           class="btn btn-secondary"
           text="Resume"
           link="/resume.pdf"
