@@ -173,3 +173,8 @@ window.closeMobileMenu = () => {
 	document.getElementById("menu").classList.add("hidden");
 	document.getElementById("mobileMenuBackground").classList.add("hidden");
 };
+
+window.showAllCertificates = () =>{
+  document.getElementById("certificates").style.height = "auto";
+  document.getElementById("certificatesButton").classList.add("!hidden");
+}

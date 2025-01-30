@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/main.astro";
 import education from "../data/education.json";
+import Button from "../components/button.astro";
 import experiences from "../data/experiences.json";
 import certificates from "../data/certificates.json";
 import LinkButton from "../components/link-button.astro";
@@ -76,26 +77,35 @@ import AboutCertificate from "../components/about-certificate.astro";
     >
       Certificates
     </h2>
-    <div id="certificates" class="px-5 pt-10">
-      {
-        certificates.map((cert) => {
-          return (
-            <div class="pb-10 border-l last:border-none border-gray-200 dark:border-neutral-700">
-              <AboutCertificate
-                name={cert.name}
-                logo={cert.logo}
-                media={cert.media}
-                issueDate={cert.issueDate}
-                organization={cert.organization}
-                credentialID={cert.credentialID}
-                credentialURL={cert.credentialURL}
-                expirationDate={cert.expirationDate}
-              />
-            </div>
-          );
-        })
-      }
-      <LinkButton text="Show all Certificates" />
+    <div class="flex flex-col items-center">
+      <div
+        id="certificates"
+        class="px-5 pt-10 h-[600px] overflow-y-clip overflow-x-visible"
+      >
+        {
+          certificates.map((cert) => {
+            return (
+              <div class="pb-10 border-l last:border-none border-gray-200 dark:border-neutral-700">
+                <AboutCertificate
+                  name={cert.name}
+                  logo={cert.logo}
+                  media={cert.media}
+                  issueDate={cert.issueDate}
+                  organization={cert.organization}
+                  credentialID={cert.credentialID}
+                  credentialURL={cert.credentialURL}
+                  expirationDate={cert.expirationDate}
+                />
+              </div>
+            );
+          })
+        }
+      </div>
+      <Button
+        id="certificatesButton"
+        onclick="showAllCertificates()"
+        text="Show all Certificates"
+      />
     </div>
 
     <h2

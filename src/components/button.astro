@@ -1,5 +1,11 @@
 ---
-const { link, text, onClick, class: className } = Astro.props;
+const { text, class: className, ...props } = Astro.props;
 ---
 
-<button onclick={onClick} class:list={[className]}>{text}</button>
+<button
+  {...props}
+  class:list={[className]}
+  class="w-max mt-5 btn-rounded no-underline"
+>
+  {text}
+</button>
