@@ -114,19 +114,19 @@
     "title": "Git",
     "website": "https://git-scm.com"
   },
-  "GithubActions": {
+  "GitHubActions": {
     "name": "github-actions",
-    "title": "Github Actions",
+    "title": "GitHub Actions",
     "website": "https://github.com/features/actions"
   },
-  "GithubBoards": {
+  "GitHubBoards": {
     "name": "github",
-    "title": "Github Boards",
+    "title": "GitHub Boards",
     "website": "https://github.com/features/issues"
   },
-  "Github": {
+  "GitHub": {
     "name": "github",
-    "title": "Github",
+    "title": "GitHub",
     "website": "https://github.com"
   },
   "Grunt": {
@@ -168,6 +168,11 @@
     "name": "js",
     "title": "JavaScript",
     "website": "https://www.w3schools.com/js"
+  },
+  "JWT": {
+    "name": "jwt",
+    "title": "JWT",
+    "website": "https://jwt.io"
   },
   "Kendo": {
     "name": "kendo",
@@ -238,6 +243,11 @@
     "name": "prettier",
     "title": "Prettier",
     "website": "https://prettier.io"
+  },
+  "ReactHookForm": {
+    "name": "react-hook-form",
+    "title": "React Hook Form",
+    "website": "https://react-hook-form.com"
   },
   "ReactQuery": {
     "name": "react-query",
@@ -338,5 +348,10 @@
     "name": "webpack",
     "title": "Webpack Analyzer",
     "website": "https://webpack.js.org"
+  },
+  "Zod": {
+    "name": "zod",
+    "title": "Zod",
+    "website": "https://zod.dev"
   }
 }
