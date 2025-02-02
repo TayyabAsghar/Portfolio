@@ -1,6 +1,6 @@
 ---
 title: "YASAC | Yet Another Social App Clone"
-description: "Maintained, enhanced, and later revamped the LexCheck SaaS platform as a Full Stack Developer. Designed and implemented new features, integrated interactive components, and ensured seamless animations while optimizing performance. Delivered a responsive and intuitive user experience that effectively showcased the capabilities of their AI-powered contract review software across all devices."
+description: "Build a minimal feature clone of the Threads Social App, built to explore Next.js 14+ SSR components and page routing while implementing a modern UI from Figma designs. It provides essential community-driven social features, including nested comments, real-time search, and responsive design for all devices."
 publishDate: "2023-07-09T12:39:36.050Z"
 image: "/assets/images/side-projects/yasac/cover.png"
 company: "Side Project"
@@ -11,12 +11,17 @@ tags: [Social App, Personal Project, Self Learning]
 pinned: true
 ---
 
+
+import stacks from "../../data/stacks.json";
 import Stack from "../../components/stack.astro";
+import LiveButtons from "../../components/live-buttons.astro"
 import LightBoxImage from "../../components/light-box-image.astro";
+
+<LiveButtons primary="https://github.com/TayyabAsghar/yasac" secondary="https://yasac-three.vercel.app" />
 
 <LightBoxImage
   noBorder
-  alt="Screenshot"
+  alt="YASAC"
   gradient="bg-gradient-to-br from-fuchsia-500 to-rose-500"
   src="/assets/images/side-projects/yasac/cover.png"
 />
@@ -24,119 +29,163 @@ import LightBoxImage from "../../components/light-box-image.astro";
 <Stack
   heading="Technology Stack"
   list={[
-    { name: "aws", title: "AWS" },
-    { name: "css", title: "CSS3" },
-    { name: "express", title: "Express" },
-    { name: "figma", title: "Figma" },
-    { name: "github", title: "GitHub" },
-    { name: "html", title: "HTML5" },
-    { name: "js", title: "JavaScript" },
-    { name: "md", title: "Markdown" },
-    { name: "nodejs", title: "NodeJS" },
-    { name: "react", title: "React" },
-    { name: "svg", title: "SVG" },
+    stacks.Next,
+    stacks.MongoDB,
+    stacks.Mongoose,
+    stacks.Shadcn,
+    stacks.Tailwindcss,
+    stacks.Clerk,
+    stacks.Tiptap,
+    stacks.ReactHookForm,
+    stacks.Zod,
+    stacks.TS,
+    stacks.Vercel,
+    stacks.GitHub,
+    stacks.Figma,
   ]}
 />
 
-## Project Overview
+## Project Overview 
 
-As a senior frontend engineer, I had the opportunity to lead the design and development of a responsive website for Attryb, a cutting-edge SaaS company offering an AI-powered Marketing Stack. This project was not just about creating a visually appealing website; it was about crafting a digital experience that effectively communicates Attryb's unique value proposition and showcases their innovative solutions for hyper-personalized customer journeys.
-
-The Attryb SaaS website project encompassed a wide range of features, from an engaging landing page to detailed product showcases and a content-rich blog section. Our primary focus was on delivering an exceptional user experience across all devices, leveraging interactive components and smooth animations to captivate visitors and encourage deeper exploration of Attryb's offerings.
+This project is a **full-stack social media web app**, inspired by **Threads** and I named it YASAC (Yet Another Social App Clone) for fun, designed to foster user engagement through 
+**thread creation, nested commenting, community interactions, and real-time notifications**. Users can **sign up, post threads, 
+follow/unfollow other users, join communities, and manage profiles** while enjoying a **smooth and responsive experience** across 
+all devices. Features like **private profiles, community management, and admin-specific content** add depth to the platform, making 
+it more interactive and scalable.
+ 
+The application is built using **Next.js 14+** with **Server Side Rendering (SSR)** for optimized performance and SEO benefits. 
+**MongoDB** handles complex data structures, while **Clerk** provides secure authentication, supporting social logins. **UploadThing** 
+enables seamless media uploads, and **ShadCN UI & TailwindCSS** create a modern and intuitive interface. The backend utilizes 
+**serverless APIs, webhooks, and middleware** for efficient request handling, and **Zod & React Hook Form** ensure data validation 
+and form management.
 
 ## Objectives
 
-The project had several key objectives that guided our development process:
+The project had several key objectives that motivated me:
 
-1. Create a responsive, visually striking website that effectively communicates Attryb's brand identity and value proposition to potential customers.
-2. Implement interactive components and smooth animations to enhance user engagement and showcase the platform's capabilities.
-3. Optimize website performance across all devices to ensure fast load times and smooth navigation, crucial for maintaining visitor interest in a competitive SaaS landscape.
-4. Develop a scalable and maintainable codebase that allows for easy future updates and additions to the website.
-5. Integrate a user-friendly content management system to empower Attryb's marketing team to easily update product information and publish new blog content.
-
-## Domain and Industry Context
-
-To fully appreciate the significance of this project, it's essential to understand the context of the Marketing Technology (MarTech) industry in which Attryb operates. AI-powered personalization and copywriting tools, like those offered by Attryb, are at the forefront of modern marketing strategies. These solutions fall under several crucial subdomains of MarTech, including Customer Relationship Management (CRM), Content Management Systems (CMS), Marketing Automation, and Data Management Platforms (DMP).
-
-The MarTech industry is rapidly evolving, with businesses increasingly seeking integrated solutions that can collect and analyze customer data, generate personalized content, and optimize delivery across various channels. Attryb's AI-powered Marketing Stack addresses these needs by combining advanced data analysis, natural language processing, and machine learning to create highly targeted and engaging customer experiences.
-
-By developing a website that effectively showcases these capabilities, we're not just creating a digital brochure – we're providing a window into the future of marketing technology. Our goal was to design an online experience that reflects the sophistication and effectiveness of Attryb's tools, helping potential customers understand the transformative power of AI-driven marketing solutions.
+1. **Develop a Full-Stack Social Media Platform** – Enable users to create, engage, and interact with threads, comments, and 
+communities.  
+2. **Implement Secure Authentication** – Use **Clerk** to support **email/password and social logins (Google, Facebook)** with 
+profile management.  
+3. **Enhance User Engagement Features** – Introduce **thread creation, nested commenting, user activity, follow/unfollow users, 
+like threads, and real-time search** to improve interaction.  
+4. **Build a Responsive and Intuitive UI** – Utilize **ShadCN UI & TailwindCSS** for a modern, seamless user experience across all 
+devices.  
+5. **Optimize Performance with SSR** – Implement **Next.js 14+ Server Side Rendering (SSR)** for **faster load times and better 
+SEO**.  
+6. **Enable Media Uploads** – Integrate **UploadThing** for smooth **image and file sharing** within threads and communities.  
+7. **Develop Community Management Features** – Allow users to **create/join communities, and invite members**.  
+8. **Implement Private Profiles & Access Control** – Let users control their visibility and restrict thread access when needed.  
+9. **Improve API Architecture** – Use **serverless APIs, middleware, and webhooks** to optimize request handling and sync data.  
+10. **Ensure Data Integrity & Validation** – Utilize **Zod & React Hook Form** for structured data validation and secure user input.  
+11. **Enhance Deployment & Scalability** – Deploy on **Vercel** for high performance and scalability.  
+12. **Follow Best Practices in Code Reusability & Structure** – Implement a modular, maintainable codebase following modern 
+development standards.  
 
 ## Features
 
-### Landing Page
-
-The landing page serves as the digital front door for Attryb, designed to make a powerful first impression and clearly communicate the company's value proposition. Using React.js, we crafted a clean, modern interface that immediately captures visitors' attention with a bold hero section featuring a concise tagline and a prominent call-to-action.
-
-As users scroll, they're greeted with smoothly animated sections that highlight key features of Attryb's AI-powered Marketing Stack, each accompanied by eye-catching illustrations or icons. We implemented a sticky navigation bar to ensure easy access to different sections of the site, enhancing overall user experience and encouraging exploration.
+### **Landing Page**  
+The landing page provides users with some basic details of the platform. Built with **Next.js 14+ and TailwindCSS**, it features 
+a **modern UI with smooth animations**, taken from unDraw and animated in figma.
 
 <LightBoxImage
-  src="/assets/project/attryb-marketing/ss1.avif"
-  alt="Screenshot"
+  noBorder
+  alt="Landing Page"
+  gradient="bg-gradient-to-br from-fuchsia-500 to-rose-500"
+  src="/assets/images/side-projects/yasac/cover.png"
 />
 
-### Content Studio
-
-The Content Studio product page showcases one of Attryb's core offerings, demonstrating how businesses can streamline their content creation process. We leveraged React's state management capabilities to create interactive demos that allow visitors to experience the power of AI-driven content generation firsthand. The page features a dynamic interface where users can input basic parameters and watch as the AI generates tailored content suggestions in real-time.
+### **Authentication System**  
+Secure authentication is implemented using **Clerk**, supporting **email/password sign-ups** and **social logins (Google & Facebook)**. 
+Users can manage their profiles effortlessly with a fully integrated profile management system, ensuring a seamless and secure 
+onboarding experience. An use **Clerk Webhooks** with **Svix** to sync data with **MongoDB** database.
 
 <LightBoxImage
-  src="/assets/project/attryb-marketing/ss2.avif"
-  alt="Screenshot"
+  noBorder
+  alt="Signin Page"
+  gradient="bg-gradient-to-r from-cyan-400 to-blue-500"
+  src="/assets/images/side-projects/yasac/sign-in.png"
 />
 
-### Pricing Page
-
-Transparency in pricing is crucial for SaaS products, and our pricing page was designed with this in mind. Using flexbox and CSS media queries, we created a responsive layout that clearly presents Attryb's different pricing tiers. Each plan is displayed in a card format, with a hover effect that subtly highlights the card to improve user interaction.
-
-We implemented a toggle switch that allows users to easily switch between monthly and annual pricing options, with the annual discount prominently displayed to encourage long-term commitments. The page also features an FAQ section addressing common pricing-related queries, helping to alleviate potential customer concerns and streamline the decision-making process.
+### **Home & Feed Page**  
+A dynamic homepage showcases the latest threads from followed users and communities. Using **Server-Side Rendering (SSR)** with 
+**Next.js**, the feed loads efficiently with **optimized API calls** to improve performance. The feed is continuously updated to 
+ensure users stay engaged with real-time discussions.
 
 <LightBoxImage
-  src="/assets/project/attryb-marketing/ss3.avif"
-  alt="Screenshot"
+  noBorder
+  alt="Home Page"
+  gradient="bg-gradient-to-r from-cyan-400 to-blue-500"
+  src="/assets/images/side-projects/yasac/home.png"
 />
 
-### Contact Us Page
+#### **Thread Creation & Engagement**  
+Users can create new threads with text and media uploads via **UploadThing**. Each thread supports **nested comments**, enabling 
+structured conversations. The comment section allows real-time interactions, including **liking, replying, and deleting comments**, 
+creating an interactive discussion experience.  
 
-The Contact Us page was designed to provide multiple avenues for potential customers to reach out to Attryb. Centerpiece of this page is a sleek contact form built using React's form handling and validation techniques. The form adapts to user input in real-time, providing immediate feedback on field completion and highlighting any errors.
+### **Notifications & Activity Page**  
+A dedicated **Activity Page** notifies users when someone interacts with their threads through comments, replies, or mentions. 
+This feature uses **webhooks** for real-time updates, ensuring users are instantly informed of important interactions.  
 
-<LightBoxImage
-  src="/assets/project/attryb-marketing/ss4.avif"
-  alt="Screenshot"
-/>
+### **User Profile & Community Profiles**  
+Users have personalized profile pages where they can **update their details, view their activity, and manage privacy settings**. 
+Community profiles showcase members, posts, and interactions, offering a central hub for group discussions.  
 
-### Blog Listing
+### **Follow & Unfollow System**  
+Users can **follow and unfollow** others to curate their content feed. Following a user ensures their threads appear in the home 
+feed, helping build a personalized experience tailored to the user’s interests.  
 
-The blog listing page serves as a content hub, showcasing Attryb's thought leadership in the MarTech space. We implemented a list-style layout using React's component composition, creating a visually interesting and responsive display of blog post previews. Each preview card includes the post's featured image, title, author, publication date, and a brief excerpt. We incorporated a tab based grouping system that allows users to filter posts by category enhancing content discoverability.
+### **Private Profile & Access Control**  
+Users can **set their profile to private**, restricting visibility of their posts to only approved followers. This feature provides 
+enhanced control over content sharing and privacy settings.  
 
-<LightBoxImage
-  src="/assets/project/attryb-marketing/ss5.avif"
-  alt="Screenshot"
-/>
+### **Community Creation & Management**  
+Users can **create new communities**, invite members, and assign **admin roles** for better group management. **Admins can create 
+exclusive threads** visible only to community members, fostering focused discussions.  
 
-### Blog Post
+### **User & Community Search with Pagination**  
+A powerful **search feature** with **pagination** helps users **discover new communities and profiles efficiently**. The search 
+functionality is built using **React Query**, ensuring smooth and responsive results with real-time updates.  
 
-Individual blog post pages were designed to provide an immersive reading experience while encouraging engagement. We created a clean, distraction-free layout with ample white space and a large, readable font. The post template includes a prominent featured image, clear attribution to the author (with a link to their bio), and estimated reading time.
+### **File Uploads & Media Sharing**  
+Users can upload images and files within threads using **UploadThing**, enabling a rich multimedia experience. This enhances 
+engagement by allowing users to share media alongside their discussions.  
 
-Social sharing functionality was integrated using React's social media APIs, with sharing buttons that subtly appear as the reader scrolls through the content. At the end of each post, we added a related articles section to keep users engaged and encourage further exploration of Attryb's content.
+### **Blazing-Fast Performance with Server-Side Rendering (SSR)**  
+By leveraging **Next.js SSR**, the application delivers **faster load times** and **improved SEO**, ensuring a smooth browsing 
+experience even on low-bandwidth connections. **Lazy-loading** and **code-splitting** further optimize performance.  
 
-<LightBoxImage
-  src="/assets/project/attryb-marketing/ss6.avif"
-  alt="Screenshot"
-/>
+### **MongoDB with Complex Schemas & Role-Based Access**  
+The platform uses **MongoDB** for efficient data management, handling **complex schemas and multiple data populations**. 
+Role-based access ensures community admins have the necessary permissions to manage members and content efficiently.  
 
-## Outcome
+### **Middleware, API Actions & Authorization**  
+Security is a top priority, with **middleware and API actions** ensuring proper authentication and authorization for sensitive 
+actions, such as thread creation and profile modifications.  
 
-The launch of the new Attryb website marked a significant milestone for both the company and our development team. The site has received overwhelmingly positive feedback from users and stakeholders alike, with particular praise for its intuitive navigation, engaging animations, and clear communication of Attryb's value proposition.
+### **Real-Time Event Listening & Webhooks**  
+To enhance user engagement, real-time event listeners using **webhooks** ensure instant updates for notifications, new comments, 
+and interactions, keeping the platform interactive and dynamic.  
 
-One of the main challenges we faced was optimizing performance across a wide range of devices while maintaining the rich, interactive elements that make the site stand out. Through careful code splitting, lazy loading of components, and meticulous attention to asset optimization, we were able to achieve excellent performance metrics, with the site consistently scoring above 90 on Google's Lighthouse performance audits.
+### **Form Management & Data Validation**  
+User input is managed effectively using **React Hook Form**, while **Zod** provides strong data validation, ensuring accurate 
+and structured data submission across the platform.  
 
-A key lesson learned during this project was the importance of close collaboration between design and development teams from the earliest stages. By involving developers in the design process, we were able to identify potential performance issues early and craft solutions that maintained the design vision without compromising on speed or responsiveness.
+### **Scalability & Deployment**  
+The application is deployed on **Vercel**, ensuring high availability and performance. A **modular and reusable code structure** 
+allows for easy scalability and future enhancements.  
 
-Looking ahead, we've identified several areas for future improvement:
+## External Resources
 
-1. Implementing a more robust A/B testing framework to continually optimize conversion rates.
-2. Exploring the use of WebAssembly for even better performance in computationally intensive areas of the site, particulary data visualization based demos.
-3. Expanding the use of micro-interactions to further enhance user engagement and guide users through the site.
+### Illustrations
+
+- <a href="https://undraw.co" target="_blank">unDraw - Open-source illustrations</a>
+
+### Articles
+
+- <a href="https://medium.com/@ademhatay/sync-clerk-users-to-own-database-67296053f5e4" target="_blank">Sync Clerk Users to own database</a>
+- <a href="https://medium.com/@apurvkashyappurnea/gain-an-understanding-of-uploadthing-33ad6d0b553a" target="_blank">Gain an understanding of Uploadthing</a>
 
 ## Conclusion
 

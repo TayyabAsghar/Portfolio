@@ -324,6 +324,11 @@
     "title": "tailwindcss",
     "website": "https://tailwindcss.com"
   },
+  "Tiptap": {
+    "name": "tiptap",
+    "title": "Tiptap",
+    "website": "https://tiptap.dev"
+  },
   "TS": {
     "name": "ts",
     "title": "TypeScript",
