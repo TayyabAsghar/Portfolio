@@ -149,6 +149,11 @@
     "title": "HTML5",
     "website": "https://html.spec.whatwg.org"
   },
+  "HubSpot": {
+    "name": "hubspot",
+    "title": "HubSpot",
+    "website": "https://www.hubspot.com"
+  },
   "Jenkins": {
     "name": "jenkins",
     "title": "Jenkins",
