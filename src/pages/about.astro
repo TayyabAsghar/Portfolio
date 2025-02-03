@@ -30,16 +30,17 @@ import AboutCertificate from "../components/about-certificate.astro";
     </h2>
     <div class="px-5 pt-10">
       {
-        experiences.map((experience, loop) => {
+        experiences.map((experience) => {
           return (
-            <div class="pb-10 border-l last:border-none border-gray-200 dark:border-neutral-700">
+            <div class="pb-10 border-l border-gray-200 dark:border-neutral-700">
               <AboutExperience
-                dates={experience.dates}
                 role={experience.role}
-                company={experience.company}
-                description={experience.description}
                 logo={experience.logo}
-                hideLogo={experiences[loop - 1]?.company === experience.company}
+                dates={experience.dates}
+                company={experience.company}
+                website={experience.website}
+                detailsPage={experience.detailsPage}
+                description={experience.description}
               />
             </div>
           );
@@ -56,7 +57,7 @@ import AboutCertificate from "../components/about-certificate.astro";
       {
         education.map((edu) => {
           return (
-            <div class="pb-10 border-l last:border-none border-gray-200 dark:border-neutral-700">
+            <div class="pb-10 border-l border-gray-200 dark:border-neutral-700">
               <AboutEducation
                 logo={edu.logo}
                 dates={edu.dates}
@@ -85,7 +86,7 @@ import AboutCertificate from "../components/about-certificate.astro";
         {
           certificates.map((cert) => {
             return (
-              <div class="pb-10 border-l last:border-none border-gray-200 dark:border-neutral-700">
+              <div class="pb-10 border-l border-gray-200 dark:border-neutral-700">
                 <AboutCertificate
                   name={cert.name}
                   logo={cert.logo}
