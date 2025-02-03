@@ -13,7 +13,7 @@ pinned: true
 
 import stacks from "../../data/stacks.json";
 import Stack from "../../components/stack.astro";
-import LiveButtons from "../../components/live-buttons.astro"
+import LiveButtons from "../../components/live-buttons.astro";
 import LightBoxImage from "../../components/light-box-image.astro";
 
 <LiveButtons primary="https://ensembleui.com" secondary="https://github.com/EnsembleUI" />
@@ -36,6 +36,7 @@ import LightBoxImage from "../../components/light-box-image.astro";
     stacks.Node,
     stacks.Express,
     stacks.Jest,
+    stacks.ESlint,
     stacks.GitHub,
     stacks.GitHubBoards,
     stacks.Discord,
@@ -45,7 +46,7 @@ import LightBoxImage from "../../components/light-box-image.astro";
 
 ## Project Overview 
 
-At **Ensemble**, as a **Software Developer**, I contributed to the development of a **desktop application** for their 
+At **Ensemble** startup, as a **Software Developer**, I contributed to the development of a **desktop application** for their 
 web-based studio, extending the platform’s accessibility beyond browsers and enabling users to store their **YAML files** 
 on local system to use in **Offline mode** and seamlessly push them to their own **GitHub profiles**.
 
@@ -70,21 +71,20 @@ writing complex code for not only web application in **React** but also mobile a
 **AI-driven tools** and **natural language interactions**, Ensemble is helping developers and non-developers alike bring their 
 ideas to life with minimal effort and easy to deploy tools and environment.
 
-## My Objectives and Their Impact
 
-The contract had several key objectives that I achieved:
+## Key Contributions & Impact
 
-#### **Key Contributions & Impact:**  
-- Developed a desktop app for **Ensemble React-based Web Studio** within a time-bound contract, ensuring **100% cross-platform 
+1. Developed a desktop app for **Ensemble React-based Web Studio** within a time-bound contract, ensuring **100% cross-platform 
 compatibility** across Windows, macOS, and Linux.
-- **Built & optimized API communication** by transitioning calls from frontend to structured **Node.js endpoints**.
-- Setup **Repository Pattern** for Api's to benefits from a clean separation of concerns, making it easier to maintain and extend 
+2. **Built & optimized API communication** by transitioning calls from frontend to structured **Node.js endpoints**.
+3. Setup **Repository Pattern** for APIs to benefit from a clean separation of concerns, making it easier to maintain and extend 
 them. 
-- **Achieved 30% test coverage** for the **Firestore Cloud Functions** using Jest, ensuring **robust functionality & reduced 
+4. **Achieved 30% test coverage** for the **Firestore Cloud Functions** using Jest, ensuring **robust functionality & reduced 
 production bugs**.
-- **Enabled offline editing & real-time synchronization**, integrating **Firestore Cloud Functions**, allowing users to create and 
+5. Design a **File system** to locally store the data to be used in offline mode and sync after connection is restored. 
+6. **Enabled offline editing & real-time synchronization**, integrating **Firestore Cloud Functions**, allowing users to create and 
 update applications in Ensemble Studio in Offline Mode.
-- **Integrated Git functionality**, allowing users to push Yaml code to hosting services like **GitHub & Bitbucket**.
+7. **Integrated Git functionality**, allowing users to push Yaml code to hosting services like **GitHub & Bitbucket**.
 
 ## Conclusion
 

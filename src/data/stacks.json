@@ -239,6 +239,11 @@
     "title": "NPM",
     "website": "https://www.npmjs.com"
   },
+  "NUnit": {
+    "name": "nunit",
+    "title": "Nunit",
+    "website": "https://nunit.org"
+  },
   "Pinia": {
     "name": "pinia",
     "title": "Pinia",

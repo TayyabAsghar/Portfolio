@@ -11,12 +11,16 @@ tags: [SaaS, WebApp, Contract Review, AI, Startup]
 pinned: true
 ---
 
+import stacks from "../../data/stacks.json";
 import Stack from "../../components/stack.astro";
+import LiveButtons from "../../components/live-buttons.astro";
 import LightBoxImage from "../../components/light-box-image.astro";
+
+<LiveButtons primary="https://place-finder.onrender.com" />
 
 <LightBoxImage
   noBorder
-  alt="Screenshot"
+  alt="LexCheck"
   gradient="bg-gradient-to-r from-rose-300 to-rose-500"
   src="/assets/images/projects/lexcheck/cover.png"
 />
@@ -24,43 +28,90 @@ import LightBoxImage from "../../components/light-box-image.astro";
 <Stack
   heading="Technology Stack"
   list={[
-    { name: "aws", title: "AWS" },
-    { name: "css", title: "CSS3" },
-    { name: "express", title: "Express" },
-    { name: "figma", title: "Figma" },
-    { name: "github", title: "GitHub" },
-    { name: "html", title: "HTML5" },
-    { name: "js", title: "JavaScript" },
-    { name: "md", title: "Markdown" },
-    { name: "nodejs", title: "NodeJS" },
-    { name: "react", title: "React" },
-    { name: "svg", title: "SVG" },
+    stacks.React,
+    stacks.Redux,
+    stacks.Zod,
+    stacks.Kendo,
+    stacks.Storybook,
+    stacks.AntDesign,
+    stacks.AntV,
+    stacks.Sass,
+    stacks.ESlint,
+    stacks.Sql,
+    stacks.Postman,
+    stacks.Swagger,
+    stacks.TS,
+    stacks.Webpack,
+    stacks.Jira,
+    stacks.AzureBoards,
+    stacks.AzureDevOps,
+    stacks.AWS,
+    stacks.Bitbucket,
+    stacks.GitHub,
+    stacks.GitHubActions,
+    stacks.Figma,
+    stacks.HubSpot,
+    stacks.Scrum,
   ]}
 />
 
-## Project Overview
+## Project Overview 
 
-As a senior frontend engineer, I had the opportunity to lead the design and development of a responsive website for Attryb, a cutting-edge SaaS company offering an AI-powered Marketing Stack. This project was not just about creating a visually appealing website; it was about crafting a digital experience that effectively communicates Attryb's unique value proposition and showcases their innovative solutions for hyper-personalized customer journeys.
+At **LexCheck** startup, I contributed to the development of an **AI-driven contract review platform** that revolutionizes the way 
+businesses handle contract negotiations. The platform seamlessly integrates with **Microsoft Word**, allowing users to **review, 
+redline, and finalize contracts with AI-powered insights** while maintaining complete control over legal language. By leveraging 
+**Large Language Models (LLMs)**, LexCheck provides **instant contract analysis**, identifies problematic clauses, and applies 
+**preferred negotiation positions automatically**, streamlining the contract lifecycle.  
 
-The Attryb SaaS website project encompassed a wide range of features, from an engaging landing page to detailed product showcases and a content-rich blog section. Our primary focus was on delivering an exceptional user experience across all devices, leveraging interactive components and smooth animations to captivate visitors and encourage deeper exploration of Attryb's offerings.
+My work focused on **enhancing contract lifecycle management** more importantly known as **LexCheck insights**, ensuring 
+**real-time contract redlining**, creating dashboards for different types of users like **Contract Dashboard, Playbook Editor 
+Dashboard, User Dashboard, Admin Dashboard**. The system improves efficiency by eliminating **manual legal bottlenecks**, reducing 
+risk, and enabling businesses to close deals **faster and more accurately**. With a strong emphasis on **security**, all contract 
+data is **AES-256 encrypted**, ensuring compliance with **legal industry standards**.  
 
-## Objectives
-
-The project had several key objectives that guided our development process:
-
-1. Create a responsive, visually striking website that effectively communicates Attryb's brand identity and value proposition to potential customers.
-2. Implement interactive components and smooth animations to enhance user engagement and showcase the platform's capabilities.
-3. Optimize website performance across all devices to ensure fast load times and smooth navigation, crucial for maintaining visitor interest in a competitive SaaS landscape.
-4. Develop a scalable and maintainable codebase that allows for easy future updates and additions to the website.
-5. Integrate a user-friendly content management system to empower Attryb's marketing team to easily update product information and publish new blog content.
+This project reinforced my expertise in **LLM-powered AI applications, secure document processing, contract automation, and 
+enterprise-grade integrations**, further strengthening my ability to build **scalable, AI-driven solutions** that optimize 
+business workflows.
 
 ## Domain and Industry Context
 
-To fully appreciate the significance of this project, it's essential to understand the context of the Marketing Technology (MarTech) industry in which Attryb operates. AI-powered personalization and copywriting tools, like those offered by Attryb, are at the forefront of modern marketing strategies. These solutions fall under several crucial subdomains of MarTech, including Customer Relationship Management (CRM), Content Management Systems (CMS), Marketing Automation, and Data Management Platforms (DMP).
+LexCheck operates in the legal technology (LegalTech) and AI-driven contract automation industry, which is transforming how 
+businesses handle contract review, negotiation, and risk management. Traditionally, contract reviews have been a time-consuming, 
+manual process requiring extensive legal expertise, often leading to delays in deal closures and increased operational costs. 
+However, with advancements in Artificial Intelligence (AI), Large Language Models (LLMs), and automation, the contract lifecycle 
+management (CLM) industry is evolving toward faster, more accurate, and cost-effective solutions.
 
-The MarTech industry is rapidly evolving, with businesses increasingly seeking integrated solutions that can collect and analyze customer data, generate personalized content, and optimize delivery across various channels. Attryb's AI-powered Marketing Stack addresses these needs by combining advanced data analysis, natural language processing, and machine learning to create highly targeted and engaging customer experiences.
+By integrating LLM-powered AI contract review directly into Microsoft Word, LexCheck eliminates inefficiencies in contract 
+negotiations, reducing the reliance on manual legal reviews while ensuring compliance with best practices. The platform automates 
+redlining, applies preferred legal positions, and minimizes contractual risks, enabling legal, sales, and procurement teams to 
+accelerate deal closures and enhance accuracy.
 
-By developing a website that effectively showcases these capabilities, we're not just creating a digital brochure – we're providing a window into the future of marketing technology. Our goal was to design an online experience that reflects the sophistication and effectiveness of Attryb's tools, helping potential customers understand the transformative power of AI-driven marketing solutions.
+By developing a website that effectively review the contracts, we're not just creating a SaaS Platform – we're providing a window 
+into the future of contract reviewing technology. Our goal was to design an online experience that reflects the sophistication and 
+effectiveness of LexCheck product, helping potential customers understand the transformative power of AI-driven Contract Reviewing 
+solutions.
+
+## Key Contributions & Impact
+
+Working at **LexCheck** was a **transformative experience** that extended beyond delivering **features, bug fixes, and optimizations**. 
+I had the opportunity to work as a **core member of 4 person team to complete frontend revamp** of the platform, significantly enhancing 
+its **UI/UX and performance**, which improved user engagement and overall system efficiency. Additionally, I had the privilege of 
+**leading a team of two developers**, overseeing the delivery of key features. This experience not only strengthened my technical 
+expertise in **frontend architecture, performance optimization, and security enhancements** but also allowed me to **develop leadership 
+skills**, gaining hands-on experience in team management, collaboration, and decision-making.
+
+1. **Revamped the LexCheck app**, enhancing UI/UX and performance, resulting in a **20% increase in sales**.  
+2. **Implemented Role-Based Access Control (RBAC)** for **granular access control**, enabling user-specific dashboards with 
+**data visualizations, charts, and optimized routing** based on user roles.  
+3. **Boosted app performance by 35%** through **lazy loading, fixing memory leaks, and replacing redundant libraries**, with 
+extensive testing using **Storybook**.  
+4. **Strengthened security** by fixing vulnerabilities, enforcing **strict CSP headers**, and securing sensitive data with 
+**Web APIs**, ensuring compliance with **SOC 2 Type II standards**.  
+{/* 5. **Automated payment processes** with **Stripe**, supporting **both one-time and subscription models**, streamlining transactions for enterprise clients.   */}
+5. **Transformed Figma designs into pixel-perfect UI components**, collaborating closely with the **UI/UX team** for a seamless and intuitive user experience.  
+6. **Extended API functionality** in **.NET 6**, adding **user onboarding, RBAC**, and increasing **code coverage with unit tests** to improve maintainability.  
+7. **Worked with multiple UI libraries** like **Ant Design, Material UI, and Kendo UI**, along with **TailwindCSS**, to build a **visually appealing and highly responsive application**.
+8. **Lead a team** of 3 developers in implementing HubSpot CRM Solutions, like **setting-up sales pipelines, workflows**.
 
 ## Features
 
