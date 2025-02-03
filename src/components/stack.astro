@@ -8,24 +8,14 @@ export type Skill = {
 interface Props {
   list: Skill[];
   heading?: string;
-  iconName?: string;
   className?: string;
 }
 
-const { list, className, iconName, heading } = Astro.props;
+const { list, className, heading } = Astro.props;
 ---
 
 <h2 id="heading-tech-stack" class=`flex gap-4 items-center ${className}`>
   {heading}
-  {
-    iconName && (
-      <img
-        class="!m-0 !rounded-sm size-6 object-cover"
-        src={`/assets/images/stack/${iconName}.svg`}
-        alt={heading}
-      />
-    )
-  }
 </h2>
 <div id="tech-stack" class="flex flex-wrap items-start justify-start gap-8">
   {
