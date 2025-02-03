@@ -129,6 +129,11 @@
     "title": "GitHub",
     "website": "https://github.com"
   },
+  "GPT": {
+    "name": "gpt",
+    "title": "GPT",
+    "website": "https://chatgpt.com"
+  },
   "Grunt": {
     "name": "grunt",
     "title": "Grunt",
@@ -333,6 +338,11 @@
     "name": "ts",
     "title": "TypeScript",
     "website": "https://www.typescriptlang.org"
+  },
+  "V0": {
+    "name": "v0",
+    "title": "v0",
+    "website": "https://v0.dev"
   },
   "Vercel": {
     "name": "vercel",
