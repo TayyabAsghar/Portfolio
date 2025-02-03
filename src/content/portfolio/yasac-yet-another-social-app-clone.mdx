@@ -115,66 +115,129 @@ ensure users stay engaged with real-time discussions.
 <LightBoxImage
   noBorder
   alt="Home Page"
-  gradient="bg-gradient-to-r from-cyan-400 to-blue-500"
+  gradient="bg-gradient-to-r from-violet-600 to-indigo-600"
   src="/assets/images/side-projects/yasac/home.png"
 />
 
-#### **Thread Creation & Engagement**  
-Users can create new threads with text and media uploads via **UploadThing**. Each thread supports **nested comments**, enabling 
-structured conversations. The comment section allows real-time interactions, including **liking, replying, and deleting comments**, 
-creating an interactive discussion experience.  
+### **Thread Creation**  
+Users can create new threads with **Tiptap** integrated text editor. Each thread supports **nested comments**, enabling structured 
+conversations and have feature to create thread either by **Users** or by **Community**. The comment section allows real-time 
+interactions, including **liking, replying, and deleting comments**, creating an interactive discussion experience.  
 
-### **Notifications & Activity Page**  
+<LightBoxImage
+  noBorder
+  alt="Create Thread Page"
+  gradient="bg-gradient-to-r from-rose-400 to-red-500"
+  src="/assets/images/side-projects/yasac/thread-creation.png"
+/>
+
+### **Activity Page**  
 A dedicated **Activity Page** notifies users when someone interacts with their threads through comments, replies, or mentions. 
-This feature uses **webhooks** for real-time updates, ensuring users are instantly informed of important interactions.  
+This feature uses **webhooks** for real-time updates, ensuring users are instantly informed of important interactions.
+
+<LightBoxImage
+  noBorder
+  alt="Activity Page"
+  gradient="bg-gradient-to-r from-blue-800 to-indigo-900"
+  src="/assets/images/side-projects/yasac/activity.png"
+/>
+
+### **Community Creation & Management**  
+Users can **create new communities**, invite members, and assign **admin roles** for better group management. **Members can create 
+exclusive threads** visible only to community members, fostering focused discussions.
+
+<LightBoxImage
+  noBorder
+  alt="Create Organization Page"
+  gradient="bg-gradient-to-r from-pink-600 to-purple-500"
+  src="/assets/images/side-projects/yasac/create-org.png"
+/>
+
+### **User Search Page**  
+A powerful **search feature** with **pagination** helps users **discover other user profiles efficiently**. The search 
+functionality is built using **React Query**, ensuring smooth and responsive results with real-time updates.  
+
+<LightBoxImage
+  noBorder
+  alt="User Page"
+  gradient="bg-gradient-to-r from-green-400 to-blue-500"
+  src="/assets/images/side-projects/yasac/search.png"
+/>
+
+### **Community Search Page**  
+A powerful **search feature** with **pagination** helps users **discover new communities**. The search functionality is built 
+using **React Query**, ensuring smooth and responsive results with real-time updates.  
+
+<LightBoxImage
+  noBorder
+  alt="Communities Page"
+  gradient="bg-gradient-to-r from-violet-500 to-purple-500"
+  src="/assets/images/side-projects/yasac/communities.png"
+/>
 
 ### **User Profile & Community Profiles**  
 Users have personalized profile pages where they can **update their details, view their activity, and manage privacy settings**. 
-Community profiles showcase members, posts, and interactions, offering a central hub for group discussions.  
+Community profiles showcase members, posts, and interactions, offering a central hub for group discussions.
 
-### **Follow & Unfollow System**  
-Users can **follow and unfollow** others to curate their content feed. Following a user ensures their threads appear in the home 
-feed, helping build a personalized experience tailored to the user’s interests.  
+<LightBoxImage
+  noBorder
+  alt="Profile Page"
+  gradient="bg-gradient-to-b from-gray-900 to-gray-600"
+  src="/assets/images/side-projects/yasac/profile.png"
+/>
 
 ### **Private Profile & Access Control**  
 Users can **set their profile to private**, restricting visibility of their posts to only approved followers. This feature provides 
-enhanced control over content sharing and privacy settings.  
+enhanced control over content sharing and privacy settings. User can Edit its details whenever he wants. Same page is opened when 
+user is login first time as **Onboarding Page** to get user details.
 
-### **Community Creation & Management**  
-Users can **create new communities**, invite members, and assign **admin roles** for better group management. **Admins can create 
-exclusive threads** visible only to community members, fostering focused discussions.  
+<LightBoxImage
+  noBorder
+  alt="Edit Profile / Onboarding Page"
+  gradient="bg-gradient-to-r from-green-200 to-blue-500"
+  src="/assets/images/side-projects/yasac/edit-profile.png"
+/>
 
-### **User & Community Search with Pagination**  
-A powerful **search feature** with **pagination** helps users **discover new communities and profiles efficiently**. The search 
-functionality is built using **React Query**, ensuring smooth and responsive results with real-time updates.  
+### **Follow & Unfollow System**  
+Users can **follow and unfollow** others to curate their content feed. Following a user ensures their threads appear in the home 
+feed, helping build a personalized experience tailored to the user’s interests. If user has set it's profile to private, user's  
+threads can only be seen after following them.
 
-### **File Uploads & Media Sharing**  
-Users can upload images and files within threads using **UploadThing**, enabling a rich multimedia experience. This enhances 
-engagement by allowing users to share media alongside their discussions.  
+<LightBoxImage
+  noBorder
+  alt="Follow Feature"
+  gradient="bg-gradient-to-r from-violet-500 to-purple-500"
+  src="/assets/images/side-projects/yasac/follow.png"
+/>
+
+### **Responsive Design – Optimized for All Devices**  
+
+**Tailwind’s breakpoint utilities** make it easy to create a **fluid and adaptive UI** ensuring a **fully responsive** and visually 
+consistent experience across **laptops, tablets, and mobile devices**.  
+
+#### **Breakpoints & Layout Adaptation**  
+
+- **Desktop**  
+  - Full-width layouts with sidebars for navigation and user interactions.  
+  - Expanded thread view for better content visibility.  
+  - Hover effects and tooltips enhance user interactions.  
+
+- **Tablet**  
+  - Adaptive grid system to fit medium-sized screens.  
+  - Sidebar collapses into a **bottom-style navigation** with small text and icons to maximize space.  
+  - Larger touch targets for better accessibility.  
+
+- **Mobile**  
+  - **Bottom-style navigation** with only icons and focus on vertical scrolling for easy navigation.   
+  - Optimized typography and buttons for touch interactions.  
 
 ### **Blazing-Fast Performance with Server-Side Rendering (SSR)**  
 By leveraging **Next.js SSR**, the application delivers **faster load times** and **improved SEO**, ensuring a smooth browsing 
-experience even on low-bandwidth connections. **Lazy-loading** and **code-splitting** further optimize performance.  
-
-### **MongoDB with Complex Schemas & Role-Based Access**  
-The platform uses **MongoDB** for efficient data management, handling **complex schemas and multiple data populations**. 
-Role-based access ensures community admins have the necessary permissions to manage members and content efficiently.  
+experience even on low-bandwidth connections. **Lazy-loading** and **code-splitting** further optimize performance.    
 
 ### **Middleware, API Actions & Authorization**  
 Security is a top priority, with **middleware and API actions** ensuring proper authentication and authorization for sensitive 
 actions, such as thread creation and profile modifications.  
-
-### **Real-Time Event Listening & Webhooks**  
-To enhance user engagement, real-time event listeners using **webhooks** ensure instant updates for notifications, new comments, 
-and interactions, keeping the platform interactive and dynamic.  
-
-### **Form Management & Data Validation**  
-User input is managed effectively using **React Hook Form**, while **Zod** provides strong data validation, ensuring accurate 
-and structured data submission across the platform.  
-
-### **Scalability & Deployment**  
-The application is deployed on **Vercel**, ensuring high availability and performance. A **modular and reusable code structure** 
-allows for easy scalability and future enhancements.  
 
 ## External Resources
 
@@ -189,8 +252,17 @@ allows for easy scalability and future enhancements.
 
 ## Conclusion
 
-The Attryb SaaS website project was a challenging yet rewarding experience that pushed the boundaries of what's possible in modern web development. It allowed me to leverage my expertise in React and related technologies while also expanding my skills in performance optimization and animation techniques.
+Building the **YASAC** was an invaluable experience that strengthened my skills as a **full-stack developer**. This project allowed 
+me to work with **Next.js 14+**, leveraging **Server Side Rendering (SSR), Server Side Functions, and middleware** to optimize 
+performance and security. Implementing **MongoDB** with **complex schemas and role-based access control** deepened my understanding 
+of database management and efficient data handling.  
 
-Perhaps most importantly, this project reinforced the critical importance of understanding the broader context and industry in which we're working. By immersing ourselves in the world of MarTech and AI-driven marketing solutions, we were able to create a website that not only looks great but effectively communicates the transformative potential of Attryb's products.
+Through **Clerk authentication, webhooks, and real-time event listening**, I gained hands-on experience in managing **secure user 
+sessions and interactive user engagement**. Working with **UploadThing for media uploads**, **React Hook Form & Zod for form 
+validation**, and **ShadCN UI with TailwindCSS for responsive design** helped me create a seamless, scalable, and visually appealing 
+application across all devices. One of the key aspects of this project was integrating the Tiptap text editor, which provided a 
+rich-text editing experience for users creating and formatting their threads. 
 
-As I reflect on this project, I'm struck by how it has contributed to my growth as a developer. It has deepened my appreciation for the intersection of design and technology, enhanced my skills in performance optimization, and strengthened my ability to translate complex technical concepts into engaging user experiences. Moving forward, I'm excited to apply these lessons to future projects, continuing to push the envelope of what's possible in frontend development.
+This project also refined my skills in **Git workflow, CI/CD deployment on Vercel, automated testing, and scalable API 
+architecture**. Overall, it significantly improved my ability to **design, develop, and deploy full-stack applications**, 
+reinforcing my expertise in **modern web development, performance optimization, and user-centric design**.
