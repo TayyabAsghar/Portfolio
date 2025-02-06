@@ -1,4 +1,5 @@
 ---
+import about from "../data/about.json";
 import LinkButton from "./link-button.astro";
 import WidgetProjects from "./widgets/projects.astro";
 import WidgetMusicPlayer from "./widgets/music-player.astro";
@@ -49,14 +50,10 @@ import WidgetMusicPlayer from "./widgets/music-player.astro";
       <h2
         class="font-semibold mb-6 text-lg text-neutral-600 dark:text-neutral-400"
       >
-        Full Stack Engineer | Building High-Performance, User-Friendly Web Apps
-        and SaaS Platforms
+        {about.heading}
       </h2>
       <p class="mb-6 text-base text-neutral-600 dark:text-neutral-400">
-        I'm a Frontend Heavy Fullstack Engineer passionate about crafting web
-        applications that excel in both speed and design. I utilize the latest
-        technologies and prioritize a user-centric approach to build scalable,
-        responsive, and secure architectures for businesses.
+        {about.landingIntro}
       </p>
 
       <p class="mb-2 text-base text-neutral-600 dark:text-neutral-400">
@@ -68,8 +65,8 @@ import WidgetMusicPlayer from "./widgets/music-player.astro";
         class="py-2 space-y-[3px] text-sm list-disc text-neutral-500 dark:text-neutral-400 list-outside pl-3"
       >
         <li>Single Page Apps, Progressive Web Apps etc. with React and Next</li>
-        <li>Web performance optimization</li>
-        <li>Optimized backend Apis with test coverage</li>
+        <li>Web performance optimization with test coverage</li>
+        <li>Optimized backend APIs with test coverage</li>
         <li>Data visualization with Chart.js and Ant Charts</li>
         <li>and <a class="text-blue-500" href="/about">more</a>...</li>
       </ul>

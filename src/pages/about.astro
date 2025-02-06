@@ -1,4 +1,5 @@
 ---
+import about from "../data/about.json";
 import Layout from "../layouts/main.astro";
 import education from "../data/education.json";
 import Button from "../components/button.astro";
@@ -13,10 +14,7 @@ import AboutCertificate from "../components/about-certificate.astro";
 
 <Layout title="About Me">
   <section class="relative z-20 max-w-2xl mx-auto my-12 px-7 lg:px-0">
-    <PageHeading
-      title="About Me"
-      description="Hello 👋 I'm Muhammad Tayyab Asghar, a Frontend Heavy Fullstack Engineer from Pakistan with expertise in React.js, Next.js, NodeJS, MongoDB and Firestore. I thrive on tackling challenges and delivering high-performance, scalable web applications and SaaS platforms. With a passion for lean product development and a drive to continuously learn and grow, I'm always excited to work on innovative projects that make a real impact."
-    />
+    <PageHeading title="About Me" description={about.me} />
 
     <img
       src="/assets/images/about.avif"
