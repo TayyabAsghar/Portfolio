@@ -109,6 +109,11 @@
     "title": "Google Cloud",
     "website": "https://cloud.google.com"
   },
+  "Gemini": {
+    "name": "gemini",
+    "title": "Gemini",
+    "website": "https://gemini.google.com"
+  },
   "Git": {
     "name": "git",
     "title": "Git",
@@ -188,6 +193,16 @@
     "name": "kendo",
     "title": "Kendo UI",
     "website": "https://www.telerik.com/kendo-ui"
+  },
+  "Kubernetes": {
+    "name": "kubernetes",
+    "title": "Kubernetes",
+    "website": "https://kubernetes.io"
+  },
+  "LangChain": {
+    "name": "langchain",
+    "title": "LangChain",
+    "website": "https://www.langchain.com"
   },
   "Less": {
     "name": "less",
