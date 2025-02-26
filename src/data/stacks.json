@@ -134,6 +134,11 @@
     "title": "GitHub",
     "website": "https://github.com"
   },
+  "GoogleAIStudio": {
+    "name": "google-ai-studio",
+    "title": "GoogleAI Studio",
+    "website": "https://aistudio.google.com"
+  },
   "GPT": {
     "name": "gpt",
     "title": "GPT",
@@ -259,6 +264,11 @@
     "title": "Nunit",
     "website": "https://nunit.org"
   },
+  "Pinecone": {
+    "name": "pinecone",
+    "title": "Pinecone",
+    "website": "https://www.pinecone.io"
+  },
   "Pinia": {
     "name": "pinia",
     "title": "Pinia",
@@ -338,6 +348,11 @@
     "name": "storybook",
     "title": "Storybook",
     "website": "https://storybook.js.org"
+  },
+  "Stripe": {
+    "name": "stripe",
+    "title": "Stripe",
+    "website": "https://stripe.com"
   },
   "Svg": {
     "name": "react",
