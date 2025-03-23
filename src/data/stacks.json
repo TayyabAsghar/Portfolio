@@ -54,6 +54,11 @@
     "title": "Cloudinary",
     "website": "https://cloudinary.com"
   },
+  "Convex": {
+    "name": "convex",
+    "title": "Convex",
+    "website": "https://convex.dev"
+  },
   "CSS": {
     "name": "css",
     "title": "CSS3",
@@ -138,6 +143,11 @@
     "name": "google-ai-studio",
     "title": "GoogleAI Studio",
     "website": "https://aistudio.google.com"
+  },
+  "GoogleAPI": {
+    "name": "google-api",
+    "title": "Google API",
+    "website": "https://console.cloud.google.com/apis/library"
   },
   "GPT": {
     "name": "gpt",
@@ -264,6 +274,11 @@
     "title": "Nunit",
     "website": "https://nunit.org"
   },
+  "OpenAIAPI": {
+    "name": "openai-platform",
+    "title": "OpenAI API",
+    "website": "https://platform.openai.com"
+  },
   "Pinecone": {
     "name": "pinecone",
     "title": "Pinecone",
@@ -318,6 +333,11 @@
     "name": "sass",
     "title": "Sass",
     "website": "https://sass-lang.com"
+  },
+  "Schematic": {
+    "name": "schematic",
+    "title": "Schematic",
+    "website": "https://schematichq.com"
   },
   "Scrum": {
     "name": "scrum",
@@ -383,6 +403,11 @@
     "name": "v0",
     "title": "v0",
     "website": "https://v0.dev"
+  },
+  "VecelAISDK": {
+    "name": "vercel-ai-sdk",
+    "title": "AI SDK",
+    "website": "https://sdk.vercel.ai"
   },
   "Vercel": {
     "name": "vercel",
