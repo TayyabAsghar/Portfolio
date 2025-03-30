@@ -1,13 +1,13 @@
 ---
 title: "AgentTube - AI Content Agent"
-description: "AgentTube is an AI-powered content creation assistant that analyzes YouTube videos and enhances content generation using advanced AI models like Claude and Gemini. By providing a video link, users can generate transcripts, receive AI-suggested video titles, create improved or alternative scripts, and generate AI-powered thumbnails using OpenAI."
+description: "AgentTube is an AI tool that analyzes YouTube videos to generate transcripts, suggest titles, improve scripts, and create thumbnails using models like Claude, Gemini, and OpenAI."
 publishDate: "2023-07-09T12:39:36.050Z"
 image: "/assets/images/side-projects/agent-tube/landing-page.png"
 company: "Side Project"
 priority: 3 #TODO: Remove after dividing the projects into side projects.
 bgGradient: "bg-gradient-to-r from-gray-100 to-gray-300"
 author: "Tayyab Asghar"
-tags: [AI, Gemini, LangChain, Coding, AI Agent]
+tags: [OpenAI API, Gemini, Vercel AI SDK, Youtube, Google API]
 pinned: true
 ---
 
@@ -23,16 +23,7 @@ import LightBoxImage from "../../components/light-box-image.astro";
   alt="AgentTube"
   gradient="bg-gradient-to-r from-gray-100 to-gray-300"
   src="/assets/images/side-projects/agent-tube/landing-page.png"
-
 />
-
-{/* <LightBoxImage
-  noBorder
-  className="top-[25px]"
-  alt="AgentTube"
-  gradient="bg-gradient-to-r from-gray-100 to-gray-300"
-  src="/assets/images/side-projects/agent-tube/theme-collage.png"
-/> */}
 
 <Stack
   heading="Technology Stack"
@@ -54,61 +45,70 @@ import LightBoxImage from "../../components/light-box-image.astro";
 
 ## Project Overview 
 
-ChatPDF is an AI-powered document assistant that allows users to upload PDFs (on Cloudinary) and interact with them using natural language 
-queries. Built with Next.js, it leverages Pinecone for storing embeddings of documents, LangChain to use AI Integrations for example Google 
-Gemini AI or ChatGpt to enable seamless document analysis, key information retrieval, and summarization. The app is designed for students, 
-professionals, and researchers who need quick insights from large PDF documents.
+AgentTube is an AI-powered content creation assistant made with Next.JS that analyzes YouTube videos and enhances content generation 
+using advanced AI models like Claude and Gemini. By providing a video link, users can generate transcripts, receive AI-suggested video 
+titles, create improved or alternative scripts, and generate AI-powered thumbnails using OpenAI image generation model.
 
 ## Objectives
 
 The project aimed to achieve the following:
 
-1. **Develop a Full-Stack AI-powered document assistant Platform** – Enable users to upload their PDF files and enable seamless document analysis,
- key information retrieval, and summarization with the power of AI.
-2. **Implement Secure Authentication** – Use **Clerk** to support **email/password and social logins (Google, Facebook)** with 
-profile management.
-3. **Implement Subscription Plans** – Use **Stripe** to support Free & Pro-tier with monthly subscription plans that user can manage through Stripe
-Portal.
-4. **Enable AI-driven interactions** – Use **Pinecone** to store embeddings of documents for fast semantic search and **LangChain** to 
-integrate Gemini for answering user quires.
+1. **Develop a Full-Stack AI-powered content Agent** – Enable users to analyze YouTube videos and instead of only providing summary 
+to user use AI tools to generate video **Transcripts**, **Titles**, **Thumbnails** and **Scripts** with the help of multiple models.
+2. **Googl API** – Use Google API services to get video details like transcription, thumbnail and metadata and store it to **Convex** 
+database to caches.
+3. **Vercel AI SDK** – Use Vercel AI SDK with Gemini Model to create tools that **Chat with user**, generate **Scripts**, and **Titles** 
+and with OpenAI Model to generate **AI Thumbnails** for video. 
+4. **Implement Subscription Plans** – Use **Schematic** and **Stripe** to support Free, Starter, Creator and Enterprise with monthly 
+and yearly subscription plans that user can manage through schematic elements.
+5. **Features Tokens** – Use **Schematic** to create features and tokens that then we can attach with user plans to provide certain 
+functionality or limited access to a feature based on user plan.
+6. **Implement Secure Authentication** – Use **Clerk** to support **email/password and social logins (Google)** with profile management.
 
 ## Features
 
 ### **Landing Page**
 
-Responsive landing page to showcase the features of the application along with navigation to **Login** and **Pricing Page**.
+Responsive landing page to Hero section that contains an input box to paste youtube link and start analyzing video along with Features sections 
+showcase the features of the application and Pricing sections to showcase pricing cards for Free, Starter, Creator and Enterprise plans with both
+monthly and yearly billing options.
+
+- #### **Hero Section**
 
 <LightBoxImage
   noBorder
-  alt="Landing Page"
-  className="top-[27px]"
-  gradient="bg-gradient-to-r from-purple-500 to-purple-900"
-  src="/assets/images/side-projects/chat-pdf/landing-page.png"
+  alt="AgentTube"
+  gradient="bg-gradient-to-r from-gray-100 to-gray-300"
+  src="/assets/images/side-projects/agent-tube/landing-page.png"
 />
 
-### **Pricing Page**
-
-Responsive pricing page to showcase clear prices and features of the application. There are 2 action button for navigating bck to Dashboard and 
-to change user account limits.
+- #### **Features Section**
 
 <LightBoxImage
   noBorder
-  alt="Pricing Page"
-  className="top-[50px]"
-  gradient="bg-gradient-to-r from-purple-500 to-purple-900"
-  src="/assets/images/side-projects/chat-pdf/pricing-page.png"
+  alt="AgentTube Features"
+  gradient="bg-gradient-to-r from-gray-100 to-gray-300"
+  src="/assets/images/side-projects/agent-tube/features-section.png"
+/>
+
+- #### **Pricing Section**
+
+<LightBoxImage
+  noBorder
+  alt="AgentTube Pricing"
+  gradient="bg-gradient-to-r from-gray-100 to-gray-300"
+  src="/assets/images/side-projects/agent-tube/pricing-section.png"
 />
 
 ### **SignIn Page**
 
-A simple yest customized SignIn page using **Clerk SignIn** components. 
+A simple yest customized SignIn page using **Clerk SignIn** components.
 
 <LightBoxImage
   noBorder
   alt="SignIn Page"
-  className="top-5"
-  gradient="bg-gradient-to-r from-purple-500 to-purple-900"
-  src="/assets/images/side-projects/chat-pdf/signin-page.png"
+  gradient="bg-gradient-to-r from-gray-100 to-gray-300"
+  src="/assets/images/side-projects/agent-tube/signin-page.png"
 />
 
 ### **SignUp Page**
@@ -118,81 +118,116 @@ A simple yest customized SignUp page using **Clerk SignUp** components.
 <LightBoxImage
   noBorder
   alt="SignUp Page"
-  gradient="bg-gradient-to-r from-purple-500 to-purple-900"
-  src="/assets/images/side-projects/chat-pdf/signup-page.png"
+  gradient="bg-gradient-to-r from-gray-100 to-gray-300"
+  src="/assets/images/side-projects/agent-tube/signup-page.png"
+/>
+
+### **Dark Mode**
+
+A theme button to switch between Light and Dark Mode.
+
+<LightBoxImage
+  noBorder
+  className="top-[25px]"
+  alt="Dark Theme"
+  gradient="bg-gradient-to-r from-gray-100 to-gray-300"
+  src="/assets/images/side-projects/agent-tube/theme-collage.png"
 />
 
 ### **Dashboard Page**
 
-A simple Dashboard to showcase all the uploaded documents and chats along with option to **Upload** a new Document, **Download** a Uploaded 
-Document, **Delete** a Chat (Pro Feature), and **User Profile**.
+A simple Dashboard with an **Input Box** to paste youtube link for analyzing, a **Collapsible Sider** for navigating between analyzed 
+videos and **User Profile**.
 
 <LightBoxImage
   noBorder
   alt="Dashboard Page"
-  className="top-[23px]"
-  gradient="bg-gradient-to-r from-purple-500 to-purple-900"
-  src="/assets/images/side-projects/chat-pdf/dashboard.png"
+  gradient="bg-gradient-to-r from-gray-100 to-gray-300"
+  src="/assets/images/side-projects/agent-tube/dashboard.png"
 />
 
-### **Upload PDF**
+### **Analyze Page**
 
-Click the **Add a Document** button that will open a Modal. Click to select a PDF document or Drag and Drop one. The modal will show a interactive 
-state of all the processing while uploading.
+This is the screen use lands on after the youtube video has been analyzed. It is divided into 6 sections.
+
+- **Chat Box Section** – An AI chat agent where user can ask questions related to youtube video or ask agent to performs certain tasks 
+like generate a script or a title for video. It has also quick button for performing such tasks.
+- **Video Token Count Section** – A token counts showing user that how many tokens he has left for the month and a status bar showing 
+wether the video analyzation happened by spending a token or by caches for user database.
+- **Video details Section** – This sections showcase youtube video metadata like Thumbnail, Title, User name, Channel name and etc.
+- **Thumbnail Generation Section** – A thumbnail generation section contains the list of all the ai generated thumbnails related to this 
+video and the total count of thumbnails tokens spend by the user.
+- **Title Generation Section** – Just like Thumbnail Generation Section, this contains the list of all the ai generated titles 
+related to this video and the total count of titles tokens spend by the user in a month.
+- **Transcription Section** – A transcription section for video that is used by AI agent tools as context for creating script and 
+the total count of scripts fetched by the application.
 
 <LightBoxImage
   noBorder
-  alt="Upload PDF"
-  className="top-[22px]"
-  gradient="bg-gradient-to-r from-purple-500 to-purple-900"
-  src="/assets/images/side-projects/chat-pdf/upload-document.png"
+  className="top-16"
+  alt="Dashboard Page"
+  gradient="bg-gradient-to-r from-gray-100 to-gray-300"
+  src="/assets/images/side-projects/agent-tube/analyze-page.png"
 />
 
-### **Chat with PDF**
+### **Manage Plan Page**
 
-Ask questions, summarize, or retrieve key insights from the document. You can also tell AI to answer the question as markdown. Along that you 
-can** Navigate** PDF Pages, Rotate PDF, Zoom In/Out PDF.
+A simple screen that used **Schematic Elements** to showcase your current plan along with features access, total tokens and next billing
+cycle.
 
 <LightBoxImage
   noBorder
-  alt="Chat Page"
-  className="top-[26px]"
-  gradient="bg-gradient-to-r from-purple-500 to-purple-900"
-  src="/assets/images/side-projects/chat-pdf/chat-page.png"
+  alt="Manage Plan Page"
+  gradient="bg-gradient-to-r from-gray-100 to-gray-300"
+  src="/assets/images/side-projects/agent-tube/manage-plan-page.png"
 />
 
-### **Stripe Payment**
+### **Plan Selector Modal**
 
-Upgrade to Pro via Stripe monthly subscriptions for higher document limits.
+Clicking **Change plan** will open a multi step schematic element modal to allow user to Upgrade or Downgrade the plan and a checkout step 
+for adding payment method or discount codes.
+
+- #### **Plan Selection Step**
 
 <LightBoxImage
   noBorder
-  alt="Stripe Payment Page"
-  className="top-[22px]"
-  gradient="bg-gradient-to-r from-purple-500 to-purple-900"
-  src="/assets/images/side-projects/chat-pdf/stripe-payment-page.png"
+  alt="Plan Selector Step"
+  gradient="bg-gradient-to-r from-gray-100 to-gray-300"
+  src="/assets/images/side-projects/agent-tube/plan-selector.png"
 />
 
-### **Manage Subscriptions**
-
-Upgraded members can cancel or renew subscriptions form Strip Portal.
+- #### **Checkout Step**
 
 <LightBoxImage
   noBorder
-  alt="Manage Subscriptions Page"
-  className="top-[40px]"
-  gradient="bg-gradient-to-r from-purple-500 to-purple-900"
-  src="/assets/images/side-projects/chat-pdf/stripe-portal-page.png"
+  alt="Checkout Step"
+  gradient="bg-gradient-to-r from-gray-100 to-gray-300"
+  src="/assets/images/side-projects/agent-tube/checkout.png"
+/>
+
+- #### **Save Payment Method**
+
+<LightBoxImage
+  noBorder
+  alt="Payment Method Option"
+  gradient="bg-gradient-to-r from-gray-100 to-gray-300"
+  src="/assets/images/side-projects/agent-tube/payment-method.png"
 />
 
 
 ## Conclusion
 
-Building **ChatPDF** was an invaluable experience in developing an **AI-driven document assistant**, enhancing my expertise in **Next.js, 
-AI-powered retrieval, and cloud-based storage**. This project allowed me to integrate **LangChain and Pinecone for intelligent document search**, 
-leverage **Google Gemini AI for interactive responses**, and ensure **secure authentication and storage with Clerk and Firebase**. Implementing 
-**Stripe for subscription management** and **Cloudinary for file handling** further solidified my understanding of **scalable and production-ready 
-applications**.
+Building **AgentTube** was a really rewarding experience. From product point of view the goal was to create something useful for 
+content creators — a tool that could turn YouTube videos into better titles, cleaner scripts, engaging thumbnails, and full 
+transcripts, all powered by AI but from developer or learning point of view the goal was to understand AI agents (Vercel AI SDK) and 
+AI tools along with proper AI prompting. Seeing that idea come to life was pretty awesome.
 
-Through this project, I honed my skills in **building responsive, AI-powered, and user-centric applications**, reinforcing my ability to create 
-efficient, **real-world solutions** that enhance productivity.
+One of the best parts for me was working with the Vercel AI SDK and integrating models like Claude, Gemini, and OpenAI. It gave me 
+hands-on experience with building real, interactive tools powered by AI — not just answering questions, but actually helping users 
+create. It pushed me to think differently about user interaction and how AI can fit naturally into creative workflows.
+
+I also got to dive deeper into user authentication, subscription plans, and feature control using tools like **Clerk**, **Stripe**, 
+and **Schematic** — which made me more confident in building complete, production-ready apps.
+
+Overall, AgentTube taught me a lot — not just about tech, but about designing things that feel intuitive, helpful, and fun to use. 
+It really leveled up my skills with AI integration, and I'm excited to build even more tools like this in the future.
