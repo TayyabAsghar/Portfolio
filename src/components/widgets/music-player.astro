@@ -1,79 +1,118 @@
 ---
-interface Props {
-  audioSrc?: string;
+interface Track {
+  title: string;
+  website: string;
+  showName: string;
+  audioSrc: string;
+  coverImage: string;
   episode?: string;
-  title?: string;
-  showName?: string;
-  coverImage?: string;
 }
 
-const {
-  audioSrc = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-  episode = "128",
-  title = "Scaling CSS at Heroku with Utility Classes",
-  showName = "Full Stack Radio",
-  coverImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBHXDRZkxX_3LUt-sJU6URX-rRTYrcIBY7m9Ufq_LqPiam7PJ4aiFxy4nIaDrtGdb3pt0&usqp=CAU",
-} = Astro.props;
+interface Props {
+  tracks: Track[];
+  initialIndex?: number;
+}
+
+const { tracks = [], initialIndex = 0 } = Astro.props;
+const safeInitialIndex = Math.min(Math.max(initialIndex, 0), tracks.length - 1);
+const activeTrack = tracks[safeInitialIndex];
 ---
 
 <div
   id="widget-music-player"
+  data-audio-player
   class="static-widget rounded-xl border border-neutral-200 bg-white shadow-lg shadow-neutral-200/70 dark:border-neutral-800 dark:bg-neutral-900 dark:shadow-black/40"
 >
-  <audio id="podcast-audio" src={audioSrc} preload="metadata"></audio>
+  <audio id="podcast-audio" src={activeTrack.audioSrc} preload="metadata"
+  ></audio>
 
   <div
     class="space-y-6 p-4 pb-6 sm:space-y-8 sm:p-10 sm:pb-8 lg:space-y-6 lg:p-6 xl:space-y-8 xl:p-10 xl:pb-8"
   >
     <div class="flex items-center space-x-4">
       <img
-        src={coverImage}
-        alt={showName}
         width="88"
         height="88"
-        class="flex-none rounded-lg bg-neutral-100 dark:bg-neutral-800"
         loading="lazy"
+        id="track-cover"
+        alt={activeTrack.showName}
+        src={activeTrack.coverImage}
+        class="rounded-lg bg-neutral-100 object-cover dark:bg-neutral-800"
       />
       <div class="min-w-0 flex-auto space-y-1 font-semibold">
         <p class="text-sm leading-6 text-neutral-600 dark:text-neutral-300">
-          <abbr title="Episode">Ep.</abbr>
-          {episode}
+          Ep.
+          <span id="track-episode">{activeTrack.episode}</span>
         </p>
-        <h2
-          class="truncate text-sm leading-6 text-neutral-500 dark:text-neutral-400"
+        <div class="marquee">
+          <h2
+            class="marquee-content marquee-animation text-sm leading-6 text-neutral-500 dark:text-neutral-400"
+          >
+            <span id="track-title" class="marquee-text">
+              {activeTrack.title}
+            </span>
+
+            <span aria-hidden="true" class="marquee-text marquee-copy">
+              {activeTrack.title}
+            </span>
+          </h2>
+        </div>
+        <a
+          id="track-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          href={activeTrack.website}
+          aria-label={`Open ${activeTrack.showName} episode`}
+          class="block flex-none rounded-lg focus:outline-none focus:ring-2 focus:ring-neutral-400 dark:focus:ring-neutral-500"
         >
-          {title}
-        </h2>
-        <p class="text-lg text-neutral-900 dark:text-neutral-100">{showName}</p>
+          <div class="marquee">
+            <p
+              class="marquee-content marquee-animation text-lg text-neutral-900 dark:text-neutral-100"
+            >
+              <span id="track-show" class="marquee-text">
+                {activeTrack.showName}
+              </span>
+
+              <span aria-hidden="true" class="marquee-text marquee-copy">
+                {activeTrack.showName}
+              </span>
+            </p>
+          </div>
+        </a>
       </div>
     </div>
 
     <div class="space-y-2">
-      <div class="relative">
+      <div class="relative h-5">
         <div
-          class="overflow-hidden rounded-full bg-neutral-100 dark:bg-neutral-800"
+          class="absolute inset-x-0 top-1/2 h-2 -translate-y-1/2 overflow-hidden rounded-full bg-neutral-100 dark:bg-neutral-800"
         >
           <div
-            id="audio-progress"
-            class="h-2 w-0 bg-neutral-900 dark:bg-neutral-200"
-            role="progressbar"
-            aria-label="music progress"
-            aria-valuenow="0"
-            aria-valuemin="0"
-            aria-valuemax="100"
+            data-part="audio-progress"
+            class="h-full w-0 rounded-full bg-neutral-900 dark:bg-neutral-200"
           >
           </div>
         </div>
+
+        <input
+          min="0"
+          max="0"
+          value="0"
+          step="0.1"
+          type="range"
+          id="seek-bar"
+          aria-label="Seek audio"
+          class="seek-slider absolute inset-x-0 top-1/2 h-5 w-full -translate-y-1/2 cursor-pointer appearance-none bg-transparent"
+        />
+
         <div
-          id="audio-thumb"
-          class="absolute left-0 top-1/2 -ml-2 -mt-2 flex h-4 w-4 items-center justify-center rounded-full bg-white ring-2 ring-neutral-900 shadow dark:bg-neutral-100 dark:ring-neutral-200"
+          data-part="seek-preview"
+          class="pointer-events-none absolute -top-6 hidden -translate-x-1/2 rounded-md bg-neutral-900 px-1.5 py-0.5 text-[10px] font-medium text-neutral-100 dark:bg-neutral-100 dark:text-neutral-900"
         >
-          <div
-            class="h-1.5 w-1.5 rounded-full bg-neutral-900 ring-1 ring-inset ring-neutral-900/10 dark:bg-neutral-700"
-          >
-          </div>
+          00:00
         </div>
       </div>
+
       <div
         class="flex justify-between text-sm font-medium leading-6 tabular-nums"
       >
@@ -88,46 +127,56 @@ const {
   </div>
 
   <div
-    class="flex items-center rounded-b-xl bg-neutral-50 px-4 py-3 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-300"
+    class="flex items-center gap-2 rounded-b-xl bg-neutral-50 px-4 py-3 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-300"
   >
-    <div class="flex flex-auto items-center justify-evenly gap-2">
+    <div class="flex flex-auto items-center justify-evenly gap-1">
       <button
         type="button"
-        id="rewind-10"
-        title="Back 10 seconds"
-        aria-label="Back 10 seconds"
-        class="transition hover:text-neutral-800 dark:hover:text-neutral-100"
+        id="prev-track"
+        title="Previous audio"
+        aria-label="Previous audio"
+        class="rounded-md p-2 transition hover:bg-neutral-200 hover:text-neutral-800 dark:hover:bg-neutral-700 dark:hover:text-neutral-100"
       >
-        <svg width="24" height="24" fill="none">
-          <path
-            d="M6.492 16.95c2.861 2.733 7.5 2.733 10.362 0 2.861-2.734 2.861-7.166 0-9.9-2.862-2.733-7.501-2.733-10.362 0A7.096 7.096 0 0 0 5.5 8.226"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-          </path>
-          <path
-            d="M5 5v3.111c0 .491.398.889.889.889H9"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-          </path>
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path d="M6 6h2v12H6zM18.5 18l-8-6 8-6z"></path>
         </svg>
       </button>
 
       <button
         type="button"
-        id="stop-audio"
-        title="Stop"
-        aria-label="Stop playback"
-        class="transition hover:text-neutral-800 dark:hover:text-neutral-100"
+        id="rewind-10"
+        title="Back 10 seconds"
+        aria-label="Back 10 seconds"
+        class="rounded-md px-2 py-1 transition hover:bg-neutral-200 hover:text-neutral-800 dark:hover:bg-neutral-700 dark:hover:text-neutral-100"
       >
-        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-          <rect x="6" y="6" width="12" height="12" rx="2"></rect>
-        </svg>
+        <span class="flex flex-col items-center leading-none">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M6.5 8.5A8 8 0 1 1 4 14"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"></path>
+            <path
+              d="M4 8v4h4"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+          <span class="text-[10px] font-semibold">-10s</span>
+        </span>
       </button>
     </div>
 
@@ -140,94 +189,233 @@ const {
     >
       <svg
         id="icon-play"
-        width="30"
-        height="32"
+        width="28"
+        height="28"
         viewBox="0 0 24 24"
         fill="currentColor"
+        aria-hidden="true"
       >
         <path d="M8 5v14l11-7z"></path>
       </svg>
       <svg
         id="icon-pause"
-        width="30"
-        height="32"
+        width="28"
+        height="28"
+        viewBox="0 0 24 24"
         fill="currentColor"
         class="hidden"
+        aria-hidden="true"
       >
-        <rect x="6" y="4" width="4" height="24" rx="2"></rect>
-        <rect x="20" y="4" width="4" height="24" rx="2"></rect>
+        <rect x="7" y="5" width="3.5" height="14" rx="1.5"></rect>
+        <rect x="13.5" y="5" width="3.5" height="14" rx="1.5"></rect>
       </svg>
     </button>
 
-    <div class="flex flex-auto items-center justify-evenly gap-2">
+    <div class="flex flex-auto items-center justify-evenly gap-1">
       <button
         type="button"
         id="forward-10"
         title="Forward 10 seconds"
         aria-label="Forward 10 seconds"
-        class="transition hover:text-neutral-800 dark:hover:text-neutral-100"
+        class="rounded-md px-2 py-1 transition hover:bg-neutral-200 hover:text-neutral-800 dark:hover:bg-neutral-700 dark:hover:text-neutral-100"
       >
-        <svg width="24" height="24" fill="none">
-          <path
-            d="M17.509 16.95c-2.862 2.733-7.501 2.733-10.363 0-2.861-2.734-2.861-7.166 0-9.9 2.862-2.733 7.501-2.733 10.363 0 .38.365.711.759.991 1.176"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+        <span class="flex flex-col items-center leading-none">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
           >
-          </path>
-          <path
-            d="M19 5v3.111c0 .491-.398.889-.889.889H15"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-          </path>
+            <path
+              d="M17.5 8.5A8 8 0 1 0 20 14"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"></path>
+            <path
+              d="M20 8v4h-4"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+          <span class="text-[10px] font-semibold">+10s</span>
+        </span>
+      </button>
+
+      <button
+        type="button"
+        id="next-track"
+        title="Next audio"
+        aria-label="Next audio"
+        class="rounded-md p-2 transition hover:bg-neutral-200 hover:text-neutral-800 dark:hover:bg-neutral-700 dark:hover:text-neutral-100"
+      >
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path d="M16 6h2v12h-2zM5.5 18l8-6-8-6z"></path>
         </svg>
       </button>
-      <div
-        class="rounded-lg px-2 text-xs font-semibold leading-6 text-neutral-600 ring-2 ring-inset ring-neutral-400 dark:bg-neutral-700 dark:text-neutral-200 dark:ring-neutral-600"
-      >
-        10s
+
+      <label class="sr-only" for="playback-rate">Playback speed</label>
+      <div class="relative" data-speed-dropdown>
+        <button
+          type="button"
+          id="playback-rate"
+          title="Playback speed"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+          class="min-w-[5.25rem] rounded-full border border-neutral-200 bg-neutral-100/90 py-2 pl-3 pr-8 text-left text-xs font-semibold tracking-[0.02em] text-neutral-700 outline-none transition hover:border-neutral-300 hover:bg-white focus:border-neutral-400 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-100 dark:hover:border-neutral-600 dark:hover:bg-neutral-800"
+        >
+          <span id="playback-rate-label">1.0x</span>
+        </button>
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 20 20"
+          fill="none"
+          class="pointer-events-none absolute right-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-neutral-500 dark:text-neutral-400"
+        >
+          <path
+            d="M6 8l4 4 4-4"
+            stroke="currentColor"
+            stroke-width="1.75"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+        </svg>
+        <div
+          id="playback-rate-menu"
+          role="listbox"
+          aria-label="Playback speed options"
+          class="absolute right-0 top-[calc(100%+0.5rem)] z-20 hidden min-w-[7rem] rounded-2xl border border-neutral-200 bg-white p-1.5 shadow-[0_18px_40px_-20px_rgba(23,23,23,0.35)] dark:border-neutral-700 dark:bg-neutral-900 dark:shadow-[0_20px_45px_-24px_rgba(0,0,0,0.6)]"
+        >
+          <button type="button" role="option" data-rate-option data-rate="1" aria-selected="true" class="flex w-full items-center justify-between rounded-xl px-3 py-2 text-xs font-semibold text-neutral-700 transition hover:bg-neutral-100 dark:text-neutral-100 dark:hover:bg-neutral-800">
+            <span>1.0x</span>
+            <span class="text-[10px] text-neutral-400 dark:text-neutral-500">Normal</span>
+          </button>
+          <button type="button" role="option" data-rate-option data-rate="1.25" aria-selected="false" class="flex w-full items-center justify-between rounded-xl px-3 py-2 text-xs font-semibold text-neutral-700 transition hover:bg-neutral-100 dark:text-neutral-100 dark:hover:bg-neutral-800">
+            <span>1.25x</span>
+            <span class="text-[10px] text-neutral-400 dark:text-neutral-500">Steady</span>
+          </button>
+          <button type="button" role="option" data-rate-option data-rate="1.5" aria-selected="false" class="flex w-full items-center justify-between rounded-xl px-3 py-2 text-xs font-semibold text-neutral-700 transition hover:bg-neutral-100 dark:text-neutral-100 dark:hover:bg-neutral-800">
+            <span>1.5x</span>
+            <span class="text-[10px] text-neutral-400 dark:text-neutral-500">Fast</span>
+          </button>
+          <button type="button" role="option" data-rate-option data-rate="1.75" aria-selected="false" class="flex w-full items-center justify-between rounded-xl px-3 py-2 text-xs font-semibold text-neutral-700 transition hover:bg-neutral-100 dark:text-neutral-100 dark:hover:bg-neutral-800">
+            <span>1.75x</span>
+            <span class="text-[10px] text-neutral-400 dark:text-neutral-500">Quick</span>
+          </button>
+          <button type="button" role="option" data-rate-option data-rate="2" aria-selected="false" class="flex w-full items-center justify-between rounded-xl px-3 py-2 text-xs font-semibold text-neutral-700 transition hover:bg-neutral-100 dark:text-neutral-100 dark:hover:bg-neutral-800">
+            <span>2.0x</span>
+            <span class="text-[10px] text-neutral-400 dark:text-neutral-500">Max</span>
+          </button>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<script>
-  const root = document.getElementById("widget-music-player");
+<script define:vars={{ tracks, safeInitialIndex }}>
+  const root = document.querySelector("[data-audio-player]");
+
   if (root) {
+    const playlist = tracks;
+    let currentIndex = safeInitialIndex;
+    let dragging = false;
+
     const audio = root.querySelector("#podcast-audio");
-    const playPauseButton = root.querySelector("#play-pause");
-    const stopButton = root.querySelector("#stop-audio");
+    const prevButton = root.querySelector("#prev-track");
+    const nextButton = root.querySelector("#next-track");
     const rewindButton = root.querySelector("#rewind-10");
     const forwardButton = root.querySelector("#forward-10");
-    const currentTimeEl = root.querySelector("#audio-current");
-    const durationEl = root.querySelector("#audio-duration");
-    const progressEl = root.querySelector("#audio-progress");
-    const thumbEl = root.querySelector("#audio-thumb");
+    const rateButton = root.querySelector("#playback-rate");
+    const rateLabel = root.querySelector("#playback-rate-label");
+    const rateMenu = root.querySelector("#playback-rate-menu");
+    const rateOptions = root.querySelectorAll("[data-rate-option]");
+    const playPauseButton = root.querySelector("#play-pause");
+
+    const trackShow = root.querySelector("#track-show");
+    const trackCover = root.querySelector("#track-cover");
+    const trackTitle = root.querySelector("#track-title");
+    const trackEpisode = root.querySelector("#track-episode");
+
+    const seekBar = root.querySelector("#seek-bar");
     const playIcon = root.querySelector("#icon-play");
     const pauseIcon = root.querySelector("#icon-pause");
+    const durationEl = root.querySelector("#audio-duration");
+    const currentTimeEl = root.querySelector("#audio-current");
+    const seekPreview = root.querySelector('[data-part="seek-preview"]');
+    const progressEl = root.querySelector('[data-part="audio-progress"]');
 
     const formatTime = (seconds) => {
       if (!Number.isFinite(seconds)) return "00:00";
-      const mins = Math.floor(seconds / 60);
-      const secs = Math.floor(seconds % 60);
+      const total = Math.max(0, Math.floor(seconds));
+      const mins = Math.floor(total / 60);
+      const secs = total % 60;
       return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
     };
 
-    const updateTimeline = () => {
-      if (!audio || !progressEl || !thumbEl || !currentTimeEl || !durationEl)
-        return;
+    const getSelectedRate = () => {
+      const selected = root.querySelector('[data-rate-option][aria-selected="true"]');
+      return selected?.dataset.rate || "1";
+    };
 
-      const duration = audio.duration || 0;
-      const currentTime = audio.currentTime || 0;
+    const closeRateMenu = () => {
+      if (!rateMenu || !rateButton) return;
+      rateMenu.classList.add("hidden");
+      rateButton.setAttribute("aria-expanded", "false");
+    };
+
+    const openRateMenu = () => {
+      if (!rateMenu || !rateButton) return;
+      rateMenu.classList.remove("hidden");
+      rateButton.setAttribute("aria-expanded", "true");
+    };
+
+    const applyPlaybackRate = (value) => {
+      if (!audio) return;
+      audio.playbackRate = Number(value);
+      if (rateLabel) {
+        rateLabel.textContent = `${Number(value).toFixed(value === "1" || value === "2" ? 1 : 2)}x`;
+      }
+      rateOptions.forEach((option) => {
+        const isSelected = option.dataset.rate === value;
+        option.setAttribute("aria-selected", isSelected ? "true" : "false");
+        option.classList.toggle("bg-neutral-100", isSelected);
+        option.classList.toggle("dark:bg-neutral-800", isSelected);
+      });
+    };
+
+    const updateTrackMeta = () => {
+      const track = playlist[currentIndex];
+
+      if (track) {
+        if (trackCover) {
+          trackCover.src = track.coverImage;
+          trackCover.alt = track.showName;
+        }
+        if (trackTitle) trackTitle.textContent = track.title;
+        if (trackShow) trackShow.textContent = track.showName;
+        if (trackEpisode) trackEpisode.textContent = track.episode;
+      }
+    };
+
+    const updateTimeline = () => {
+      if (!audio || !seekBar || !progressEl || !currentTimeEl || !durationEl)
+        return;
+      const duration = Number.isFinite(audio.duration) ? audio.duration : 0;
+      const currentTime = Number.isFinite(audio.currentTime)
+        ? audio.currentTime
+        : 0;
       const percent = duration > 0 ? (currentTime / duration) * 100 : 0;
 
+      seekBar.max = String(duration);
+      seekBar.value = String(currentTime);
       progressEl.style.width = `${percent}%`;
-      progressEl.setAttribute("aria-valuenow", String(Math.round(percent)));
-      thumbEl.style.left = `${percent}%`;
       currentTimeEl.textContent = formatTime(currentTime);
       durationEl.textContent = formatTime(duration);
     };
@@ -236,37 +424,109 @@ const {
       if (!audio || !playPauseButton || !playIcon || !pauseIcon) return;
       const isPlaying = !audio.paused;
       playPauseButton.setAttribute("aria-label", isPlaying ? "Pause" : "Play");
+      playPauseButton.classList.toggle("animate-bounce", !isPlaying);
       playIcon.classList.toggle("hidden", isPlaying);
       pauseIcon.classList.toggle("hidden", !isPlaying);
     };
 
-    if (audio) {
+    const showSeekPreview = (clientX) => {
+      if (!audio || !seekBar || !seekPreview) return;
+      const duration = Number.isFinite(audio.duration) ? audio.duration : 0;
+      if (duration <= 0) return;
+
+      const rect = seekBar.getBoundingClientRect();
+      const ratio = Math.min(
+        1,
+        Math.max(0, (clientX - rect.left) / rect.width),
+      );
+      const previewTime = ratio * duration;
+
+      seekPreview.textContent = formatTime(previewTime);
+      seekPreview.style.left = `${ratio * 100}%`;
+      seekPreview.classList.remove("hidden");
+    };
+
+    const hideSeekPreview = () => {
+      if (!seekPreview || dragging) return;
+      seekPreview.classList.add("hidden");
+    };
+
+    const loadTrack = (index, autoPlay = false) => {
+      if (!audio || !playlist[index]) return;
+
+      currentIndex = index;
+      updateTrackMeta();
+      audio.src = playlist[currentIndex].audioSrc;
+      audio.load();
+
+      applyPlaybackRate(getSelectedRate());
+
+      const startPlayback = () => {
+        if (autoPlay) {
+          audio.play().catch(() => {});
+        }
+        updateTimeline();
+        updatePlayState();
+      };
+
+      if (audio.readyState >= 1) {
+        startPlayback();
+      } else {
+        audio.addEventListener("loadedmetadata", startPlayback, {
+          once: true,
+        });
+      }
+    };
+
+    if (audio && seekBar) {
       audio.addEventListener("loadedmetadata", updateTimeline);
-      audio.addEventListener("timeupdate", updateTimeline);
+      audio.addEventListener("timeupdate", () => {
+        if (!dragging) updateTimeline();
+      });
       audio.addEventListener("play", updatePlayState);
       audio.addEventListener("pause", updatePlayState);
       audio.addEventListener("ended", () => {
-        audio.currentTime = 0;
+        const nextIndex = (currentIndex + 1) % playlist.length;
+        loadTrack(nextIndex, true);
+      });
+
+      seekBar.addEventListener("input", () => {
+        dragging = true;
+        const nextTime = Number(seekBar.value);
+        if (Number.isFinite(nextTime)) {
+          audio.currentTime = nextTime;
+          updateTimeline();
+        }
+      });
+
+      seekBar.addEventListener("change", () => {
+        dragging = false;
         updateTimeline();
-        updatePlayState();
+        hideSeekPreview();
+      });
+
+      seekBar.addEventListener("pointermove", (event) =>
+        showSeekPreview(event.clientX),
+      );
+      seekBar.addEventListener("pointerenter", (event) =>
+        showSeekPreview(event.clientX),
+      );
+      seekBar.addEventListener("pointerleave", hideSeekPreview);
+      seekBar.addEventListener("pointerdown", () => {
+        dragging = true;
+      });
+      seekBar.addEventListener("pointerup", () => {
+        dragging = false;
       });
     }
 
     playPauseButton?.addEventListener("click", () => {
       if (!audio) return;
       if (audio.paused) {
-        audio.play();
+        audio.play().catch(() => {});
       } else {
         audio.pause();
       }
-    });
-
-    stopButton?.addEventListener("click", () => {
-      if (!audio) return;
-      audio.pause();
-      audio.currentTime = 0;
-      updateTimeline();
-      updatePlayState();
     });
 
     rewindButton?.addEventListener("click", () => {
@@ -284,6 +544,47 @@ const {
       updateTimeline();
     });
 
+    prevButton?.addEventListener("click", () => {
+      if (!audio || playlist.length === 0) return;
+      const shouldAutoPlay = !audio.paused;
+      const prevIndex = (currentIndex - 1 + playlist.length) % playlist.length;
+      loadTrack(prevIndex, shouldAutoPlay);
+    });
+
+    nextButton?.addEventListener("click", () => {
+      if (!audio || playlist.length === 0) return;
+      const shouldAutoPlay = !audio.paused;
+      const nextIndex = (currentIndex + 1) % playlist.length;
+      loadTrack(nextIndex, shouldAutoPlay);
+    });
+
+    rateButton?.addEventListener("click", () => {
+      if (!rateMenu) return;
+      const isOpen = !rateMenu.classList.contains("hidden");
+      if (isOpen) {
+        closeRateMenu();
+      } else {
+        openRateMenu();
+      }
+    });
+
+    rateOptions.forEach((option) => {
+      option.addEventListener("click", () => {
+        const value = option.dataset.rate;
+        if (!value) return;
+        applyPlaybackRate(value);
+        closeRateMenu();
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!root.contains(event.target)) {
+        closeRateMenu();
+      }
+    });
+
+    applyPlaybackRate(getSelectedRate());
+    updateTrackMeta();
     updateTimeline();
     updatePlayState();
   }

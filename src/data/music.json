@@ -1,0 +1,66 @@
+[
+  {
+    "episode": "128",
+    "title": "Does Code Quality Matter Anymore?",
+    "showName": "Syntax - Tasty Web Development Treats",
+    "audioSrc": "https://traffic.megaphone.fm/FSI1346437841.mp3",
+    "website": "https://syntax.fm/show/986/does-code-quality-matter-anymore",
+    "coverImage": "https://images.unsplash.com/photo-1760952851538-17a59f691efe?auto=format&fit=crop&q=20&w=1200&h=1200"
+  },
+  {
+    "episode": "150",
+    "showName": "FULL STACK RADIO",
+    "website": "https://fullstackradio.com/150",
+    "audioSrc": "https://media.transistor.fm/1298246d/8229b9a1.mp3?src=player",
+    "title": "Secret Screencasting Tips & Behind the Scenes of Tailwind CSS 2.0",
+    "coverImage": "https://images.unsplash.com/photo-1732017968601-f46d9badf229?auto=format&fit=crop&q=20&w=1200&h=1200"
+  },
+  {
+    "episode": "985",
+    "title": "Stop putting secrets in .env",
+    "showName": "Syntax - Tasty Web Development Treats",
+    "audioSrc": "https://traffic.megaphone.fm/FSI1226956606.mp3",
+    "website": "https://syntax.fm/show/985/stop-putting-secrets-in-env",
+    "coverImage": "https://images.unsplash.com/photo-1765445666581-76c7db6ca705?auto=format&fit=crop&q=20&w=1200&h=1200"
+  },
+  {
+    "episode": "137",
+    "showName": "FULL STACK RADIO",
+    "website": "https://fullstackradio.com/137",
+    "title": "Tim Neutkens - Continuing to Innovate with Next.js 9.3",
+    "audioSrc": "https://media.transistor.fm/e1850eb7/3bd0f15d.mp3?src=player",
+    "coverImage": "https://images.unsplash.com/photo-1598520106830-8c45c2035460?auto=format&fit=crop&q=20&w=1200&h=1200"
+  },
+  {
+    "episode": "980",
+    "title": "AI Coding Explained",
+    "showName": "Syntax - Tasty Web Development Treats",
+    "website": "https://syntax.fm/show/980/ai-coding-explained",
+    "audioSrc": "https://traffic.megaphone.fm/FSI9721669335.mp3",
+    "coverImage": "https://images.unsplash.com/photo-1771942202908-6ce86ef73701?auto=format&fit=crop&q=20&w=1200&h=1200"
+  },
+  {
+    "episode": "135",
+    "showName": "FULL STACK RADIO",
+    "website": "https://fullstackradio.com/135",
+    "title": "Lessons Learned Building Tailwind UI",
+    "audioSrc": "https://media.transistor.fm/d486369d/10d13e47.mp3?src=player",
+    "coverImage": "https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&q=20&w=1200&h=1200"
+  },
+  {
+    "episode": "978",
+    "title": "Should A New Coder Use AI?",
+    "showName": "Syntax - Tasty Web Development Treats",
+    "audioSrc": "https://traffic.megaphone.fm/FSI5633173465.mp3",
+    "website": "https://syntax.fm/show/978/should-a-new-coder-use-ai",
+    "coverImage": "https://images.unsplash.com/photo-1771503735122-22405ba958f9?auto=format&fit=crop&q=20&w=1200&h=1200"
+  },
+  {
+    "episode": "130",
+    "showName": "FULL STACK RADIO",
+    "website": "https://fullstackradio.com/130",
+    "title": "David Khourshid - Building Better UI Components with State Machines",
+    "audioSrc": "https://media.transistor.fm/1b9d93ff/c5be82ff.mp3?src=player",
+    "coverImage": "https://images.unsplash.com/photo-1657961763970-dbf57f9bcd7c?auto=format&fit=crop&q=20&w=1200&h=1200"
+  }
+]

@@ -1,5 +1,6 @@
 ---
 import about from "../data/about.json";
+import music from "../data/music.json";
 import LinkButton from "./link-button.astro";
 import WidgetProjects from "./widgets/projects.astro";
 import WidgetMusicPlayer from "./widgets/music-player.astro";
@@ -87,7 +88,7 @@ import WidgetMusicPlayer from "./widgets/music-player.astro";
     </div>
     <div class="relative hidden md:block scale-[80%]">
       <WidgetProjects />
-      <WidgetMusicPlayer />
+      <WidgetMusicPlayer tracks={music} />
     </div>
   </div>
 </section>
