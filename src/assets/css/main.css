@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --background: #e5e7eb;
+  --border-color: #111827;
+}
+
 /* Add Your Custom CSS Here */
 
 #sun {
@@ -90,46 +95,29 @@ html.dark #darkToggle:hover .horizon {
   }
 
   [data-audio-player] .seek-slider::-webkit-slider-runnable-track {
-    height: 8px;
-    background: transparent;
-    border-radius: 999px;
+    @apply h-2 bg-transparent rounded-full;
   }
 
   [data-audio-player] .seek-slider::-moz-range-track {
-    height: 8px;
-    background: transparent;
-    border: 0;
-    border-radius: 999px;
+    @apply h-2 bg-transparent border-0 rounded-full;
   }
 
   [data-audio-player] .seek-slider::-webkit-slider-thumb {
-    appearance: none;
-    width: 14px;
-    height: 14px;
-    border-radius: 999px;
-    background: #111827;
-    border: 2px solid #ffffff;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
-    margin-top: -3px;
+    @apply appearance-none w-3.5 h-3.5 rounded-full bg-[var(--border-color)] border-2 border-white shadow mt-[-3px];
   }
 
   [data-audio-player] .seek-slider::-moz-range-thumb {
-    width: 14px;
-    height: 14px;
-    border-radius: 999px;
-    background: #111827;
-    border: 2px solid #ffffff;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    @apply w-3.5 h-3.5 rounded-[999px] bg-[var(--border-color)] border-2 border-white shadow;
   }
 
   html.dark [data-audio-player] .seek-slider::-webkit-slider-thumb {
-    background: #e5e7eb;
-    border-color: #111827;
+    background: var(--background);
+    border-color: var(--border-color);
   }
 
   html.dark [data-audio-player] .seek-slider::-moz-range-thumb {
-    background: #e5e7eb;
-    border-color: #111827;
+    background: var(--background);
+    border-color: var(--border-color);
   }
 }
 

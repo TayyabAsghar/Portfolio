@@ -13,24 +13,24 @@ const portfolio = count ? pinnedPortfolio.slice(0, count) : pinnedPortfolio;
 ---
 
 <div
-  class="grid w-full grid-rows-1 grid-cols-1 sm:grid-cols-2 gap-7 md:grid-cols-3"
+  class="grid w-full min-h-44 grid-cols-1 gap-16 auto-rows-fr sm:grid-cols-2 md:grid-cols-3 md:gap-10"
   class:list={[className]}
 >
   {
-    portfolio.map((project: any, index: number) => {
+    portfolio.map((project: any) => {
       return (
-        <Fragment>
+        <div class="relative after:absolute after:left-1/2 after:-bottom-7 after:h-px after:w-[80%] after:-translate-x-1/2 after:bg-neutral-300 after:dark:bg-neutral-600 last:after:hidden sm:after:hidden">
           <Project
+            layout="card"
+            slug={project.slug}
+            hrefBase="portfolio"
             name={project.data.title}
-            gradient={project.data.bgGradient}
-            description={project.data.description}
             image={project.data.image}
             company={project.data.company}
-            slug={project.slug}
-            layout="card"
-            hrefBase="portfolio"
+            gradient={project.data.bgGradient}
+            description={project.data.description}
           />
-        </Fragment>
+        </div>
       );
     })
   }

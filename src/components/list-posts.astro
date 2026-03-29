@@ -14,7 +14,7 @@ const textHoverStyle =
     listPosts.map(({ slug, data }) => {
       return (
         <div
-          class="relative cursor-pointer group py-4 first:pt-0 last:pb-0 grid grid-rows-1 grid-cols-1 sm:grid-cols-[3fr_1fr] gap-7 justify-items-end"
+          class="relative cursor-pointer group py-4 first:pt-0 last:pb-0 grid grid-rows-1 grid-cols-1 sm:grid-cols-[3fr_1fr] gap-7 justify-items-end lg:gap-80"
           onclick={`location.href = '/blog/${slug}'`}
         >
           <div>

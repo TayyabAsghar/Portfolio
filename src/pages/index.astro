@@ -9,12 +9,17 @@ import PortfolioGrid from "../components/portfolio-grid.astro";
 ---
 
 <Layout title="Tayyab Asghar">
-  <div class="grid grid-cols-1 auto-rows-max gap-28">
+  <div class="grid grid-cols-1 auto-rows-max gap-28 mb-28">
     <HeroSection />
+
     <Technologies />
+
     <PortfolioGrid count={6} />
-    <Testimonials />
+
     <!-- <SideProjectsGrid count={3} /> -->
+
+    <Testimonials />
+
     <Writings />
   </div>
 </Layout>

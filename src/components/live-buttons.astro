@@ -15,11 +15,11 @@ const { primary, secondary, iconPrimary, iconSecondary } = Astro.props;
   {
     primary ? (
       <LinkButton
-        text="Live Preview"
         link={primary}
         target="_blank"
-        iconRight={iconPrimary ?? "open-in-new"}
+        text="Live Preview"
         class="!mt-[-1rem]"
+        iconRight={iconPrimary ?? "open-in-new"}
       />
     ) : null
   }

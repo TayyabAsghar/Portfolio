@@ -1,6 +1,18 @@
 [
   {
-    "dates": "Jun 2024 · Present",
+    "dates": "Mar 2025 · Present",
+    "role": "Full Stack Developer",
+    "company": "Netsol",
+    "description": [
+      "Reduced initial loading time, leading to faster page performance and improved customer retention.",
+      "Redesigned and optimized landing pages with enhanced product presentation and integrated data visualization, improving user experience and engagement."
+    ],
+    "logo": "/assets/images/company/netsol.svg",
+    "website": "https://netsoltech.com",
+    "detailsPage": ""
+  },
+  {
+    "dates": "Jun 2024 · Feb 2025",
     "role": "Full Stack Developer",
     "company": "Freelancing",
     "description": [

@@ -15,13 +15,13 @@ const {
 const baseStyle = "w-full h-full rounded-xl";
 
 const layoutStyle: any = {
-  card: "flex flex-col gap-3",
+  card: "flex flex-col gap-6",
   list: "flex flex-row-reverse gap-3 justify-between",
 };
 
 const coverSize: any = {
-  card: "h-48 md:h-36",
-  list: "h-48 md:h-44",
+  card: "h-48 md:h-44",
+  list: "h-48 md:h-52",
 };
 
 const headingStyle: any = {
@@ -48,7 +48,7 @@ const textHoverStyle =
 <a
   data-layout={layout}
   href={`${hrefBase}/${slug}`}
-  class="relative flex flex-col w-full items-stretch group rounded-xl"
+  class="relative flex flex-col w-full items-stretch group rounded-xl h-"
   class:list={[transitionStyle]}
 >
   <div class:list={[baseStyle, layoutStyle[layout]]}>
