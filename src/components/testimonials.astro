@@ -2,12 +2,13 @@
 import SectionHeader from "./section-header.astro";
 import testimonials from "../data/testimonials.json";
 import TestimonialTile from "./testimonial-tile.astro";
+import type { TestimonialType } from "../types/data-types";
 
 interface Props {
   className?: string;
 }
 
-const columns: any = [[], []];
+const columns: TestimonialType[][] = [[], []];
 
 testimonials.forEach((testimonial, index) => {
   columns[index % columns.length].push(testimonial);

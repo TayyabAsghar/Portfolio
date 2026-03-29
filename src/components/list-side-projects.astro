@@ -1,43 +1,42 @@
 ---
-import Separator from "../components/separator.astro"
-import SideProject from "../components/side-project.astro"
-import { latestSideProjects } from "../utils/side-projects"
+import Separator from "../components/separator.astro";
+import SideProject from "../components/side-project.astro";
+import { latestSideProjects } from "../utils/side-projects";
 
 interface Props {
-  count?: number
-  className?: string
-  company?: string
-  brandLogo?: string
+  count?: number;
+  className?: string;
+  company?: string;
+  brandLogo?: string;
 }
 
-const { count, company, brandLogo, className = "" } = Astro.props
+const { count, company, brandLogo, className = "" } = Astro.props;
 
 const sideProjects = count
   ? latestSideProjects.slice(0, count)
-  : latestSideProjects
+  : latestSideProjects;
 ---
 
-{company ? <Separator text={company} brandLogo={brandLogo} /> : null}
+{!!company && <Separator text={company} brandLogo={brandLogo} />}
+
 <div
   class="divide-y dividerline"
   class:list={[className, !company ? "mt-20" : ""]}
 >
   {
-    sideProjects.map((project: any) => {
-      return (
-        <div class="py-4 first:pt-0">
-          <SideProject
-            name={project.data.title}
-            description={project.data.description}
-            image={project.data.image}
-            domains={project.data.domains}
-            slug={project.slug}
-            status={project.data.status}
-            hrefBase="side-projects"
-            layout="list"
-          />
-        </div>
-      )
+    sideProjects.map((project) => {
+      <div class="py-4 first:pt-0">
+        <SideProject
+          layout="list"
+          slug={project.slug}
+          hrefBase="side-projects"
+          name={project.data.title}
+          image={project.data.image}
+          status={project.data.status}
+          domains={project.data.domains}
+          description={project.data.description}
+        />
+      </div>;
     })
   }
 </div>

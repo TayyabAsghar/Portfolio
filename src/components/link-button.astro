@@ -1,14 +1,23 @@
 ---
-import { Icon } from "astro-icon/components"
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  link: string;
+  text: string;
+  class?: string;
+  iconLeft?: string;
+  iconRight?: string;
+  target?: "_self" | "_blank" | "_parent" | "_top";
+}
 
 const {
   link,
   text,
-  target = "_self",
-  class: className,
   iconLeft,
   iconRight,
-} = Astro.props
+  class: className,
+  target = "_self",
+} = Astro.props;
 ---
 
 <a
@@ -17,7 +26,9 @@ const {
   class:list={[className]}
   target={target}
 >
-  {iconLeft ? <Icon class="text-base" name={iconLeft} /> : ""}
+  {!!iconLeft && <Icon class="text-base" name={iconLeft} />}
+
   {text}
-  {iconRight ? <Icon class="text-base" name={iconRight} /> : ""}
+
+  {!!iconRight && <Icon class="text-base" name={iconRight} />}
 </a>

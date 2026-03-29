@@ -1,4 +1,15 @@
 ---
+interface Props {
+  name: string;
+  logo: string;
+  media: string;
+  issueDate: string;
+  organization: string;
+  credentialURL: string;
+  credentialID?: string;
+  expirationDate?: string;
+}
+
 const {
   name,
   logo,
@@ -23,19 +34,23 @@ const {
       />
     </a>
   </div>
+
   <p
     class="text-xs uppercase text-neutral-400 dark:text-neutral-500 tracking-widest flex justify-between"
   >
     <span>{issueDate} {!!expirationDate && `· ${expirationDate}`}</span>
     {!!credentialID && <span>ID: {credentialID} </span>}
   </p>
+
   <div class="space-y-0 mb-3 flex justify-between gap-3">
     <div>
       <a href={credentialURL} target="_blank" class="block w-fit">
         <h3 class="text-lg font-bold dark:text-neutral-100">{name}</h3>
       </a>
+
       <p class="text-base font-medium dark:text-neutral-300">{organization}</p>
     </div>
+
     <div class="block w-fit">
       <a href={credentialURL} target="_blank">
         <img
@@ -47,11 +62,3 @@ const {
     </div>
   </div>
 </div>
-
-<style is:global>
-  #education strong {
-    font-weight: 500;
-    text-decoration: underline;
-    text-underline-offset: 0.25rem;
-  }
-</style>

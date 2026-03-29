@@ -9,6 +9,10 @@
 
 /* Add Your Custom CSS Here */
 
+#education strong {
+  @apply font-medium underline underline-offset-4;
+}
+
 #sun {
   transform: translate3d(0, 0px, 0);
 }

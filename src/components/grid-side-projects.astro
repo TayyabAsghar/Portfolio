@@ -1,18 +1,17 @@
 ---
-import SideProject from "../components/side-project.astro"
-import { pinnedSideProjects } from "../utils/side-projects"
+import SideProject from "../components/side-project.astro";
+import { pinnedSideProjects } from "../utils/side-projects";
 
 interface Props {
-  count: number
-  className?: string
+  count: number;
+  className?: string;
 }
 
-const { count, className = "" } = Astro.props
+const { count, className = "" } = Astro.props;
 
 const sideProjects = count
   ? pinnedSideProjects.slice(0, count)
-  : pinnedSideProjects
-
+  : pinnedSideProjects;
 ---
 
 <div
@@ -20,21 +19,17 @@ const sideProjects = count
   class:list={[className]}
 >
   {
-    sideProjects.map((project: any) => {
-      return (
-        <>
-          <SideProject
-            name={project.data.title}
-            description={project.data.description}
-            image={project.data.image}
-            domains={project.data.domains}
-            slug={project.slug}
-            status={project.data.status}
-            layout="card"
-            hrefBase="side-projects"
-          />
-        </>
-      )
-    })
+    sideProjects.map((project) => (
+      <SideProject
+        layout="card"
+        slug={project.slug}
+        hrefBase="side-projects"
+        name={project.data.title}
+        image={project.data.image}
+        status={project.data.status}
+        domains={project.data.domains}
+        description={project.data.description}
+      />
+    ))
   }
 </div>

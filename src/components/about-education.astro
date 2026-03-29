@@ -1,4 +1,14 @@
 ---
+interface Props {
+  logo: string;
+  dates: string;
+  degree: string;
+  website: string;
+  location: string;
+  institute: string;
+  coursework: string;
+}
+
 const { logo, dates, institute, website, location, degree, coursework } =
   Astro.props;
 ---
@@ -15,32 +25,30 @@ const { logo, dates, institute, website, location, degree, coursework } =
       />
     </a>
   </div>
+
   <p
     class="text-xs uppercase text-neutral-400 dark:text-neutral-500 tracking-widest flex justify-between"
   >
     <span>{dates}</span>
+
     <span>{location}</span>
   </p>
+
   <div class="space-y-0 mb-3">
     <h3 class="text-lg font-bold dark:text-neutral-100">{degree}</h3>
+
     <a href={website} target="_blank" class="block w-fit">
       <p class="text-base font-medium dark:text-neutral-300">{institute}</p>
     </a>
   </div>
+
   <p
     class="grid auto-rows-max grid-cols-[64px_1fr] gap-3 text-sm font-normal text-neutral-600 dark:text-neutral-400"
   >
     <span class="block text-neutral-400 dark:text-neutral-500 text-right">
       Courses:
     </span>
+
     <span class="">{coursework}</span>
   </p>
 </div>
-
-<style is:global>
-  #education strong {
-    font-weight: 500;
-    text-decoration: underline;
-    text-underline-offset: 0.25rem;
-  }
-</style>

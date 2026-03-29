@@ -3,6 +3,11 @@ import "../assets/css/main.css";
 import Footer from "../components/footer.astro";
 import Header from "../components/header.astro";
 import SquareLines from "../components/square-lines.astro";
+
+interface Props {
+  title: string;
+}
+
 const { title } = Astro.props;
 ---
 
@@ -44,12 +49,22 @@ const { title } = Astro.props;
     <link rel="icon" type="image/x-icon" href="../assets/images/favicon.png" />
     <Fragment set:html={import.meta.env.HEADER_INJECT} />
   </head>
-  <body class="antialiased overflow-x-hidden bg-white dark:bg-neutral-950">
+
+  <body
+    class="min-h-screen flex flex-col antialiased overflow-x-hidden bg-white dark:bg-neutral-950"
+  >
     <SquareLines />
+
     <Header />
-    <slot />
+
+    <main class="flex-1">
+      <slot />
+    </main>
+
     <Footer />
+
     <script src="../assets/js/main.js"></script>
+
     <Fragment set:html={import.meta.env.FOOTER_INJECT} />
   </body>
 </html>

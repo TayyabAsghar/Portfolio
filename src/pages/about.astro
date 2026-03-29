@@ -12,7 +12,7 @@ import AboutExperience from "../components/about-experience.astro";
 import AboutCertificate from "../components/about-certificate.astro";
 ---
 
-<Layout title="About Me">
+<Layout title="About Me | Tayyab Asghar">
   <section class="relative z-20 max-w-2xl mx-auto my-12 px-7 lg:px-0">
     <PageHeading title="About Me" description={about.me} />
 
@@ -28,21 +28,19 @@ import AboutCertificate from "../components/about-certificate.astro";
     </h2>
     <div class="px-5 pt-10">
       {
-        experiences.map((experience) => {
-          return (
-            <div class="pb-10 border-l border-gray-200 dark:border-neutral-700">
-              <AboutExperience
-                role={experience.role}
-                logo={experience.logo}
-                dates={experience.dates}
-                company={experience.company}
-                website={experience.website}
-                detailsPage={experience.detailsPage}
-                description={experience.description}
-              />
-            </div>
-          );
-        })
+        experiences.map((experience) => (
+          <div class="pb-10 border-l border-gray-200 dark:border-neutral-700">
+            <AboutExperience
+              role={experience.role}
+              logo={experience.logo}
+              dates={experience.dates}
+              company={experience.company}
+              website={experience.website}
+              detailsPage={experience.detailsPage}
+              description={experience.description}
+            />
+          </div>
+        ))
       }
     </div>
 
@@ -53,21 +51,19 @@ import AboutCertificate from "../components/about-certificate.astro";
     </h2>
     <div class="px-5 pt-10">
       {
-        education.map((edu) => {
-          return (
-            <div class="pb-10 border-l border-gray-200 dark:border-neutral-700">
-              <AboutEducation
-                logo={edu.logo}
-                dates={edu.dates}
-                degree={edu.degree}
-                website={edu.website}
-                location={edu.location}
-                institute={edu.institute}
-                coursework={edu.coursework}
-              />
-            </div>
-          );
-        })
+        education.map((edu) => (
+          <div class="pb-10 border-l border-gray-200 dark:border-neutral-700">
+            <AboutEducation
+              logo={edu.logo}
+              dates={edu.dates}
+              degree={edu.degree}
+              website={edu.website}
+              location={edu.location}
+              institute={edu.institute}
+              coursework={edu.coursework}
+            />
+          </div>
+        ))
       }
     </div>
 
@@ -82,22 +78,20 @@ import AboutCertificate from "../components/about-certificate.astro";
         class="px-5 pt-10 h-[600px] overflow-y-clip overflow-x-visible"
       >
         {
-          certificates.map((cert) => {
-            return (
-              <div class="pb-10 border-l border-gray-200 dark:border-neutral-700">
-                <AboutCertificate
-                  name={cert.name}
-                  logo={cert.logo}
-                  media={cert.media}
-                  issueDate={cert.issueDate}
-                  organization={cert.organization}
-                  credentialID={cert.credentialID}
-                  credentialURL={cert.credentialURL}
-                  expirationDate={cert.expirationDate}
-                />
-              </div>
-            );
-          })
+          certificates.map((cert) => (
+            <div class="pb-10 border-l border-gray-200 dark:border-neutral-700">
+              <AboutCertificate
+                name={cert.name}
+                logo={cert.logo}
+                media={cert.media}
+                issueDate={cert.issueDate}
+                organization={cert.organization}
+                credentialID={cert.credentialID}
+                credentialURL={cert.credentialURL}
+                expirationDate={cert.expirationDate}
+              />
+            </div>
+          ))
         }
       </div>
       <Button

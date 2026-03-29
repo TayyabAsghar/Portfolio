@@ -1,6 +1,16 @@
 ---
 import { Picture } from "astro:assets";
 
+interface Props {
+  alt: string;
+  image: string;
+  width: number;
+  height: number;
+  coverSize: string;
+  styles?: string;
+  gradient?: string;
+}
+
 const { image, height, width, alt, coverSize, styles, gradient } = Astro.props;
 
 const hoverStyle = "group-hover:scale-95";

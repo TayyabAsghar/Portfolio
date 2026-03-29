@@ -17,21 +17,19 @@ const portfolio = count ? pinnedPortfolio.slice(0, count) : pinnedPortfolio;
   class:list={[className]}
 >
   {
-    portfolio.map((project: any) => {
-      return (
-        <div class="relative after:absolute after:left-1/2 after:-bottom-7 after:h-px after:w-[80%] after:-translate-x-1/2 after:bg-neutral-300 after:dark:bg-neutral-600 last:after:hidden sm:after:hidden">
-          <Project
-            layout="card"
-            slug={project.slug}
-            hrefBase="portfolio"
-            name={project.data.title}
-            image={project.data.image}
-            company={project.data.company}
-            gradient={project.data.bgGradient}
-            description={project.data.description}
-          />
-        </div>
-      );
-    })
+    portfolio.map((project) => (
+      <div class="relative after:absolute after:left-1/2 after:-bottom-7 after:h-px after:w-[80%] after:-translate-x-1/2 after:bg-neutral-300 after:dark:bg-neutral-600 last:after:hidden sm:after:hidden">
+        <Project
+          layout="card"
+          slug={project.slug}
+          hrefBase="portfolio"
+          name={project.data.title}
+          image={project.data.image}
+          company={project.data.company}
+          gradient={project.data.bgGradient}
+          description={project.data.description}
+        />
+      </div>
+    ))
   }
 </div>

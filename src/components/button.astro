@@ -1,4 +1,10 @@
 ---
+interface Props {
+  text: string;
+  class: string;
+  [key: string]: any;
+}
+
 const { text, class: className, ...props } = Astro.props;
 ---
 

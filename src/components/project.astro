@@ -1,22 +1,33 @@
 ---
 import ImageTile from "./image-tile.astro";
 
+interface Props {
+  name: string;
+  slug: string;
+  company: string;
+  hrefBase: string;
+  gradient: string;
+  description: string;
+  image?: string;
+  layout?: "card" | "list";
+}
+
 const {
   name,
-  description,
   slug,
   image,
   company,
   gradient,
-  layout = "card",
   hrefBase,
+  description,
+  layout = "card",
 } = Astro.props;
 
 const baseStyle = "w-full h-full rounded-xl";
 
 const layoutStyle: any = {
   card: "flex flex-col gap-6",
-  list: "flex flex-row-reverse gap-3 justify-between",
+  list: "flex flex-col-reverse gap-8 justify-between md:gap-52 md:flex-row-reverse",
 };
 
 const coverSize: any = {
@@ -48,18 +59,23 @@ const textHoverStyle =
 <a
   data-layout={layout}
   href={`${hrefBase}/${slug}`}
-  class="relative flex flex-col w-full items-stretch group rounded-xl h-"
+  class="relative flex flex-col w-full items-stretch group rounded-xl"
   class:list={[transitionStyle]}
 >
   <div class:list={[baseStyle, layoutStyle[layout]]}>
-    <ImageTile
-      image={image}
-      gradient={gradient}
-      alt="Portfolio project thumbnail"
-      width="800"
-      height="450"
-      coverSize={coverSize[layout]}
-    />
+    {
+      image && (
+        <ImageTile
+          image={image}
+          gradient={gradient}
+          alt="Portfolio project thumbnail"
+          width={800}
+          height={450}
+          coverSize={coverSize[layout]}
+        />
+      )
+    }
+
     <div class="block w-full divide-y-4 divide-transparent">
       <div
         class="flex relative gap-2 items-start justify-start mb-0 font-semibold tracking-tight text-neutral-800 hover:text-black dark:text-neutral-100 dark:hver:text-white"
@@ -67,12 +83,14 @@ const textHoverStyle =
       >
         <div class="line-clamp-2" title={name}>{name}</div>
       </div>
+
       <div
         class="text-sm text-neutral-900 font-medium dark:text-neutral-400"
         class:list={[visibility[layout]]}
       >
         {company}
       </div>
+
       <div
         class="text-sm text-neutral-600 dark:text-neutral-400"
         class:list={[

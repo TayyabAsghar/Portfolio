@@ -1,5 +1,10 @@
 ---
 import { Picture } from "astro:assets";
+import type { TestimonialType } from "../types/data-types";
+
+interface Props {
+  testimonial: TestimonialType;
+}
 
 const { testimonial } = Astro.props;
 

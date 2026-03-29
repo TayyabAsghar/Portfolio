@@ -1,6 +1,13 @@
 ---
-import MainLayout from "./main.astro"
-const { frontmatter } = Astro.props
+import MainLayout from "./main.astro";
+
+interface Props {
+  frontmatter: {
+    title: string;
+  };
+}
+
+const { frontmatter } = Astro.props;
 ---
 
 <MainLayout title={frontmatter.title}>
