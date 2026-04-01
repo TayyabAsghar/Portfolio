@@ -7,6 +7,7 @@ import education from "../data/education.json";
 import experiences from "../data/experiences.json";
 import certificates from "../data/certificates.json";
 import testimonials from "../data/testimonials.json";
+import beyondScreen from "../data/beyond-screen.json";
 
 export type AboutType = typeof about;
 export type StackType = typeof stacks;
@@ -17,3 +18,4 @@ export type EducationType = typeof education[0];
 export type ExperienceType = typeof experiences[0];
 export type CertificateType = typeof certificates[0]; 
 export type TestimonialType = typeof testimonials[0];
+export type BeyondScreenType = typeof beyondScreen[0];

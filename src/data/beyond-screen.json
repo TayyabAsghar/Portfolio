@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Chess",
+    "image": "/assets/images/about/chess.jpg",
+    "video": "/assets/videos/about/chess.webm",
+    "description": "Strategic thinking and patience in every move."
+  },
+  {
+    "title": "Table Tennis",
+    "image": "/assets/images/about/table-tennis.jpg",
+    "video": "/assets/videos/about/table-tennis.webm",
+    "description": "Fast reflex and precision under pressure."
+  },
+  {
+    "title": "Running",
+    "image": "/assets/images/about/running.avif",
+    "video": "/assets/videos/about/running.webm",
+    "description": "Endurance and discipline of the long run."
+  },
+  {
+    "title": "Gaming",
+    "image": "/assets/images/about/gaming.jpg",
+    "video": "/assets/videos/about/gaming.webm",
+    "description": "Strategic thinking and fast reflexes through immersive digital world."
+  }
+]

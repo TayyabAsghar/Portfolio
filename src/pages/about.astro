@@ -2,34 +2,50 @@
 import about from "../data/about.json";
 import Layout from "../layouts/main.astro";
 import education from "../data/education.json";
-import Button from "../components/button.astro";
 import experiences from "../data/experiences.json";
 import certificates from "../data/certificates.json";
-import LinkButton from "../components/link-button.astro";
+import beyondScreen from "../data/beyond-screen.json";
+import LetsConnect from "../components/lets-connect.astro";
 import PageHeading from "../components/page-heading.astro";
 import AboutEducation from "../components/about-education.astro";
 import AboutExperience from "../components/about-experience.astro";
+import VideoPlayer from "../components/widgets/video-player.astro";
 import AboutCertificate from "../components/about-certificate.astro";
 ---
 
 <Layout title="About Me | Tayyab Asghar">
-  <section class="relative z-20 max-w-2xl mx-auto my-12 px-7 lg:px-0">
+  <section class="relative z-20 max-w-5xl mx-auto my-12 px-7 lg:px-0">
+    <div class="relative my-10 w-full overflow-hidden rounded-xl aspect-video">
+      <VideoPlayer
+        overlay
+        id="about-video"
+        title="About Me"
+        image="/assets/images/about.avif"
+        video="/assets/videos/about/house-rainy-day.webm"
+      />
+    </div>
+
     <PageHeading title="About Me" description={about.me} />
 
-    <img
-      src="/assets/images/about.avif"
-      class="relative z-30 w-full my-10 rounded-xl"
-    />
+    <div class="mt-14">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2
+          class="mt-3 text-2xl font-bold text-neutral-900 dark:text-neutral-200 sm:text-3xl"
+        >
+          Professional Odyssey
+        </h2>
 
-    <h2
-      class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200"
-    >
-      Experience
-    </h2>
-    <div class="px-5 pt-10">
-      {
-        experiences.map((experience) => (
-          <div class="pb-10 border-l border-gray-200 dark:border-neutral-700">
+        <p
+          class="mt-3 text-sm leading-7 text-neutral-600 dark:text-neutral-400 sm:text-base lg:text-lg"
+        >
+          Tracing the path through product engineering, performance work, and
+          full stack execution.
+        </p>
+      </div>
+
+      <div class="mt-12 space-y-0">
+        {
+          experiences.map((experience, index) => (
             <AboutExperience
               role={experience.role}
               logo={experience.logo}
@@ -38,17 +54,19 @@ import AboutCertificate from "../components/about-certificate.astro";
               website={experience.website}
               detailsPage={experience.detailsPage}
               description={experience.description}
+              align={index % 2 === 0 ? "left" : "right"}
             />
-          </div>
-        ))
-      }
+          ))
+        }
+      </div>
     </div>
 
     <h2
-      class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200"
+      class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200 sm:text-3xl"
     >
       Education
     </h2>
+
     <div class="px-5 pt-10">
       {
         education.map((edu) => (
@@ -67,65 +85,136 @@ import AboutCertificate from "../components/about-certificate.astro";
       }
     </div>
 
-    <h2
-      class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200"
-    >
-      Certificates
-    </h2>
-    <div class="flex flex-col items-center">
-      <div
-        id="certificates"
-        class="px-5 pt-10 h-[600px] overflow-y-clip overflow-x-visible"
-      >
-        {
-          certificates.map((cert) => (
-            <div class="pb-10 border-l border-gray-200 dark:border-neutral-700">
+    <section class="mt-16" id="certificates-section">
+      <div class="mb-8 flex items-center justify-between">
+        <div class="flex flex-col gap-3">
+          <h2
+            class="mt-3 text-2xl font-bold text-neutral-900 dark:text-neutral-100 sm:text-3xl"
+          >
+            Verified Expertise
+          </h2>
+          <p
+            class="text-xs font-semibold uppercase tracking-[0.28em] text-neutral-500 dark:text-neutral-400"
+          >
+            Credentials
+          </p>
+        </div>
+
+        <button
+          id="certificate-view"
+          type="button"
+          class="flex items-center gap-2 underline"
+        >
+          View all
+        </button>
+      </div>
+
+      <div class="certificate-marquee overflow-hidden">
+        <div
+          id="cert-track-marquee"
+          class="certificate-track flex w-max gap-5 py-3"
+        >
+          {
+            [...certificates, ...certificates].map((cert, index) => (
               <AboutCertificate
+                index={index}
                 name={cert.name}
                 logo={cert.logo}
                 media={cert.media}
+                viewType="marquee"
                 issueDate={cert.issueDate}
+                length={certificates.length}
                 organization={cert.organization}
                 credentialID={cert.credentialID}
                 credentialURL={cert.credentialURL}
                 expirationDate={cert.expirationDate}
               />
-            </div>
+            ))
+          }
+        </div>
+
+        <div
+          id="cert-track-grid"
+          class="flex w-full gap-5 py-3 flex-wrap hidden"
+        >
+          {
+            certificates.map((cert, index) => (
+              <AboutCertificate
+                index={index}
+                name={cert.name}
+                logo={cert.logo}
+                media={cert.media}
+                viewType="grid"
+                issueDate={cert.issueDate}
+                length={certificates.length}
+                organization={cert.organization}
+                credentialID={cert.credentialID}
+                credentialURL={cert.credentialURL}
+                expirationDate={cert.expirationDate}
+              />
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-20">
+      <div class="mb-8 flex flex-col gap-3">
+        <h2
+          class="mt-3 text-2xl font-bold text-neutral-900 dark:text-neutral-100 sm:text-3xl"
+        >
+          Beyond the Screen
+        </h2>
+        <p
+          class="text-xs font-semibold uppercase tracking-[0.28em] text-neutral-500 dark:text-neutral-400"
+        >
+          Finding inspiration in exploration
+        </p>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          beyondScreen.map((item) => (
+            <article>
+              <div class="relative overflow-hidden rounded-xl border aspect-video border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 my-10 w-full">
+                <VideoPlayer
+                  id="about-video"
+                  title={item.title}
+                  image={item.image}
+                  video={item.video}
+                />
+              </div>
+              <h3 class="mt-4 text-2xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
+                {item.title}
+              </h3>
+              <p class="mt-2 text-sm leading-7 text-neutral-600 dark:text-neutral-400">
+                {item.description}
+              </p>
+            </article>
           ))
         }
       </div>
-      <Button
-        id="certificatesButton"
-        onclick="showAllCertificates()"
-        text="Show all Certificates"
-      />
-    </div>
+    </section>
 
-    <h2
-      class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200"
-    >
-      Let's Connect
-    </h2>
-    <p
-      class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
-    >
-      If you want to stay up to date with my work be sure to follow me on
-      <a
-        href="https://www.linkedin.com/in/tayyabasghar"
-        target="_blank"
-        class="text-indigo-600 underline">LinkedIn</a
-      > and
-      <a
-        href="https://github.com/TayyabAsghar"
-        target="_blank"
-        class="text-indigo-600 underline">GitHub</a
-      >, or want to discuss a project? You can just click the connect button.
-
-      <LinkButton
-        text="Connect"
-        link="mailto:muhammadtayyabasghar@gmail.com"
-        target="_blank"
-      />
-    </p>
+    <LetsConnect />
   </section>
 </Layout>
+
+<script>
+  const button = document.getElementById("certificate-view");
+  const gridTrack = document.getElementById("cert-track-grid");
+  const marqueeTrack = document.getElementById("cert-track-marquee");
+
+  let expanded = false;
+
+  button?.addEventListener("click", () => {
+    expanded = !expanded;
+
+    if (!button) return;
+
+    button.textContent = expanded ? "Hide" : "View all";
+
+    gridTrack?.classList.toggle("hidden", !expanded);
+    marqueeTrack?.classList.toggle("hidden", expanded);
+  });
+</script>

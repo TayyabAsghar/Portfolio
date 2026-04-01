@@ -1,8 +1,9 @@
 ---
-interface Props {
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"button"> {
   text: string;
-  class: string;
-  [key: string]: any;
+  class?: string;
 }
 
 const { text, class: className, ...props } = Astro.props;
@@ -10,8 +11,8 @@ const { text, class: className, ...props } = Astro.props;
 
 <button
   {...props}
+  class="flex w-full items-center justify-center rounded-full bg-neutral-900 text-base font-semibold text-neutral-100 transition hover:bg-neutral-700 dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-neutral-300"
   class:list={[className]}
-  class="w-max mt-5 btn-rounded no-underline"
 >
   {text}
 </button>

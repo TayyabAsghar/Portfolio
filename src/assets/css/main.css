@@ -8,6 +8,9 @@
 }
 
 /* Add Your Custom CSS Here */
+#experience strong {
+  @apply font-medium underline underline-offset-4;
+}
 
 #education strong {
   @apply font-medium underline underline-offset-4;
@@ -43,6 +46,24 @@ html.dark #darkToggle:hover .horizon {
 
 .enable-marquee .marquee-content {
   animation: scroll 10s linear infinite;
+}
+
+.certificate-marquee:hover .certificate-track {
+  animation-play-state: paused;
+}
+
+.certificate-track {
+  animation: certificate-loop 34s linear infinite;
+}
+
+@keyframes certificate-loop {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 10px));
+  }
 }
 
 @keyframes setting {
@@ -126,6 +147,10 @@ html.dark #darkToggle:hover .horizon {
 }
 
 @layer utilities {
+  .animate-pause {
+    animation-play-state: paused;
+  }
+
   .hover-fx {
     @apply duration-300 ease-out border border-solid border-neutral-100 dark:border-neutral-800 group-hover:ring-4 group-hover:ring-neutral-50 dark:group-hover:ring-neutral-800;
   }
