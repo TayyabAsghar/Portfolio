@@ -1,16 +1,16 @@
 ---
-import about from "../data/about.json";
-import Layout from "../layouts/main.astro";
-import education from "../data/education.json";
-import experiences from "../data/experiences.json";
-import certificates from "../data/certificates.json";
-import beyondScreen from "../data/beyond-screen.json";
-import LetsConnect from "../components/lets-connect.astro";
-import PageHeading from "../components/page-heading.astro";
-import AboutEducation from "../components/about-education.astro";
-import AboutExperience from "../components/about-experience.astro";
-import VideoPlayer from "../components/widgets/video-player.astro";
-import AboutCertificate from "../components/about-certificate.astro";
+import about from "../../data/about.json";
+import Layout from "../../layouts/main.astro";
+import education from "../../data/education.json";
+import experiences from "../../data/experiences.json";
+import certificates from "../../data/certificates.json";
+import beyondScreen from "../../data/beyond-screen.json";
+import LetsConnect from "../../components/lets-connect.astro";
+import PageHeading from "../../components/page-heading.astro";
+import AboutEducation from "../../components/about-education.astro";
+import AboutExperience from "../../components/about-experience.astro";
+import VideoPlayer from "../../components/widgets/video-player.astro";
+import AboutCertificate from "../../components/about-certificate.astro";
 ---
 
 <Layout title="About Me | Tayyab Asghar">
@@ -200,21 +200,4 @@ import AboutCertificate from "../components/about-certificate.astro";
   </section>
 </Layout>
 
-<script>
-  const button = document.getElementById("certificate-view");
-  const gridTrack = document.getElementById("cert-track-grid");
-  const marqueeTrack = document.getElementById("cert-track-marquee");
-
-  let expanded = false;
-
-  button?.addEventListener("click", () => {
-    expanded = !expanded;
-
-    if (!button) return;
-
-    button.textContent = expanded ? "Hide" : "View all";
-
-    gridTrack?.classList.toggle("hidden", !expanded);
-    marqueeTrack?.classList.toggle("hidden", expanded);
-  });
-</script>
+<script src="../../assets/js/certificate-view-button.js"></script>

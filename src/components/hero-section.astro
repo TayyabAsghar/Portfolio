@@ -79,15 +79,18 @@ import WidgetMusicPlayer from "./widgets/music-player.astro";
           target="_blank"
         />
         <LinkButton
-          class="btn btn-secondary"
           text="Resume"
-          link="/resume.pdf"
           target="_blank"
+          link="/resume.pdf"
+          iconRight="download"
+          class="btn btn-secondary"
         />
       </div>
     </div>
+
     <div class="relative hidden md:block scale-[80%]">
       <WidgetProjects />
+
       <WidgetMusicPlayer tracks={music} />
     </div>
   </div>

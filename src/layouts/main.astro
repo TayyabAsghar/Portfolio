@@ -22,25 +22,26 @@ const { title } = Astro.props;
     <!-- Used to add dark mode right away, adding here prevents any flicker -->
     <script>
       if (typeof Storage !== "undefined") {
-        if (
+        const isDarkMode =
           localStorage.getItem("dark_mode") &&
-          localStorage.getItem("dark_mode") == "true"
-        ) {
-          document.documentElement.classList.add("dark");
-        }
+          localStorage.getItem("dark_mode") == "true";
+
+        if (isDarkMode) document.documentElement.classList.add("dark");
       }
     </script>
 
     <!-- Google tag (gtag.js) -->
     <script
-      is:inline
       async
+      is:inline
       src="https://www.googletagmanager.com/gtag/js?id=G-FE1RECDFFZ"></script>
+
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
+
       gtag("js", new Date());
 
       gtag("config", "G-FE1RECDFFZ");
