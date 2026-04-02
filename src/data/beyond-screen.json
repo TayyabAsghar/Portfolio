@@ -22,5 +22,11 @@
     "image": "/assets/images/about/gaming.jpg",
     "video": "/assets/videos/about/gaming.webm",
     "description": "Strategic thinking and fast reflexes through immersive digital world."
+  },
+  {
+    "title": "Cricket",
+    "image": "/assets/images/about/cricket.jpg",
+    "video": "/assets/videos/about/cricket.webm",
+    "description": "Teamwork and strategy in the beautiful game."
   }
 ]
