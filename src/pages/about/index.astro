@@ -1,5 +1,6 @@
 ---
 import about from "../../data/about.json";
+import { Icon } from "astro-icon/components";
 import Layout from "../../layouts/main.astro";
 import education from "../../data/education.json";
 import experiences from "../../data/experiences.json";
@@ -18,9 +19,11 @@ import AboutCertificate from "../../components/about-certificate.astro";
     <div class="relative my-10 w-full overflow-hidden rounded-xl aspect-video">
       <VideoPlayer
         overlay
+        volume={0.2}
         id="about-video"
         title="About Me"
         image="/assets/images/about.avif"
+        sound="/assets/sounds/about/rain.wav"
         video="/assets/videos/about/house-rainy-day.webm"
       />
     </div>
@@ -61,11 +64,18 @@ import AboutCertificate from "../../components/about-certificate.astro";
       </div>
     </div>
 
-    <h2
-      class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200 sm:text-3xl"
-    >
-      Education
-    </h2>
+    <div class="flex flex-col gap-3">
+      <h2
+        class="mt-3 text-2xl font-bold text-neutral-900 dark:text-neutral-100 sm:text-3xl"
+      >
+        Education
+      </h2>
+      <p
+        class="text-xs font-semibold uppercase tracking-[0.28em] text-neutral-500 dark:text-neutral-400"
+      >
+        Piece of paper
+      </p>
+    </div>
 
     <div class="px-5 pt-10">
       {
@@ -103,9 +113,20 @@ import AboutCertificate from "../../components/about-certificate.astro";
         <button
           id="certificate-view"
           type="button"
-          class="flex items-center gap-2 underline"
+          class="flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 border rounded-full hover:scale-105 bg-neutral-900 text-neutral-100 dark:bg-neutral-100 dark:text-neutral-900 border-transparent hover:border-neutral-600 dark:hover:border-neutral-300"
         >
-          View all
+          <span id="cert-view-text">View all</span>
+          <span class="relative w-4 h-4">
+            <Icon
+              name="eye"
+              class="absolute inset-0 w-4 h-4 transition-transform duration-300 icon-eye"
+            />
+
+            <Icon
+              name="eye-off"
+              class="absolute inset-0 w-4 h-4 transition-transform duration-300 icon-eye-off hidden"
+            />
+          </span>
         </button>
       </div>
 

@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon/components";
+
 interface Props {
   logo: string;
   role: string;
@@ -88,12 +90,26 @@ const isLeft = align === "left";
 
       {
         !!detailsPage && (
-          <>
-            <a class="text-blue-500 underline" href={detailsPage}>
-              more
-            </a>
-            ...
-          </>
+          <a
+            href={detailsPage}
+            class="ruby more-link relative inline-flex items-center gap-1 text-sm font-medium text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200 transition-colors duration-200"
+          >
+            {align === "right" && (
+              <Icon
+                name="chevron-left"
+                class="more-chevron-left w-3 h-3 animate-chevron-move-right"
+              />
+            )}
+
+            <span>more</span>
+
+            {align === "left" && (
+              <Icon
+                name="chevron-left"
+                class="more-chevron-right w-3 h-3 animate-chevron-move-left"
+              />
+            )}
+          </a>
         )
       }
     </div>

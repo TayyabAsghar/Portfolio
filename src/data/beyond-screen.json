@@ -3,30 +3,30 @@
     "title": "Chess",
     "image": "/assets/images/about/chess.jpg",
     "video": "/assets/videos/about/chess.webm",
-    "description": "Strategic thinking and patience in every move."
+    "description": "Where every move is a thought, and every thought shapes the game."
   },
   {
     "title": "Table Tennis",
     "image": "/assets/images/about/table-tennis.jpg",
     "video": "/assets/videos/about/table-tennis.webm",
-    "description": "Fast reflex and precision under pressure."
+    "description": "Milliseconds matter when the ball flies at 100mph."
   },
   {
     "title": "Running",
     "image": "/assets/images/about/running.avif",
     "video": "/assets/videos/about/running.webm",
-    "description": "Endurance and discipline of the long run."
+    "description": "Miles of solitude, liters of sweat, and endless horizons."
   },
   {
     "title": "Gaming",
     "image": "/assets/images/about/gaming.jpg",
     "video": "/assets/videos/about/gaming.webm",
-    "description": "Strategic thinking and fast reflexes through immersive digital world."
+    "description": "Virtual battles, real adrenaline, and the thrill of the comeback."
   },
   {
     "title": "Cricket",
     "image": "/assets/images/about/cricket.jpg",
     "video": "/assets/videos/about/cricket.webm",
-    "description": "Teamwork and strategy in the beautiful game."
+    "description": "The art of timing, patience, and the sweet sound of willow meeting leather."
   }
 ]

@@ -5,17 +5,37 @@
 :root {
   --background: #e5e7eb;
   --border-color: #111827;
+  --border-color-dark: #718096;
 }
 
-/* Add Your Custom CSS Here */
-#experience strong {
-  @apply font-medium underline underline-offset-4;
+/* Header Navigation */
+.nav-link {
+  @apply relative;
 }
 
-#education strong {
-  @apply font-medium underline underline-offset-4;
+.nav-link::after {
+  content: "";
+  @apply absolute bottom-0 left-1/2 w-0 h-px bg-current transition-all duration-300 ease-out -translate-x-1/2;
 }
 
+.nav-link:hover::after {
+  @apply w-full;
+}
+
+.nav-link:active::after {
+  @apply w-full bg-current;
+}
+
+#menu {
+  @apply animate-menu-slide-in;
+}
+
+#openMenu:hover,
+#closeMenu:hover {
+  @apply scale-110;
+}
+
+/* Dark Mode Toggle */
 #sun {
   transform: translate3d(0, 0px, 0);
 }
@@ -33,79 +53,40 @@
 }
 
 html.dark #darkToggle:hover .horizon {
-  border-color: #718096 !important;
+  border-color: var(--border-color-dark) !important;
 }
 
 .horizon .setting {
-  animation: 1s ease 0s 1 setting;
+  @apply animate-setting;
 }
 
 .horizon .rising {
-  animation: 1s ease 0s 1 rising;
+  @apply animate-rising;
 }
 
+/* Experience & Education */
+#experience strong {
+  @apply font-medium underline underline-offset-4;
+}
+
+#education strong {
+  @apply font-medium underline underline-offset-4;
+}
+
+/* Marquee */
 .enable-marquee .marquee-content {
-  animation: scroll 10s linear infinite;
+  @apply animate-marquee-scroll;
 }
 
 .certificate-marquee:hover .certificate-track {
-  animation-play-state: paused;
+  @apply animate-pause;
 }
 
 .certificate-track {
-  animation: certificate-loop 34s linear infinite;
+  @apply animate-certificate-loop;
 }
 
-@keyframes certificate-loop {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(calc(-50% - 10px));
-  }
-}
-
-@keyframes setting {
-  0% {
-    transform: translate3d(0, 10px, 0);
-  }
-
-  40% {
-    transform: translate3d(0, -2px, 0);
-  }
-
-  to {
-    transform: translate3d(0, 30px, 0);
-  }
-}
-
-@keyframes rising {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 30px, 0);
-  }
-
-  40% {
-    opacity: 1;
-    transform: translate3d(0, -2px, 0);
-  }
-
-  to {
-    opacity: 1;
-    transform: translate3d(0, 10px, 0);
-  }
-}
-
-@keyframes scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(calc(-100% - 24px));
-  }
-}
-
+/* Widgets */
 #widget-music-player {
   @apply relative z-20 top-5 left-20;
 }
@@ -114,7 +95,30 @@ html.dark #darkToggle:hover .horizon {
   @apply relative z-10 top-20;
 }
 
+/* Experience "more" link */
+.more-link {
+  @apply relative;
+}
+
+.more-link::after {
+  content: "";
+  @apply absolute bottom-0 left-1/2 w-0 h-px bg-current transition-all duration-300 ease-out -translate-x-1/2;
+}
+
+.more-link:hover::after {
+  @apply w-full;
+}
+
+.more-link:hover .more-chevron-left {
+  @apply animate-chevron-move-right;
+}
+
+.more-link:hover .more-chevron-right {
+  @apply animate-chevron-move-left;
+}
+
 @layer components {
+  /* Audio Player Seek Slider */
   [data-audio-player] .seek-slider {
     @apply w-full appearance-none bg-transparent;
   }
@@ -147,10 +151,25 @@ html.dark #darkToggle:hover .horizon {
 }
 
 @layer utilities {
+  /* Ruby Annotations */
+  .ruby {
+    display: ruby;
+  }
+
+  .ruby-base {
+    display: ruby-base;
+  }
+
+  .ruby-text {
+    display: ruby-text;
+  }
+
+  /* Animation */
   .animate-pause {
     animation-play-state: paused;
   }
 
+  /* Buttons */
   .hover-fx {
     @apply duration-300 ease-out border border-solid border-neutral-100 dark:border-neutral-800 group-hover:ring-4 group-hover:ring-neutral-50 dark:group-hover:ring-neutral-800;
   }
@@ -171,6 +190,7 @@ html.dark #darkToggle:hover .horizon {
     @apply !bg-transparent hover:!bg-transparent dark:!bg-transparent dark:hover:!bg-transparent !border-neutral-900 hover:!border-neutral-600 dark:!border-neutral-100 dark:hover:!border-neutral-300 !text-neutral-900 hover:!text-neutral-600 dark:!text-neutral-100 dark:hover:!text-neutral-300;
   }
 
+  /* Misc */
   .project-screenshot {
     @apply ring-2 ring-slate-100 p-3 dark:ring-slate-700;
   }
@@ -183,6 +203,7 @@ html.dark #darkToggle:hover .horizon {
     @apply bg-neutral-200/50 dark:bg-neutral-700/50;
   }
 
+  /* Marquee */
   .marquee {
     @apply overflow-hidden select-none min-w-0;
   }
@@ -204,7 +225,7 @@ html.dark #darkToggle:hover .horizon {
   }
 
   .marquee:hover .marquee-animation {
-    animation: scroll 10s linear infinite;
+    @apply animate-marquee-scroll;
   }
 
   .marquee:hover .marquee-content {
