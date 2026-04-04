@@ -1,0 +1,48 @@
+---
+
+---
+
+<!-- Canal water background -->
+<div
+  class="absolute left-5 md:left-1/2 top-0 h-full w-14 -translate-x-1/2 overflow-hidden z-0 pointer-events-none [mask-image:linear-gradient(to_bottom,transparent,black_5%,black_95%,transparent)]"
+>
+  <div
+    class="relative h-full w-full [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]"
+  >
+    <!-- Canal Borders (Shores) -->
+    <div
+      class="absolute left-0 top-0 h-full w-[2px] bg-neutral-300 dark:bg-neutral-800"
+    >
+    </div>
+    <div
+      class="absolute right-0 top-0 h-full w-[2px] bg-neutral-300 dark:bg-neutral-800"
+    >
+    </div>
+
+    <!-- Layered Moving Water Patterns -->
+    <div class="water-pattern-layer-1 absolute inset-0 z-[-1]"></div>
+    <div class="water-pattern-layer-2 absolute inset-0 z-[-1]"></div>
+
+    <!-- Base Water Background (Project Theme) -->
+    <div class="absolute inset-0 bg-neutral-100/60 dark:bg-neutral-900/40">
+    </div>
+  </div>
+</div>
+
+<div
+  id="odyssey-ship"
+  class="pointer-events-none absolute flex items-center justify-center left-5 md:left-1/2 top-0 z-0 translate-x-1/2 translate-y-0 will-change-transform"
+  aria-hidden="true"
+>
+  <div
+    class="ship-container scale-75 md:scale-100 origin-center transition-transform"
+  >
+    <img
+      width="50"
+      height="65"
+      alt="Odyssey Ship"
+      src="/assets/images/about/ship.png"
+      class="rotate-180 drop-shadow-[0_15px_25px_rgba(0,0,0,0.3)] dark:drop-shadow-[0_15px_30px_rgba(0,0,0,0.5)]"
+    />
+  </div>
+</div>

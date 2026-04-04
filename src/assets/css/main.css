@@ -235,4 +235,56 @@ html.dark #darkToggle:hover .horizon {
   .marquee:hover .marquee-copy {
     @apply block;
   }
+
+  /* Professional Odyssey Canal & Ship */
+  .water-pattern-layer-1 {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 100'%3E%3Cpath d='M10 10 L10 30 M20 50 L20 70 M30 80 L30 100 M40 20 L40 40' fill='none' stroke='%23a3a3a3' stroke-width='1.5' stroke-linecap='round' opacity='0.5'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    @apply animate-water-flow;
+  }
+
+  .water-pattern-layer-2 {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 80'%3E%3Cpath d='M5 45 L5 60 M15 5 L15 20 M25 35 L25 50 M35 65 L35 80' fill='none' stroke='%23d4d4d4' stroke-width='1.2' stroke-linecap='round' opacity='0.4'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    @apply animate-water-flow-fast;
+  }
+
+  html.dark .water-pattern-layer-1 {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 100'%3E%3Cpath d='M10 10 L10 30 M20 50 L20 70 M30 80 L30 100 M40 20 L40 40' fill='none' stroke='%23525252' stroke-width='1.5' stroke-linecap='round' opacity='0.4'/%3E%3C/svg%3E");
+  }
+
+  html.dark .water-pattern-layer-2 {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 80'%3E%3Cpath d='M5 45 L5 60 M15 5 L15 20 M25 35 L25 50 M35 65 L35 80' fill='none' stroke='%23404040' stroke-width='1.2' stroke-linecap='round' opacity='0.3'/%3E%3C/svg%3E");
+  }
+
+  /* Interactive Elements */
+  .passed-logo {
+    @apply ring-4 ring-neutral-200 dark:ring-neutral-800 !border-neutral-400 dark:!border-neutral-500 scale-110 shadow-lg shadow-neutral-300 dark:shadow-neutral-900;
+  }
+
+  .ship-container {
+    @apply animate-ship-bob flex items-center justify-center;
+  }
+
+  .sail-animate {
+    @apply animate-sail-sway;
+    transform-origin: 32px 30px;
+  }
+
+  .sail-animate-delayed {
+    @apply animate-sail-sway-delayed;
+    transform-origin: 32px 48px;
+  }
+
+  .wake-ripple {
+    @apply animate-wake-ripple;
+  }
+
+  .wake-ripple-delayed {
+    @apply animate-wake-ripple-delayed;
+  }
+
+  .experience-item > div.absolute.w-px {
+    @apply hidden;
+  }
 }

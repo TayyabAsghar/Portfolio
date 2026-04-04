@@ -1,5 +1,6 @@
 ---
 import Button from "./button.astro";
+import about from "../data/about.json";
 ---
 
 <section
@@ -60,10 +61,10 @@ import Button from "./button.astro";
               Email
             </p>
             <a
-              href="mailto:muhammadtayyabasghar@gmail.com"
+              href={`mailto:${about.email}`}
               class="mt-1 block max-w-full break-all text-base font-medium text-neutral-900 transition hover:text-neutral-600 dark:text-neutral-100 dark:hover:text-neutral-300 sm:text-lg"
             >
-              muhammadtayyabasghar@gmail.com
+              {about.email}
             </a>
           </div>
         </div>
@@ -71,9 +72,8 @@ import Button from "./button.astro";
     </div>
 
     <form
-      method="post"
-      enctype="text/plain"
-      action="mailto:muhammadtayyabasghar@gmail.com"
+      id="contact-form"
+      data-email={about.email}
       class="rounded-[1.75rem] border border-neutral-200 bg-white p-6 shadow-sm dark:border-neutral-800 dark:bg-neutral-950"
     >
       <div class="space-y-5">
@@ -120,7 +120,15 @@ import Button from "./button.astro";
         </label>
       </div>
 
-      <Button type="submit" class="mt-6 px-6 py-4" text="Send Inquiry" />
+      <Button
+        id="submit-btn"
+        type="submit"
+        class="mt-6 px-6 py-4 disabled:cursor-not-allowed disabled:opacity-50"
+        text="Send Inquiry"
+        disabled
+      />
     </form>
   </div>
 </section>
+
+<script src="../assets/js/contact-form.js"></script>

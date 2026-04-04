@@ -12,11 +12,14 @@ import AboutEducation from "../../components/about-education.astro";
 import AboutExperience from "../../components/about-experience.astro";
 import VideoPlayer from "../../components/widgets/video-player.astro";
 import AboutCertificate from "../../components/about-certificate.astro";
+import ProfessionalOdysseyShip from "../../components/professional-odyssey-ship.astro";
 ---
 
 <Layout title="About Me | Tayyab Asghar">
   <section class="relative z-20 max-w-5xl mx-auto my-12 px-7 lg:px-0">
-    <div class="relative my-10 w-full overflow-hidden rounded-xl aspect-video">
+    <div
+      class="relative my-10 w-full overflow-hidden rounded-xl aspect-video opacity-0 reveal-up"
+    >
       <VideoPlayer
         overlay
         volume={0.2}
@@ -28,10 +31,12 @@ import AboutCertificate from "../../components/about-certificate.astro";
       />
     </div>
 
-    <PageHeading title="About Me" description={about.me} />
+    <div class="opacity-0 reveal-up delay-200">
+      <PageHeading title="About Me" description={about.me} />
+    </div>
 
     <div class="mt-14">
-      <div class="mx-auto max-w-2xl text-center">
+      <div class="mx-auto max-w-2xl text-center opacity-0 reveal-up">
         <h2
           class="mt-3 text-2xl font-bold text-neutral-900 dark:text-neutral-200 sm:text-3xl"
         >
@@ -46,7 +51,9 @@ import AboutCertificate from "../../components/about-certificate.astro";
         </p>
       </div>
 
-      <div class="mt-12 space-y-0">
+      <div class="relative mt-12 space-y-0" id="odyssey-timeline">
+        <ProfessionalOdysseyShip />
+
         {
           experiences.map((experience, index) => (
             <AboutExperience
@@ -64,7 +71,7 @@ import AboutCertificate from "../../components/about-certificate.astro";
       </div>
     </div>
 
-    <div class="flex flex-col gap-3">
+    <div class="flex flex-col gap-3 opacity-0 reveal-up">
       <h2
         class="mt-3 text-2xl font-bold text-neutral-900 dark:text-neutral-100 sm:text-3xl"
       >
@@ -79,8 +86,10 @@ import AboutCertificate from "../../components/about-certificate.astro";
 
     <div class="px-5 pt-10">
       {
-        education.map((edu) => (
-          <div class="pb-10 border-l border-gray-200 dark:border-neutral-700">
+        education.map((edu, index) => (
+          <div
+            class={`pb-10 border-l border-gray-200 dark:border-neutral-700 opacity-0 reveal-up delay-[${index * 150}ms`}
+          >
             <AboutEducation
               logo={edu.logo}
               dates={edu.dates}
@@ -96,7 +105,7 @@ import AboutCertificate from "../../components/about-certificate.astro";
     </div>
 
     <section class="mt-16" id="certificates-section">
-      <div class="mb-8 flex items-center justify-between">
+      <div class="mb-8 flex items-center justify-between opacity-0 reveal-up">
         <div class="flex flex-col gap-3">
           <h2
             class="mt-3 text-2xl font-bold text-neutral-900 dark:text-neutral-100 sm:text-3xl"
@@ -130,7 +139,9 @@ import AboutCertificate from "../../components/about-certificate.astro";
         </button>
       </div>
 
-      <div class="certificate-marquee overflow-hidden">
+      <div
+        class="certificate-marquee overflow-hidden opacity-0 reveal-up delay-200"
+      >
         <div
           id="cert-track-marquee"
           class="certificate-track flex w-max gap-5 py-3"
@@ -180,7 +191,7 @@ import AboutCertificate from "../../components/about-certificate.astro";
     </section>
 
     <section class="mt-20">
-      <div class="mb-8 flex flex-col gap-3">
+      <div class="mb-8 flex flex-col gap-3 opacity-0 reveal-up">
         <h2
           class="mt-3 text-2xl font-bold text-neutral-900 dark:text-neutral-100 sm:text-3xl"
         >
@@ -195,8 +206,8 @@ import AboutCertificate from "../../components/about-certificate.astro";
 
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {
-          beyondScreen.map((item) => (
-            <article>
+          beyondScreen.map((item, index) => (
+            <article class={`opacity-0 reveal-up delay-[${index * 150}ms]`}>
               <div class="relative overflow-hidden rounded-xl border aspect-video border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 my-10 w-full">
                 <VideoPlayer
                   id="about-video"
@@ -217,8 +228,12 @@ import AboutCertificate from "../../components/about-certificate.astro";
       </div>
     </section>
 
-    <LetsConnect />
+    <div class="opacity-0 reveal-up">
+      <LetsConnect />
+    </div>
   </section>
 </Layout>
 
+<script src="../../assets/js/ship.js"></script>
+<script src="../../assets/js/animate-on-scroll.js"></script>
 <script src="../../assets/js/certificate-view-button.js"></script>

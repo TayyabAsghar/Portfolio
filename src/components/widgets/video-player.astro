@@ -61,7 +61,7 @@ const { id, title, video, image, sound, volume = 1, overlay } = Astro.props;
     )?.parentElement;
     if (!audioA || !audioB || !videoContainer) return;
 
-    const volume = parseFloat(audioA.dataset.volume || '1');
+    const volume = parseFloat(audioA.dataset.volume || "1");
     audioA.volume = volume;
     audioB.volume = 0;
 
@@ -78,17 +78,17 @@ const { id, title, video, image, sound, volume = 1, overlay } = Astro.props;
 
       if (timeUntilEnd <= fadeDuration && timeUntilEnd > 0) {
         isFading = true;
-        
+
         passiveAudio.currentTime = 0;
         passiveAudio.volume = volume;
         passiveAudio.play().catch(() => {});
 
         const fadeInterval = setInterval(() => {
           const remaining = activeAudio.duration - activeAudio.currentTime;
-          const progress = 1 - (remaining / fadeDuration);
-          
+          const progress = 1 - remaining / fadeDuration;
+
           const easedProgress = progress * progress * (3 - 2 * progress);
-          
+
           activeAudio.volume = volume * (1 - easedProgress);
           passiveAudio.volume = volume * easedProgress;
 
@@ -96,7 +96,7 @@ const { id, title, video, image, sound, volume = 1, overlay } = Astro.props;
             clearInterval(fadeInterval);
             activeAudio.pause();
             activeAudio.currentTime = 0;
-            
+
             [activeAudio, passiveAudio] = [passiveAudio, activeAudio];
             isFading = false;
           }
@@ -104,7 +104,7 @@ const { id, title, video, image, sound, volume = 1, overlay } = Astro.props;
       }
     };
 
-    activeAudio.addEventListener('timeupdate', fadeLoop);
+    activeAudio.addEventListener("timeupdate", fadeLoop);
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -116,9 +116,28 @@ const { id, title, video, image, sound, volume = 1, overlay } = Astro.props;
           }
         });
       },
-      { threshold: 0.5 },
+      { threshold: 0.3 },
     );
 
     observer.observe(videoContainer);
+
+    let isTabVisible = true;
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        activeAudio.pause();
+        passiveAudio.pause();
+        isTabVisible = false;
+      } else {
+        const shouldPlay =
+          videoContainer.getBoundingClientRect().top >=
+          -videoContainer.offsetHeight * 0.3;
+        if (shouldPlay) activeAudio.play().catch(() => {});
+
+        isTabVisible = true;
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
   </script>
 </>

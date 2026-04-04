@@ -26,7 +26,7 @@ const {
 const isLeft = align === "left";
 ---
 
-<article id="experience" class="relative mx-auto max-w-4xl py-4 md:py-8">
+<article class:list={["relative mx-auto max-w-5xl py-4 md:py-8 experience-item opacity-0", isLeft ? "reveal-left" : "reveal-right"]}>
   <div
     class="absolute left-5 top-0 h-full w-px bg-neutral-200 dark:bg-neutral-800 md:left-1/2 md:-translate-x-1/2"
   >
@@ -40,7 +40,7 @@ const isLeft = align === "left";
   >
     <div class="relative flex items-start justify-center md:hidden">
       <div
-        class="z-10 flex h-10 w-10 items-center justify-center rounded-2xl border border-neutral-200 bg-white shadow-sm dark:border-neutral-700 dark:bg-neutral-950"
+        class="company-logo-container z-10 flex h-10 w-10 items-center justify-center rounded-2xl border border-neutral-200 bg-white shadow-sm transition-all duration-300 dark:border-neutral-700 dark:bg-neutral-950"
       >
         <a href={website} target="_blank" rel="noreferrer" class="block">
           <img src={logo} alt={company} class="h-5 w-5 object-contain" />
@@ -118,7 +118,7 @@ const isLeft = align === "left";
       class="relative hidden h-full items-start justify-center md:col-start-2 md:row-start-1 md:flex"
     >
       <div
-        class="z-10 flex h-12 w-12 items-center justify-center rounded-2xl border border-neutral-200 bg-white shadow-sm transition duration-300 hover:scale-105 dark:border-neutral-700 dark:bg-neutral-950"
+        class="company-logo-container z-10 flex h-12 w-12 items-center justify-center rounded-2xl border border-neutral-200 bg-white shadow-sm transition-all duration-300 hover:scale-105 dark:border-neutral-700 dark:bg-neutral-950"
       >
         <a href={website} target="_blank" rel="noreferrer" class="block">
           <img src={logo} alt={company} class="h-6 w-6 object-contain" />

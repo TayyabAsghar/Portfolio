@@ -1,7 +1,9 @@
 ---
+import about from "../data/about.json";
 import Logo from "../components/logo.astro";
 import { Icon } from "astro-icon/components";
 import LinkButton from "./link-button.astro";
+
 const currentYear = new Date().getFullYear();
 ---
 
@@ -21,10 +23,10 @@ const currentYear = new Date().getFullYear();
       class="flex flex-col sm:flex-row items-center justify-center mt-4 gap-5 sm:ml-auto sm:mt-0 sm:justify-start"
     >
       <LinkButton
-        text="Connect"
-        link="mailto:muhammadtayyabasghar@gmail.com"
-        target="_blank"
         class="!mt-0"
+        text="Connect"
+        target="_blank"
+        link={`mailto:${about.email}`}
       />
 
       <div class="flex items-center gap-5">
