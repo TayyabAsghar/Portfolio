@@ -16,18 +16,57 @@
     if (!groupsData) return;
 
     const GROUPS = JSON.parse(groupsData);
-    const DRILL_RX = [150, 240, 320, 390];
-    const DRILL_RY = [60, 95, 130, 160];
-    const DRILL_SPD = [14, 20, 27, 34];
     const TILT_X = 25;
     const TP = 44;
 
     let solarLis = null;
     let isDrillDown = false;
 
+    let currentRx = 350;
+    let currentRy = 140;
+
     function getEllipsePathStr(rx, ry) {
       return `M -${rx} 0 A ${rx} ${ry} 0 1 1 ${rx} 0 A ${rx} ${ry} 0 1 1 -${rx} 0`;
     }
+
+    function updateRings() {
+      const w = window.innerWidth;
+      // Define breakpoints for the physical radii
+      if (w < 768) {
+        currentRx = 175;
+        currentRy = 70;
+      } else {
+        currentRx = 350;
+        currentRy = 140;
+      }
+
+      const pathStr = getEllipsePathStr(currentRx, currentRy);
+
+      // Update static orbital lines
+      wrapEl.querySelectorAll(".sol-ring-li svg").forEach((svg) => {
+        svg.setAttribute(
+          "viewBox",
+          `-${currentRx} -${currentRy} ${currentRx * 2} ${currentRy * 2}`,
+        );
+        svg.style.setProperty("--rx-val", currentRx.toString());
+        svg.style.setProperty("--ry-val", currentRy.toString());
+        const path = svg.querySelector("path");
+        if (path) path.setAttribute("d", pathStr);
+      });
+
+      // Update planets' motion paths
+      wrapEl.querySelectorAll(".os-item").forEach((item) => {
+        item.style.setProperty("--path", `path('${pathStr}')`);
+      });
+    }
+
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(updateRings, 100);
+    });
+
+    updateRings();
 
     function attachSolarClicks() {
       wrapEl.querySelectorAll(".os-gplanet").forEach((btn) => {
@@ -48,14 +87,27 @@
       const skills = group.skills;
       const numRings = Math.min(4, Math.ceil(skills.length / 5));
       const rings = Array.from({ length: numRings }, () => []);
-      skills.forEach((s, i) => rings[i % numRings].push(s));
+
+      if (numRings > 1) {
+        rings[0].push(skills[0], skills[1]);
+        const rest = skills.slice(2);
+        const outerRings = numRings - 1;
+        rest.forEach((s, i) => {
+          rings[1 + (i % outerRings)].push(s);
+        });
+      } else skills.forEach((s) => rings[0].push(s));
 
       const hubLi = wrapEl.querySelector(".os-hub-li");
+      const baseRx = currentRx;
+      const baseRy = currentRy;
+      const drillRx = [baseRx * 0.4, baseRx * 0.7, baseRx * 0.9, baseRx * 1.1];
+      const drillRy = [baseRy * 0.7, baseRy * 1.0, baseRy * 1.3, baseRy * 1.6];
+      const speedArr = [14, 20, 27, 34];
 
       rings.forEach((ring, ri) => {
-        const rx = DRILL_RX[ri],
-          ry = DRILL_RY[ri];
-        const speed = DRILL_SPD[ri];
+        const rx = drillRx[ri],
+          ry = drillRy[ri];
+        const speed = speedArr[ri];
         const pathStr = getEllipsePathStr(rx, ry);
 
         const li = document.createElement("li");
@@ -70,45 +122,30 @@
           "pointer-events-none",
         );
         li.style.zIndex = (20 - ri).toString();
-        li.style.transform = `translate(-50%, -50%) rotateX(${TILT_X}deg)`;
+        li.style.setProperty("--rx", `${TILT_X}deg`);
+        li.style.setProperty("--rz", `0deg`);
+        li.style.setProperty("--rx-neg", `-${TILT_X}deg`);
+        li.style.setProperty("--rz-neg", `0deg`);
 
         const pathDiv = document.createElement("div");
-        pathDiv.classList.add(
-          "absolute",
-          "top-1/2",
-          "left-1/2",
-          "-translate-x-1/2",
-          "-translate-y-1/2",
-          "border",
-          "border-dashed",
-          "rounded-[50%]",
-          "pointer-events-none",
-        );
-        pathDiv.style.width = `${rx * 2}px`;
-        pathDiv.style.height = `${ry * 2}px`;
+        pathDiv.classList.add("os-path-svg", "border", "border-dashed", "rounded-[50%]");
+        pathDiv.style.setProperty("--rx-val", rx.toString());
+        pathDiv.style.setProperty("--ry-val", ry.toString());
         pathDiv.style.borderColor = `${group.color}60`;
         li.appendChild(pathDiv);
 
         ring.forEach((skill, j) => {
           const delay = -(j / ring.length) * speed;
           const item = document.createElement("div");
-          item.classList.add(
-            "os-item",
-            "w-0",
-            "h-0",
-            "[transform-style:preserve-3d]",
-            "pointer-events-auto",
-          );
-          item.style.offsetPath = `path('${pathStr}')`;
-          item.style.animationDuration = `${speed}s`;
-          item.style.animationDelay = `${delay}s`;
+          item.classList.add("os-item", "pointer-events-auto");
+          item.style.setProperty("--path", `path('${pathStr}')`);
+          item.style.setProperty("--spd", `${speed}s`);
+          item.style.setProperty("--dly", `${delay}s`);
 
           const counter = document.createElement("div");
-          counter.classList.add(
-            "[transform-style:preserve-3d]",
-            "pointer-events-none",
-          );
-          counter.style.transform = `translate(-50%, -50%) rotateX(-${TILT_X}deg)`;
+          counter.classList.add("os-counter");
+          counter.style.setProperty("--rx-neg", `-${TILT_X}deg`);
+          counter.style.setProperty("--rz-neg", `0deg`);
 
           const a = document.createElement("a");
           a.classList.add("os-tplanet", "pointer-events-auto");
@@ -133,10 +170,18 @@
       hubDefaultExtra.classList.add("hidden");
       hubDynamicIconShape.classList.remove("hidden");
       hubDynamicIconShape.innerHTML = group.icon;
-      hubDynamicIconShape.setAttribute("stroke", group.color);
+      const innerSvg = hubDynamicIconShape.querySelector("svg");
+
+      if (innerSvg) {
+        innerSvg.setAttribute("width", "24");
+        innerSvg.setAttribute("height", "24");
+      }
 
       hubName.textContent = group.heading;
       hubName.style.color = group.color;
+      const hubSvg = document.getElementById("hub-svg");
+      if (hubSvg) hubSvg.style.color = group.color;
+
       if (hubSub) hubSub.textContent = group.description;
       hubCore.style.borderColor = group.color + "50";
       hubGlow.style.background = `radial-gradient(circle,${group.color}18 0%,transparent 70%)`;
@@ -152,13 +197,15 @@
       wrapEl.querySelectorAll(".drill-ring-li").forEach((li) => li.remove());
       if (solarLis) solarLis.forEach((li) => li.classList.remove("hidden"));
 
-      // Reset Hub
       hubDefaultPath.classList.remove("hidden");
       hubDefaultExtra.classList.remove("hidden");
       hubDynamicIconShape.classList.add("hidden");
 
       hubName.textContent = "Fullstack";
       hubName.style.color = "#6366f1";
+      const hubSvg = document.getElementById("hub-svg");
+      if (hubSvg) hubSvg.style.color = "#6366f1";
+
       if (hubSub) hubSub.textContent = "Engineering";
       hubCore.style.borderColor = "rgba(99,102,241,0.28)";
       hubGlow.style.background =

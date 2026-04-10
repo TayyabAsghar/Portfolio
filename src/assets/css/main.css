@@ -289,16 +289,33 @@ html.dark #darkToggle:hover .horizon {
   }
 
   /* Planetary System (Technologies) */
+  /* Dynamic orbital system scaling */
   .os-root {
-    @apply relative flex items-center justify-center w-full h-[680px] overflow-visible my-10 lg:my-16;
+    @apply relative flex items-center justify-center w-full overflow-visible my-4 lg:my-16;
+    height: 650px;
+  }
+
+  @media (max-width: 768px) {
+    .os-root {
+      height: 320px;
+      @apply my-2;
+    }
   }
 
   .os-wrap {
     @apply relative list-none p-0 m-0 w-[700px] h-[700px];
+    transform-origin: center center;
+  }
+
+  @media (max-width: 768px) {
+    .os-wrap {
+      @apply w-[400px] h-[400px];
+    }
   }
 
   .os-wrap > li {
-    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+    @apply absolute top-1/2 left-1/2 w-0 h-0 -translate-x-1/2 -translate-y-1/2;
+    transform: rotateZ(var(--rz, 0deg)) rotateX(var(--rx, 0deg));
   }
 
   .os-ring {
@@ -306,9 +323,23 @@ html.dark #darkToggle:hover .horizon {
   }
 
   .os-item {
-    @apply absolute block top-0 left-0 w-1 h-1 animate-orbit;
+    @apply absolute top-0 left-0 w-0 h-0 animate-orbit [transform-style:preserve-3d];
+    offset-path: var(--path);
+    animation-duration: var(--spd);
+    animation-delay: var(--dly);
     offset-rotate: 0deg;
     offset-anchor: center center;
+  }
+
+  .os-counter {
+    @apply [transform-style:preserve-3d] !overflow-visible;
+    transform: rotateX(var(--rx-neg, 0deg)) rotateZ(var(--rz-neg, 0deg));
+  }
+
+  .os-path-svg {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 overflow-visible pointer-events-none;
+    width: calc(var(--rx-val) * 2px);
+    height: calc(var(--ry-val) * 2px);
   }
 
   /* Shared planet buttons */
@@ -323,18 +354,41 @@ html.dark #darkToggle:hover .horizon {
   }
 
   .os-gplanet {
-    @apply flex-col items-center justify-center p-1.5 w-[52px] h-[52px] relative;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1), inset 0 2px 4px 0 rgb(255 255 255 / 0.05);
+    @apply absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center p-0 w-[60px] h-[60px] transition-all duration-300 gap-1;
+    transform-style: preserve-3d;
     background: linear-gradient(145deg, #ffffff, #f3f4f6);
+    box-shadow:
+      0 4px 6px -1px rgb(0 0 0 / 0.1),
+      inset 0 2px 4px 0 rgb(255 255 255 / 0.05);
   }
 
   html.dark .os-gplanet {
     background: linear-gradient(145deg, #171717, #0a0a0a);
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.4), inset 0 1px 1px 0 rgb(255 255 255 / 0.05);
+    box-shadow:
+      0 10px 15px -3px rgb(0 0 0 / 0.4),
+      inset 0 1px 1px 0 rgb(255 255 255 / 0.05);
   }
 
   .gp-icon {
-    @apply w-4 h-4 text-neutral-600 dark:text-neutral-400 mb-0.5;
+    @apply w-[26px] h-[26px] text-neutral-800 dark:text-neutral-100 flex items-center justify-center relative flex-shrink-0 z-10;
+  }
+
+  .gp-icon svg {
+    @apply block !h-full !w-full;
+    fill: currentColor;
+  }
+
+  /* Responsive Planet Sizing */
+  @media (max-width: 768px) {
+    .os-gplanet {
+      @apply w-[44px] h-[44px] p-1;
+    }
+    .os-gplanet span {
+      @apply text-[10px];
+    }
+    .gp-icon {
+      @apply w-[18px] h-[18px];
+    }
   }
 
   .gp-count {
@@ -367,7 +421,7 @@ html.dark #darkToggle:hover .horizon {
 
   /* Central Hub */
   .os-hub {
-    @apply relative w-24 h-24 sm:w-[100px] sm:h-[100px];
+    @apply relative w-24 h-24 sm:w-[100px] sm:h-[100px] -translate-x-1/2 -translate-y-1/2;
   }
 
   .os-hub-glow {
@@ -391,6 +445,10 @@ html.dark #darkToggle:hover .horizon {
     @apply text-[0.38rem] text-neutral-400 text-center leading-relaxed max-w-[76px];
   }
 
+  #hub-dynamic-icon svg {
+    @apply w-full h-full block;
+  }
+
   .os-hub[style*="cursor: pointer"]:hover {
     @apply scale-105;
   }
@@ -398,15 +456,5 @@ html.dark #darkToggle:hover .horizon {
   .os-hub[style*="cursor: pointer"]:hover .os-hub-glow {
     @apply -inset-6 opacity-100;
     transition: all 0.3s ease;
-  }
-
-  @media (max-width: 580px) {
-    .os-root {
-      @apply h-[380px];
-    }
-    .os-wrap {
-      @apply scale-[0.65];
-      transform-origin: center center;
-    }
   }
 }
