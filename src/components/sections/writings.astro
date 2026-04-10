@@ -1,7 +1,7 @@
 ---
-import ListPosts from "./list-posts.astro";
-import LinkButton from "./link-button.astro";
-import SectionHeader from "./section-header.astro";
+import LinkButton from "../ui/link-button.astro";
+import ListPosts from "../shared/list-posts.astro";
+import SectionHeader from "../ui/section-header.astro";
 ---
 
 <section id="writings" class="max-w-6xl mx-auto px-7 lg:px-0">
@@ -12,7 +12,7 @@ import SectionHeader from "./section-header.astro";
 
   <div class="w-full mx-auto xl:px-0">
     <div class="flex flex-col items-center pb-7">
-      <ListPosts count="3" />
+      <ListPosts count={3} />
     </div>
   </div>
 

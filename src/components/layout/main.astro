@@ -1,8 +1,8 @@
 ---
-import "../assets/css/main.css";
-import Footer from "../components/footer.astro";
-import Header from "../components/header.astro";
-import SquareLines from "../components/square-lines.astro";
+import "../../assets/css/main.css";
+import Footer from "./footer.astro";
+import Header from "./header.astro";
+import SquareLines from "../backgrounds/square-lines.astro";
 
 interface Props {
   title: string;
@@ -47,7 +47,7 @@ const { title } = Astro.props;
       gtag("config", "G-FE1RECDFFZ");
     </script>
 
-    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.png" />
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.png" />
     <Fragment set:html={import.meta.env.HEADER_INJECT} />
   </head>
 
@@ -64,7 +64,7 @@ const { title } = Astro.props;
 
     <Footer />
 
-    <script src="../assets/js/main.js"></script>
+    <script src="../../assets/js/main.js"></script>
 
     <Fragment set:html={import.meta.env.FOOTER_INJECT} />
   </body>
