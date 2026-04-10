@@ -137,7 +137,7 @@
 
       hubName.textContent = group.heading;
       hubName.style.color = group.color;
-      hubSub.textContent = group.description;
+      if (hubSub) hubSub.textContent = group.description;
       hubCore.style.borderColor = group.color + "50";
       hubGlow.style.background = `radial-gradient(circle,${group.color}18 0%,transparent 70%)`;
 
@@ -159,7 +159,7 @@
 
       hubName.textContent = "Fullstack";
       hubName.style.color = "#6366f1";
-      hubSub.textContent = "Engineering";
+      if (hubSub) hubSub.textContent = "Engineering";
       hubCore.style.borderColor = "rgba(99,102,241,0.28)";
       hubGlow.style.background =
         "radial-gradient(circle,rgba(99,102,241,0.12)0%,transparent 70%)";
