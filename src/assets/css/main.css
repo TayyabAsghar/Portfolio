@@ -287,4 +287,126 @@ html.dark #darkToggle:hover .horizon {
   .experience-item > div.absolute.w-px {
     @apply hidden;
   }
+
+  /* Planetary System (Technologies) */
+  .os-root {
+    @apply relative flex items-center justify-center w-full h-[680px] overflow-visible my-10 lg:my-16;
+  }
+
+  .os-wrap {
+    @apply relative list-none p-0 m-0 w-[700px] h-[700px];
+  }
+
+  .os-wrap > li {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+  }
+
+  .os-ring {
+    @apply relative list-none p-0 m-0 border border-neutral-800/10 dark:border-white/10 rounded-full transition-[border-color] duration-500;
+  }
+
+  .os-item {
+    @apply absolute block top-0 left-0 w-1 h-1 animate-orbit;
+    offset-rotate: 0deg;
+    offset-anchor: center center;
+  }
+
+  /* Shared planet buttons */
+  .os-gplanet,
+  .os-tplanet {
+    @apply flex items-center justify-center bg-white dark:bg-neutral-900 border border-neutral-900/10 dark:border-white/10 rounded-full shadow-lg shadow-neutral-900/5 dark:shadow-neutral-900/40 transition-all duration-300 cursor-pointer;
+  }
+
+  .os-gplanet:hover,
+  .os-tplanet:hover {
+    @apply border-[var(--pc)] shadow-xl shadow-neutral-900/10 dark:shadow-neutral-900/60 z-10 scale-110;
+  }
+
+  .os-gplanet {
+    @apply flex-col items-center justify-center p-1.5 w-[52px] h-[52px] relative;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1), inset 0 2px 4px 0 rgb(255 255 255 / 0.05);
+    background: linear-gradient(145deg, #ffffff, #f3f4f6);
+  }
+
+  html.dark .os-gplanet {
+    background: linear-gradient(145deg, #171717, #0a0a0a);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.4), inset 0 1px 1px 0 rgb(255 255 255 / 0.05);
+  }
+
+  .gp-icon {
+    @apply w-4 h-4 text-neutral-600 dark:text-neutral-400 mb-0.5;
+  }
+
+  .gp-count {
+    @apply text-[0.4rem] font-bold text-neutral-400 dark:text-neutral-500 bg-neutral-100 dark:bg-white/5 rounded px-1 min-w-[12px] text-center;
+  }
+
+  .gp-tip {
+    @apply absolute bottom-[calc(100%+8px)] left-1/2 -translate-x-1/2 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-[0.6rem] font-bold whitespace-nowrap px-2.5 py-1 rounded shadow-xl opacity-0 pointer-events-none transition-all duration-300 translate-y-2 scale-95;
+  }
+
+  .os-gplanet:hover .gp-tip {
+    @apply opacity-100 translate-y-0 scale-100;
+  }
+
+  .os-tplanet {
+    @apply relative no-underline overflow-visible;
+  }
+
+  .tp-icon {
+    @apply w-5 h-5 object-contain pointer-events-none;
+  }
+
+  .tp-tip {
+    @apply absolute bottom-[calc(100%+5px)] left-1/2 -translate-x-1/2 bg-neutral-900 text-white text-[0.57rem] font-semibold whitespace-nowrap px-2 py-0.5 rounded opacity-0 pointer-events-none transition-opacity duration-200 z-50;
+  }
+
+  .os-tplanet:hover .tp-tip {
+    @apply opacity-100;
+  }
+
+  /* Central Hub */
+  .os-hub {
+    @apply relative w-24 h-24 sm:w-[100px] sm:h-[100px];
+  }
+
+  .os-hub-glow {
+    @apply absolute -inset-4 rounded-full animate-hub-pulse transition-[background] duration-500;
+    background: radial-gradient(
+      circle,
+      rgba(99, 102, 241, 0.12) 0%,
+      transparent 70%
+    );
+  }
+
+  .os-hub-core {
+    @apply absolute inset-0 flex flex-col items-center justify-center gap-0.5 p-2 bg-white dark:bg-neutral-950 border border-indigo-500/30 rounded-full shadow-2xl shadow-indigo-500/10 transition-[border-color] duration-500;
+  }
+
+  .os-hub-name {
+    @apply text-[0.58rem] font-extrabold text-indigo-500 text-center leading-tight transition-colors duration-300;
+  }
+
+  .os-hub-sub {
+    @apply text-[0.38rem] text-neutral-400 text-center leading-relaxed max-w-[76px];
+  }
+
+  .os-hub[style*="cursor: pointer"]:hover {
+    @apply scale-105;
+  }
+
+  .os-hub[style*="cursor: pointer"]:hover .os-hub-glow {
+    @apply -inset-6 opacity-100;
+    transition: all 0.3s ease;
+  }
+
+  @media (max-width: 580px) {
+    .os-root {
+      @apply h-[380px];
+    }
+    .os-wrap {
+      @apply scale-[0.65];
+      transform-origin: center center;
+    }
+  }
 }

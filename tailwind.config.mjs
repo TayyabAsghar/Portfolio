@@ -9,6 +9,7 @@ export default {
       },
       animation: {
         rising: "rising 1s ease 0s 1",
+        orbit: "orbit linear infinite",
         setting: "setting 1s ease 0s 1",
         "water-flow": "flow 15s linear infinite",
         "ship-bob": "bob 3s ease-in-out infinite",
@@ -17,6 +18,7 @@ export default {
         "water-flow-fast": "flow 10s linear infinite",
         "marquee-scroll": "scroll 10s linear infinite",
         "wake-ripple": "ripple 2s ease-in-out infinite",
+        "hub-pulse": "hub-pulse 3s ease-in-out infinite",
         "marquee-pause": "scroll 10s linear infinite paused",
         "sail-sway-delayed": "sway 4.5s ease-in-out infinite -1s",
         "certificate-loop": "certificate-loop 34s linear infinite",
@@ -96,6 +98,14 @@ export default {
         fadeInRight: {
           "0%": { opacity: "0", transform: "translateX(20px)" },
           "100%": { opacity: "1", transform: "translateX(0)" },
+        },
+        "hub-pulse": {
+          "0%, 100%": { transform: "scale(1)", opacity: ".7" },
+          "50%": { transform: "scale(1.1)", opacity: "1" },
+        },
+        orbit: {
+          from: { "offset-distance": "0%" },
+          to: { "offset-distance": "100%" },
         },
       },
     },
