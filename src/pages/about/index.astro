@@ -1,18 +1,18 @@
 ---
 import about from "../../data/about.json";
 import { Icon } from "astro-icon/components";
-import Layout from "../../layouts/main.astro";
 import education from "../../data/education.json";
 import experiences from "../../data/experiences.json";
 import certificates from "../../data/certificates.json";
+import Layout from "../../components/layout/main.astro";
 import beyondScreen from "../../data/beyond-screen.json";
-import LetsConnect from "../../components/lets-connect.astro";
-import PageHeading from "../../components/page-heading.astro";
-import AboutEducation from "../../components/about-education.astro";
-import AboutExperience from "../../components/about-experience.astro";
-import VideoPlayer from "../../components/widgets/video-player.astro";
-import AboutCertificate from "../../components/about-certificate.astro";
-import ProfessionalOdysseyShip from "../../components/professional-odyssey-ship.astro";
+import VideoPlayer from "../../components/ui/video-player.astro";
+import PageHeading from "../../components/ui/page-heading.astro";
+import LetsConnect from "../../components/sections/lets-connect.astro";
+import AboutEducation from "../../components/sections/about-education.astro";
+import AboutExperience from "../../components/sections/about-experience.astro";
+import AboutCertificate from "../../components/sections/about-certificate.astro";
+import OdysseyShip from "../../components/backgrounds/odyssey-ship.astro";
 ---
 
 <Layout title="About Me | Tayyab Asghar">
@@ -52,7 +52,7 @@ import ProfessionalOdysseyShip from "../../components/professional-odyssey-ship.
       </div>
 
       <div class="relative mt-12 space-y-0" id="odyssey-timeline">
-        <ProfessionalOdysseyShip />
+        <OdysseyShip />
 
         {
           experiences.map((experience, index) => (

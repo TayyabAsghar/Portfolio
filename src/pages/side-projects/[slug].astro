@@ -1,23 +1,23 @@
 ---
-import MainLayout from "../../layouts/main.astro"
-import type { CollectionEntry } from "astro:content"
-import { getCollection } from "astro:content"
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import MainLayout from "../../components/layout/main.astro";
 
 interface Props {
-  sideProject: CollectionEntry<"sideProjects">
+  sideProject: CollectionEntry<"sideProjects">;
 }
 
 export async function getStaticPaths() {
-  const list = await getCollection("sideProjects")
+  const list = await getCollection("sideProjects");
 
   return list.map((sideProject) => ({
     params: { slug: sideProject.slug },
     props: { sideProject },
-  }))
+  }));
 }
 
-const { sideProject } = Astro.props
-const { Content } = await sideProject.render()
+const { sideProject } = Astro.props;
+const { Content } = await sideProject.render();
 ---
 
 <MainLayout title={sideProject.data.title}>
