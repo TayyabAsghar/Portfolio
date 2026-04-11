@@ -205,7 +205,7 @@ const groupsJson = JSON.stringify(GROUPS);
                   return (
                     <div
                       class="os-item pointer-events-auto"
-                      style={`--path: path('${pathStr}'); --spd: ${ring.spd}s; --dly: ${delay}s;`}
+                      style={`--path: path('${pathStr}'); --spd: ${ring.spd}s; --dly: ${delay}s; --rx: ${ring.rotX}deg;`}
                     >
                       <div
                         class="os-counter"
@@ -216,9 +216,10 @@ const groupsJson = JSON.stringify(GROUPS);
                           data-gid={g.id}
                           style={`--pc:${g.color};`}
                         >
-                          <div class="gp-icon flex items-center justify-center p-[1px]">
-                             <Fragment set:html={g.icon} />
-                          </div>
+                          <div
+                            class="gp-icon flex items-center justify-center p-1"
+                            set:html={g.icon}
+                          />
                           <span class="gp-count">{g.skills.length}</span>
                           <span class="gp-tip">{g.heading}</span>
                         </button>

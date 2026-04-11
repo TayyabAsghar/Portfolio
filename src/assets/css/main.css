@@ -291,14 +291,14 @@ html.dark #darkToggle:hover .horizon {
   /* Planetary System (Technologies) */
   /* Dynamic orbital system scaling */
   .os-root {
-    @apply relative flex items-center justify-center w-full overflow-visible my-4 lg:my-16;
-    height: 650px;
+    @apply relative flex items-center justify-center w-full overflow-visible mt-16 mb-8 lg:mt-24 lg:mb-16;
+    height: 600px;
   }
 
   @media (max-width: 768px) {
     .os-root {
-      height: 320px;
-      @apply my-2;
+      height: 300px;
+      @apply mt-10 mb-6;
     }
   }
 
@@ -374,8 +374,7 @@ html.dark #darkToggle:hover .horizon {
   }
 
   .gp-icon svg {
-    @apply block !h-full !w-full;
-    fill: currentColor;
+    @apply block w-full h-full;
   }
 
   /* Responsive Planet Sizing */
@@ -404,7 +403,17 @@ html.dark #darkToggle:hover .horizon {
   }
 
   .os-tplanet {
-    @apply relative no-underline overflow-visible;
+    @apply absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center no-underline overflow-visible w-[44px] h-[44px] transition-all duration-300;
+    transform-style: preserve-3d;
+  }
+
+  @media (max-width: 768px) {
+    .os-tplanet {
+      @apply w-[32px] h-[32px];
+    }
+    .tp-icon {
+      @apply w-4 h-4;
+    }
   }
 
   .tp-icon {

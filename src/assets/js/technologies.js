@@ -43,7 +43,7 @@
       const pathStr = getEllipsePathStr(currentRx, currentRy);
 
       // Update static orbital lines
-      wrapEl.querySelectorAll(".sol-ring-li svg").forEach((svg) => {
+      wrapEl.querySelectorAll(".sol-ring-li .os-path-svg").forEach((svg) => {
         svg.setAttribute(
           "viewBox",
           `-${currentRx} -${currentRy} ${currentRx * 2} ${currentRy * 2}`,
@@ -100,8 +100,13 @@
       const hubLi = wrapEl.querySelector(".os-hub-li");
       const baseRx = currentRx;
       const baseRy = currentRy;
-      const drillRx = [baseRx * 0.4, baseRx * 0.7, baseRx * 0.9, baseRx * 1.1];
-      const drillRy = [baseRy * 0.7, baseRy * 1.0, baseRy * 1.3, baseRy * 1.6];
+      const isMobile = window.innerWidth < 768;
+      const drillRx = isMobile 
+        ? [baseRx * 0.35, baseRx * 0.6, baseRx * 0.8, baseRx * 1.0]
+        : [baseRx * 0.4, baseRx * 0.7, baseRx * 0.9, baseRx * 1.1];
+      const drillRy = isMobile
+        ? [baseRy * 0.5, baseRy * 0.8, baseRy * 1.1, baseRy * 1.4]
+        : [baseRy * 0.7, baseRy * 1.0, baseRy * 1.3, baseRy * 1.6];
       const speedArr = [14, 20, 27, 34];
 
       rings.forEach((ring, ri) => {
@@ -139,6 +144,7 @@
           const item = document.createElement("div");
           item.classList.add("os-item", "pointer-events-auto");
           item.style.setProperty("--path", `path('${pathStr}')`);
+          item.style.setProperty("--rx", `${TILT_X}deg`);
           item.style.setProperty("--spd", `${speed}s`);
           item.style.setProperty("--dly", `${delay}s`);
 
@@ -152,8 +158,6 @@
           a.href = skill.website;
           a.target = "_blank";
           a.rel = "noreferrer";
-          a.style.width = `${TP}px`;
-          a.style.height = `${TP}px`;
           a.style.setProperty("--pc", group.color);
           a.innerHTML = `<img src="/assets/images/stack/${skill.name}.svg" alt="${skill.title}" class="tp-icon"/><span class="tp-tip">${skill.title}</span>`;
 
