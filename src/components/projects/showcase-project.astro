@@ -14,22 +14,19 @@ interface Props {
 
 const { tags, slug, title, image, index, hrefBase, gradient, description } =
   Astro.props;
-
-const isEven = index % 2 === 0;
-const activeGradient = gradient;
 ---
 
 <div
-  class={`flex flex-col md:flex-row items-center gap-10 md:gap-20 mb-32 last:mb-0 ${isEven ? "" : "md:flex-row-reverse"}`}
+  class={`flex flex-col md:flex-row items-center gap-10 md:gap-20 mb-32 last:mb-0 ${index % 2 ? "" : "md:flex-row-reverse"}`}
 >
   <a href={`${hrefBase}/${slug}`} class="relative group w-full md:w-1/2">
     <div
-      class={`absolute -inset-1 bg-gradient-to-r ${activeGradient} rounded-[2rem] blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200`}
+      class={`absolute -inset-1 bg-gradient-to-r ${gradient} rounded-[2rem] blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200`}
     >
     </div>
 
     <div
-      class={`relative p-2 rounded-[2rem] bg-gradient-to-r ${activeGradient} shadow-2xl overflow-hidden`}
+      class={`relative p-2 rounded-[2rem] bg-gradient-to-r ${gradient} shadow-2xl overflow-hidden`}
     >
       <div
         class="rounded-[1.6rem] overflow-hidden bg-neutral-900 border border-white/5"

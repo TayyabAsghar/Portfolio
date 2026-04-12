@@ -1,8 +1,6 @@
 ---
 import Logo from "../ui/logo.astro";
-import about from "../../data/about.json";
-import { Icon } from "astro-icon/components";
-import LinkButton from "../ui/link-button.astro";
+import socials from "../../data/socials.json";
 
 const currentYear = new Date().getFullYear();
 ---
@@ -15,37 +13,28 @@ const currentYear = new Date().getFullYear();
   >
     <Logo />
     <p
-      class="mt-4 text-sm text-neutral-700 dark:text-neutral-100 sm:ml-4 sm:pl-4 sm:border-l sm:border-neutral-300 dark:sm:border-neutral-700 sm:mt-0"
+      class="mt-4 text-xsm tracking-most-widest text-neutral-500 dark:text-neutral-500 sm:ml-4 sm:pl-4 sm:border-l border-neutral-300 dark:border-neutral-700 sm:mt-0"
     >
       &copy; {currentYear} Tayyab Asghar. All rights are reserved.
     </p>
-    <div
-      class="flex flex-col sm:flex-row items-center justify-center mt-4 gap-5 sm:ml-auto sm:mt-0 sm:justify-start"
-    >
-      <LinkButton
-        class="!mt-0"
-        text="Connect"
-        target="_blank"
-        link={`mailto:${about.email}`}
-      />
 
-      <div class="flex items-center gap-5">
-        <a
-          href="https://www.linkedin.com/in/tayyabasghar"
-          target="_blank"
-          class="text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
-        >
-          <span class="sr-only">LinkedIn</span>
-          <Icon name="linkedin" class="text-3xl" />
-        </a>
-        <a
-          href="https://github.com/tayyabasghar"
-          target="_blank"
-          class="text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
-        >
-          <span class="sr-only">GitHub</span>
-          <Icon name="github" class="text-3xl" />
-        </a>
+    <div
+      class="flex flex-col sm:flex-row items-center justify-center mt-8 sm:mt-0 gap-6 sm:ml-auto"
+    >
+      <div
+        class="flex items-center gap-6 text-xsm font-bold tracking-most-widest uppercase"
+      >
+        {
+          socials.map((social) => (
+            <a
+              href={social.url}
+              target={social.target}
+              class="text-neutral-500 dark:text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors"
+            >
+              {social.name}
+            </a>
+          ))
+        }
       </div>
     </div>
   </div>

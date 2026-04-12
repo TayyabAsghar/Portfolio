@@ -1,60 +1,43 @@
 ---
-import ImageTile from "./image-tile.astro";
 import { latestPosts } from "../../utils/posts";
 
 interface Props {
   count?: number;
 }
 
-const { count = latestPosts.length } = Astro.props;
+const { count = 3 } = Astro.props;
 const listPosts = latestPosts.slice(0, count);
 
-const textHoverStyle =
-  "group-hover:text-neutral-900 dark:group-hover:text-neutral-100";
+const formateDate = (date: string) => {
+  const p = date.split(" ");
+  return `${p[1]} ${p[0]}, ${p[2]}`;
+};
 ---
 
-<div class="divide-y dividerline">
+<div class="flex flex-wrap justify-center gap-y-20 gap-x-12 md:gap-x-24 w-full">
   {
-    listPosts.map(({ slug, data }) => (
-      <div
-        class="relative cursor-pointer group py-4 first:pt-0 last:pb-0 grid grid-rows-1 grid-cols-1 sm:grid-cols-[3fr_1fr] gap-7 justify-items-end lg:gap-80"
-        onclick={`location.href = '/blog/${slug}'`}
+    listPosts.map(({ slug, data }, index) => (
+      <a
+        href={`/blog/${slug}`}
+        class={`group block no-underline w-full md:w-[calc(45%-1rem)] lg:w-[calc(42%-2rem)] ${index === 2 ? "md:mt-4" : ""}`}
       >
-        <div>
-          <h2 class="flex items-start gap-1 mb-3">
-            <a
-              href={`/blog/${slug}`}
-              class="text-xl font-bold leading-tight tracking-tight sm:text-2xl dark:text-neutral-100"
-            >
-              {data.title}
-            </a>
-          </h2>
-
-          <p
-            class="text-sm text-neutral-600 dark:text-neutral-400 line-clamp-3"
-            class:list={[textHoverStyle]}
-          >
-            <span>{data.excerpt}</span>
-          </p>
-
-          <div
-            class="mt-2.5 text-xs text-neutral-500 dark:text-neutral-500"
-            class:list={[textHoverStyle]}
-          >
-            {data.publishDate}
-          </div>
+        <div class="flex justify-between items-center mb-6 text-xsm font-bold tracking-most-widest uppercase">
+          <span class="text-neutral-500 dark:text-neutral-500">
+            {formateDate(data.publishDate)}
+          </span>
+          <span class="text-neutral-500 dark:text-neutral-500">
+            {data.category}
+          </span>
         </div>
 
-        {data.image && (
-          <ImageTile
-            width={200}
-            height={200}
-            image={data.image}
-            alt="Portfolio project thumbnail"
-            coverSize="h-full w-full sm:size-36"
-          />
-        )}
-      </div>
+        <h3 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-white mb-4 leading-tight group-hover:text-neutral-700 dark:group-hover:text-neutral-300 transition-colors duration-300">
+          {data.title}
+        </h3>
+
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed line-clamp-3">
+          {data.excerpt}
+        </p>
+      </a>
     ))
   }
 </div>

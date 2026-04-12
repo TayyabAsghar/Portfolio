@@ -1,0 +1,22 @@
+[
+  {
+    "name": "LinkedIn",
+    "target": "_blank",
+    "url": "https://www.linkedin.com/in/tayyabasghar"
+  },
+  {
+    "name": "GitHub",
+    "target": "_blank",
+    "url": "https://github.com/TayyabAsghar"
+  },
+  {
+    "name": "Read.cv",
+    "target": "_blank",
+    "url": "/resume.pdf"
+  },
+  {
+    "name": "Email",
+    "target": "_self",
+    "url": "mailto:muhammadtayyabasghar@gmail.com"
+  }
+]

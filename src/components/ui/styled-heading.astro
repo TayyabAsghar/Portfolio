@@ -1,32 +1,32 @@
 ---
 interface Props {
-  title: string;
   description: string;
   heading: {
     part1: string;
     part2: string;
   };
+  title?: string;
 }
 
 const { title, heading, description } = Astro.props;
 ---
 
 <div class="mb-24 md:mb-32">
-  <h4
-    class="text-[0.65rem] font-bold tracking-[0.2em] mb-6 uppercase text-neutral-600 dark:text-neutral-400"
-  >
-    {title}
-  </h4>
+  {
+    !!title && (
+      <h4 class="text-xsm font-bold tracking-most-widest mb-6 uppercase text-neutral-600 dark:text-neutral-400">
+        {title}
+      </h4>
+    )
+  }
 
   <h1
-    class="text-5xl md:text-7xl font-extrabold text-neutral-900 dark:text-white tracking-tight mb-8 leading-[1.05]"
+    class="text-5xl md:text-7xl font-extrabold text-neutral-900 dark:text-white tracking-tight mb-8 leading-4"
   >
     {heading.part1}<br />{heading.part2}
   </h1>
 
-  <p
-    class="text-neutral-600 dark:text-neutral-400 max-w-[28rem] leading-relaxed"
-  >
+  <p class="text-neutral-600 dark:text-neutral-400 max-w-102 leading-relaxed">
     {description}
   </p>
 </div>

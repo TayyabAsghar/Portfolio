@@ -7,6 +7,15 @@ export default {
       zIndex: {
         100: "100",
       },
+      maxWidth: {
+        102: "28rem",
+      },
+      fontSize: {
+        xsm: ["0.625rem", "0.75rem"],
+      },
+      letterSpacing: {
+        "most-widest": "0.2em",
+      },
       animation: {
         rising: "rising 1s ease 0s 1",
         orbit: "orbit linear infinite",
