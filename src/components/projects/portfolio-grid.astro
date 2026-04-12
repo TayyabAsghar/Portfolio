@@ -1,14 +1,15 @@
 ---
 import LinkButton from "../ui/link-button.astro";
-import GridProjects from "./grid-projects.astro";
+import ShowcaseProject from "./showcase-project.astro";
 import SectionHeader from "../ui/section-header.astro";
+import { pinnedPortfolio } from "../../utils/portfolio";
 
 interface Props {
   count: number;
-  className?: string;
 }
 
-const { count } = Astro.props;
+const { count = 3 } = Astro.props;
+const portfolio = pinnedPortfolio.slice(0, count);
 ---
 
 <section id="portfolio" class="max-w-6xl mx-auto px-7 lg:px-0">
@@ -17,8 +18,21 @@ const { count } = Astro.props;
     subheading="Here's a glimpse into some of my recent projects. Be sure to check back often, as I'm always adding new and exciting work to my portfolio!"
   />
 
-  <div class="grid items-stretch w-full gap-7 pb-7">
-    <GridProjects count={count} />
+  <div class="flex flex-col w-full py-10">
+    {
+      portfolio.map((project, index) => (
+        <ShowcaseProject
+          index={index}
+          slug={project.slug}
+          hrefBase="portfolio"
+          tags={project.data.tags}
+          title={project.data.title}
+          image={project.data.image}
+          gradient={project.data.bgGradient}
+          description={project.data.description}
+        />
+      ))
+    }
   </div>
 
   <div class="flex items-center justify-center w-full py-0">
