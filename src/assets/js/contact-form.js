@@ -1,6 +1,6 @@
 export function setupContactForm() {
   const form = document.getElementById("contact-form");
-  const submitBtn = document.getElementById("submit-btn");
+  const submitBtn = document.getElementById("contact-submit-btn");
 
   if (form && submitBtn) {
     const inputs = form.querySelectorAll("input, textarea");

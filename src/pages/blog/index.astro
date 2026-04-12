@@ -1,18 +1,25 @@
 ---
 import Layout from "../../components/layout/main.astro";
-import ListPosts from "../../components/shared/list-posts.astro";
-import PageHeading from "../../components/ui/page-heading.astro";
+import StyledHeading from "../../components/ui/styled-heading.astro";
+import JoinDispatch from "../../components/sections/join-dispatch.astro";
+import GroupedPosts from "../../components/shared/grouped-posts.astro";
+
+const description =
+  "A stream of consciousness regarding systems architecture, high-end interface design, and the intersection of engineering and editorial aesthetics.";
 ---
 
 <Layout title="My Writings | Tayyab Asghar">
-  <section class="relative z-20 max-w-5xl mx-auto my-12 px-7 lg:px-0">
-    <PageHeading
-      title="My Writings"
-      description="Dive into my musings on life and tech in my latest posts; a blend of introspection and innovation. Keep an eye out for fresh insights and updates!"
+  <div class="max-w-5xl mx-auto px-6 py-20 lg:px-0 lg:py-24">
+    <StyledHeading
+      description={description}
+      title="Archive & Thoughts"
+      heading={{ part1: "Ink &", part2: "Insight." }}
     />
 
-    <div class="mt-7">
-      <ListPosts />
+    <div class="flex flex-col gap-24">
+      <GroupedPosts />
     </div>
-  </section>
+
+    <JoinDispatch />
+  </div>
 </Layout>

@@ -1,0 +1,50 @@
+---
+import Button from "../ui/button.astro";
+---
+
+<section
+  class="mt-32 rounded-[2rem] bg-gradient-to-br from-neutral-100 to-white dark:from-[#111] dark:to-[#0a0a0a] border border-neutral-200 dark:border-white/5 p-8 md:p-14 relative overflow-hidden shadow-xl dark:shadow-2xl"
+>
+  <div
+    class="absolute -bottom-24 -right-24 w-96 h-96 bg-[#6366f1]/10 rounded-full blur-[100px] pointer-events-none"
+  >
+  </div>
+
+  <div class="relative z-10 max-w-[28rem]">
+    <h2
+      class="text-2xl md:text-[1.6rem] font-bold text-neutral-900 dark:text-white mb-3 tracking-tight leading-tight"
+    >
+      Join the Dispatch.
+    </h2>
+    <p
+      class="text-neutral-600 dark:text-neutral-400 text-sm mb-8 leading-relaxed"
+    >
+      Occasional updates on design systems, code architecture, and the digital
+      craft.
+    </p>
+
+    <form
+      id="dispatch-form"
+      class="flex flex-col sm:flex-row gap-4 align-middle"
+      onsubmit="event.preventDefault();"
+    >
+      <input
+        required
+        id="dispatch-email-input"
+        type="email"
+        placeholder="john@example.com"
+        class="flex-1 w-full rounded-2xl border border-neutral-200 bg-neutral-50 px-5 py-4 text-base text-neutral-900 outline-none transition placeholder:text-neutral-400 focus:border-neutral-300 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100 dark:placeholder:text-neutral-500 dark:focus:border-neutral-700"
+      />
+
+      <Button
+        type="submit"
+        text="Subscribe"
+        id="dispatch-submit-btn"
+        class="sm:flex-none sm:w-auto px-8 py-4 disabled:cursor-not-allowed disabled:opacity-50"
+        disabled
+      />
+    </form>
+  </div>
+</section>
+
+<script src="../../assets/js/join-dispatch.js"></script>
