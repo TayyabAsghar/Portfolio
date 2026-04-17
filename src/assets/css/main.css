@@ -466,4 +466,16 @@ html.dark #darkToggle:hover .horizon {
     @apply -inset-6 opacity-100;
     transition: all 0.3s ease;
   }
+  /* Scroll Reveal Animations */
+  .reveal {
+    @apply opacity-0 translate-y-8 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none;
+  }
+
+  .reveal.active {
+    @apply opacity-100 translate-y-0 pointer-events-auto;
+  }
+
+  .animate-on-scroll {
+    /* Container class for observer, doesn't need styles itself but can be used as a hook */
+  }
 }

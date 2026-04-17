@@ -1,10 +1,13 @@
 ---
 import { latestPosts } from "../../utils/posts";
+import HoverSound from "../ui/hover-sound.astro";
+import HoverPencilBackground from "../ui/hover-pencil-background.astro";
 
 interface Props {
   count?: number;
 }
 
+const duration = 1000;
 const { count = 3 } = Astro.props;
 const listPosts = latestPosts.slice(0, count);
 
@@ -19,12 +22,19 @@ const formateDate = (date: string) => {
     listPosts.map(({ slug, data }, index) => (
       <a
         href={`/blog/${slug}`}
-        class={`group block no-underline w-full md:w-[calc(45%-1rem)] lg:w-[calc(42%-2rem)] ${index === 2 ? "md:mt-4" : ""}`}
+        class={`group relative z-0 block no-underline w-full md:w-[calc(45%-1rem)] lg:w-[calc(42%-2rem)] ${index === 2 ? "md:mt-4" : ""} p-6 -mx-6 sm:-mx-6 rounded-2xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1`}
       >
+        <HoverPencilBackground strokeWidth={3} animationDuration={duration} />
+        <HoverSound
+          duration={duration}
+          path="/assets/sounds/home/writing.wav"
+        />
+
         <div class="flex justify-between items-center mb-6 text-xsm font-bold tracking-most-widest uppercase">
           <span class="text-neutral-500 dark:text-neutral-500">
             {formateDate(data.publishDate)}
           </span>
+
           <span class="text-neutral-500 dark:text-neutral-500">
             {data.category}
           </span>

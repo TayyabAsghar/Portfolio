@@ -9,17 +9,33 @@ import PortfolioGrid from "../components/projects/portfolio-grid.astro";
 ---
 
 <Layout title="Tayyab Asghar">
-  <div class="grid grid-cols-1 auto-rows-max gap-28 mb-28">
-    <HeroSection />
+  <div
+    class="max-w-6xl mx-auto grid grid-cols-1 auto-rows-max gap-28 py-20 lg:py-24"
+  >
+    <div class="animate-on-scroll reveal">
+      <HeroSection />
+    </div>
 
-    <Technologies />
+    <div class="animate-on-scroll reveal">
+      <Technologies />
+    </div>
 
-    <PortfolioGrid count={3} />
+    <div class="animate-on-scroll reveal">
+      <PortfolioGrid count={3} />
+    </div>
 
-    <!-- <SideProjectsGrid count={3} /> -->
+    <!-- <div class="animate-on-scroll reveal">
+      <SideProjectsGrid count={3} />
+    </div> -->
 
-    <Testimonials />
+    <div class="animate-on-scroll reveal">
+      <Testimonials />
+    </div>
 
-    <Writings />
+    <div class="animate-on-scroll reveal">
+      <Writings />
+    </div>
   </div>
+
+  <script src="../assets/js/animate-on-scroll.js"></script>
 </Layout>

@@ -7,6 +7,7 @@ interface Props {
   class?: string;
   iconLeft?: string;
   iconRight?: string;
+  iconClass?: string;
   target?: "_self" | "_blank" | "_parent" | "_top";
 }
 
@@ -15,6 +16,7 @@ const {
   text,
   iconLeft,
   iconRight,
+  iconClass,
   class: className,
   target = "_self",
 } = Astro.props;
@@ -26,9 +28,9 @@ const {
   class:list={[className]}
   target={target}
 >
-  {!!iconLeft && <Icon class="text-base" name={iconLeft} />}
+  {!!iconLeft && <Icon class="text-base" class:list={[iconClass]} name={iconLeft} />}
 
   {text}
 
-  {!!iconRight && <Icon class="text-base" name={iconRight} />}
+  {!!iconRight && <Icon class="text-base" class:list={[iconClass]} name={iconRight} />}
 </a>

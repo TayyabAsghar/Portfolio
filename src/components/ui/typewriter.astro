@@ -1,0 +1,73 @@
+---
+export interface Props {
+  text: string;
+  class?: string;
+  loop?: boolean;
+  loopDelay?: number;
+  [key: string]: any;
+}
+
+const {
+  text,
+  class: className,
+  loop = false,
+  loopDelay = 3000,
+  ...rest
+} = Astro.props;
+---
+
+<span
+  class={`typewriter-effect inline-block py-2 ${className || ""}`}
+  data-loop={loop.toString()}
+  data-loop-delay={loopDelay.toString()}
+  {...rest}
+>
+  {text}
+</span>
+
+<script>
+  import { animate, stagger } from "motion";
+
+  const elements = document.querySelectorAll(".typewriter-effect");
+
+  elements.forEach((element) => {
+    if (element.hasAttribute("data-processed")) return;
+    element.setAttribute("data-processed", "true");
+
+    const text = element.textContent?.trim() || "";
+    element.textContent = "";
+
+    text.split("").forEach((char) => {
+      const span = document.createElement("span");
+      span.textContent = char === " " ? "\u00A0" : char;
+      span.style.opacity = "0";
+      span.style.display = "inline-block";
+      element.appendChild(span);
+    });
+
+    const spans = element.querySelectorAll("span");
+    const isLoop = element.getAttribute("data-loop") === "true";
+    const loopDelay = parseInt(
+      element.getAttribute("data-loop-delay") || "3000",
+    );
+
+    async function startAnimation() {
+      await animate(
+        spans,
+        { opacity: [0, 1] },
+        { delay: stagger(0.1, { startDelay: 0.2 }) },
+      ).finished;
+
+      if (isLoop) {
+        setTimeout(async () => {
+          // Fade out
+          await animate(spans, { opacity: 0 }, { duration: 0.5 }).finished;
+          // Restart
+          startAnimation();
+        }, loopDelay);
+      }
+    }
+
+    startAnimation();
+  });
+</script>

@@ -52,9 +52,9 @@ const projects = [
           Projects
         </h2>
         <div
-          class="group flex cursor-pointer items-center rounded-md bg-neutral-900 py-2 pl-2 pr-3 text-sm font-medium text-neutral-100 shadow-sm transition hover:bg-neutral-700 dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-neutral-300"
+          class="group flex cursor-pointer items-center rounded-full bg-neutral-900 px-4 py-1.5 text-xs font-semibold text-neutral-100 shadow-sm transition hover:bg-neutral-700 dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-neutral-300"
         >
-          <svg width="20" height="20" fill="currentColor" class="mr-2">
+          <svg width="18" height="18" fill="currentColor" class="mr-1.5">
             <path
               d="M10 5a1 1 0 0 1 1 1v3h3a1 1 0 1 1 0 2h-3v3a1 1 0 1 1-2 0v-3H6a1 1 0 1 1 0-2h3V6a1 1 0 0 1 1-1Z"
             >
@@ -63,12 +63,14 @@ const projects = [
         </div>
       </div>
 
-      <div class="group relative rounded-md bg-neutral-50 dark:bg-neutral-800">
+      <div
+        class="group relative rounded-full bg-neutral-50 dark:bg-neutral-800"
+      >
         <svg
           width="20"
           height="20"
           fill="currentColor"
-          class="pointer-events-none absolute left-3 top-1/2 -mt-2.5 text-neutral-400 group-focus-within:text-neutral-700 dark:text-neutral-500 dark:group-focus-within:text-neutral-300"
+          class="pointer-events-none absolute left-4 top-1/2 -mt-2.5 text-neutral-400 group-focus-within:text-neutral-700 dark:text-neutral-500 dark:group-focus-within:text-neutral-300"
         >
           <path
             fill-rule="evenodd"
@@ -81,7 +83,7 @@ const projects = [
           type="text"
           aria-label="Filter projects"
           placeholder="Filter projects..."
-          class="w-full appearance-none rounded-md bg-transparent py-2 pl-10 text-sm leading-6 text-neutral-900 placeholder:text-neutral-400 ring-1 ring-neutral-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-neutral-500 dark:text-neutral-100 dark:placeholder:text-neutral-500 dark:ring-neutral-700 dark:focus:ring-neutral-500"
+          class="w-full appearance-none rounded-full bg-transparent py-2 pl-12 pr-4 text-xs leading-6 text-neutral-900 placeholder:text-neutral-400 ring-1 ring-neutral-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-neutral-500 dark:text-neutral-100 dark:placeholder:text-neutral-500 dark:ring-neutral-700 dark:focus:ring-neutral-500"
         />
       </div>
     </header>
@@ -93,7 +95,7 @@ const projects = [
         projects.map((project) => (
           <li
             class:list={[
-              "group cursor-pointer rounded-md bg-white p-3 ring-1 ring-neutral-200 shadow-sm transition hover:-translate-y-0.5 hover:bg-neutral-900 hover:ring-neutral-900 hover:shadow-md dark:bg-neutral-800 dark:ring-neutral-700 dark:hover:bg-neutral-100 dark:hover:ring-neutral-100",
+              "group cursor-pointer rounded-2xl bg-white p-4 ring-1 ring-neutral-200 shadow-sm transition hover:-translate-y-0.5 hover:bg-neutral-900 hover:ring-neutral-900 hover:shadow-md dark:bg-neutral-800 dark:ring-neutral-700 dark:hover:bg-neutral-100 dark:hover:ring-neutral-100",
               project.className,
             ]}
           >
@@ -131,7 +133,7 @@ const projects = [
 
       <li class="flex">
         <div
-          class="group flex w-full cursor-pointer flex-col items-center justify-center rounded-md border-2 border-dashed border-neutral-300 py-3 text-sm font-medium leading-6 text-neutral-900 transition hover:border-neutral-500 hover:bg-white hover:text-neutral-700 dark:border-neutral-700 dark:text-neutral-100 dark:hover:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-neutral-200"
+          class="group flex w-full cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-neutral-300 py-3 text-sm font-medium leading-6 text-neutral-900 transition hover:border-neutral-500 hover:bg-white hover:text-neutral-700 dark:border-neutral-700 dark:text-neutral-100 dark:hover:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-neutral-200"
         >
           <svg
             width="20"

@@ -1,80 +1,47 @@
 ---
 import about from "../../data/about.json";
 import music from "../../data/music.json";
+import Typewriter from "../ui/typewriter.astro";
 import LinkButton from "../ui/link-button.astro";
 import WidgetProjects from "../ui/projects.astro";
 import WidgetMusicPlayer from "../ui/music-player.astro";
 ---
 
-<section
-  class="max-w-6xl mx-auto px-7 lg:px-0 mt-16 md:mt-24 lg:mt-32 relative"
->
-  <div
-    class="grid grid-cols-1 md:grid-cols-2 auto-rows-max items-center gap-10"
-  >
-    <div class="relative">
-      <div
-        id="ProfilePic"
-        class="relative justify-end flex-grow md:flex w-[40%] mb-5"
-      >
-        <div class="relative z-50 w-full">
-          <div class="absolute -bottom-6 -right-6 z-40 w-12 h-12 rounded-full">
-            <span
-              class="relative z-20 flex items-center justify-center w-full h-full text-2xl border-4 border-white rounded-full dark:border-neutral-950 bg-neutral-100 dark:bg-neutral-900"
-            >
-              <span
-                class="flex items-center justify-center w-full h-full bg-white border border-solid rounded-full dark:bg-neutral-950 border-neutral-300 dark:border-neutral-700"
-              >
-                👋
-              </span>
-            </span>
-          </div>
-          <div class="relative z-30 px-1">
-            <img
-              src="/assets/images/me.jpeg"
-              loading="eager"
-              decoding="auto"
-              class="relative z-30 w-full h-full mb-[6px] md:max-w-md mx-auto dark:-translate-y-0.5 rounded-2xl contrast-120 dark:contrast-100"
-            />
-          </div>
-          <div
-            class="absolute bottom-0 right-0 z-20 w-full h-[102%] translate-x-0 -translate-y-px border border-solid rounded-2xl bg-gradient-to-r dark:from-neutral-950 dark:via-black dark:to-neutral-950 from-white via-neutral-50 to-white border-neutral-300 dark:border-neutral-700"
-          >
-          </div>
-        </div>
-      </div>
+<section class="px-7 lg:px-0 relative">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+    <div class="space-y-8">
       <h1
-        class="mb-5 text-4xl font-bold leading-tight md:text-4xl lg:text-6xl dark:text-white"
+        class="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter text-neutral-900 dark:text-white"
       >
-        Hello, <br />I'm Tayyab Asghar.
+        <span
+          class="block mb-2 opacity-50 text-xl md:text-2xl font-medium tracking-normal"
+          >Hello, I'm</span
+        >
+        <Typewriter
+          loop
+          loopDelay={10000}
+          text={about.name}
+          class="bg-clip-text text-transparent bg-gradient-to-r leading-tight from-neutral-900 via-neutral-600 to-neutral-900 dark:from-white dark:via-neutral-400 dark:to-white"
+        />
       </h1>
-      <h2
-        class="font-semibold mb-6 text-lg text-neutral-600 dark:text-neutral-400"
-      >
-        {about.heading}
-      </h2>
-      <p class="mb-6 text-base text-neutral-600 dark:text-neutral-400">
-        {about.landingIntro}
-      </p>
 
-      <p class="mb-2 text-base text-neutral-600 dark:text-neutral-400">
-        <span class="font-medium">
-          Looking to elevate your web app's performance and user experience?
-        </span> I can help you achieve that.
-      </p>
-      <ul
-        class="py-2 space-y-[3px] text-sm list-disc text-neutral-500 dark:text-neutral-400 list-outside pl-3"
-      >
-        <li>Single Page Apps, Progressive Web Apps etc. with React and Next</li>
-        <li>Web performance optimization with test coverage</li>
-        <li>Optimized backend APIs with test coverage</li>
-        <li>Data visualization with Chart.js and Ant Charts</li>
-        <li>and <a class="text-blue-500" href="/about">more</a>...</li>
-      </ul>
+      <div class="space-y-6">
+        <h2
+          class="text-lg md:text-xl font-semibold text-neutral-800 dark:text-neutral-200 tracking-tight"
+        >
+          {about.heading}
+        </h2>
 
-      <div class="flex items-center gap-2 py-5">
+        <p
+          class="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed"
+        >
+          {about.landingIntro}
+        </p>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-4 pt-4">
         <LinkButton
-          text="Connect"
+          text="Let's Connect"
           target="_blank"
           link={`mailto:${about.email}`}
         />
@@ -83,14 +50,15 @@ import WidgetMusicPlayer from "../ui/music-player.astro";
           target="_blank"
           link="/resume.pdf"
           iconRight="download"
-          class="btn btn-secondary"
+          class="btn btn-secondary border-2"
         />
       </div>
     </div>
 
-    <div class="relative hidden md:block scale-[80%]">
+    <div
+      class="relative hidden md:block scale-[70%] lg:scale-[80%] origin-right -mt-12"
+    >
       <WidgetProjects />
-
       <WidgetMusicPlayer tracks={music} />
     </div>
   </div>
