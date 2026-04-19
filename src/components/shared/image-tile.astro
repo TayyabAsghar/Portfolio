@@ -12,22 +12,30 @@ interface Props {
 }
 
 const { image, height, width, alt, coverSize, styles, gradient } = Astro.props;
-
-const hoverStyle = "group-hover:scale-95";
-const transitionStyle = "transition-all duration-700 ease-out";
-const baseStyle = "scale-90 top-3 relative object-cover w-full";
 ---
 
-<div
-  class="block w-full object-cover overflow-hidden rounded-xl"
-  class:list={[coverSize, gradient]}
->
-  <Picture
-    src={image}
-    formats={["avif", "webp", "jpg"]}
-    alt={alt}
-    width={width}
-    height={height}
-    class:list={[baseStyle, transitionStyle, hoverStyle, coverSize, styles]}
-  />
+<div class={`relative group ${coverSize}`}>
+  {
+    gradient && (
+      <div
+        class={`absolute -inset-1 bg-gradient-to-r ${gradient} rounded-[2rem] blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200`}
+      />
+    )
+  }
+  <div
+    class={`relative p-2 rounded-[2rem] ${gradient ? `bg-gradient-to-r ${gradient} shadow-2xl` : "bg-neutral-800 border border-neutral-700"} overflow-hidden`}
+  >
+    <div
+      class="w-full rounded-[1.6rem] overflow-hidden bg-neutral-900 border border-white/5"
+    >
+      <Picture
+        alt={alt}
+        src={image}
+        width={width}
+        height={height}
+        formats={["avif", "webp", "jpg"]}
+        class={`w-full aspect-video object-cover transform group-hover:scale-[1.03] transition-transform duration-500 ease-out ${styles || ""}`}
+      />
+    </div>
+  </div>
 </div>

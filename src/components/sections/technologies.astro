@@ -1,6 +1,7 @@
 ---
 import TechHub from "./tech-hub.astro";
 import stacks from "../../data/stacks.json";
+import SolarRings from "./solar-rings.astro";
 import CodeIcon from "../../icons/code.svg?raw";
 import BrainIcon from "../../icons/brain.svg?raw";
 import CloudIcon from "../../icons/cloud.svg?raw";
@@ -10,13 +11,13 @@ import DatabaseIcon from "../../icons/database.svg?raw";
 import ServicesIcon from "../../icons/services.svg?raw";
 import WorkflowIcon from "../../icons/workflow.svg?raw";
 import TestingIcon from "../../icons/check-list.svg?raw";
+import ParticleBackground from "../backgrounds/particle-background.astro";
 
 const GROUPS = [
   {
     id: "frontend",
     color: "#6366f1",
     heading: "Frontend",
-    description: "Interactive UI and performant web experiences.",
     icon: CodeIcon,
     skills: [
       stacks.Next,
@@ -41,7 +42,6 @@ const GROUPS = [
     id: "backend",
     color: "#10b981",
     heading: "Backend",
-    description: "API architecture, integrations, and business logic.",
     icon: ServerIcon,
     skills: [
       stacks.Node,
@@ -55,7 +55,6 @@ const GROUPS = [
     id: "databases",
     color: "#f59e0b",
     heading: "Databases",
-    description: "Data modeling and persistence for scalable apps.",
     icon: DatabaseIcon,
     skills: [stacks.Sql, stacks.MongoDB, stacks.Firebase],
   },
@@ -63,7 +62,6 @@ const GROUPS = [
     id: "services",
     color: "#3b82f6",
     heading: "Services",
-    description: "Cloud and platform services used in delivery.",
     icon: CloudIcon,
     skills: [
       stacks.Clerk,
@@ -79,7 +77,6 @@ const GROUPS = [
     id: "tools",
     color: "#8b5cf6",
     heading: "Tools",
-    description: "Developer tooling for quality and collaboration.",
     icon: ServicesIcon,
     skills: [
       stacks.Webpack,
@@ -99,7 +96,6 @@ const GROUPS = [
     id: "ai",
     color: "#ec4899",
     heading: "AI Tools",
-    description: "LLM-first tooling to ship AI-powered products.",
     icon: BrainIcon,
     skills: [stacks.GPT, stacks.V0, stacks.GoogleAIStudio, stacks.LangChain],
   },
@@ -107,7 +103,6 @@ const GROUPS = [
     id: "workflow",
     color: "#14b8a6",
     heading: "Workflow",
-    description: "Planning, communication, and delivery methods.",
     icon: WorkflowIcon,
     skills: [
       stacks.Jira,
@@ -122,116 +117,53 @@ const GROUPS = [
     id: "testing",
     color: "#f97316",
     heading: "Testing",
-    description: "Confidence through repeatable testing and reviews.",
     icon: TestingIcon,
     skills: [stacks.Jest, stacks.Storybook, stacks.NUnit],
   },
 ];
 
-const getEllipsePathStr = (rx: number, ry: number) =>
-  `M -${rx} 0 A ${rx} ${ry} 0 1 1 ${rx} 0 A ${rx} ${ry} 0 1 1 -${rx} 0`;
-
-const SCALE_X = 350;
-const SCALE_Y = 140;
-const ITEMS_PER_RING = 1;
-
-const SOLAR_RINGS = [];
-for (let i = 0; i < GROUPS.length; i += ITEMS_PER_RING) {
-  const ringGroups = GROUPS.slice(i, i + ITEMS_PER_RING);
-  const ringIdx = Math.floor(i / ITEMS_PER_RING);
-  const totalRings = Math.ceil(GROUPS.length / ITEMS_PER_RING);
-  const rotZ = ringIdx * (180 / totalRings);
-  const rotX = 55 + (ringIdx % 2 === 0 ? 15 : 0);
-  const spd = 24 + ringIdx * 3;
-
-  SOLAR_RINGS.push({
-    rx: SCALE_X,
-    ry: SCALE_Y,
-    spd,
-    rotX,
-    rotZ,
-    groups: ringGroups,
-  });
-}
-
 const groupsJson = JSON.stringify(GROUPS);
 ---
 
-<section id="technologies" class="px-7 lg:px-0 flex flex-col">
-  <SectionHeader
-    heading="Technologies"
-    subheading="A digital ecosystem orbiting a single core. Click any group to explore its stack."
-  />
+<section
+  id="technologies"
+  class="relative px-7 lg:px-0 flex flex-col overflow-hidden py-10 w-full min-h-[600px]"
+>
+  <div class="hidden" aria-hidden="true">
+    {
+      GROUPS.flatMap((g) => g.skills).map((skill) => (
+        <img src={`/assets/images/stack/${skill.name}.svg`} alt="" loading="eager" />
+      ))
+    }
+  </div>
 
-  <div class="os-root overflow-visible pointer-events-none">
-    <div
-      class="relative w-full max-w-[700px] aspect-square flex items-center justify-center pointer-events-none [perspective:3000px] [transform-style:preserve-3d]"
-    >
-      <ul
-        class="os-wrap pointer-events-none [transform-style:preserve-3d] [transform:translateZ(100px)]"
-        id="os-wrap"
-        data-groups={groupsJson}
+  <ParticleBackground density={10} direction="both" />
+
+  <div class="relative z-10 w-full flex flex-col">
+    <SectionHeader
+      heading="Technologies"
+      subheading="A digital ecosystem orbiting a single core. Click any group to explore its stack."
+    />
+
+    <div class="os-root overflow-visible pointer-events-none">
+      <div
+        class="relative w-full max-w-[700px] aspect-square flex items-center justify-center pointer-events-none [perspective:3000px] [transform-style:preserve-3d]"
       >
-        <TechHub />
+        <ul
+          class="os-wrap pointer-events-none [transform-style:preserve-3d] [transform:translateZ(100px)]"
+          id="os-wrap"
+          data-groups={groupsJson}
+        >
+          <TechHub />
 
-        {
-          SOLAR_RINGS.map((ring, ridx) => {
-            const pathStr = getEllipsePathStr(ring.rx, ring.ry);
-
-            return (
-              <li
-                class="sol-ring-li w-0 h-0 [transform-style:preserve-3d] pointer-events-none"
-                style={`--rz: ${ring.rotZ}deg; --rx: ${ring.rotX}deg; --rz-neg: -${ring.rotZ}deg; --rx-neg: -${ring.rotX}deg;`}
-              >
-                <svg
-                  class="os-path-svg"
-                  style={`--rx-val: ${ring.rx}; --ry-val: ${ring.ry};`}
-                  viewBox={`-${ring.rx} -${ring.ry} ${ring.rx * 2} ${ring.ry * 2}`}
-                >
-                  <path
-                    d={pathStr}
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1"
-                    stroke-dasharray="4 4"
-                    class="text-neutral-800/30 dark:text-white/10"
-                  />
-                </svg>
-
-                {ring.groups.map((g, gi) => {
-                  const delay =
-                    -(gi / ring.groups.length) * ring.spd -
-                    Math.random() * ring.spd;
-                  return (
-                    <div
-                      class="os-item pointer-events-auto"
-                      style={`--path: path('${pathStr}'); --spd: ${ring.spd}s; --dly: ${delay}s; --rx: ${ring.rotX}deg;`}
-                    >
-                      <div
-                        class="os-counter"
-                        style={`--rx-neg: -${ring.rotX}deg; --rz-neg: -${ring.rotZ}deg;`}
-                      >
-                        <button
-                          class="os-gplanet"
-                          data-gid={g.id}
-                          style={`--pc:${g.color};`}
-                        >
-                          <div
-                            class="gp-icon flex items-center justify-center p-1"
-                            set:html={g.icon}
-                          />
-                          <span class="gp-count">{g.skills.length}</span>
-                          <span class="gp-tip">{g.heading}</span>
-                        </button>
-                      </div>
-                    </div>
-                  );
-                })}
-              </li>
-            );
-          })
-        }
-      </ul>
+          <SolarRings
+            groups={GROUPS}
+            scaleX={350}
+            scaleY={140}
+            itemsPerRing={1}
+          />
+        </ul>
+      </div>
     </div>
   </div>
 </section>

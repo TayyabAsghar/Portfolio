@@ -1,0 +1,40 @@
+---
+import PlanetaryOrbit from "../shared/planetary-orbit.astro";
+
+export interface Props {
+  groups: any[];
+  scaleX?: number;
+  scaleY?: number;
+  itemsPerRing?: number;
+}
+
+const {
+  groups = [],
+  scaleX = 350,
+  scaleY = 140,
+  itemsPerRing = 1,
+} = Astro.props;
+
+const SOLAR_RINGS = [];
+
+for (let i = 0; i < groups.length; i += itemsPerRing) {
+  const ringIdx = Math.floor(i / itemsPerRing);
+  const ringGroups = groups.slice(i, i + itemsPerRing);
+  const totalRings = Math.ceil(groups.length / itemsPerRing);
+
+  const spd = 24 + ringIdx * 3;
+  const rotZ = ringIdx * (180 / totalRings);
+  const rotX = 55 + (ringIdx % 2 === 0 ? 15 : 0);
+
+  SOLAR_RINGS.push({
+    spd,
+    rotX,
+    rotZ,
+    rx: scaleX,
+    ry: scaleY,
+    groups: ringGroups,
+  });
+}
+---
+
+{SOLAR_RINGS.map((ring) => <PlanetaryOrbit {...ring} />)}

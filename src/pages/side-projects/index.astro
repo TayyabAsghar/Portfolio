@@ -1,13 +1,13 @@
 ---
 import Layout from "../../components/layout/main.astro";
-import PageHeading from "../../components/ui/page-heading.astro";
+import StyledHeading from "../../components/ui/styled-heading.astro";
 import ListSideProjects from "../../components/projects/list-side-projects.astro";
 ---
 
 <Layout title="Side Projects | Tayyab Asghar">
   <section class="relative z-20 max-w-2xl mx-auto my-12 px-7 lg:px-0">
-    <PageHeading
-      title="Side Projects"
+    <StyledHeading
+      heading={{ part1: "Side", part2: "Projects." }}
       description="Welcome to my side projects, where I dive into creative endeavors that expand my skills and push the boundaries of what's possible. These projects highlight my passion for innovative problem-solving and showcase the breadth of my technical capabilities."
     />
 

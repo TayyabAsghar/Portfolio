@@ -3,7 +3,6 @@
     const wrapEl = document.getElementById("os-wrap");
     if (!wrapEl) return;
 
-    const hubSub = document.getElementById("hub-sub");
     const hubName = document.getElementById("hub-name");
     const hubEl = document.getElementById("os-hub");
     const hubCore = document.getElementById("os-hub-core");
@@ -187,7 +186,6 @@
       const hubSvg = document.getElementById("hub-svg");
       if (hubSvg) hubSvg.style.color = group.color;
 
-      if (hubSub) hubSub.textContent = group.description;
       hubCore.style.borderColor = group.color + "50";
       hubGlow.style.background = `radial-gradient(circle,${group.color}18 0%,transparent 70%)`;
 
@@ -211,7 +209,6 @@
       const hubSvg = document.getElementById("hub-svg");
       if (hubSvg) hubSvg.style.color = "#6366f1";
 
-      if (hubSub) hubSub.textContent = "Engineering";
       hubCore.style.borderColor = "rgba(99,102,241,0.28)";
       hubGlow.style.background =
         "radial-gradient(circle,rgba(99,102,241,0.12)0%,transparent 70%)";

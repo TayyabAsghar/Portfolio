@@ -1,14 +1,14 @@
 ---
 import companies from "../../data/clients.json";
 import Layout from "../../components/layout/main.astro";
-import PageHeading from "../../components/ui/page-heading.astro";
+import StyledHeading from "../../components/ui/styled-heading.astro";
 import ListProjects from "../../components/projects/list-projects.astro";
 ---
 
-<Layout title="Portfolio | Tayyab Asghar">
+<Layout title="Creative Architect | Tayyab Asghar">
   <section class="relative z-20 max-w-5xl mx-auto my-12 px-7 lg:px-0">
-    <PageHeading
-      title="Portfolio"
+    <StyledHeading
+      heading={{ part1: "Creative", part2: "Architect." }}
       description="I am passionate about transforming new ideas into reality through innovative projects. Explore this portfolio to see my latest works, showcasing both my creativity and technical expertise."
     />
 

@@ -1,5 +1,10 @@
 [
   {
+    "name": "Netsol",
+    "logo": "/assets/images/company/netsol.svg",
+    "link": "https://netsoltech.com"
+  },
+  {
     "name": "Ensemble",
     "logo": "/assets/images/company/ensemble.jpeg",
     "link": "https://ensembleui.com"

@@ -409,7 +409,7 @@ html.dark #darkToggle:hover .horizon {
 
   /* Central Hub */
   .os-hub {
-    @apply relative w-24 h-24 sm:w-[100px] sm:h-[100px] -translate-x-1/2 -translate-y-1/2;
+    @apply relative w-16 h-16 sm:w-[80px] sm:h-[80px] -translate-x-1/2 -translate-y-1/2;
   }
 
   .os-hub-glow {
@@ -427,10 +427,6 @@ html.dark #darkToggle:hover .horizon {
 
   .os-hub-name {
     @apply text-[0.58rem] font-extrabold text-indigo-500 text-center leading-tight transition-colors duration-300;
-  }
-
-  .os-hub-sub {
-    @apply text-[0.38rem] text-neutral-400 text-center leading-relaxed max-w-[76px];
   }
 
   #hub-dynamic-icon svg {
