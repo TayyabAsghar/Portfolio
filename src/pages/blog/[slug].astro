@@ -1,6 +1,6 @@
 ---
+import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
-import { getCollection, getEntry } from "astro:content";
 import MainLayout from "../../components/layout/main.astro";
 
 interface Props {
@@ -17,7 +17,6 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-// const entry = await getEntry("blog", "post-1")
 const { Content } = await post.render();
 ---
 
@@ -60,12 +59,3 @@ const { Content } = await post.render();
     </article>
   </main>
 </MainLayout>
-
-<style is:global>
-  @media (min-width: 1024px) {
-    #page-blog article p:has(img) {
-      margin-left: -8rem;
-      margin-right: -8rem;
-    }
-  }
-</style>

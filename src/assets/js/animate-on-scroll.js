@@ -1,4 +1,4 @@
-export function setupScrollAnimations() {
+const setupScrollAnimations = () => {
   const observerOptions = {
     threshold: 0.1,
     rootMargin: "0px 0px -50px 0px",
@@ -34,13 +34,12 @@ export function setupScrollAnimations() {
     });
   }, observerOptions);
 
-  // Select all animation targets
   const scrollTargets = document.querySelectorAll(
     ".animate-on-scroll, .reveal-up, .reveal-left, .reveal-right, .reveal:not(.animate-on-scroll *)",
   );
 
   scrollTargets.forEach((el) => observer.observe(el));
-}
+};
 
 setupScrollAnimations();
 

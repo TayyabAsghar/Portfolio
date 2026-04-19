@@ -1,5 +1,5 @@
 ---
-export interface Props {
+interface Props {
   path: string;
   duration?: number;
 }
@@ -11,10 +11,38 @@ const { path, duration } = Astro.props;
 </div>
 
 <script>
+  const audioBlobUrls = new Map();
+  const audioRequests = new Map();
+
+  const getAudioUrl = async (path: string) => {
+    if (audioBlobUrls.has(path)) return audioBlobUrls.get(path);
+    if (audioRequests.has(path)) return audioRequests.get(path);
+
+    const promise = fetch(path)
+      .then((res) => {
+        if (!res.ok)
+          throw new Error(`Failed to fetch audio: ${res.statusText}`);
+        return res.blob();
+      })
+      .then((blob) => {
+        const url = URL.createObjectURL(blob);
+        audioBlobUrls.set(path, url);
+        return url;
+      })
+      .catch((err) => {
+        console.error("Audio cache error:", err);
+        audioRequests.delete(path);
+        return path;
+      });
+
+    audioRequests.set(path, promise);
+    return promise;
+  };
+
   const initHoverSounds = () => {
     const soundContainers = document.querySelectorAll("[data-sound-path]");
 
-    soundContainers.forEach((container) => {
+    soundContainers.forEach(async (container) => {
       const parent = container.closest(".group");
       if (!parent || parent.hasAttribute("data-sound-processed")) return;
       parent.setAttribute("data-sound-processed", "true");
@@ -24,7 +52,8 @@ const { path, duration } = Astro.props;
 
       if (!path) return;
 
-      const audio = new Audio(path);
+      const audioSource = await getAudioUrl(path);
+      const audio = new Audio(audioSource);
       audio.preload = "auto";
 
       const setupPlaybackRate = () => {

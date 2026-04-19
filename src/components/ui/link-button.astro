@@ -6,8 +6,10 @@ interface Props {
   text: string;
   class?: string;
   iconLeft?: string;
+  rounded?: boolean;
   iconRight?: string;
   iconClass?: string;
+  variant?: "primary" | "secondary";
   target?: "_self" | "_blank" | "_parent" | "_top";
 }
 
@@ -17,20 +19,43 @@ const {
   iconLeft,
   iconRight,
   iconClass,
+  rounded = true,
   class: className,
   target = "_self",
+  variant = "primary",
 } = Astro.props;
+
+const baseStyles =
+  "flex items-center gap-2 w-fit px-4 py-2 text-xs font-semibold text-center duration-300 ease-out border rounded bg-neutral-900 dark:bg-neutral-100 dark:hover:border-neutral-700 dark:text-neutral-800 dark:hover:bg-neutral-300 text-neutral-100 border-neutral-900 hover:bg-neutral-700";
+
+const secondaryStyles =
+  "!bg-transparent hover:!bg-neutral-100 dark:!bg-transparent dark:hover:!bg-neutral-900 !border-neutral-200 hover:!border-neutral-300 dark:!border-neutral-800 dark:hover:!border-neutral-700 !text-neutral-900 hover:!text-neutral-600 dark:!text-neutral-100 dark:hover:!text-neutral-300";
+
+const roundedStyles = "!rounded-full";
 ---
 
 <a
   href={link}
-  class="w-max mt-5 btn-rounded no-underline"
-  class:list={[className]}
   target={target}
+  class:list={[
+    baseStyles,
+    variant === "secondary" ? secondaryStyles : "",
+    rounded ? roundedStyles : "",
+    "w-max mt-5 no-underline",
+    className,
+  ]}
 >
-  {!!iconLeft && <Icon class="text-base" class:list={[iconClass]} name={iconLeft} />}
+  {
+    !!iconLeft && (
+      <Icon class="text-base" class:list={[iconClass]} name={iconLeft} />
+    )
+  }
 
   {text}
 
-  {!!iconRight && <Icon class="text-base" class:list={[iconClass]} name={iconRight} />}
+  {
+    !!iconRight && (
+      <Icon class="text-base" class:list={[iconClass]} name={iconRight} />
+    )
+  }
 </a>

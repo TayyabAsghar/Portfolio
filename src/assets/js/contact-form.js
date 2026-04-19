@@ -1,4 +1,4 @@
-export function setupContactForm() {
+const setupContactForm = () => {
   const form = document.getElementById("contact-form");
   const submitBtn = document.getElementById("contact-submit-btn");
 
@@ -8,16 +8,11 @@ export function setupContactForm() {
     const checkInputs = () => {
       let isValid = true;
       inputs.forEach((input) => {
-        if (!String(input.value).trim()) {
-          isValid = false;
-        }
+        if (!String(input.value).trim()) isValid = false;
       });
 
-      if (isValid) {
-        submitBtn.removeAttribute("disabled");
-      } else {
-        submitBtn.setAttribute("disabled", "true");
-      }
+      if (isValid) submitBtn.removeAttribute("disabled");
+      else submitBtn.setAttribute("disabled", "true");
     };
 
     form.addEventListener("input", checkInputs);
@@ -40,10 +35,8 @@ export function setupContactForm() {
       window.open(gmailUrl, "_blank");
     };
   }
-}
+};
 
-// Initialize on first script load
 setupContactForm();
 
-// Re-initialize if Astro View Transitions are used
 document.addEventListener("astro:page-load", setupContactForm);

@@ -1,5 +1,6 @@
 ---
 import Button from "../ui/button.astro";
+import { EMAIL_REGEX } from "../../utils";
 ---
 
 <section
@@ -30,21 +31,19 @@ import Button from "../ui/button.astro";
     >
       <input
         required
-        id="dispatch-email-input"
         type="email"
+        pattern={EMAIL_REGEX}
+        id="dispatch-email-input"
         placeholder="john@example.com"
-        class="flex-1 w-full rounded-2xl border border-neutral-200 bg-neutral-50 px-5 py-4 text-base text-neutral-900 outline-none transition placeholder:text-neutral-400 focus:border-neutral-300 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100 dark:placeholder:text-neutral-500 dark:focus:border-neutral-700"
+        class="flex-1 w-full rounded-2xl border border-neutral-200 bg-neutral-50 px-3 py-3 text-base text-neutral-900 outline-none transition placeholder:text-neutral-400 focus:border-neutral-300 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100 dark:placeholder:text-neutral-500 dark:focus:border-neutral-700"
       />
 
       <Button
         type="submit"
         text="Subscribe"
         id="dispatch-submit-btn"
-        class="sm:flex-none sm:w-auto px-8 py-4 disabled:cursor-not-allowed disabled:opacity-50"
-        disabled
+        class="sm:flex-none sm:w-auto px-8 py-3 disabled:cursor-not-allowed disabled:opacity-50"
       />
     </form>
   </div>
 </section>
-
-<script src="../../assets/js/join-dispatch.js"></script>

@@ -17,7 +17,6 @@ export async function getStaticPaths() {
 }
 
 const { portfolio } = Astro.props;
-
 const { Content } = await portfolio.render();
 ---
 
@@ -60,16 +59,3 @@ const { Content } = await portfolio.render();
     </article>
   </main>
 </MainLayout>
-
-<style is:global>
-  @media (min-width: 1024px) {
-    #page-portfolio article p:has(img) {
-      margin-left: -8rem;
-      margin-right: -8rem;
-    }
-
-    #page-portfolio article p:has(img):first-child {
-      margin-bottom: 3rem;
-    }
-  }
-</style>

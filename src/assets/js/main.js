@@ -1,5 +1,3 @@
-// Add your javascript here
-
 window.darkMode = false;
 
 const stickyClasses = ["fixed", "h-14"];
@@ -81,7 +79,7 @@ document.getElementById("darkToggle").addEventListener("click", () => {
   }
 });
 
-function showDay(animate) {
+const showDay = (animate) => {
   document.getElementById("sun").classList.remove("setting");
   document.getElementById("moon").classList.remove("rising");
 
@@ -105,9 +103,9 @@ function showDay(animate) {
       document.getElementById("sun").classList.add("rising");
     }
   }, timeout);
-}
+};
 
-function showNight(animate) {
+const showNight = (animate) => {
   document.getElementById("moon").classList.remove("setting");
   document.getElementById("sun").classList.remove("rising");
 
@@ -131,19 +129,18 @@ function showNight(animate) {
       document.getElementById("moon").classList.add("rising");
     }
   }, timeout);
-}
+};
 
 window.applyMenuItemClasses = () => {
   const menuItems = document.querySelectorAll("#menu a");
   for (let i = 0; i < menuItems.length; i++) {
-    if (menuItems[i].pathname === window.location.pathname) {
+    if (menuItems[i].pathname === window.location.pathname)
       menuItems[i].classList.add("text-neutral-900", "dark:text-white");
-    }
   }
   //:class="{ 'text-neutral-900 dark:text-white': window.location.pathname == '{menu.url}', 'text-neutral-700 dark:text-neutral-400': window.location.pathname != '{menu.url}' }"
 };
 
-function mobileMenuFunctionality() {
+const mobileMenuFunctionality = () => {
   document.getElementById("openMenu").addEventListener("click", () => {
     openMobileMenu();
   });
@@ -151,7 +148,7 @@ function mobileMenuFunctionality() {
   document.getElementById("closeMenu").addEventListener("click", () => {
     closeMobileMenu();
   });
-}
+};
 
 window.openMobileMenu = () => {
   document.getElementById("openMenu").classList.add("hidden");

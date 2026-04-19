@@ -1,5 +1,5 @@
 (function () {
-  function initTechnologies() {
+  const initTechnologies = () => {
     const wrapEl = document.getElementById("os-wrap");
     if (!wrapEl) return;
 
@@ -25,13 +25,12 @@
     let currentRx = 350;
     let currentRy = 140;
 
-    function getEllipsePathStr(rx, ry) {
+    const getEllipsePathStr = (rx, ry) => {
       return `M -${rx} 0 A ${rx} ${ry} 0 1 1 ${rx} 0 A ${rx} ${ry} 0 1 1 -${rx} 0`;
-    }
+    };
 
-    function updateRings() {
+    const updateRings = () => {
       const w = window.innerWidth;
-      // Define breakpoints for the physical radii
       if (w < 768) {
         currentRx = 175;
         currentRy = 70;
@@ -42,7 +41,6 @@
 
       const pathStr = getEllipsePathStr(currentRx, currentRy);
 
-      // Update static orbital lines
       wrapEl.querySelectorAll(".sol-ring-li .os-path-svg").forEach((svg) => {
         svg.setAttribute(
           "viewBox",
@@ -54,11 +52,10 @@
         if (path) path.setAttribute("d", pathStr);
       });
 
-      // Update planets' motion paths
       wrapEl.querySelectorAll(".os-item").forEach((item) => {
         item.style.setProperty("--path", `path('${pathStr}')`);
       });
-    }
+    };
 
     let resizeTimer;
     window.addEventListener("resize", () => {
@@ -68,7 +65,7 @@
 
     updateRings();
 
-    function attachSolarClicks() {
+    const attachSolarClicks = () => {
       wrapEl.querySelectorAll(".os-gplanet").forEach((btn) => {
         btn.onclick = (e) => {
           e.stopPropagation();
@@ -76,9 +73,9 @@
           if (g) enterGroup(g);
         };
       });
-    }
+    };
 
-    function enterGroup(group) {
+    const enterGroup = (group) => {
       isDrillDown = true;
       if (!solarLis) solarLis = [...wrapEl.querySelectorAll(".sol-ring-li")];
       solarLis.forEach((li) => li.classList.add("hidden"));
@@ -101,7 +98,7 @@
       const baseRx = currentRx;
       const baseRy = currentRy;
       const isMobile = window.innerWidth < 768;
-      const drillRx = isMobile 
+      const drillRx = isMobile
         ? [baseRx * 0.35, baseRx * 0.6, baseRx * 0.8, baseRx * 1.0]
         : [baseRx * 0.4, baseRx * 0.7, baseRx * 0.9, baseRx * 1.1];
       const drillRy = isMobile
@@ -133,7 +130,12 @@
         li.style.setProperty("--rz-neg", `0deg`);
 
         const pathDiv = document.createElement("div");
-        pathDiv.classList.add("os-path-svg", "border", "border-dashed", "rounded-[50%]");
+        pathDiv.classList.add(
+          "os-path-svg",
+          "border",
+          "border-dashed",
+          "rounded-[50%]",
+        );
         pathDiv.style.setProperty("--rx-val", rx.toString());
         pathDiv.style.setProperty("--ry-val", ry.toString());
         pathDiv.style.borderColor = `${group.color}60`;
@@ -169,7 +171,6 @@
         wrapEl.insertBefore(li, hubLi);
       });
 
-      // Update Hub to category view
       hubDefaultPath.classList.add("hidden");
       hubDefaultExtra.classList.add("hidden");
       hubDynamicIconShape.classList.remove("hidden");
@@ -193,9 +194,9 @@
       hubEl.classList.add("cursor-pointer");
       hubEl.classList.remove("cursor-default");
       hubEl.title = "Click to go back";
-    }
+    };
 
-    function showSolar() {
+    const showSolar = () => {
       if (!isDrillDown) return;
       isDrillDown = false;
       wrapEl.querySelectorAll(".drill-ring-li").forEach((li) => li.remove());
@@ -218,15 +219,16 @@
       hubEl.classList.remove("cursor-pointer");
       hubEl.classList.add("cursor-default");
       hubEl.title = "";
-    }
+    };
 
     hubEl.onclick = (e) => {
       e.stopPropagation();
       showSolar();
     };
     attachSolarClicks();
-  }
+  };
 
   initTechnologies();
+
   document.addEventListener("astro:page-load", initTechnologies);
 })();

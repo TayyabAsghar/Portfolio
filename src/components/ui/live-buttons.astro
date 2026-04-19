@@ -17,8 +17,8 @@ const { primary, secondary, iconPrimary, iconSecondary } = Astro.props;
       <LinkButton
         link={primary}
         target="_blank"
+        class="!-mt-4"
         text="Live Preview"
-        class="!mt-[-1rem]"
         iconRight={iconPrimary ?? "open-in-new"}
       />
     )
@@ -27,11 +27,12 @@ const { primary, secondary, iconPrimary, iconSecondary } = Astro.props;
   {
     !!secondary && (
       <LinkButton
-        text="GitHub Code"
-        link={secondary}
+        class="!-mt-4"
         target="_blank"
+        link={secondary}
+        text="GitHub Code"
+        variant="secondary"
         iconRight={iconSecondary ?? "github"}
-        class="btn btn-secondary !mt-[-1rem]"
       />
     )
   }

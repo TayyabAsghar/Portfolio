@@ -1,4 +1,4 @@
-export function initShipScroller() {
+const initShipScroller = () => {
   const shipEl = document.getElementById("odyssey-ship");
   const timelineEl = document.getElementById("odyssey-timeline");
 
@@ -11,11 +11,11 @@ export function initShipScroller() {
   let targetY = 0;
   let currentY = 0;
 
-  function lerp(a, b, t) {
+  const lerp = (a, b, t) => {
     return a + (b - a) * t;
-  }
+  };
 
-  function update() {
+  const update = () => {
     const timelineRect = timeline.getBoundingClientRect();
     const shipHeight = ship.offsetHeight;
     const totalScrollable = timelineRect.height - shipHeight;
@@ -44,7 +44,7 @@ export function initShipScroller() {
     });
 
     rafId = requestAnimationFrame(update);
-  }
+  };
 
   const observer = new IntersectionObserver(
     (entries) => {
@@ -63,7 +63,7 @@ export function initShipScroller() {
   );
 
   observer.observe(timeline);
-}
+};
 
 if (typeof document !== "undefined")
   document.addEventListener("DOMContentLoaded", initShipScroller);

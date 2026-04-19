@@ -1,6 +1,5 @@
 ---
 import { latestPosts } from "../../utils/posts";
-import HoverSound from "../ui/hover-sound.astro";
 import HoverPencilBackground from "../ui/hover-pencil-background.astro";
 
 interface Props {
@@ -15,20 +14,19 @@ const formateDate = (date: string) => {
   const p = date.split(" ");
   return `${p[1]} ${p[0]}, ${p[2]}`;
 };
+
+const borderStyle =
+  "border border-1 border-solid border-neutral-200 dark:border-neutral-800";
 ---
 
-<div class="flex flex-wrap justify-center gap-y-20 gap-x-12 md:gap-x-24 w-full">
+<div class="flex flex-wrap justify-center gap-12 md:gap-x-24 w-full">
   {
     listPosts.map(({ slug, data }, index) => (
       <a
         href={`/blog/${slug}`}
-        class={`group relative z-0 block no-underline w-full md:w-[calc(45%-1rem)] lg:w-[calc(42%-2rem)] ${index === 2 ? "md:mt-4" : ""} p-6 -mx-6 sm:-mx-6 rounded-2xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1`}
+        class={`group relative z-0 block no-underline w-full md:w-[calc(45%-1rem)] lg:w-[calc(42%-2rem)] ${index === 2 ? "md:mt-4" : ""} p-6 -mx-6 sm:-mx-6 rounded-2xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 ${borderStyle}`}
       >
-        <HoverPencilBackground strokeWidth={3} animationDuration={duration} />
-        <HoverSound
-          duration={duration}
-          path="/assets/sounds/home/writing.wav"
-        />
+        <HoverPencilBackground strokeWidth={5} animationDuration={duration} />
 
         <div class="flex justify-between items-center mb-6 text-xsm font-bold tracking-most-widest uppercase">
           <span class="text-neutral-500 dark:text-neutral-500">

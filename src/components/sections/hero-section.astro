@@ -41,16 +41,17 @@ import WidgetMusicPlayer from "../ui/music-player.astro";
 
       <div class="flex flex-wrap items-center gap-4 pt-4">
         <LinkButton
-          text="Let's Connect"
           target="_blank"
+          text="Let's Connect"
           link={`mailto:${about.email}`}
         />
+
         <LinkButton
           text="Resume"
           target="_blank"
           link="/resume.pdf"
+          variant="secondary"
           iconRight="download"
-          class="btn btn-secondary border-2"
         />
       </div>
     </div>

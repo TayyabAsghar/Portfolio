@@ -1,6 +1,5 @@
 import { getCollection } from "astro:content";
 
-// Only return posts without `draft: true` in the frontmatter
 export const latestPosts = (
   await getCollection("blog", ({ data }) => data.draft !== true)
 ).sort(
@@ -9,7 +8,6 @@ export const latestPosts = (
     new Date(a.data.publishDate).valueOf(),
 );
 
-// Group posts by year
 export const groupedPosts = latestPosts.reduce(
   (acc, post) => {
     const dateStr = post.data.publishDate;
@@ -24,7 +22,6 @@ export const groupedPosts = latestPosts.reduce(
   {} as Record<string, typeof latestPosts>,
 );
 
-// Sort years descending
 export const sortedYears = Object.keys(groupedPosts).sort(
   (a, b) => Number(b) - Number(a),
 );
