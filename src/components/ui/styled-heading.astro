@@ -1,11 +1,11 @@
 ---
 interface Props {
-  description: string;
   heading: {
     part1: string;
     part2: string;
   };
   title?: string;
+  description?: string;
 }
 
 const { title, heading, description } = Astro.props;
@@ -26,7 +26,11 @@ const { title, heading, description } = Astro.props;
     {heading.part1}<br />{heading.part2}
   </h1>
 
-  <p class="text-neutral-600 dark:text-neutral-400 max-w-102 leading-relaxed">
-    {description}
-  </p>
+  {
+    !!description && (
+      <p class="text-neutral-600 dark:text-neutral-400 max-w-102 leading-relaxed">
+        {description}
+      </p>
+    )
+  }
 </div>

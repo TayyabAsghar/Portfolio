@@ -5,6 +5,8 @@ export interface Props {
   groups: any[];
   scaleX?: number;
   scaleY?: number;
+  trailWidth?: number;
+  trailFactor?: number;
   itemsPerRing?: number;
 }
 
@@ -12,6 +14,8 @@ const {
   groups = [],
   scaleX = 350,
   scaleY = 140,
+  trailWidth = 2,
+  trailFactor = 1,
   itemsPerRing = 1,
 } = Astro.props;
 
@@ -32,6 +36,8 @@ for (let i = 0; i < groups.length; i += itemsPerRing) {
     rotZ,
     rx: scaleX,
     ry: scaleY,
+    trailWidth,
+    trailFactor,
     groups: ringGroups,
   });
 }

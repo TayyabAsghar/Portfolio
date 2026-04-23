@@ -6,62 +6,101 @@ export interface Props {
   rotX: number;
   spd: number;
   groups: any[];
+  trailWidth?: number;
+  trailFactor?: number;
 }
 
-const { rx, ry, rotZ, rotX, spd, groups } = Astro.props;
+const {
+  rx,
+  ry,
+  rotZ,
+  rotX,
+  spd,
+  groups,
+  trailFactor = 1,
+  trailWidth = 1.5,
+} = Astro.props;
 
 const getEllipsePathStr = (rx: number, ry: number) =>
   `M -${rx} 0 A ${rx} ${ry} 0 1 1 ${rx} 0 A ${rx} ${ry} 0 1 1 -${rx} 0`;
 
 const pathStr = getEllipsePathStr(rx, ry);
+const isTrailing = trailFactor < 1;
+const trailLen = trailFactor * 100;
 ---
 
 <li
   class="sol-ring-li w-0 h-0 [transform-style:preserve-3d] pointer-events-none"
   style={`--rz: ${rotZ}deg; --rx: ${rotX}deg; --rz-neg: -${rotZ}deg; --rx-neg: -${rotX}deg;`}
 >
-  <svg
-    class="os-path-svg"
-    style={`--rx-val: ${rx}; --ry-val: ${ry};`}
-    viewBox={`-${rx} -${ry} ${rx * 2} ${ry * 2}`}
-  >
-    <path
-      d={pathStr}
-      fill="none"
-      stroke-width="1"
-      stroke="currentColor"
-      stroke-dasharray="4 4"
-      class="text-neutral-800/30 dark:text-white/10"></path>
-  </svg>
+  {
+    !isTrailing && (
+      <svg
+        class="os-path-svg"
+        style={`--rx-val: ${rx}; --ry-val: ${ry};`}
+        viewBox={`-${rx} -${ry} ${rx * 2} ${ry * 2}`}
+      >
+        <path
+          d={pathStr}
+          fill="none"
+          stroke-width="1"
+          stroke="currentColor"
+          stroke-dasharray="4 4"
+          class="text-neutral-800/30 dark:text-white/10"
+        />
+      </svg>
+    )
+  }
 
   {
     groups.map((g, gi) => {
       const delay = -(gi / groups.length) * spd - Math.random() * spd;
       return (
-        <div
-          class="os-item pointer-events-auto"
-          style={`--path: path('${pathStr}'); --spd: ${spd}s; --dly: ${delay}s; --rx: ${rotX}deg;`}
-        >
-          <div
-            class="os-counter"
-            style={`--rx-neg: -${rotX}deg; --rz-neg: -${rotZ}deg;`}
-          >
-            <button
-              data-gid={g.id}
-              class="os-gplanet"
-              style={`--pc:${g.color};`}
+        <>
+          {isTrailing && (
+            <svg
+              class="os-path-svg"
+              style={`--rx-val: ${rx}; --ry-val: ${ry};`}
+              viewBox={`-${rx} -${ry} ${rx * 2} ${ry * 2}`}
             >
-              <div
-                set:html={g.icon}
-                class="gp-icon flex items-center justify-center p-1"
+              <path
+                d={pathStr}
+                fill="none"
+                pathLength="100"
+                stroke="currentColor"
+                stroke-width={trailWidth}
+                stroke-dasharray={`${trailLen} ${100 - trailLen}`}
+                class="text-neutral-800/30 dark:text-white/10 animate-orbit-trail"
+                style={`--trail-start: ${trailLen}; --trail-end: ${trailLen - 100}; animation-duration: ${spd}s; animation-delay: ${delay}s;`}
               />
+            </svg>
+          )}
 
-              <span class="gp-count">{g.skills.length}</span>
+          <div
+            class="os-item pointer-events-auto"
+            style={`--path: path('${pathStr}'); --spd: ${spd}s; --dly: ${delay}s; --rx: ${rotX}deg;`}
+          >
+            <div
+              class="os-counter"
+              style={`--rx-neg: -${rotX}deg; --rz-neg: -${rotZ}deg;`}
+            >
+              <button
+                data-gid={g.id}
+                class="os-gplanet"
+                style={`--pc:${g.color};`}
+              >
+                <div
+                  set:html={g.icon}
+                  class="gp-icon flex items-center justify-center p-1"
+                />
 
-              <span class="gp-tip">{g.heading}</span>
-            </button>
+                <span class="gp-count">{g.skills.length}</span>
+
+                <span class="gp-tip">{g.heading}</span>
+              </button>
+            </div>
           </div>
-        </div>
+        </>
       );
     })
   }

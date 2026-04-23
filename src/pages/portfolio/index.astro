@@ -1,21 +1,38 @@
 ---
 import companies from "../../data/clients.json";
 import Layout from "../../components/layout/main.astro";
+import { latestPortfolio } from "../../utils/portfolio";
 import StyledHeading from "../../components/ui/styled-heading.astro";
 import ListProjects from "../../components/projects/list-projects.astro";
+
+let globalOffset = 0;
 ---
 
 <Layout title="Creative Architect | Tayyab Asghar">
   <section class="relative z-20 max-w-5xl mx-auto my-12 px-7 lg:px-0">
     <StyledHeading
       heading={{ part1: "Creative", part2: "Architect." }}
-      description="I am passionate about transforming new ideas into reality through innovative projects. Explore this portfolio to see my latest works, showcasing both my creativity and technical expertise."
+      description="I am passionate about transforming new ideas into reality through innovative projects. Explore this portfolio to see my latest works, showcasing both creativity and technical expertise."
     />
 
     {
-      companies?.map(({ name, logo, link }) => (
-        <ListProjects link={link} company={name} brandLogo={logo} />
-      ))
+      companies?.map(({ name, logo, link }) => {
+        const companyProjects = latestPortfolio.filter(
+          (p) => p.data.company === name,
+        );
+
+        const offset = globalOffset;
+        globalOffset += companyProjects.length;
+
+        return (
+          <ListProjects
+            link={link}
+            company={name}
+            offset={offset}
+            brandLogo={logo}
+          />
+        );
+      })
     }
   </section>
 </Layout>

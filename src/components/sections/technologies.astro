@@ -132,7 +132,11 @@ const groupsJson = JSON.stringify(GROUPS);
   <div class="hidden" aria-hidden="true">
     {
       GROUPS.flatMap((g) => g.skills).map((skill) => (
-        <img src={`/assets/images/stack/${skill.name}.svg`} alt="" loading="eager" />
+        <img
+          loading="eager"
+          alt={skill.name}
+          src={`/assets/images/stack/${skill.name}.svg`}
+        />
       ))
     }
   </div>
@@ -157,10 +161,12 @@ const groupsJson = JSON.stringify(GROUPS);
           <TechHub />
 
           <SolarRings
-            groups={GROUPS}
             scaleX={350}
             scaleY={140}
+            trailWidth={4}
+            groups={GROUPS}
             itemsPerRing={1}
+            trailFactor={0.8}
           />
         </ul>
       </div>

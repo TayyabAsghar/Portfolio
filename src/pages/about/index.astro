@@ -1,5 +1,4 @@
 ---
-import about from "../../data/about.json";
 import { Icon } from "astro-icon/components";
 import education from "../../data/education.json";
 import experiences from "../../data/experiences.json";
@@ -7,22 +6,24 @@ import certificates from "../../data/certificates.json";
 import Layout from "../../components/layout/main.astro";
 import beyondScreen from "../../data/beyond-screen.json";
 import VideoPlayer from "../../components/ui/video-player.astro";
-import PageHeading from "../../components/ui/page-heading.astro";
+import StyledHeading from "../../components/ui/styled-heading.astro";
 import LetsConnect from "../../components/sections/lets-connect.astro";
+import OdysseyShip from "../../components/backgrounds/odyssey-ship.astro";
 import AboutEducation from "../../components/sections/about-education.astro";
 import AboutExperience from "../../components/sections/about-experience.astro";
 import AboutCertificate from "../../components/sections/about-certificate.astro";
-import OdysseyShip from "../../components/backgrounds/odyssey-ship.astro";
 ---
 
 <Layout title="About Me | Tayyab Asghar">
   <section class="relative z-20 max-w-5xl mx-auto my-12 px-7 lg:px-0">
+    <StyledHeading heading={{ part1: "About", part2: "Me" }} />
+
     <div
-      class="relative my-10 w-full overflow-hidden rounded-xl aspect-video opacity-0 reveal-up"
+      class="relative w-full overflow-hidden rounded-xl aspect-video opacity-0 reveal-up"
     >
       <VideoPlayer
         overlay
-        volume={0.2}
+        volume={0.1}
         id="about-video"
         title="About Me"
         image="/assets/images/about.avif"
@@ -31,9 +32,7 @@ import OdysseyShip from "../../components/backgrounds/odyssey-ship.astro";
       />
     </div>
 
-    <div class="opacity-0 reveal-up delay-200">
-      <PageHeading title="About Me" description={about.me} />
-    </div>
+    <div class="opacity-0 reveal-up delay-200"></div>
 
     <div class="mt-14">
       <div class="mx-auto max-w-2xl text-center opacity-0 reveal-up">

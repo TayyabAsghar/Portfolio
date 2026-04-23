@@ -24,6 +24,7 @@ export default {
         "ship-bob": "bob 3s ease-in-out infinite",
         "sail-sway": "sway 4s ease-in-out infinite",
         "menu-slide-in": "menuSlideIn 0.3s ease-out",
+        "orbit-trail": "orbit-trail linear infinite",
         "water-flow-fast": "flow 10s linear infinite",
         "marquee-scroll": "scroll 10s linear infinite",
         "wake-ripple": "ripple 2s ease-in-out infinite",
@@ -115,6 +116,10 @@ export default {
         orbit: {
           from: { "offset-distance": "0%" },
           to: { "offset-distance": "100%" },
+        },
+        "orbit-trail": {
+          from: { "stroke-dashoffset": "var(--trail-start)" },
+          to: { "stroke-dashoffset": "var(--trail-end)" },
         },
       },
     },
