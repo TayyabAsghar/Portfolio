@@ -26,7 +26,13 @@ const initShipScroller = () => {
     const progress = Math.max(0, Math.min(1, rawProgress));
 
     targetY = progress * totalScrollable;
+    const diff = targetY - currentY;
     currentY = lerp(currentY, targetY, 0.05);
+
+    if (Math.abs(diff) > 0.5) {
+      const targetRotation = diff > 0 ? 0 : 180;
+      ship.style.setProperty("--ship-rotation", `${targetRotation}deg`);
+    }
 
     ship.style.transform = `translateX(-50%) translateY(${currentY}px)`;
 

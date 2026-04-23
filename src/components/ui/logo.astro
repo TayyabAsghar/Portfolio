@@ -1,11 +1,16 @@
+---
+import logoSvg from "../../assets/logo.svg?raw";
+---
+
 <a
   href="/"
-  class="h-5 text-base group relative z-30 flex items-center space-x-1.5 text-black dark:text-white font-semibold"
+  class="text-base group relative z-30 flex items-center space-x-1.5 text-black dark:text-white font-semibold"
 >
-  <span
-    class="text-xl -translate-y-0.5 group-hover:-rotate-12 group-hover:scale-[1.2] ease-in-out duration-300"
+  <div
+    class="w-6 h-6 transition-transform group-hover:[transform:rotate(360deg)] ease-in-out duration-700 fill-current overflow-visible"
   >
-    ✦
-  </span>
+    <Fragment set:html={logoSvg} />
+  </div>
+
   <span class="-translate-y-0.5">Tayyab</span>
 </a>

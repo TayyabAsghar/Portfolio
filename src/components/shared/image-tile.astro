@@ -33,7 +33,7 @@ const tiltStyles =
   {
     gradient && (
       <div
-        class={`absolute inset-0 bg-gradient-to-tr ${gradient} rounded-full blur-[100px] opacity-5 group-hover:opacity-10 transition-all duration-1000 ease-in-out`}
+        class={`absolute inset-0 bg-gradient-to-tr ${gradient} rounded-full blur-[100px] opacity-[0.03] group-hover:opacity-[0.08] transition-all duration-1000 ease-in-out`}
       />
     )
   }
@@ -48,32 +48,32 @@ const tiltStyles =
       gradient && (
         <>
           <div
-            class={`absolute -inset-4 bg-gradient-to-tr ${gradient} rounded-2xl opacity-5 blur-sm transform [translateZ(-30px)] transition-all duration-700 group-hover:opacity-10 group-hover:-inset-5`}
+            class={`absolute -inset-4 bg-gradient-to-tr ${gradient} rounded-2xl opacity-[0.02] blur-sm transform [translateZ(-30px)] transition-all duration-700 group-hover:opacity-[0.06] group-hover:-inset-5`}
           />
           <div
-            class={`absolute -inset-2 bg-gradient-to-br ${gradient} rounded-xl opacity-5 blur-[1px] transform [translateZ(-15px)] transition-all duration-700 group-hover:opacity-15 group-hover:-inset-2.5`}
+            class={`absolute -inset-2 bg-gradient-to-br ${gradient} rounded-xl opacity-[0.04] blur-[1px] transform [translateZ(-15px)] transition-all duration-700 group-hover:opacity-[0.1] group-hover:-inset-2.5`}
           />
         </>
       )
     }
 
     <div
-      class="relative p-[1.5px] rounded-xl bg-gradient-to-br from-white/30 via-white/5 to-transparent border border-white/10 shadow-[0_40px_80px_rgba(0,0,0,0.4)] overflow-hidden backdrop-blur-sm"
+      class="relative p-[1.5px] rounded-xl bg-gradient-to-br from-white/30 via-white/5 to-transparent border border-white/10 shadow-none dark:shadow-[0_40px_80px_rgba(0,0,0,0.4)] overflow-hidden backdrop-blur-sm"
     >
       <div class="bg-neutral-900 rounded-[0.65rem] overflow-hidden">
         <div
           class="flex items-center gap-1.5 px-4 py-2.5 border-b border-white/5 bg-white/[0.03]"
         >
           <div
-            class="w-2 h-2 rounded-full bg-[#FF5F56] shadow-[0_0_10px_rgba(255,95,86,0.3)]"
+            class="w-2 h-2 rounded-full bg-[#FF5F56] dark:shadow-[0_0_10px_rgba(255,95,86,0.3)]"
           >
           </div>
           <div
-            class="w-2 h-2 rounded-full bg-[#FFBD2E] shadow-[0_0_10px_rgba(255,189,46,0.3)]"
+            class="w-2 h-2 rounded-full bg-[#FFBD2E] dark:shadow-[0_0_10px_rgba(255,189,46,0.3)]"
           >
           </div>
           <div
-            class="w-2 h-2 rounded-full bg-[#27C93F] shadow-[0_0_10px_rgba(39,201,63,0.3)]"
+            class="w-2 h-2 rounded-full bg-[#27C93F] dark:shadow-[0_0_10px_rgba(39,201,63,0.3)]"
           >
           </div>
         </div>
@@ -98,7 +98,7 @@ const tiltStyles =
     </div>
 
     <div
-      class="absolute inset-4 bg-black/40 rounded-xl blur-[40px] [transform:translateZ(-50px)] -z-10 opacity-0 group-hover:opacity-100 transition-all duration-700"
+      class="absolute inset-4 bg-transparent dark:bg-black/40 rounded-xl blur-[40px] [transform:translateZ(-50px)] -z-10 opacity-0 group-hover:opacity-100 transition-all duration-700"
     >
     </div>
   </div>

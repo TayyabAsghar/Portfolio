@@ -31,14 +31,18 @@
   aria-hidden="true"
 >
   <div
-    class="ship-container scale-75 md:scale-100 origin-center transition-transform"
+    class="ship-rotate-wrapper transition-transform duration-1000 ease-in-out [transform:rotate(var(--ship-rotation,0deg))]"
   >
-    <img
-      width="50"
-      height="65"
-      alt="Odyssey Ship"
-      src="/assets/images/about/ship.png"
-      class="rotate-180 drop-shadow-[0_15px_25px_rgba(0,0,0,0.3)] dark:drop-shadow-[0_15px_30px_rgba(0,0,0,0.5)]"
-    />
+    <div
+      class="ship-container scale-75 md:scale-100 origin-center"
+    >
+      <img
+        width="50"
+        height="65"
+        alt="Odyssey Ship"
+        src="/assets/images/about/ship.png"
+        class="rotate-180 drop-shadow-[0_15px_25px_rgba(0,0,0,0.3)] dark:drop-shadow-[0_15px_30px_rgba(0,0,0,0.5)]"
+      />
+    </div>
   </div>
 </div>
