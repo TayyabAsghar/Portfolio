@@ -1,5 +1,5 @@
 ---
-import { Picture } from "astro:assets";
+import ImageTile from "./image-tile.astro";
 
 interface Props {
   src: string;
@@ -10,31 +10,25 @@ interface Props {
   outline?: boolean;
 }
 
-const { src, alt, className, noBorder, outline, gradient } = Astro.props;
-
-const borderStyle = !noBorder
-  ? "lg:ring-2 ring-slate-100 lg:p-3 dark:ring-slate-700"
-  : "";
-
-const outlineStyle = outline
-  ? "ring-2 ring-slate-100 !p-0 dark:ring-slate-700"
-  : "";
+const { src, alt, className, gradient } = Astro.props;
 ---
 
-<figure
-  class="text-center text-xs rounded-lg md:rounded-2xl lg:rounded-3xl lg:-mx-32"
-  class:list={[gradient]}
->
-  <Picture
-    src={src}
-    formats={["avif", "webp", "jpg"]}
+<div class:list={["w-full", className]}>
+  <ImageTile
     alt={alt}
-    width="1920"
-    height="1080"
-    class="scale-90 relative top-[22px]"
-    class:list={[borderStyle, outlineStyle, className]}
+    image={src}
+    width={1920}
+    height={1080}
+    gradient={gradient}
+    coverSize="w-full"
+    tiltDirection="right"
   />
-  <figcaption>
-    <slot />
-  </figcaption>
-</figure>
+
+  {
+    Astro.slots.has("default") && (
+      <figcaption class="text-center text-xs mt-4 text-neutral-500 dark:text-neutral-400 italic">
+        <slot />
+      </figcaption>
+    )
+  }
+</div>

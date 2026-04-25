@@ -1,0 +1,11 @@
+export { default as menu } from "./menu.json";
+export { default as about } from "./about.json";
+export { default as music } from "./music.json";
+export { default as stacks } from "./stacks.json";
+export { default as clients } from "./clients.json";
+export { default as socials } from "./socials.json";
+export { default as education } from "./education.json";
+export { default as experiences } from "./experiences.json";
+export { default as testimonials } from "./testimonials.json";
+export { default as certificates } from "./certificates.json";
+export { default as beyondScreen } from "./beyond-screen.json";

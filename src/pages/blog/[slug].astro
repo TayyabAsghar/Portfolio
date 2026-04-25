@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
-import MainLayout from "../../components/layout/main.astro";
+import { Main as MainLayout } from "../../components";
 
 interface Props {
   post: CollectionEntry<"blog">;

@@ -1,5 +1,5 @@
 ---
-import ImageTile from "../shared/image-tile.astro";
+import { ImageTile } from "../shared";
 
 interface Props {
   name: string;
@@ -67,7 +67,11 @@ const textHoverStyle =
   <div
     class:list={[baseStyle, layoutStyle[layout]]}
     data-project-row={layout === "list" ? "true" : undefined}
-    data-direction={layout === "list" ? (index !== undefined && index % 2 !== 0 ? "row" : "row-reverse") : undefined}
+    data-direction={layout === "list"
+      ? index !== undefined && index % 2 !== 0
+        ? "row"
+        : "row-reverse"
+      : undefined}
   >
     {
       image && (
@@ -79,7 +83,13 @@ const textHoverStyle =
             image={image}
             gradient={gradient}
             coverSize="w-full"
-            tiltDirection={layout === "list" ? (index !== undefined && index % 2 !== 0 ? "right" : "left") : "right"}
+            tiltDirection={
+              layout === "list"
+                ? index !== undefined && index % 2 !== 0
+                  ? "right"
+                  : "left"
+                : "right"
+            }
           />
         </div>
       )

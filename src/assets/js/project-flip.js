@@ -39,6 +39,13 @@ const flipRow = (row, duration) => {
 };
 
 const scheduleFlip = (row, duration, interval) => {
+  const container = row.closest("[data-flip-duration]") ?? row;
+
+  if (container.matches(":hover")) {
+    setTimeout(() => scheduleFlip(row, duration, interval), 500);
+    return;
+  }
+
   flipRow(row, duration);
   setTimeout(() => scheduleFlip(row, duration, interval), duration + interval);
 };

@@ -2,7 +2,7 @@
 import "../../assets/css/main.css";
 import Footer from "./footer.astro";
 import Header from "./header.astro";
-import SquareLines from "../backgrounds/square-lines.astro";
+import { SquareLines } from "../backgrounds";
 
 interface Props {
   title: string;
@@ -48,6 +48,7 @@ const { title } = Astro.props;
     </script>
 
     <link rel="icon" type="image/x-icon" href="../../assets/images/logo.svg" />
+
     <Fragment set:html={import.meta.env.HEADER_INJECT} />
   </head>
 

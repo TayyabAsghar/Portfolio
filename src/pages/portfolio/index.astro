@@ -1,14 +1,16 @@
 ---
-import companies from "../../data/clients.json";
-import Layout from "../../components/layout/main.astro";
+import { about, clients } from "../../data";
 import { latestPortfolio } from "../../utils/portfolio";
-import StyledHeading from "../../components/ui/styled-heading.astro";
-import ListProjects from "../../components/projects/list-projects.astro";
+import {
+  ListProjects,
+  StyledHeading,
+  Main as MainLayout,
+} from "../../components";
 
 let globalOffset = 0;
 ---
 
-<Layout title="Creative Architect | Tayyab Asghar">
+<MainLayout title=`Creative Architect | ${about.name}` `>
   <section class="relative z-20 max-w-5xl mx-auto my-12 px-7 lg:px-0">
     <StyledHeading
       heading={{ part1: "Creative", part2: "Architect." }}
@@ -16,7 +18,7 @@ let globalOffset = 0;
     />
 
     {
-      companies?.map(({ name, logo, link }) => {
+      clients?.map(({ name, logo, link }) => {
         const companyProjects = latestPortfolio.filter(
           (p) => p.data.company === name,
         );
@@ -35,4 +37,4 @@ let globalOffset = 0;
       })
     }
   </section>
-</Layout>
+</MainLayout>

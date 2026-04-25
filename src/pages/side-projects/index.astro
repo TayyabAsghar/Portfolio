@@ -1,10 +1,13 @@
 ---
-import Layout from "../../components/layout/main.astro";
-import StyledHeading from "../../components/ui/styled-heading.astro";
-import ListSideProjects from "../../components/projects/list-side-projects.astro";
+import { about } from "../../data";
+import {
+  StyledHeading,
+  ListSideProjects,
+  Main as MainLayout,
+} from "../../components";
 ---
 
-<Layout title="Side Projects | Tayyab Asghar">
+<MainLayout title={`Side Projects | ${about.name}`}>
   <section class="relative z-20 max-w-2xl mx-auto my-12 px-7 lg:px-0">
     <StyledHeading
       heading={{ part1: "Side", part2: "Projects." }}
@@ -13,4 +16,4 @@ import ListSideProjects from "../../components/projects/list-side-projects.astro
 
     {(<ListSideProjects />)}
   </section>
-</Layout>
+</MainLayout>

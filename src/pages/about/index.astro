@@ -1,20 +1,25 @@
 ---
 import { Icon } from "astro-icon/components";
-import education from "../../data/education.json";
-import experiences from "../../data/experiences.json";
-import certificates from "../../data/certificates.json";
-import Layout from "../../components/layout/main.astro";
-import beyondScreen from "../../data/beyond-screen.json";
-import VideoPlayer from "../../components/ui/video-player.astro";
-import StyledHeading from "../../components/ui/styled-heading.astro";
-import LetsConnect from "../../components/sections/lets-connect.astro";
-import OdysseyShip from "../../components/backgrounds/odyssey-ship.astro";
-import AboutEducation from "../../components/sections/about-education.astro";
-import AboutExperience from "../../components/sections/about-experience.astro";
-import AboutCertificate from "../../components/sections/about-certificate.astro";
+import {
+  about,
+  education,
+  experiences,
+  certificates,
+  beyondScreen,
+} from "../../data";
+import {
+  VideoPlayer,
+  OdysseyShip,
+  LetsConnect,
+  StyledHeading,
+  AboutEducation,
+  AboutExperience,
+  AboutCertificate,
+  Main as MainLayout,
+} from "../../components";
 ---
 
-<Layout title="About Me | Tayyab Asghar">
+<MainLayout title={`About Me | ${about.name}`}>
   <section class="relative z-20 max-w-5xl mx-auto my-12 px-7 lg:px-0">
     <StyledHeading heading={{ part1: "About", part2: "Me" }} />
 
@@ -231,7 +236,7 @@ import AboutCertificate from "../../components/sections/about-certificate.astro"
       <LetsConnect />
     </div>
   </section>
-</Layout>
+</MainLayout>
 
 <script src="../../assets/js/ship.js"></script>
 <script src="../../assets/js/animate-on-scroll.js"></script>

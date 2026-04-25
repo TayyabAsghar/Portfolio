@@ -1,0 +1,11 @@
+export { default as TechHub } from "./tech-hub.astro";
+export { default as Writings } from "./writings.astro";
+export { default as SolarRings } from "./solar-rings.astro";
+export { default as HeroSection } from "./hero-section.astro";
+export { default as LetsConnect } from "./lets-connect.astro";
+export { default as Testimonials } from "./testimonials.astro";
+export { default as Technologies } from "./technologies.astro";
+export { default as JoinDispatch } from "./join-dispatch.astro";
+export { default as AboutEducation } from "./about-education.astro";
+export { default as AboutExperience } from "./about-experience.astro";
+export { default as AboutCertificate } from "./about-certificate.astro";

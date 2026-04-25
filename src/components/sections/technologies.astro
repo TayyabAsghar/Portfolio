@@ -1,17 +1,17 @@
 ---
+import { stacks } from "../../data";
+import { SectionHeader } from "../ui";
 import TechHub from "./tech-hub.astro";
-import stacks from "../../data/stacks.json";
 import SolarRings from "./solar-rings.astro";
 import CodeIcon from "../../icons/code.svg?raw";
 import BrainIcon from "../../icons/brain.svg?raw";
 import CloudIcon from "../../icons/cloud.svg?raw";
+import { ParticleBackground } from "../backgrounds";
 import ServerIcon from "../../icons/server.svg?raw";
-import SectionHeader from "../ui/section-header.astro";
 import DatabaseIcon from "../../icons/database.svg?raw";
 import ServicesIcon from "../../icons/services.svg?raw";
 import WorkflowIcon from "../../icons/workflow.svg?raw";
 import TestingIcon from "../../icons/check-list.svg?raw";
-import ParticleBackground from "../backgrounds/particle-background.astro";
 
 const GROUPS = [
   {
@@ -20,22 +20,22 @@ const GROUPS = [
     heading: "Frontend",
     icon: CodeIcon,
     skills: [
+      stacks.JS,
+      stacks.TS,
+      stacks.MUI,
+      stacks.CSS,
+      stacks.Html,
+      stacks.Sass,
+      stacks.RxJs,
       stacks.Next,
       stacks.React,
       stacks.Redux,
-      stacks.Angular,
-      stacks.RxJs,
-      stacks.Electron,
-      stacks.JS,
-      stacks.TS,
-      stacks.Html,
-      stacks.CSS,
-      stacks.Sass,
-      stacks.AntDesign,
-      stacks.MUI,
       stacks.Shadcn,
-      stacks.Tailwindcss,
+      stacks.Angular,
+      stacks.Electron,
+      stacks.AntDesign,
       stacks.ReactQuery,
+      stacks.Tailwindcss,
     ],
   },
   {
@@ -64,8 +64,8 @@ const GROUPS = [
     heading: "Services",
     icon: CloudIcon,
     skills: [
-      stacks.Clerk,
       stacks.JWT,
+      stacks.Clerk,
       stacks.Vercel,
       stacks.Render,
       stacks.Heroku,
@@ -79,17 +79,17 @@ const GROUPS = [
     heading: "Tools",
     icon: ServicesIcon,
     skills: [
-      stacks.Webpack,
       stacks.Git,
+      stacks.NPM,
+      stacks.Figma,
+      stacks.ESlint,
       stacks.GitHub,
-      stacks.GitHubActions,
+      stacks.VSCode,
+      stacks.Webpack,
+      stacks.Prettier,
       stacks.Bitbucket,
       stacks.AzureDevOps,
-      stacks.Figma,
-      stacks.VSCode,
-      stacks.ESlint,
-      stacks.Prettier,
-      stacks.NPM,
+      stacks.GitHubActions,
     ],
   },
   {
@@ -107,10 +107,10 @@ const GROUPS = [
     skills: [
       stacks.Jira,
       stacks.Scrum,
-      stacks.AzureBoards,
-      stacks.GitHubBoards,
       stacks.Slack,
       stacks.Discord,
+      stacks.AzureBoards,
+      stacks.GitHubBoards,
     ],
   },
   {

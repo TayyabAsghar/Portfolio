@@ -1,10 +1,6 @@
 ---
-import about from "../../data/about.json";
-import music from "../../data/music.json";
-import Typewriter from "../ui/typewriter.astro";
-import LinkButton from "../ui/link-button.astro";
-import WidgetProjects from "../ui/projects.astro";
-import WidgetMusicPlayer from "../ui/music-player.astro";
+import { about, music } from "../../data";
+import { Projects, MusicPlayer, LinkButton, Typewriter } from "../ui";
 ---
 
 <section class="px-7 lg:px-0 relative">
@@ -59,8 +55,9 @@ import WidgetMusicPlayer from "../ui/music-player.astro";
     <div
       class="relative hidden md:block scale-[70%] lg:scale-[80%] origin-right -mt-12"
     >
-      <WidgetProjects />
-      <WidgetMusicPlayer tracks={music} />
+      <Projects />
+
+      <MusicPlayer tracks={music} />
     </div>
   </div>
 </section>

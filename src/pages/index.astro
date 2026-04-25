@@ -1,14 +1,18 @@
 ---
-import Layout from "../components/layout/main.astro";
-import Writings from "../components/sections/writings.astro";
-import HeroSection from "../components/sections/hero-section.astro";
-import Testimonials from "../components/sections/testimonials.astro";
-import Technologies from "../components/sections/technologies.astro";
-import PortfolioGrid from "../components/projects/portfolio-grid.astro";
+import { about } from "../data";
+import {
+  Writings,
+  HeroSection,
+  Technologies,
+  Testimonials,
+  PortfolioGrid,
+  Main as MainLayout,
+} from "../components";
+
 // import SideProjectsGrid from "../components/projects/side-projects-grid.astro";
 ---
 
-<Layout title="Tayyab Asghar">
+<MainLayout title={about.name}>
   <div
     class="max-w-6xl mx-auto grid grid-cols-1 auto-rows-max gap-28 py-20 lg:py-24"
   >
@@ -38,4 +42,4 @@ import PortfolioGrid from "../components/projects/portfolio-grid.astro";
   </div>
 
   <script src="../assets/js/animate-on-scroll.js"></script>
-</Layout>
+</MainLayout>
