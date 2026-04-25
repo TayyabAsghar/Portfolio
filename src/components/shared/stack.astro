@@ -17,6 +17,7 @@ const { list, className, heading } = Astro.props;
 <h2 id="heading-tech-stack" class=`flex gap-4 items-center ${className}`>
   {heading}
 </h2>
+
 <div id="tech-stack" class="flex flex-wrap items-start justify-start gap-8">
   {
     list?.map((skill) => (
@@ -31,9 +32,6 @@ const { list, className, heading } = Astro.props;
           src={`/assets/images/stack/${skill.name}.svg`}
           alt={skill.title}
         />
-        <div class="w-min text-center text-xs capitalize text-slate-600 dark:text-slate-400">
-          {skill.title}
-        </div>
       </a>
     ))
   }

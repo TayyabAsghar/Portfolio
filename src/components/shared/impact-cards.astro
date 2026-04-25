@@ -1,0 +1,67 @@
+---
+type ImpactCard = {
+  label: string;
+  title?: string;
+  value?: string;
+  description?: string;
+  accent?: "neutral" | "rose";
+};
+
+interface Props {
+  cards: ImpactCard[];
+  columns?: "3" | "4";
+  className?: string;
+}
+
+const { cards, columns = "3", className } = Astro.props;
+
+const gridClass =
+  columns === "4" ? "sm:grid-cols-2 lg:grid-cols-4" : "sm:grid-cols-3";
+
+const cardStyles = {
+  rose: "border-rose-200/70 bg-rose-50/70 hover:border-rose-300 dark:border-rose-900/60 dark:bg-rose-950/20 dark:hover:border-rose-800",
+  neutral:
+    "border-neutral-200 bg-neutral-50/80 hover:border-neutral-300 dark:border-neutral-800 dark:bg-neutral-900/60 dark:hover:border-neutral-700",
+};
+---
+
+<div class:list={["not-prose my-10 grid gap-4", gridClass, className]}>
+  {
+    cards.map((card) => (
+      <div
+        class:list={[
+          "rounded-lg border p-4 shadow-sm transition duration-300 hover:-translate-y-1",
+          cardStyles[card.accent ?? "neutral"],
+        ]}
+      >
+        {card.value ? (
+          <p class="m-0 text-2xl font-bold text-neutral-950 dark:text-neutral-50">
+            {card.value}
+          </p>
+        ) : (
+          card.title && (
+            <p class="m-0 text-sm font-semibold text-neutral-900 dark:text-neutral-100">
+              {card.title}
+            </p>
+          )
+        )}
+
+        <p class="m-0 mt-2 text-xs font-semibold uppercase tracking-[0.16em] text-neutral-500 dark:text-neutral-400">
+          {card.label}
+        </p>
+
+        {card.value && card.title && (
+          <p class="m-0 mt-2 text-sm font-semibold text-neutral-900 dark:text-neutral-100">
+            {card.title}
+          </p>
+        )}
+
+        {card.description && (
+          <p class="m-0 mt-3 text-sm text-neutral-700 dark:text-neutral-300">
+            {card.description}
+          </p>
+        )}
+      </div>
+    ))
+  }
+</div>

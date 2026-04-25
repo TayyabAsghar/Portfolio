@@ -99,6 +99,11 @@
     "title": "Express",
     "website": "https://expressjs.com"
   },
+  "FastAPI": {
+    "name": "fastapi",
+    "title": "FastAPI",
+    "website": "https://fastapi.tiangolo.com"
+  },
   "Figma": {
     "name": "figma",
     "title": "Figma",
@@ -224,6 +229,11 @@
     "title": "Less",
     "website": "https://lesscss.org"
   },
+  "Lighthouse": {
+    "name": "lighthouse",
+    "title": "Lighthouse",
+    "website": "https://developer.chrome.com/docs/lighthouse/overview"
+  },
   "Lodash": {
     "name": "lodash",
     "title": "Lodash",
@@ -233,6 +243,11 @@
     "name": "md",
     "title": "Markdown",
     "website": "https://www.markdownguide.org"
+  },
+  "Mitek": {
+    "name": "mitek",
+    "title": "Mitek",
+    "website": "https://www.miteksystems.com/"
   },
   "MongoDB": {
     "name": "mongodb",
@@ -289,6 +304,11 @@
     "title": "Pinia",
     "website": "https://pinia.vuejs.org"
   },
+  "Playwright": {
+    "name": "playwright",
+    "title": "Playwright",
+    "website": "https://playwright.dev"
+  },
   "Postman": {
     "name": "postman",
     "title": "Postman",
@@ -343,6 +363,11 @@
     "name": "scrum",
     "title": "Scrum",
     "website": "https://www.scrum.org/resources/ways-learn-about-scrum"
+  },
+  "Sentry": {
+    "name": "sentry",
+    "title": "Sentry",
+    "website": "https://sentry.io"
   },
   "Shadcn": {
     "name": "shadcn",

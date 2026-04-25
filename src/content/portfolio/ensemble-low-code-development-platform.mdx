@@ -1,6 +1,6 @@
 ---
 title: "Ensemble | A Low Code Development Platform"
-description: "Ensemble is a low-code platform that makes app development simpler and more accessible for both experienced developers and non-technical users. Built on a declarative, metadata-driven approach, it allows users to create, update, and publish applications directly in the browser using reusable components. With AI-powered tools, natural language support, and cross-platform deployment, Ensemble helps turn ideas into functional apps quickly and efficiently."
+description: "Ensemble is a declarative low-code platform for building and publishing production-ready web and mobile apps. I helped extend the browser studio into a cross-platform desktop experience with offline editing, local YAML storage, Git-based publishing, and a cleaner API architecture."
 publishDate: "2023-07-09T12:39:36.050Z"
 image: "/assets/images/projects/ensemble/cover.png"
 company: "Ensemble"
@@ -12,7 +12,7 @@ pinned: true
 ---
 
 import { stacks } from "../../data";
-import { LiveButtons, Stack, LightBoxImage } from "../../components";
+import { ImpactCards, LiveButtons, Stack, LightBoxImage } from "../../components";
 
 <LiveButtons
   primary="https://ensembleui.com"
@@ -27,77 +27,71 @@ import { LiveButtons, Stack, LightBoxImage } from "../../components";
 />
 
 <Stack
-  heading="Technology Stack"
+  heading="Core Technologies"
   list={[
     stacks.React,
     stacks.Electron,
     stacks.ReactQuery,
     stacks.Firebase,
-    stacks.Tailwindcss,
     stacks.Node,
     stacks.Express,
+    stacks.Tailwindcss,
     stacks.Jest,
     stacks.ESlint,
-    stacks.GitHub,
-    stacks.GitHubBoards,
-    stacks.Discord,
-    stacks.Scrum,
   ]}
 />
 
 ## Project Overview
 
-At **Ensemble startup**, as a Software Developer, I contributed to the development of a **desktop application** for their
-web-based studio, extending the platform’s accessibility beyond browsers and enabling users to store their **YAML files**
-on local system to use in **Offline mode** and seamlessly push them to their own **GitHub profiles**.
+At **Ensemble**, I worked as a Software Developer on the platform’s desktop studio experience. The goal was to extend the
+web-based builder beyond the browser and give users a reliable local workspace for creating, editing, and publishing
+declarative app definitions.
 
-My role involved **building the application using Electron**, ensuring a **cross-platform, responsive, and intuitive** user
-experience while also **enhancing API communication** by transitioning API calls from the frontend to structured **Node.js API
-endpoints** using the **Repository Pattern**. This approach significantly improved **performance, scalability, security, and
-maintainability** of the system.
+I helped build the **Electron desktop application**, added support for **offline YAML storage**, and improved the way the
+studio communicated with backend services. A key part of the work was moving fragile frontend-side API logic into structured
+**Node.js endpoints** using a repository-based architecture, making the system easier to test, secure, and maintain.
 
-Additionally, I implemented **test case coverage using Jest**, ensuring reliability and robustness in API interactions. Through
-this project, I deepened my expertise in **Electron, API architecture, automated testing, and full-stack development**, making
-meaningful contributions to **Ensemble’s mission** of empowering developers with efficient and scalable solutions.
+The result was a smoother studio workflow: users could keep working without an internet connection, sync changes when they came
+back online, and publish their app configuration through Git-backed flows.
 
-## Domain and Industry Context
+<ImpactCards
+  cards={[
+    {
+      label: "Platform",
+      title: "Low-code app studio",
+    },
+    {
+      label: "Focus",
+      title: "Desktop studio and offline mode",
+    },
+    {
+      label: "Impact",
+      title: "Cross-platform local workflow",
+    },
+  ]}
+/>
 
-To fully appreciate the significance of this project, it's essential to understand the context of industry in which Ensemble
-operates. Ensemble is part of the **low-code/no-code (LCNC) and developer productivity industry**, which is changing how software
-is built by making app development faster, easier, and more accessible.This industry helps reduce the need for extensive coding
-skills, allowing more people—from startups to enterprises—to create digital solutions efficiently.
+## Product Context
 
-Ensemble is making this process even smoother with its **user-friendly platform** that lets people build apps quickly without
-writing complex code for not only web application in **React** but also mobile application in **Flutter**. It also integrates
-**AI-driven tools** and **natural language interactions**, Ensemble is helping developers and non-developers alike bring their
-ideas to life with minimal effort and easy to deploy tools and environment.
+Ensemble sits in the low-code and developer productivity space. Its declarative model allows teams to describe applications
+with reusable components and metadata instead of building every screen from scratch. The platform supports rapid delivery across
+web and mobile, while still giving technical teams enough control to manage real-world app workflows.
+
+My work focused on the parts of that experience where reliability matters most: local file access, offline editing, syncing,
+API boundaries, and developer-friendly publishing.
 
 ## Key Contributions & Impact
 
-1. Developed a desktop app for **Ensemble React-based Web Studio** within a time-bound contract, ensuring **100% cross-platform
-   compatibility** across Windows, macOS, and Linux.
-2. **Built & optimized API communication** by transitioning calls from frontend to structured **Node.js endpoints**.
-3. Setup **Repository Pattern** for APIs to benefit from a clean separation of concerns, making it easier to maintain and extend
-   them.
-4. **Achieved 30% test coverage** for the **Firestore Cloud Functions** using Jest, ensuring **robust functionality & reduced
-   production bugs**.
-5. Design a **File system** to locally store the data to be used in offline mode and sync after connection is restored.
-6. **Enabled offline editing & real-time synchronization**, integrating **Firestore Cloud Functions**, allowing users to create and
-   update applications in Ensemble Studio in Offline Mode.
-7. **Integrated Git functionality**, allowing users to push Yaml code to hosting services like **GitHub & Bitbucket**.
-8. Setup **Firebase emulator** to run and test cloud functions locally.
+1. Built a **cross-platform Electron desktop app** for the React-based Ensemble Studio, supporting Windows, macOS, and Linux.
+2. Designed a local file workflow for storing and editing **YAML app definitions** in offline mode.
+3. Added sync behavior so users could continue working locally and reconcile changes once connectivity returned.
+4. Refactored API communication into structured **Node.js and Express endpoints** using the **Repository Pattern**.
+5. Improved reliability of Firestore Cloud Functions by adding **Jest coverage** for key API interactions.
+6. Integrated Git publishing workflows for pushing generated YAML to providers such as **GitHub and Bitbucket**.
+7. Configured the **Firebase emulator** to support safer local testing for cloud functions and sync behavior.
 
 ## Conclusion
 
-Working at Ensemble was a valuable experience that significantly enhanced my technical and problem-solving skills. Developing a
-cross-platform desktop application using Electron improved my expertise in building scalable applications, while implementing the
-Repository Pattern in Node.js and Express strengthened my understanding of structured API design and maintainability.
-
-I gained hands-on experience with Firestore Cloud Functions, enabling real-time synchronization and offline mode, which deepened
-my knowledge of cloud-based architectures. Integrating Git functionality for seamless YAML code deployment to GitHub & Bitbucket
-further improved my understanding of version control and automation.
-
-As I reflect on this project, I’m struck by how it has contributed to my growth as a developer for both technical and
-non-technical skills like, working in an Agile/Scrum environment with GitHub Boards that improved my ability to manage tasks
-efficiently and collaborate effectively. Overall, my time at Ensemble strengthened my expertise in full-stack development,
-API design, cloud-based solutions, and automated testing, preparing me for more complex challenges ahead.
+Ensemble strengthened my ability to build practical developer tools that balance user experience with system architecture. It
+was a focused opportunity to work across Electron, offline-first workflows, API design, Firebase, testing, and Git-based
+deployment in a real product environment.
