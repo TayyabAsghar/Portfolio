@@ -12,6 +12,7 @@ export default {
       },
       fontSize: {
         xsm: ["0.625rem", "0.75rem"],
+        msm: ["0.75rem", "0.875rem"],
       },
       letterSpacing: {
         "most-widest": "0.2em",

@@ -54,6 +54,11 @@
     "title": "Cloudinary",
     "website": "https://cloudinary.com"
   },
+  "Codex": {
+    "name": "codex",
+    "title": "Codex",
+    "website": "https://developers.openai.com/codex"
+  },
   "Convex": {
     "name": "convex",
     "title": "Convex",
