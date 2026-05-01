@@ -28,6 +28,10 @@ document.addEventListener("DOMContentLoaded", () => {
   applyMenuItemClasses();
   evaluateHeaderPosition();
   mobileMenuFunctionality();
+
+  setTimeout(() => {
+    document.body.classList.remove("preload");
+  }, 0);
 });
 
 // window.toggleDarkMode = function(){

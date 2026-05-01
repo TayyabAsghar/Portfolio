@@ -42,7 +42,7 @@ const { path, duration } = Astro.props;
   const initHoverSounds = () => {
     const soundContainers = document.querySelectorAll("[data-sound-path]");
 
-    soundContainers.forEach(async (container) => {
+    soundContainers.forEach((container) => {
       const parent = container.closest(".group");
       if (!parent || parent.hasAttribute("data-sound-processed")) return;
       parent.setAttribute("data-sound-processed", "true");
@@ -52,27 +52,44 @@ const { path, duration } = Astro.props;
 
       if (!path) return;
 
-      const audioSource = await getAudioUrl(path);
-      const audio = new Audio(audioSource);
-      audio.preload = "auto";
-
-      const setupPlaybackRate = () => {
-        if (targetDurationMs && audio.duration) {
-          const targetDurationSec = parseFloat(targetDurationMs) / 1000;
-          audio.playbackRate = audio.duration / targetDurationSec;
-        }
-      };
-
-      audio.addEventListener("loadedmetadata", setupPlaybackRate);
+      let audio: HTMLAudioElement | null = null;
+      let isHovering = false;
+      let isReady = false;
 
       parent.addEventListener("mouseenter", () => {
-        audio.currentTime = 0;
-        audio.play().catch((e) => console.error("Audio play failed:", e));
+        isHovering = true;
+        if (audio && isReady) {
+          audio.currentTime = 0;
+          audio.play().catch((e) => console.error("Audio play failed:", e));
+        }
       });
 
       parent.addEventListener("mouseleave", () => {
-        audio.pause();
-        audio.currentTime = 0;
+        isHovering = false;
+        if (audio && isReady) {
+          audio.pause();
+          audio.currentTime = 0;
+        }
+      });
+
+      getAudioUrl(path).then((audioSource) => {
+        audio = new Audio(audioSource);
+        audio.preload = "auto";
+
+        audio.addEventListener("loadedmetadata", () => {
+          if (audio) {
+            if (targetDurationMs && audio.duration) {
+              const targetDurationSec = parseFloat(targetDurationMs) / 1000;
+              audio.playbackRate = audio.duration / targetDurationSec;
+            }
+            isReady = true;
+
+            if (isHovering) {
+              audio.currentTime = 0;
+              audio.play().catch((e) => console.error("Audio play failed:", e));
+            }
+          }
+        });
       });
     });
   };

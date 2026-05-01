@@ -8,6 +8,10 @@
   --border-color-dark: #718096;
 }
 
+.preload * {
+  transition: none !important;
+}
+
 /* Header Navigation */
 .nav-link {
   @apply relative;
