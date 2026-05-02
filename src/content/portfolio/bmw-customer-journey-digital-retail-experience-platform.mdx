@@ -1,0 +1,124 @@
+---
+title: "BMW Customer Journey | Digital Automotive Retail Platform"
+description: "BMW Customer Journey is a configurable digital retail platform for BMW USA dealerships. I worked across customer journey workflows, analytics, identity verification, document signing, payments, credit applications, dealer website entry points, and automated performance monitoring."
+publishDate: "2026-05-02T12:39:36.050Z"
+image: "/assets/images/projects/bmw-customer-journey/cover.png"
+company: "Netsol"
+priority: 1 #TODO: Adjust priority after adding to portfolio.
+bgGradient: "bg-gradient-to-r from-sky-500 to-slate-900"
+author: "Tayyab Asghar"
+tags: [SaaS, WebApp, Automotive, FinTech, DigitalRetail, BMW]
+pinned: true
+---
+
+import { stacks } from "../../data";
+import { ImpactCards, LiveButtons, Stack, LightBoxImage } from "../../components";
+
+<LiveButtons primary="https://www.appexnow.com/market-place/product/Drift" />
+
+<LightBoxImage
+  noBorder
+  alt="BMW Customer Journey"
+  gradient="bg-gradient-to-r from-sky-500 to-slate-900"
+  src="/assets/images/projects/bmw-customer-journey/cover.png"
+/>
+
+<Stack
+  heading="Core Technologies"
+  list={[
+    stacks.React,
+    stacks.Storybook,
+    stacks.TS,
+    stacks.Postman,
+    stacks.Webpack,
+    stacks.FastAPI,
+    stacks.D3,
+    stacks.Swagger,
+    stacks.Playwright,
+    stacks.Lighthouse,
+    stacks.ReactQuery,
+    stacks.Mitek,
+    stacks.Sentry,
+  ]}
+/>
+
+## Project Overview
+
+At **NETSOL**, I worked on **BMW Customer Journey**, a configurable digital retail platform built for BMW USA dealerships.
+The project was awarded directly by BMW after a shortlist of **10 global companies** and delivered under a **1-year contract**.
+
+My work focused on digitizing key parts of the dealership buying journey, including customer tracking, license verification,
+document signing, payments, credit applications, dealer website entry points, and automated performance monitoring. The platform
+currently supports around **10+ BMW dealerships**.
+
+<ImpactCards
+  columns="4"
+  cards={[
+    {
+      value: "10+",
+      label: "Dealerships",
+      description: "Currently supported across BMW USA dealership workflows.",
+    },
+    {
+      value: "5",
+      label: "Verification Flows",
+      description: "Applicant and co-applicant verification across Lease, Finance, and Cash journeys.",
+    },
+    {
+      value: "<1 hr",
+      label: "Credit Response",
+      description: "Digital credit applications can return eligibility responses within an hour.",
+    },
+    {
+      value: "2 apps",
+      label: "Performance Monitoring",
+      description: "Playwright and Lighthouse audits run per deployment across 2 applications.",
+    },
+  ]}
+/>
+
+## Product Context
+
+BMW Customer Journey connects multiple steps of the automotive retail process into one configurable flow. Customers can start
+from a dealership website, estimate payments, submit credit details, verify their license, sign documents, and complete payments
+without relying on fully manual dealership visits.
+
+The platform builds on AppExNow services including **Drift**, **Hubex**, **Dock**, **Lane**, and **Index** for customer journeys,
+third-party integrations, document generation, order management, inventory, lending configurations, and dealership setup.
+
+## Key Contributions & Impact
+
+### Product & Engineering
+
+1. Built configurable dealership workflows for BMW Customer Journey, supporting a rollout across **10+ BMW USA dealerships**.
+2. Added analytics coverage for **3 event types** — button clicks, page navigation, and page landings — improving customer behavior and lead funnel visibility.
+3. Delivered **Mitek** license verification across **5 applicant/co-applicant flows**, replacing in-person dealership verification with a digital process.
+4. Implemented **Lightico** document signing to support multi-step PDF workflows that previously required dealership visits.
+5. Enabled **Stripe** payment handling for ACH, one-time, deposit, and recurring payment flows within the digital customer journey.
+6. Developed a multi-step digital credit application that helps customers receive BMW purchase eligibility responses in **under 1 hour**.
+
+### Ownership & Leadership
+
+1. Spearheaded the **Payment Estimator** as a standalone entry point for BMW Customer Journey, embeddable into dealer websites through a script regardless of their technology stack.
+2. Designed the estimator to support multiple inventory providers, currently integrating with **DealerOn** and **DealerAddOn** while remaining extensible for future providers.
+3. Built a **Playwright + Lighthouse** dashboard to monitor authenticated and unauthenticated flows across **2 applications** per deployment.
+4. Stored historical Lighthouse audit data to compare performance trends over time and help teams detect frontend regressions.
+5. Drove reusable workflow patterns so dealership-specific journeys could be configured without rebuilding the entire experience.
+
+## Technical Challenges
+
+The main challenge was turning a complex dealership buying process into a smooth digital journey while keeping the platform
+configurable for different dealership workflows.
+
+Key challenges included managing multiple application types, handling applicant and co-applicant verification paths, integrating
+third-party signing and payment sessions, embedding the Payment Estimator into dealer websites through a script, and automating
+performance monitoring across authenticated flows.
+
+## Conclusion
+
+BMW Customer Journey strengthened my experience as a senior product engineer working across customer experience, platform
+integrations, third-party services, payments, identity verification, analytics, and performance automation.
+
+The project helped me grow in technical ownership: leading complex frontend modules, coordinating integration-heavy delivery,
+building reusable systems, and connecting engineering decisions to real dealership workflows for a high-value enterprise client
+like BMW.

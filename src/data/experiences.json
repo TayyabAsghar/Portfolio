@@ -4,8 +4,10 @@
     "role": "Full Stack Developer",
     "company": "Netsol",
     "description": [
-      "Reduced initial loading time, leading to faster page performance and improved customer retention.",
-      "Redesigned and optimized landing pages with enhanced product presentation and integrated data visualization, improving user experience and engagement."
+      "Contributed to BMW Customer Journey, a direct BMW digital retail project awarded after a shortlist of 10 global companies, designed for BMW USA dealerships and currently supporting 10+ dealerships.",
+      "Built configurable dealership workflows by integrating AppExNow services for APIs, documents, inventory, lending configurations, and order management.",
+      "Implemented analytics tracking and integrated Mitek, Lightico, and Stripe to digitize identity verification, document signing, and payments, reducing dealership visits across 5 applicant/co-applicant flows.",
+      "Spearheaded a script-injected Payment Estimator for dealership websites, serving as the entry point to the customer journey, and built a Playwright + Lighthouse dashboard to monitor 2 applications per deployment."
     ],
     "logo": "/assets/images/company/netsol.svg",
     "website": "https://netsoltech.com",
