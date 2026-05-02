@@ -72,4 +72,4 @@ const initShipScroller = () => {
 };
 
 if (typeof document !== "undefined")
-  document.addEventListener("DOMContentLoaded", initShipScroller);
+  document.addEventListener("astro:page-load", initShipScroller);

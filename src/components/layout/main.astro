@@ -3,6 +3,7 @@ import "../../assets/css/main.css";
 import Footer from "./footer.astro";
 import Header from "./header.astro";
 import { SquareLines } from "../backgrounds";
+import { ViewTransitions } from "astro:transitions";
 
 interface Props {
   title: string;
@@ -18,9 +19,10 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="p:domain_verify" content="70c58a6597b091ed1aa21054f3800753" />
     <title>{title}</title>
+    <ViewTransitions />
 
     <!-- Used to add dark mode right away, adding here prevents any flicker -->
-    <script>
+    <script is:inline data-astro-rerun>
       if (typeof Storage !== "undefined") {
         const isDarkMode =
           localStorage.getItem("dark_mode") &&
@@ -53,7 +55,7 @@ const { title } = Astro.props;
   </head>
 
   <body
-    class="preload min-h-screen flex flex-col antialiased overflow-x-hidden bg-white dark:bg-neutral-950 transition-colors duration-300"
+    class="relative min-h-screen flex flex-col antialiased overflow-x-hidden bg-white dark:bg-neutral-950"
   >
     <SquareLines />
 
@@ -64,6 +66,7 @@ const { title } = Astro.props;
     </main>
 
     <Footer />
+    <SquareLines bottom />
 
     <script src="../../assets/js/main.js"></script>
 

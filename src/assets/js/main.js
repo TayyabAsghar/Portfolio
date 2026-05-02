@@ -12,7 +12,7 @@ const stickyClassesContainer = [
 const unstickyClassesContainer = ["border-transparent"];
 let headerElement = null;
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("astro:page-load", () => {
   headerElement = document.getElementById("header");
 
   const isDarkMode =
@@ -21,17 +21,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (isDarkMode) {
     window.darkMode = true;
-    showNight();
-  } else showDay();
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
 
   stickyHeaderFunctionality();
   applyMenuItemClasses();
   evaluateHeaderPosition();
   mobileMenuFunctionality();
-
-  setTimeout(() => {
-    document.body.classList.remove("preload");
-  }, 0);
+  initDarkToggle();
 });
 
 // window.toggleDarkMode = function(){
@@ -45,10 +44,14 @@ document.addEventListener("DOMContentLoaded", () => {
 //     }
 // }
 
+let isScrollListenerAdded = false;
 window.stickyHeaderFunctionality = () => {
-  window.addEventListener("scroll", () => {
-    evaluateHeaderPosition();
-  });
+  if (!isScrollListenerAdded) {
+    window.addEventListener("scroll", () => {
+      evaluateHeaderPosition();
+    });
+    isScrollListenerAdded = true;
+  }
 };
 
 window.evaluateHeaderPosition = () => {
@@ -71,68 +74,23 @@ window.evaluateHeaderPosition = () => {
   }
 };
 
-document.getElementById("darkToggle").addEventListener("click", () => {
-  document.documentElement.classList.add("duration-300");
+const initDarkToggle = () => {
+  const toggle = document.getElementById("darkToggle");
+  if (!toggle) return;
 
-  if (document.documentElement.classList.contains("dark")) {
-    localStorage.removeItem("dark_mode");
-    showDay(true);
-  } else {
-    localStorage.setItem("dark_mode", true);
-    showNight(true);
-  }
-});
+  // Clone to remove existing listeners (prevent duplicates on page-load)
+  const newToggle = toggle.cloneNode(true);
+  toggle.parentNode.replaceChild(newToggle, toggle);
 
-const showDay = (animate) => {
-  document.getElementById("sun").classList.remove("setting");
-  document.getElementById("moon").classList.remove("rising");
-
-  let timeout = 0;
-
-  if (animate) {
-    timeout = 500;
-
-    document.getElementById("moon").classList.add("setting");
-  }
-
-  setTimeout(() => {
-    document.getElementById("dayText").classList.remove("hidden");
-    document.getElementById("nightText").classList.add("hidden");
-
-    document.getElementById("moon").classList.add("hidden");
-    document.getElementById("sun").classList.remove("hidden");
-
-    if (animate) {
+  newToggle.addEventListener("click", () => {
+    if (document.documentElement.classList.contains("dark")) {
       document.documentElement.classList.remove("dark");
-      document.getElementById("sun").classList.add("rising");
-    }
-  }, timeout);
-};
-
-const showNight = (animate) => {
-  document.getElementById("moon").classList.remove("setting");
-  document.getElementById("sun").classList.remove("rising");
-
-  let timeout = 0;
-
-  if (animate) {
-    timeout = 500;
-
-    document.getElementById("sun").classList.add("setting");
-  }
-
-  setTimeout(() => {
-    document.getElementById("nightText").classList.remove("hidden");
-    document.getElementById("dayText").classList.add("hidden");
-
-    document.getElementById("sun").classList.add("hidden");
-    document.getElementById("moon").classList.remove("hidden");
-
-    if (animate) {
+      localStorage.removeItem("dark_mode");
+    } else {
       document.documentElement.classList.add("dark");
-      document.getElementById("moon").classList.add("rising");
+      localStorage.setItem("dark_mode", true);
     }
-  }, timeout);
+  });
 };
 
 window.applyMenuItemClasses = () => {

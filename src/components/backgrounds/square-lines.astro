@@ -1,8 +1,14 @@
 ---
 import SquareLine from "./square-line.astro";
+
+interface Props {
+  bottom?: boolean;
+}
+
+const { bottom = false } = Astro.props;
 ---
 
-<div class="absolute w-full h-auto -z-[1]">
+<div class={`absolute w-full h-auto -z-[1] ${bottom ? 'bottom-0 rotate-180' : 'top-0'}`}>
   <div
     class="absolute top-0 left-0 w-1/2 h-auto bg-neutral-100 dark:bg-neutral-800"
   >

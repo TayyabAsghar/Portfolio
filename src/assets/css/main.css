@@ -8,10 +8,6 @@
   --border-color-dark: #718096;
 }
 
-.preload * {
-  transition: none !important;
-}
-
 /* Header Navigation */
 .nav-link {
   @apply relative;
@@ -28,10 +24,6 @@
 
 .nav-link:active::after {
   @apply w-full bg-current;
-}
-
-#menu {
-  @apply animate-menu-slide-in;
 }
 
 #openMenu:hover,
