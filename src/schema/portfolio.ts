@@ -1,10 +1,10 @@
-import { z } from "astro:content";
+import { z } from "astro/zod";
 
 const portfolioSchema = z.object({
   title: z.string(),
   image: z.string(),
-  priority:z.number(),  //TODO: Remove after dividing the projects into side projects.
-  bgGradient:z.string(),
+  priority: z.number(), //TODO: Remove after dividing the projects into side projects.
+  bgGradient: z.string(),
   description: z.string(),
   author: z.string().trim(),
   company: z.string().trim(),
@@ -16,7 +16,7 @@ const portfolioSchema = z.object({
       year: "numeric",
       month: "short",
       day: "numeric",
-    })
+    }),
   ),
 });
 

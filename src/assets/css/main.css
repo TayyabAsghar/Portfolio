@@ -1,11 +1,237 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --z-100: 100;
+  --max-width-102: 28rem;
+  --text-xsm: 0.625rem;
+  --text-xsm--line-height: 0.75rem;
+  --text-msm: 0.75rem;
+  --text-msm--line-height: 0.875rem;
+  --tracking-most-widest: 0.2em;
+
+  --animate-rising: rising 1s ease 0s 1;
+  --animate-orbit: orbit linear infinite;
+  --animate-setting: setting 1s ease 0s 1;
+  --animate-water-flow: flow 15s linear infinite;
+  --animate-ship-bob: bob 3s ease-in-out infinite;
+  --animate-sail-sway: sway 4s ease-in-out infinite;
+  --animate-menu-slide-in: menuSlideIn 0.3s ease-out;
+  --animate-orbit-trail: orbit-trail linear infinite;
+  --animate-water-flow-fast: flow 10s linear infinite;
+  --animate-marquee-scroll: scroll 10s linear infinite;
+  --animate-wake-ripple: ripple 2s ease-in-out infinite;
+  --animate-hub-pulse: hub-pulse 3s ease-in-out infinite;
+  --animate-marquee-pause: scroll 10s linear infinite paused;
+  --animate-sail-sway-delayed: sway 4.5s ease-in-out infinite -1s;
+  --animate-certificate-loop: certificate-loop 34s linear infinite;
+  --animate-wake-ripple-delayed: ripple 2s ease-in-out infinite -1s;
+  --animate-fade-in-up: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-chevron-pulse-left: chevron-pulse-left 1s ease-in-out infinite;
+  --animate-chevron-move-left: chevron-move-left 0.6s ease-in-out infinite;
+  --animate-chevron-pulse-right: chevron-pulse-right 1s ease-in-out infinite;
+  --animate-chevron-move-right: chevron-move-right 0.6s ease-in-out infinite;
+  --animate-fade-in-left: fadeInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-fade-in-right: fadeInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  @keyframes scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - 24px));
+    }
+  }
+  @keyframes certificate-loop {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-50% - 10px));
+    }
+  }
+  @keyframes menuSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes setting {
+    0% {
+      transform: translate3d(0, 10px, 0);
+    }
+    40% {
+      transform: translate3d(0, -2px, 0);
+    }
+    to {
+      transform: translate3d(0, 30px, 0);
+    }
+  }
+  @keyframes rising {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, 30px, 0);
+    }
+    40% {
+      opacity: 1;
+      transform: translate3d(0, -2px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 10px, 0);
+    }
+  }
+  @keyframes chevron-pulse-right {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(3px);
+    }
+  }
+  @keyframes chevron-pulse-left {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(-3px);
+    }
+  }
+  @keyframes chevron-move-right {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(4px);
+    }
+  }
+  @keyframes chevron-move-left {
+    0%,
+    100% {
+      transform: rotate(180deg) translateX(0);
+    }
+    50% {
+      transform: rotate(180deg) translateX(4px);
+    }
+  }
+  @keyframes flow {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 0 1000px;
+    }
+  }
+  @keyframes bob {
+    0%,
+    100% {
+      transform: translateY(0) rotate(-1deg);
+    }
+    50% {
+      transform: translateY(-4px) rotate(1deg);
+    }
+  }
+  @keyframes sway {
+    0%,
+    100% {
+      transform: skewX(0deg);
+    }
+    50% {
+      transform: skewX(3deg);
+    }
+  }
+  @keyframes ripple {
+    0% {
+      transform: scaleX(0.8) translateY(0);
+      opacity: 0.3;
+    }
+    50% {
+      transform: scaleX(1.1) translateY(2px);
+      opacity: 0.6;
+    }
+    100% {
+      transform: scaleX(0.9) translateY(0);
+      opacity: 0.3;
+    }
+  }
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fadeInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes fadeInRight {
+    0% {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes hub-pulse {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 0.7;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 1;
+    }
+  }
+  @keyframes orbit {
+    from {
+      offset-distance: 0%;
+    }
+    to {
+      offset-distance: 100%;
+    }
+  }
+  @keyframes orbit-trail {
+    from {
+      stroke-dashoffset: var(--trail-start);
+    }
+    to {
+      stroke-dashoffset: var(--trail-end);
+    }
+  }
+}
 
 :root {
   --background: #e5e7eb;
   --border-color: #111827;
   --border-color-dark: #718096;
+}
+
+/* Ensure no scroll on 404 page while keeping footer visible and solid */
+body:has(#void-wrap) {
+  height: 100vh;
+  overflow: hidden;
 }
 
 /* Header Navigation */
@@ -75,7 +301,7 @@ html.dark #darkToggle:hover .horizon {
 }
 
 .certificate-marquee:hover .certificate-track {
-  @apply animate-pause;
+  animation-play-state: paused;
 }
 
 .certificate-track {

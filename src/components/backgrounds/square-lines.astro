@@ -2,13 +2,17 @@
 import SquareLine from "./square-line.astro";
 
 interface Props {
+  count?: number;
   bottom?: boolean;
 }
 
-const { bottom = false } = Astro.props;
+const { bottom = false, count = 6 } = Astro.props;
+const rows = Array.from({ length: count });
 ---
 
-<div class={`absolute w-full h-auto -z-[1] ${bottom ? 'bottom-0 rotate-180' : 'top-0'}`}>
+<div
+  class={`absolute w-full h-auto z-[-1] ${bottom ? "bottom-0 rotate-180" : "top-0"}`}
+>
   <div
     class="absolute top-0 left-0 w-1/2 h-auto bg-neutral-100 dark:bg-neutral-800"
   >
@@ -19,12 +23,7 @@ const { bottom = false } = Astro.props;
     <div
       class="flex flex-col w-full h-full border-t border-l border-dashed divide-y divide-dashed divide-neutral-300 dark:divide-neutral-700 border-neutral-300 dark:border-neutral-700"
     >
-      <SquareLine />
-      <SquareLine />
-      <SquareLine />
-      <SquareLine />
-      <SquareLine />
-      <SquareLine />
+      {rows.map(() => <SquareLine />)}
     </div>
   </div>
 
@@ -38,12 +37,7 @@ const { bottom = false } = Astro.props;
     <div
       class="flex flex-col w-full h-full border-t border-l border-dashed divide-y divide-dashed divide-neutral-300 dark:divide-neutral-700 border-neutral-300 dark:border-neutral-700"
     >
-      <SquareLine />
-      <SquareLine />
-      <SquareLine />
-      <SquareLine />
-      <SquareLine />
-      <SquareLine />
+      {rows.map(() => <SquareLine />)}
     </div>
   </div>
 </div>

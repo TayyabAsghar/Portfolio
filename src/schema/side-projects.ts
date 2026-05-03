@@ -1,4 +1,4 @@
-import { z } from "astro:content";
+import { z } from "astro/zod";
 
 const sideProjectSchema = z.object({
   title: z.string(),
@@ -15,7 +15,7 @@ const sideProjectSchema = z.object({
       year: "numeric",
       month: "short",
       day: "numeric",
-    })
+    }),
   ),
 });
 

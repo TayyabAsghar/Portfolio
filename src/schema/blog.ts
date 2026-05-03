@@ -1,4 +1,4 @@
-import { z } from "astro:content";
+import { z } from "astro/zod";
 
 const blogSchema = z.object({
   title: z.string(),
@@ -13,7 +13,7 @@ const blogSchema = z.object({
       year: "numeric",
       month: "short",
       day: "numeric",
-    })
+    }),
   ),
 });
 

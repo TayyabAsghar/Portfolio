@@ -18,7 +18,7 @@ import { formatDate, groupedPosts, sortedYears } from "../../utils";
           <article class="relative cursor-pointer group py-4 first:pt-0 last:pb-0 grid grid-rows-1 grid-cols-1 sm:grid-cols-[3fr_1fr] gap-7 ">
             <HoverPencilBackground strokeWidth={5} animationDuration={1000} />
 
-            <a href={`/blog/${post.slug}`} class="absolute inset-0 z-10">
+            <a href={`/blog/${post.id}`} class="absolute inset-0 z-10">
               <span class="sr-only">Read {post.data.title}</span>
             </a>
 

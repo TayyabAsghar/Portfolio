@@ -22,7 +22,7 @@ const portfolio = pinnedPortfolio.slice(0, count);
       portfolio.map((project, index) => (
         <ShowcaseProject
           index={index}
-          slug={project.slug}
+          slug={project.id}
           hrefBase="portfolio"
           tags={project.data.tags}
           title={project.data.title}

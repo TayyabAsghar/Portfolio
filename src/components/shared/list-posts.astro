@@ -21,9 +21,9 @@ const borderStyle =
 
 <div class="flex flex-wrap justify-center gap-12 md:gap-x-24 w-full">
   {
-    listPosts.map(({ slug, data }, index) => (
+    listPosts.map(({ id, data }, index) => (
       <a
-        href={`/blog/${slug}`}
+        href={`/blog/${id}`}
         class={`group relative z-0 block no-underline w-full md:w-[calc(45%-1rem)] lg:w-[calc(42%-2rem)] ${index === 2 ? "md:mt-4" : ""} p-6 -mx-6 sm:-mx-6 rounded-2xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 ${borderStyle}`}
       >
         <HoverPencilBackground strokeWidth={5} animationDuration={duration} />
