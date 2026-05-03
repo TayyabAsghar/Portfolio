@@ -239,17 +239,30 @@ body:has(#void-wrap) {
   @apply relative;
 }
 
-.nav-link::after {
+/* Mobile specific: underline exactly the text width */
+.nav-link-text::after {
   content: "";
-  @apply absolute bottom-0 left-1/2 w-0 h-px bg-current transition-all duration-300 ease-out -translate-x-1/2;
+  @apply absolute -bottom-1 left-1/2 w-0 h-px bg-current transition-all duration-300 ease-out -translate-x-1/2;
 }
 
-.nav-link:hover::after {
+.group:hover .nav-link-text::after {
   @apply w-full;
 }
 
-.nav-link:active::after {
-  @apply w-full bg-current;
+/* Desktop specific: original behavior */
+@media (min-width: 640px) {
+  .nav-link::after {
+    content: "";
+    @apply absolute bottom-0 left-1/2 w-0 h-px bg-current transition-all duration-300 ease-out -translate-x-1/2;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .nav-link:active::after {
+    @apply w-full bg-current;
+  }
 }
 
 #openMenu:hover,
