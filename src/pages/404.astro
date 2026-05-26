@@ -6,19 +6,20 @@ import { Main as MainLayout, LinkButton } from "../components";
 <MainLayout title={`404 — Page Not Found | ${about.name}`}>
   <div
     id="void-wrap"
-    class="w-full h-full overflow-hidden flex relative flex-col justify-end pb-8"
+    class="w-full flex-1 overflow-hidden flex relative flex-col justify-end pb-8"
   >
     <canvas
       id="bh-canvas"
       class="z-0 w-full h-full block pointer-none fixed inset-0"></canvas>
 
-    <div class="scale-z-100">
+    <div class="relative z-10 w-full">
       <div class="text-center px-6 mb-4 sm:mb-8">
         <h1
           class="text-3xl sm:text-5xl md:text-6xl font-bold text-neutral-900 dark:text-neutral-100 mb-4 leading-tight tracking-tight"
         >
           Your voyage has drifted into the void.
         </h1>
+
         <p
           class="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base mb-10 tracking-most-widest uppercase font-semibold opacity-80"
         >

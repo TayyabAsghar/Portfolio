@@ -229,9 +229,10 @@
 }
 
 /* Ensure no scroll on 404 page while keeping footer visible and solid */
-body:has(#void-wrap) {
-  height: 100vh;
-  overflow: hidden;
+body:has(#void-wrap) main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Header Navigation */
