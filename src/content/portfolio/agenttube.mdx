@@ -54,6 +54,32 @@ The project aimed to achieve the following:
 3. **Implemented Plan Billing & Tokens** – Integrated **Stripe** and **Schematic** to support multi-tiered plans with fine-grained feature tokens and billing options.
 4. **Secured Authentication** – Implemented **Clerk** for robust, hassle-free Google and email-based login flows.
 
+## Architecture Flow
+
+AgentTube uses a multi-step AI workflow that starts with a YouTube URL, extracts useful video context, builds structured prompts, routes requests through LLM providers, and stores generated outputs inside a user workspace.
+
+<div class="my-8 p-6 bg-neutral-50 dark:bg-neutral-900/30 rounded-2xl border border-neutral-200/60 dark:border-neutral-800/60">
+  <div class="flex flex-wrap items-center gap-y-3 gap-x-2 mb-6">
+    <span class="px-3 py-1.5 text-xs font-medium bg-white dark:bg-neutral-950 border border-neutral-200/80 dark:border-neutral-700/80 text-neutral-700 dark:text-neutral-300 rounded-full shadow-sm">YouTube URL</span>
+    <span class="text-neutral-400 dark:text-neutral-600 text-xs">→</span>
+    <span class="px-3 py-1.5 text-xs font-medium bg-white dark:bg-neutral-950 border border-neutral-200/80 dark:border-neutral-700/80 text-neutral-700 dark:text-neutral-300 rounded-full shadow-sm">Metadata + Transcript</span>
+    <span class="text-neutral-400 dark:text-neutral-600 text-xs">→</span>
+    <span class="px-3 py-1.5 text-xs font-medium bg-white dark:bg-neutral-950 border border-neutral-200/80 dark:border-neutral-700/80 text-neutral-700 dark:text-neutral-300 rounded-full shadow-sm">Prompt Builder</span>
+    <span class="text-neutral-400 dark:text-neutral-600 text-xs">→</span>
+    <span class="px-3 py-1.5 text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200/60 dark:border-indigo-900/40 text-indigo-700 dark:text-indigo-300 rounded-full shadow-sm">Gemini/Claude/OpenAI</span>
+    <span class="text-neutral-400 dark:text-neutral-600 text-xs">→</span>
+    <span class="px-3 py-1.5 text-xs font-medium bg-white dark:bg-neutral-950 border border-neutral-200/80 dark:border-neutral-700/80 text-neutral-700 dark:text-neutral-300 rounded-full shadow-sm">Generated Content</span>
+    <span class="text-neutral-400 dark:text-neutral-600 text-xs">→</span>
+    <span class="px-3 py-1.5 text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200/60 dark:border-emerald-900/40 text-emerald-700 dark:text-emerald-300 rounded-full shadow-sm">Saved Workspace</span>
+  </div>
+
+  <ul class="space-y-2.5 text-sm text-neutral-600 dark:text-neutral-400 list-disc pl-5">
+    <li>Used Gemini, Claude, and OpenAI through the Vercel AI SDK to generate scripts, titles, summaries, and thumbnail ideas.</li>
+    <li>Used Convex to persist generated outputs, cache analysis results, and manage user-specific workspaces.</li>
+    <li>Integrated Clerk, Stripe, and Schematic to handle authentication, subscriptions, and entitlement-based access.</li>
+  </ul>
+</div>
+
 ## Features
 
 ### **1. Landing & Marketing Experience**
