@@ -12,7 +12,7 @@ pinned: true
 ---
 
 import { stacks } from "../../data";
-import { LiveButtons, LightBoxImage, Stack } from "../../components";
+import { LiveButtons, LightBoxImage, Stack, ArchitectureFlow } from "../../components";
 
 <LiveButtons primary="https://chatpdf-two-phi.vercel.app" secondary="https://github.com/TayyabAsghar/ChatPDF" />
 
@@ -58,29 +58,22 @@ The project aimed to achieve the following:
 
 ChatPDF follows a retrieval-augmented generation workflow. Uploaded PDFs are processed into text chunks, converted into embeddings, stored in Pinecone, and retrieved when the user asks a question.
 
-<div class="my-8 p-6 bg-neutral-50 dark:bg-neutral-900/30 rounded-2xl border border-neutral-200/60 dark:border-neutral-800/60">
-  <div class="flex flex-wrap items-center gap-y-3 gap-x-2 mb-6">
-    <span class="px-3 py-1.5 text-xs font-medium bg-white dark:bg-neutral-950 border border-neutral-200/80 dark:border-neutral-700/80 text-neutral-700 dark:text-neutral-300 rounded-full shadow-sm">PDF Upload</span>
-    <span class="text-neutral-400 dark:text-neutral-600 text-xs">→</span>
-    <span class="px-3 py-1.5 text-xs font-medium bg-white dark:bg-neutral-950 border border-neutral-200/80 dark:border-neutral-700/80 text-neutral-700 dark:text-neutral-300 rounded-full shadow-sm">Text Extraction</span>
-    <span class="text-neutral-400 dark:text-neutral-600 text-xs">→</span>
-    <span class="px-3 py-1.5 text-xs font-medium bg-white dark:bg-neutral-950 border border-neutral-200/80 dark:border-neutral-700/80 text-neutral-700 dark:text-neutral-300 rounded-full shadow-sm">Chunking</span>
-    <span class="text-neutral-400 dark:text-neutral-600 text-xs">→</span>
-    <span class="px-3 py-1.5 text-xs font-medium bg-white dark:bg-neutral-950 border border-neutral-200/80 dark:border-neutral-700/80 text-neutral-700 dark:text-neutral-300 rounded-full shadow-sm">Embeddings</span>
-    <span class="text-neutral-400 dark:text-neutral-600 text-xs">→</span>
-    <span class="px-3 py-1.5 text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200/60 dark:border-indigo-900/40 text-indigo-700 dark:text-indigo-300 rounded-full shadow-sm">Pinecone Retrieval</span>
-    <span class="text-neutral-400 dark:text-neutral-600 text-xs">→</span>
-    <span class="px-3 py-1.5 text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200/60 dark:border-emerald-900/40 text-emerald-700 dark:text-emerald-300 rounded-full shadow-sm">Gemini Answer</span>
-    <span class="text-neutral-400 dark:text-neutral-600 text-xs">→</span>
-    <span class="px-3 py-1.5 text-xs font-medium bg-white dark:bg-neutral-950 border border-neutral-200/80 dark:border-neutral-700/80 text-neutral-700 dark:text-neutral-300 rounded-full shadow-sm">Chat UI</span>
-  </div>
-
-  <ul class="space-y-2.5 text-sm text-neutral-600 dark:text-neutral-400 list-disc pl-5">
-    <li>Uploaded PDFs are stored and processed before being converted into searchable text chunks.</li>
-    <li>Document chunks are embedded and stored in Pinecone, allowing semantic search over user documents.</li>
-    <li>User questions retrieve the most relevant chunks and pass them to Gemini to generate context-aware answers.</li>
-  </ul>
-</div>
+<ArchitectureFlow
+  steps={[
+    { name: "PDF Upload" },
+    { name: "Text Extraction" },
+    { name: "Chunking" },
+    { name: "Embeddings" },
+    { name: "Pinecone Retrieval", highlight: "indigo" },
+    { name: "Gemini Answer", highlight: "emerald" },
+    { name: "Chat UI" }
+  ]}
+  bullets={[
+    "Uploaded PDFs are stored and processed before being converted into searchable text chunks.",
+    "Document chunks are embedded and stored in Pinecone, allowing semantic search over user documents.",
+    "User questions retrieve the most relevant chunks and pass them to Gemini to generate context-aware answers."
+  ]}
+/>
 
 ## Features
 

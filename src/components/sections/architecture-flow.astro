@@ -1,0 +1,68 @@
+---
+interface Step {
+  name: string;
+  highlight?: "indigo" | "emerald" | "purple" | boolean;
+}
+
+interface Props {
+  steps: Step[];
+  bullets: string[];
+}
+
+const { steps, bullets } = Astro.props;
+---
+
+<div
+  class="my-8 p-6 bg-neutral-50 dark:bg-neutral-900/30 rounded-2xl border border-neutral-200/60 dark:border-neutral-800/60"
+>
+  <div class="flex flex-wrap items-center gap-y-3 gap-x-2 mb-6">
+    {
+      steps.map((step, index) => {
+        const name = step.name;
+        const highlight = step.highlight;
+
+        let bgClass = "";
+        switch (highlight) {
+          case "indigo":
+          case true:
+            bgClass =
+              "bg-indigo-50 dark:bg-indigo-950/40 border-indigo-200/60 dark:border-indigo-900/40 text-indigo-700 dark:text-indigo-300";
+            break;
+          case "emerald":
+            bgClass =
+              "bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200/60 dark:border-emerald-900/40 text-emerald-700 dark:text-emerald-300";
+            break;
+          case "purple":
+            bgClass =
+              "bg-purple-50 dark:bg-purple-950/40 border-purple-200/60 dark:border-purple-900/40 text-purple-700 dark:text-purple-300";
+            break;
+          default:
+            bgClass =
+              "bg-white dark:bg-neutral-950 border-neutral-200/80 dark:border-neutral-700/80 text-neutral-700 dark:text-neutral-300";
+            break;
+        }
+
+        return (
+          <>
+            <span
+              class={`px-3 py-1.5 text-xs font-medium border rounded-full shadow-sm ${bgClass}`}
+            >
+              {name}
+            </span>
+            {index < steps.length - 1 && (
+              <span class="text-neutral-400 dark:text-neutral-600 text-xs">
+                →
+              </span>
+            )}
+          </>
+        );
+      })
+    }
+  </div>
+
+  <ul
+    class="space-y-2.5 text-sm text-neutral-600 dark:text-neutral-400 list-disc pl-5 animate-none"
+  >
+    {bullets.map((bullet) => <li>{bullet}</li>)}
+  </ul>
+</div>

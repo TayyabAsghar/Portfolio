@@ -9,3 +9,4 @@ export { default as JoinDispatch } from "./join-dispatch.astro";
 export { default as AboutEducation } from "./about-education.astro";
 export { default as AboutExperience } from "./about-experience.astro";
 export { default as AboutCertificate } from "./about-certificate.astro";
+export { default as ArchitectureFlow } from "./architecture-flow.astro";
