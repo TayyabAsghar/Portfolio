@@ -43,100 +43,110 @@ import { LiveButtons, LightBoxImage, Stack } from "../../components";
 
 ## Project Overview 
 
-AgentTube is an AI-powered content creation assistant made with Next.JS that analyzes YouTube videos and enhances content generation 
-using advanced AI models like Claude and Gemini. By providing a video link, users can generate transcripts, receive AI-suggested video 
-titles, create improved or alternative scripts, and generate AI-powered thumbnails using OpenAI image generation model.
+AgentTube is an AI-powered content creation assistant built with **Next.js** that analyzes YouTube videos and automates asset generation. By simply pasting a video URL, creators can transcribe video content, receive AI-suggested video titles, generate improved alternative scripts, and generate custom AI thumbnails.
 
 ## Objectives
 
 The project aimed to achieve the following:
 
-1. **Develop a Full-Stack AI-powered content Agent** – Enable users to analyze YouTube videos and instead of only providing summary 
-to user use AI tools to generate video **Transcripts**, **Titles**, **Thumbnails** and **Scripts** with the help of multiple models.
-2. **Google API** – Use Google API services to get video details like transcription, thumbnail, and metadata, and store them in the **Convex** 
-database for caching.
-3. **Vercel AI SDK** – Use Vercel AI SDK with Gemini Model to create tools that **Chat with user**, generate **Scripts**, and **Titles** 
-and with OpenAI Model to generate **AI Thumbnails** for video. 
-4. **Implement Subscription Plans** – Use **Schematic** and **Stripe** to support Free, Starter, Creator and Enterprise with monthly 
-and yearly subscription plans that user can manage through schematic elements.
-5. **Feature Tokens** – Use **Schematic** to create features and tokens that can then be attached to user plans to provide certain 
-functionality or limit access to a feature based on the user's plan.
-6. **Implement Secure Authentication** – Use **Clerk** to support **email/password and social logins (Google)** with profile management.
+1. **Engineered an AI Content Agent** – Built a full-stack dashboard utilizing **Vercel AI SDK** to generate video transcripts, titles, and scripts using models like Claude, Gemini, and OpenAI.
+2. **Integrated Google & Convex APIs** – Leveraged Google API services for video metadata extraction, caching outputs to **Convex DB** to minimize token cost and load times.
+3. **Implemented Plan Billing & Tokens** – Integrated **Stripe** and **Schematic** to support multi-tiered plans with fine-grained feature tokens and billing options.
+4. **Secured Authentication** – Implemented **Clerk** for robust, hassle-free Google and email-based login flows.
 
 ## Features
 
-### **Landing Page**
+### **1. Landing & Marketing Experience**
 
-Responsive landing page to Hero section that contains an input box to paste youtube link and start analyzing video along with Features sections 
-showcase the features of the application and Pricing sections to showcase pricing cards for Free, Starter, Creator and Enterprise plans with both
-monthly and yearly billing options.
+A fully responsive, high-converting marketing experience designed to showcase the platform's core AI value.
 
-- #### **Hero Section**
-
+#### **Hero Section**
+Includes an optimized video analysis input bar acting as the entry point for the application. Creators can paste any YouTube URL to immediately trigger the AI pipeline.
 <LightBoxImage
   noBorder
-  alt="AgentTube"
+  alt="AgentTube Landing Hero"
   gradient="bg-gradient-to-r from-gray-100 to-gray-300"
   src="/assets/images/side-projects/agent-tube/landing-page.png"
 />
 
-- #### **Features Section**
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+  <div class="flex flex-col justify-between">
+    <div>
+      #### **Product Features**
+      A clean, visual layout highlighting the core value propositions of the platform, including script creation and high-resolution thumbnail generation.
+    </div>
+    <LightBoxImage
+      noBorder
+      alt="AgentTube Features"
+      gradient="bg-gradient-to-r from-gray-100 to-gray-300"
+      src="/assets/images/side-projects/agent-tube/features-section.png"
+    />
+  </div>
+  <div class="flex flex-col justify-between">
+    <div>
+      #### **Interactive Pricing Plans**
+      Showcases flexible, multi-tiered subscription pricing (Free, Starter, Creator, and Enterprise) with custom toggles for monthly and yearly billing.
+    </div>
+    <LightBoxImage
+      noBorder
+      alt="AgentTube Pricing"
+      gradient="bg-gradient-to-r from-gray-100 to-gray-300"
+      src="/assets/images/side-projects/agent-tube/pricing-section.png"
+    />
+  </div>
+</div>
 
-<LightBoxImage
-  noBorder
-  alt="AgentTube Features"
-  gradient="bg-gradient-to-r from-gray-100 to-gray-300"
-  src="/assets/images/side-projects/agent-tube/features-section.png"
-/>
+---
 
-- #### **Pricing Section**
+### **2. Onboarding & Personalization**
 
-<LightBoxImage
-  noBorder
-  alt="AgentTube Pricing"
-  gradient="bg-gradient-to-r from-gray-100 to-gray-300"
-  src="/assets/images/side-projects/agent-tube/pricing-section.png"
-/>
+Seamless entry points prioritizing security and responsive aesthetic adjustments.
 
-### **SignIn Page**
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+  <div class="flex flex-col justify-between">
+    <div>
+      #### **SignIn Screen**
+      Secure social authentication (via Google) and email-based login utilizing fully customized **Clerk SignIn** components.
+    </div>
+    <LightBoxImage
+      noBorder
+      alt="SignIn Screen"
+      gradient="bg-gradient-to-r from-gray-100 to-gray-300"
+      src="/assets/images/side-projects/agent-tube/signin-page.png"
+    />
+  </div>
+  <div class="flex flex-col justify-between">
+    <div>
+      #### **SignUp Screen**
+      A matching, secure onboarding flow built using optimized **Clerk SignUp** modules.
+    </div>
+    <LightBoxImage
+      noBorder
+      alt="SignUp Screen"
+      gradient="bg-gradient-to-r from-gray-100 to-gray-300"
+      src="/assets/images/side-projects/agent-tube/signup-page.png"
+    />
+  </div>
+</div>
 
-A simple yet customized SignIn page using **Clerk SignIn** components.
-
-<LightBoxImage
-  noBorder
-  alt="SignIn Page"
-  gradient="bg-gradient-to-r from-gray-100 to-gray-300"
-  src="/assets/images/side-projects/agent-tube/signin-page.png"
-/>
-
-### **SignUp Page**
-
-A simple yet customized SignUp page using **Clerk SignUp** components.
-
-<LightBoxImage
-  noBorder
-  alt="SignUp Page"
-  gradient="bg-gradient-to-r from-gray-100 to-gray-300"
-  src="/assets/images/side-projects/agent-tube/signup-page.png"
-/>
-
-### **Dark Mode**
-
-A theme button to switch between Light and Dark Mode.
-
+#### **Theme Personalization**
+A global dark/light mode toggle that dynamically transforms the high-contrast dashboard UI to suit creator preference.
 <LightBoxImage
   noBorder
   className="top-[25px]"
-  alt="Dark Theme"
+  alt="Dark Theme Collage"
   gradient="bg-gradient-to-r from-gray-100 to-gray-300"
   src="/assets/images/side-projects/agent-tube/theme-collage.png"
 />
 
-### **Dashboard Page**
+---
 
-A simple Dashboard with an **Input Box** to paste youtube link for analyzing, a **Collapsible Sider** for navigating between analyzed 
-videos and **User Profile**.
+### **3. Creator Workspace & Dashboards**
 
+A unified workspace where creators manage analyzed media assets and collaborate with AI.
+
+#### **Creator Dashboard**
+A clean, centralized hub containing a sidebar for easy navigation of previously analyzed videos, global user profile controls, and quick-access inputs.
 <LightBoxImage
   noBorder
   alt="Dashboard Page"
@@ -144,35 +154,31 @@ videos and **User Profile**.
   src="/assets/images/side-projects/agent-tube/dashboard.png"
 />
 
-### **Analyze Page**
-
-This is the screen the user lands on after the YouTube video has been analyzed. It is divided into 6 sections.
-
-- **Chat Box Section** – An AI chat agent where the user can ask questions related to the YouTube video or ask the agent to perform certain tasks 
-like generating a script or a title for the video. It also has quick action buttons for performing these tasks.
-- **Video Token Count Section** – A token count showing the user how many tokens they have left for the month, and a status bar showing 
-whether the video analysis occurred by consuming a token or loaded from the user's database cache.
-- **Video Details Section** – This section showcases YouTube video metadata like the Thumbnail, Title, Channel name, etc.
-- **Thumbnail Generation Section** – A thumbnail generation section containing all the AI-generated thumbnails related to this 
-video and the total count of thumbnail tokens spent by the user.
-- **Title Generation Section** – Just like the Thumbnail Generation Section, this contains all the AI-generated titles 
-related to this video and the total count of title tokens spent by the user in a month.
-- **Transcription Section** – A transcription section for the video that is used by the AI agent tools as context for creating the script and 
-the total count of scripts fetched by the application.
+#### **AI Video Analyzer Workspace**
+The primary interface that loads once a video has been analyzed, organized into highly interactive workspace zones:
+* **AI Chat Agent** – Converse directly with the video context or trigger quick-actions to write scripts, titles, and summaries.
+* **Token Meter & Cache** – Displays monthly remaining usage tokens and indicates if video data was served from cache.
+* **Metadata Display** – Showcases YouTube video information including description, views, and channel statistics.
+* **Thumbnail Suite** – Generates and previews custom high-resolution thumbnails using DALL-E/OpenAI models.
+* **Title Suite** – Recommends SEO-optimized alternative headlines and tracks total title generation credits used.
+* **Transcription Panel** – Syncs and displays auto-generated YouTube text transcripts used as context by AI models.
 
 <LightBoxImage
   noBorder
   className="top-16"
-  alt="Dashboard Page"
+  alt="Video Analyzer Workspace"
   gradient="bg-gradient-to-r from-gray-100 to-gray-300"
   src="/assets/images/side-projects/agent-tube/analyze-page.png"
 />
 
-### **Manage Plan Page**
+---
 
-A simple screen that used **Schematic Elements** to showcase your current plan along with features access, total tokens and next billing
-cycle.
+### **4. SaaS Monetization & Entitlements**
 
+Enterprise-grade payment processing and entitlement flows built with Stripe and Schematic.
+
+#### **Entitlements Dashboard**
+A transparent plan management screen utilizing **Schematic Elements** to display active token balance, feature access, and upcoming billing cycles.
 <LightBoxImage
   noBorder
   alt="Manage Plan Page"
@@ -180,52 +186,45 @@ cycle.
   src="/assets/images/side-projects/agent-tube/manage-plan-page.png"
 />
 
-### **Plan Selector Modal**
-
-Clicking **Change plan** will open a multi step schematic element modal to allow user to Upgrade or Downgrade the plan and a checkout step 
-for adding payment method or discount codes.
-
-- #### **Plan Selection Step**
-
-<LightBoxImage
-  noBorder
-  alt="Plan Selector Step"
-  gradient="bg-gradient-to-r from-gray-100 to-gray-300"
-  src="/assets/images/side-projects/agent-tube/plan-selector.png"
-/>
-
-- #### **Checkout Step**
-
-<LightBoxImage
-  noBorder
-  alt="Checkout Step"
-  gradient="bg-gradient-to-r from-gray-100 to-gray-300"
-  src="/assets/images/side-projects/agent-tube/checkout.png"
-/>
-
-- #### **Save Payment Method**
-
-<LightBoxImage
-  noBorder
-  alt="Payment Method Option"
-  gradient="bg-gradient-to-r from-gray-100 to-gray-300"
-  src="/assets/images/side-projects/agent-tube/payment-method.png"
-/>
-
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-8">
+  <div class="flex flex-col justify-between">
+    <div>
+      #### **1. Plan Selection**
+      The initial checkout step allowing users to view available upgrades and select their tier.
+    </div>
+    <LightBoxImage
+      noBorder
+      alt="Plan Selector Step"
+      gradient="bg-gradient-to-r from-gray-100 to-gray-300"
+      src="/assets/images/side-projects/agent-tube/plan-selector.png"
+    />
+  </div>
+  <div class="flex flex-col justify-between">
+    <div>
+      #### **2. Stripe Checkout**
+      Secure checkout interface for entering card information, billing details, and promotional codes.
+    </div>
+    <LightBoxImage
+      noBorder
+      alt="Checkout Step"
+      gradient="bg-gradient-to-r from-gray-100 to-gray-300"
+      src="/assets/images/side-projects/agent-tube/checkout.png"
+    />
+  </div>
+  <div class="flex flex-col justify-between">
+    <div>
+      #### **3. Saved Methods**
+      Allows users to securely save and manage multiple payment methods for auto-renewals.
+    </div>
+    <LightBoxImage
+      noBorder
+      alt="Saved Payment Methods"
+      gradient="bg-gradient-to-r from-gray-100 to-gray-300"
+      src="/assets/images/side-projects/agent-tube/payment-method.png"
+    />
+  </div>
+</div>
 
 ## Conclusion
 
-Building **AgentTube** was a really rewarding experience. From a product point of view, the goal was to create something useful for 
-content creators — a tool that could turn YouTube videos into better titles, cleaner scripts, engaging thumbnails, and full 
-transcripts, all powered by AI. From a developer and learning point of view, the goal was to understand AI agents (Vercel AI SDK) and 
-AI tools along with proper AI prompting. Seeing that idea come to life was pretty awesome.
-
-One of the best parts for me was working with the Vercel AI SDK and integrating models like Claude, Gemini, and OpenAI. It gave me 
-hands-on experience with building real, interactive tools powered by AI — not just answering questions, but actually helping users 
-create. It pushed me to think differently about user interaction and how AI can fit naturally into creative workflows.
-
-I also got to dive deeper into user authentication, subscription plans, and feature control using tools like **Clerk**, **Stripe**, 
-and **Schematic** — which made me more confident in building complete, production-ready apps.
-
-Overall, AgentTube taught me a lot — not just about tech, but about designing things that feel intuitive, helpful, and fun to use. 
-It really leveled up my skills with AI integration, and I'm excited to build even more tools like this in the future.
+Building **AgentTube** was a major milestone in mastering AI-agent integration and orchestrating LLMs. Developing custom tools using the **Vercel AI SDK**, coupled with **Convex caching**, taught me how to optimize API latency and token overhead. Incorporating **Stripe subscription checkouts** and **Schematic feature management** further enhanced my ability to design scalable, production-grade SaaS solutions that seamlessly combine user-friendly interfaces with advanced backend capabilities.

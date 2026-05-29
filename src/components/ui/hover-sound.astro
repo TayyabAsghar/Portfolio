@@ -97,4 +97,10 @@ const { path, duration } = Astro.props;
   initHoverSounds();
 
   document.addEventListener("astro:page-load", initHoverSounds);
+
+  document.addEventListener("astro:before-swap", () => {
+    document.querySelectorAll("[data-sound-processed]").forEach((el) => {
+      el.removeAttribute("data-sound-processed");
+    });
+  });
 </script>

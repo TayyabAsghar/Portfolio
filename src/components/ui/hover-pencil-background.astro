@@ -113,4 +113,12 @@ const svgPath =
   };
 
   initPencilAnimations();
+
+  document.addEventListener("astro:page-load", initPencilAnimations);
+
+  document.addEventListener("astro:before-swap", () => {
+    document.querySelectorAll("[data-pencil-processed]").forEach((el) => {
+      el.removeAttribute("data-pencil-processed");
+    });
+  });
 </script>
