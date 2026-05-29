@@ -30,7 +30,7 @@ import { LiveButtons, LightBoxImage, Stack } from "../../components";
     stacks.Convex,
     stacks.Tailwindcss,
     stacks.Shadcn,
-    stacks.VecelAISDK,
+    stacks.VercelAISDK,
     stacks.GoogleAPI,
     stacks.OpenAIAPI,
     stacks.Vercel,
@@ -53,14 +53,14 @@ The project aimed to achieve the following:
 
 1. **Develop a Full-Stack AI-powered content Agent** – Enable users to analyze YouTube videos and instead of only providing summary 
 to user use AI tools to generate video **Transcripts**, **Titles**, **Thumbnails** and **Scripts** with the help of multiple models.
-2. **Googl API** – Use Google API services to get video details like transcription, thumbnail and metadata and store it to **Convex** 
-database to caches.
+2. **Google API** – Use Google API services to get video details like transcription, thumbnail, and metadata, and store them in the **Convex** 
+database for caching.
 3. **Vercel AI SDK** – Use Vercel AI SDK with Gemini Model to create tools that **Chat with user**, generate **Scripts**, and **Titles** 
 and with OpenAI Model to generate **AI Thumbnails** for video. 
 4. **Implement Subscription Plans** – Use **Schematic** and **Stripe** to support Free, Starter, Creator and Enterprise with monthly 
 and yearly subscription plans that user can manage through schematic elements.
-5. **Features Tokens** – Use **Schematic** to create features and tokens that then we can attach with user plans to provide certain 
-functionality or limited access to a feature based on user plan.
+5. **Feature Tokens** – Use **Schematic** to create features and tokens that can then be attached to user plans to provide certain 
+functionality or limit access to a feature based on the user's plan.
 6. **Implement Secure Authentication** – Use **Clerk** to support **email/password and social logins (Google)** with profile management.
 
 ## Features
@@ -100,7 +100,7 @@ monthly and yearly billing options.
 
 ### **SignIn Page**
 
-A simple yest customized SignIn page using **Clerk SignIn** components.
+A simple yet customized SignIn page using **Clerk SignIn** components.
 
 <LightBoxImage
   noBorder
@@ -111,7 +111,7 @@ A simple yest customized SignIn page using **Clerk SignIn** components.
 
 ### **SignUp Page**
 
-A simple yest customized SignUp page using **Clerk SignUp** components.
+A simple yet customized SignUp page using **Clerk SignUp** components.
 
 <LightBoxImage
   noBorder
@@ -146,18 +146,18 @@ videos and **User Profile**.
 
 ### **Analyze Page**
 
-This is the screen use lands on after the youtube video has been analyzed. It is divided into 6 sections.
+This is the screen the user lands on after the YouTube video has been analyzed. It is divided into 6 sections.
 
-- **Chat Box Section** – An AI chat agent where user can ask questions related to youtube video or ask agent to performs certain tasks 
-like generate a script or a title for video. It has also quick button for performing such tasks.
-- **Video Token Count Section** – A token counts showing user that how many tokens he has left for the month and a status bar showing 
-wether the video analyzation happened by spending a token or by caches for user database.
-- **Video details Section** – This sections showcase youtube video metadata like Thumbnail, Title, User name, Channel name and etc.
-- **Thumbnail Generation Section** – A thumbnail generation section contains the list of all the ai generated thumbnails related to this 
-video and the total count of thumbnails tokens spend by the user.
-- **Title Generation Section** – Just like Thumbnail Generation Section, this contains the list of all the ai generated titles 
-related to this video and the total count of titles tokens spend by the user in a month.
-- **Transcription Section** – A transcription section for video that is used by AI agent tools as context for creating script and 
+- **Chat Box Section** – An AI chat agent where the user can ask questions related to the YouTube video or ask the agent to perform certain tasks 
+like generating a script or a title for the video. It also has quick action buttons for performing these tasks.
+- **Video Token Count Section** – A token count showing the user how many tokens they have left for the month, and a status bar showing 
+whether the video analysis occurred by consuming a token or loaded from the user's database cache.
+- **Video Details Section** – This section showcases YouTube video metadata like the Thumbnail, Title, Channel name, etc.
+- **Thumbnail Generation Section** – A thumbnail generation section containing all the AI-generated thumbnails related to this 
+video and the total count of thumbnail tokens spent by the user.
+- **Title Generation Section** – Just like the Thumbnail Generation Section, this contains all the AI-generated titles 
+related to this video and the total count of title tokens spent by the user in a month.
+- **Transcription Section** – A transcription section for the video that is used by the AI agent tools as context for creating the script and 
 the total count of scripts fetched by the application.
 
 <LightBoxImage
@@ -215,9 +215,9 @@ for adding payment method or discount codes.
 
 ## Conclusion
 
-Building **AgentTube** was a really rewarding experience. From product point of view the goal was to create something useful for 
+Building **AgentTube** was a really rewarding experience. From a product point of view, the goal was to create something useful for 
 content creators — a tool that could turn YouTube videos into better titles, cleaner scripts, engaging thumbnails, and full 
-transcripts, all powered by AI but from developer or learning point of view the goal was to understand AI agents (Vercel AI SDK) and 
+transcripts, all powered by AI. From a developer and learning point of view, the goal was to understand AI agents (Vercel AI SDK) and 
 AI tools along with proper AI prompting. Seeing that idea come to life was pretty awesome.
 
 One of the best parts for me was working with the Vercel AI SDK and integrating models like Claude, Gemini, and OpenAI. It gave me 
