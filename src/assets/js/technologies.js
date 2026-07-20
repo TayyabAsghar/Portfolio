@@ -16,7 +16,6 @@
 
     const GROUPS = JSON.parse(groupsData);
     const TILT_X = 25;
-    const TP = 44;
 
     let solarLis = null;
     let isDrillDown = false;

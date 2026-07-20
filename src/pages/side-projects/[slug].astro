@@ -11,8 +11,8 @@ export const getStaticPaths = async () => {
   const list = await getCollection("sideProjects");
 
   return list.map((sideProject) => ({
-    params: { slug: sideProject.id },
     props: { sideProject },
+    params: { slug: sideProject.id },
   }));
 };
 
@@ -20,7 +20,12 @@ const { sideProject } = Astro.props;
 const { Content } = await render(sideProject);
 ---
 
-<MainLayout title={sideProject.data.title}>
+<MainLayout
+  type="article"
+  title={sideProject.data.title}
+  image={sideProject.data.image}
+  description={sideProject.data.description}
+>
   <main
     id="page-sideProject"
     class="relative z-30 max-w-4xl pb-1 mx-auto mt-10 bg-white dark:bg-neutral-950 md:rounded-t-md text-neutral-900"

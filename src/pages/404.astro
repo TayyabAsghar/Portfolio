@@ -3,7 +3,11 @@ import { about } from "../data";
 import { Main as MainLayout, LinkButton } from "../components";
 ---
 
-<MainLayout title={`404 — Page Not Found | ${about.name}`}>
+<MainLayout
+  noIndex
+  title={`404 — Page Not Found | ${about.name}`}
+  description="The requested page could not be found."
+>
   <div
     id="void-wrap"
     class="w-full flex-1 overflow-hidden flex relative flex-col justify-end pb-8"

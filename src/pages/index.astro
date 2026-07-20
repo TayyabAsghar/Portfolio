@@ -12,7 +12,11 @@ import {
 // import SideProjectsGrid from "../components/projects/side-projects-grid.astro";
 ---
 
-<MainLayout title={about.name}>
+<MainLayout
+  title={about.name}
+  description={about.landingIntro}
+  image="/assets/images/about.avif"
+>
   <div
     class="max-w-6xl mx-auto grid grid-cols-1 auto-rows-max gap-28 py-20 lg:py-24"
   >

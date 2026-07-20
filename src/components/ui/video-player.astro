@@ -35,7 +35,7 @@ const { id, title, video, image, sound, volume = 1, overlay } = Astro.props;
 
     {
       overlay && (
-        <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/40 to-black/10 dark:hidden" />
+        <div class="pointer-events-none absolute inset-0 bg-linear-to-b from-black/40 to-black/10 dark:hidden" />
       )
     }
 
@@ -53,91 +53,86 @@ const { id, title, video, image, sound, volume = 1, overlay } = Astro.props;
     }
   </div>
 
-  <script define:vars={{ id }}>
+  <script is:inline define:vars={{ id }}>
     const audioA = document.getElementById(`${id}-sound-a`);
     const audioB = document.getElementById(`${id}-sound-b`);
     const videoContainer = document.getElementById(
       `${id}-poster`,
     )?.parentElement;
-    if (!audioA || !audioB || !videoContainer) return;
+    if (audioA && audioB && videoContainer) {
+      const volume = parseFloat(audioA.dataset.volume || "1");
+      audioA.volume = volume;
+      audioB.volume = 0;
 
-    const volume = parseFloat(audioA.dataset.volume || "1");
-    audioA.volume = volume;
-    audioB.volume = 0;
+      let activeAudio = audioA;
+      let passiveAudio = audioB;
+      let isFading = false;
+      const fadeDuration = 0.5;
 
-    let activeAudio = audioA;
-    let passiveAudio = audioB;
-    let isFading = false;
-    const fadeDuration = 0.5;
+      const fadeLoop = () => {
+        if (isFading) return;
+        const currentTime = activeAudio.currentTime;
+        const duration = activeAudio.duration || 0;
+        const timeUntilEnd = duration - currentTime;
 
-    const fadeLoop = () => {
-      if (isFading) return;
-      const currentTime = activeAudio.currentTime;
-      const duration = activeAudio.duration || 0;
-      const timeUntilEnd = duration - currentTime;
+        if (timeUntilEnd <= fadeDuration && timeUntilEnd > 0) {
+          isFading = true;
 
-      if (timeUntilEnd <= fadeDuration && timeUntilEnd > 0) {
-        isFading = true;
+          passiveAudio.currentTime = 0;
+          passiveAudio.volume = volume;
+          passiveAudio.play().catch(() => {});
 
-        passiveAudio.currentTime = 0;
-        passiveAudio.volume = volume;
-        passiveAudio.play().catch(() => {});
+          const fadeInterval = setInterval(() => {
+            const remaining = activeAudio.duration - activeAudio.currentTime;
+            const progress = 1 - remaining / fadeDuration;
 
-        const fadeInterval = setInterval(() => {
-          const remaining = activeAudio.duration - activeAudio.currentTime;
-          const progress = 1 - remaining / fadeDuration;
+            const easedProgress = progress * progress * (3 - 2 * progress);
 
-          const easedProgress = progress * progress * (3 - 2 * progress);
+            activeAudio.volume = volume * (1 - easedProgress);
+            passiveAudio.volume = volume * easedProgress;
 
-          activeAudio.volume = volume * (1 - easedProgress);
-          passiveAudio.volume = volume * easedProgress;
+            if (progress >= 1) {
+              clearInterval(fadeInterval);
+              activeAudio.pause();
+              activeAudio.currentTime = 0;
 
-          if (progress >= 1) {
-            clearInterval(fadeInterval);
-            activeAudio.pause();
-            activeAudio.currentTime = 0;
+              [activeAudio, passiveAudio] = [passiveAudio, activeAudio];
+              isFading = false;
+            }
+          }, 16);
+        }
+      };
 
-            [activeAudio, passiveAudio] = [passiveAudio, activeAudio];
-            isFading = false;
-          }
-        }, 16);
-      }
-    };
+      activeAudio.addEventListener("timeupdate", fadeLoop);
 
-    activeAudio.addEventListener("timeupdate", fadeLoop);
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) activeAudio.play().catch(() => {});
+            else {
+              activeAudio.pause();
+              passiveAudio.pause();
+            }
+          });
+        },
+        { threshold: 0.3 },
+      );
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) activeAudio.play().catch(() => {});
-          else {
-            activeAudio.pause();
-            passiveAudio.pause();
-          }
-        });
-      },
-      { threshold: 0.3 },
-    );
+      observer.observe(videoContainer);
 
-    observer.observe(videoContainer);
+      const handleVisibilityChange = () => {
+        if (document.hidden) {
+          activeAudio.pause();
+          passiveAudio.pause();
+        } else {
+          const shouldPlay =
+            videoContainer.getBoundingClientRect().top >=
+            -videoContainer.offsetHeight * 0.3;
+          if (shouldPlay) activeAudio.play().catch(() => {});
+        }
+      };
 
-    let isTabVisible = true;
-
-    const handleVisibilityChange = () => {
-      if (document.hidden) {
-        activeAudio.pause();
-        passiveAudio.pause();
-        isTabVisible = false;
-      } else {
-        const shouldPlay =
-          videoContainer.getBoundingClientRect().top >=
-          -videoContainer.offsetHeight * 0.3;
-        if (shouldPlay) activeAudio.play().catch(() => {});
-
-        isTabVisible = true;
-      }
-    };
-
-    document.addEventListener("visibilitychange", handleVisibilityChange);
+      document.addEventListener("visibilitychange", handleVisibilityChange);
+    }
   </script>
 </>

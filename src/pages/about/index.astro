@@ -17,9 +17,16 @@ import {
   AboutCertificate,
   Main as MainLayout,
 } from "../../components";
+
+const description =
+  "Learn more about Tayyab Asghar, a full-stack engineer focused on performant web apps, SaaS products, startup execution, and polished user experiences.";
 ---
 
-<MainLayout title={`About Me | ${about.name}`}>
+<MainLayout
+  description={description}
+  image="/assets/images/about.avif"
+  title={`About Me | ${about.name}`}
+>
   <section class="relative z-20 max-w-5xl mx-auto my-12 px-7 lg:px-0">
     <StyledHeading heading={{ part1: "About", part2: "Me" }} />
 

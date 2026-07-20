@@ -133,21 +133,9 @@ const groupsJson = JSON.stringify(GROUPS);
 
 <section
   id="technologies"
-  class="relative px-7 lg:px-0 flex flex-col overflow-hidden py-10 w-full min-h-[600px]"
+  class="relative px-7 lg:px-0 flex flex-col overflow-hidden py-10 w-full min-h-150"
 >
-  <div class="hidden" aria-hidden="true">
-    {
-      GROUPS.flatMap((g) => g.skills).map((skill) => (
-        <img
-          loading="eager"
-          alt={skill.name}
-          src={`/assets/images/stack/${skill.name}.svg`}
-        />
-      ))
-    }
-  </div>
-
-  <ParticleBackground density={10} direction="both" />
+  <ParticleBackground density={5} direction="both" />
 
   <div class="relative z-10 w-full flex flex-col">
     <SectionHeader
@@ -157,10 +145,10 @@ const groupsJson = JSON.stringify(GROUPS);
 
     <div class="os-root overflow-visible pointer-events-none">
       <div
-        class="relative w-full max-w-[700px] aspect-square flex items-center justify-center pointer-events-none [perspective:3000px] [transform-style:preserve-3d]"
+        class="relative w-full max-w-175 aspect-square flex items-center justify-center pointer-events-none perspective-[3000px] transform-3d"
       >
         <ul
-          class="os-wrap pointer-events-none [transform-style:preserve-3d] [transform:translateZ(100px)]"
+          class="os-wrap pointer-events-none transform-3d transform-[translateZ(100px)]"
           id="os-wrap"
           data-groups={groupsJson}
         >

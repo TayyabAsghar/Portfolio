@@ -11,8 +11,8 @@ export const getStaticPaths = async () => {
   const list = await getCollection("portfolio");
 
   return list.map((portfolio) => ({
-    params: { slug: portfolio.id },
     props: { portfolio },
+    params: { slug: portfolio.id },
   }));
 };
 
@@ -20,7 +20,12 @@ const { portfolio } = Astro.props;
 const { Content } = await render(portfolio);
 ---
 
-<MainLayout title={portfolio.data.title}>
+<MainLayout
+  type="article"
+  title={portfolio.data.title}
+  image={portfolio.data.image}
+  description={portfolio.data.description}
+>
   <main
     id="page-portfolio"
     class="relative z-30 max-w-4xl pb-1 mx-auto mt-10 bg-white dark:bg-neutral-950 md:rounded-t-md text-neutral-900"

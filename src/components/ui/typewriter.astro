@@ -9,24 +9,37 @@ interface Props {
 
 const {
   text,
-  class: className,
   loop = false,
+  class: className,
   loopDelay = 3000,
   ...rest
 } = Astro.props;
 ---
 
 <span
-  class={`typewriter-effect inline-block py-2 ${className || ""}`}
+  class="typewriter-effect inline-grid py-2 align-bottom"
+  data-text={text}
+  aria-label={text}
   data-loop={loop.toString()}
   data-loop-delay={loopDelay.toString()}
   {...rest}
 >
-  {text}
+  <span
+    aria-hidden="true"
+    class={`invisible col-start-1 row-start-1 whitespace-nowrap ${className || ""}`}
+  >
+    {text}
+  </span>
+  <span
+    data-typewriter-text
+    class={`col-start-1 row-start-1 inline-block overflow-hidden whitespace-nowrap ${className || ""}`}
+  >
+  </span>
 </span>
 
 <script>
-  import { animate, stagger } from "motion";
+  // @ts-nocheck
+  const typewriterTimers = new WeakMap();
 
   const initTypewriter = () => {
     const elements = document.querySelectorAll(".typewriter-effect");
@@ -35,41 +48,60 @@ const {
       if (element.hasAttribute("data-processed")) return;
       element.setAttribute("data-processed", "true");
 
-      const text = element.textContent?.trim() || "";
-      element.textContent = "";
+      const textElement = element.querySelector("[data-typewriter-text]");
+      if (!(textElement instanceof HTMLElement)) return;
 
-      text.split("").forEach((char) => {
-        const span = document.createElement("span");
-        span.textContent = char === " " ? "\u00A0" : char;
-        span.style.opacity = "0";
-        span.style.display = "inline-block";
-        element.appendChild(span);
-      });
-
-      const spans = element.querySelectorAll("span");
+      const text = element.getAttribute("data-text") || "";
       const isLoop = element.getAttribute("data-loop") === "true";
       const loopDelay = parseInt(
         element.getAttribute("data-loop-delay") || "3000",
       );
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
 
-      const startAnimation = async () => {
-        await animate(
-          spans,
-          { opacity: [0, 1] },
-          { delay: stagger(0.1, { startDelay: 0.2 }) },
-        ).finished;
+      if (prefersReducedMotion) {
+        textElement.textContent = text;
+        return;
+      }
+
+      const typeSpeed = 85;
+      const deleteSpeed = 35;
+      const timers = [];
+
+      const queue = (callback, delay) => {
+        const timer = window.setTimeout(callback, delay);
+        timers.push(timer);
+      };
+
+      typewriterTimers.set(element, timers);
+
+      const typeText = (index = 0) => {
+        textElement.style.opacity = "1";
+        textElement.textContent = text.slice(0, index);
+
+        if (index < text.length) {
+          queue(() => typeText(index + 1), typeSpeed);
+          return;
+        }
 
         if (isLoop) {
-          setTimeout(async () => {
-            // Fade out
-            await animate(spans, { opacity: 0 }, { duration: 0.5 }).finished;
-            // Restart
-            startAnimation();
-          }, loopDelay);
+          queue(() => deleteText(text.length), loopDelay);
         }
       };
 
-      startAnimation();
+      const deleteText = (index) => {
+        textElement.textContent = text.slice(0, index);
+
+        if (index > 0) {
+          queue(() => deleteText(index - 1), deleteSpeed);
+          return;
+        }
+
+        queue(() => typeText(0), 450);
+      };
+
+      typeText(0);
     });
   };
 
@@ -79,6 +111,8 @@ const {
 
   document.addEventListener("astro:before-swap", () => {
     document.querySelectorAll("[data-processed]").forEach((el) => {
+      typewriterTimers.get(el)?.forEach((timer) => window.clearTimeout(timer));
+      typewriterTimers.delete(el);
       el.removeAttribute("data-processed");
     });
   });

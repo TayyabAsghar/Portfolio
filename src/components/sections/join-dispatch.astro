@@ -4,7 +4,7 @@ import { EMAIL_REGEX } from "../../utils";
 ---
 
 <section
-  class="mt-32 rounded-[2rem] bg-gradient-to-br from-neutral-100 to-white dark:from-neutral-900 dark:to-neutral-950 border border-neutral-200 dark:border-white/5 p-8 md:p-14 relative overflow-hidden shadow-md dark:shadow-lg"
+  class="mt-32 rounded-4xl bg-linear-to-br from-neutral-100 to-white dark:from-neutral-900 dark:to-neutral-950 border border-neutral-200 dark:border-white/5 p-8 md:p-14 relative overflow-hidden shadow-md dark:shadow-lg"
 >
   <div
     class="absolute -bottom-24 -right-24 w-96 h-96 bg-indigo-500/10 rounded-full blur-[100px] pointer-events-none"
@@ -27,7 +27,7 @@ import { EMAIL_REGEX } from "../../utils";
     <form
       id="dispatch-form"
       class="flex flex-col sm:flex-row gap-4 align-middle"
-      onsubmit="event.preventDefault();"
+      onsubmit="return false;"
     >
       <input
         required

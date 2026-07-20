@@ -32,6 +32,7 @@ const currentYear = new Date().getFullYear();
             <a
               href={social.url}
               target={social.target}
+              rel={social.target === "_blank" ? "noopener noreferrer" : undefined}
               class="text-neutral-500 dark:text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors"
             >
               {social.name}
