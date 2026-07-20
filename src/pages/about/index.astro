@@ -27,7 +27,9 @@ const description =
   image="/assets/images/about.avif"
   title={`About Me | ${about.name}`}
 >
-  <section class="relative z-20 max-w-5xl mx-auto my-12 px-7 lg:px-0">
+  <section
+    class="relative z-20 max-w-5xl mx-auto mt-20 mb-12 px-7 lg:mt-24 lg:px-0"
+  >
     <StyledHeading heading={{ part1: "About", part2: "Me" }} />
 
     <div
@@ -221,10 +223,10 @@ const description =
             <article class={`opacity-0 reveal-up delay-[${index * 150}ms]`}>
               <div class="relative overflow-hidden rounded-xl border aspect-video border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 my-10 w-full">
                 <VideoPlayer
-                  id="about-video"
                   title={item.title}
                   image={item.image}
                   video={item.video}
+                  id={`about-beyond-video-${index}`}
                 />
               </div>
               <h3 class="mt-4 text-2xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">

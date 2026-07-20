@@ -12,7 +12,7 @@ interface Props {
 const { id, title, video, image, sound, volume = 1, overlay } = Astro.props;
 ---
 
-<>
+<div id={`${id}-player`} class="absolute inset-0">
   <img
     alt={title}
     src={image}
@@ -53,86 +53,130 @@ const { id, title, video, image, sound, volume = 1, overlay } = Astro.props;
     }
   </div>
 
-  <script is:inline define:vars={{ id }}>
-    const audioA = document.getElementById(`${id}-sound-a`);
-    const audioB = document.getElementById(`${id}-sound-b`);
-    const videoContainer = document.getElementById(
-      `${id}-poster`,
-    )?.parentElement;
-    if (audioA && audioB && videoContainer) {
-      const volume = parseFloat(audioA.dataset.volume || "1");
-      audioA.volume = volume;
-      audioB.volume = 0;
+  {
+    !!sound && (
+      <script is:inline define:vars={{ id }}>
+        const audioA = document.getElementById(`${id}-sound-a`);
+        const audioB = document.getElementById(`${id}-sound-b`);
+        const videoContainer = document.getElementById(`${id}-player`);
 
-      let activeAudio = audioA;
-      let passiveAudio = audioB;
-      let isFading = false;
-      const fadeDuration = 0.5;
+        if (audioA && audioB && videoContainer) {
+          const volume = parseFloat(audioA.dataset.volume || "1");
+          const fadeDuration = 0.5;
+          const fadeIntervals = new Set();
 
-      const fadeLoop = () => {
-        if (isFading) return;
-        const currentTime = activeAudio.currentTime;
-        const duration = activeAudio.duration || 0;
-        const timeUntilEnd = duration - currentTime;
+          let activeAudio = audioA;
+          let passiveAudio = audioB;
+          let isFading = false;
+          let isInView = false;
+          let isDisposed = false;
 
-        if (timeUntilEnd <= fadeDuration && timeUntilEnd > 0) {
-          isFading = true;
+          audioA.volume = volume;
+          audioB.volume = 0;
 
-          passiveAudio.currentTime = 0;
-          passiveAudio.volume = volume;
-          passiveAudio.play().catch(() => {});
+          const stopFadeIntervals = () => {
+            fadeIntervals.forEach((intervalId) => clearInterval(intervalId));
+            fadeIntervals.clear();
+            isFading = false;
+          };
 
-          const fadeInterval = setInterval(() => {
-            const remaining = activeAudio.duration - activeAudio.currentTime;
-            const progress = 1 - remaining / fadeDuration;
+          const pauseAll = () => {
+            stopFadeIntervals();
+            audioA.pause();
+            audioB.pause();
+          };
 
-            const easedProgress = progress * progress * (3 - 2 * progress);
+          const shouldPlay = () =>
+            isInView &&
+            !isDisposed &&
+            !document.hidden &&
+            document.hasFocus();
 
-            activeAudio.volume = volume * (1 - easedProgress);
-            passiveAudio.volume = volume * easedProgress;
-
-            if (progress >= 1) {
-              clearInterval(fadeInterval);
-              activeAudio.pause();
-              activeAudio.currentTime = 0;
-
-              [activeAudio, passiveAudio] = [passiveAudio, activeAudio];
-              isFading = false;
+          const syncPlayback = () => {
+            if (!shouldPlay()) {
+              pauseAll();
+              return;
             }
-          }, 16);
-        }
-      };
 
-      activeAudio.addEventListener("timeupdate", fadeLoop);
+            activeAudio.play().catch(() => {});
+          };
 
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) activeAudio.play().catch(() => {});
-            else {
-              activeAudio.pause();
-              passiveAudio.pause();
+          const fadeLoop = () => {
+            if (isFading || !shouldPlay()) return;
+
+            const duration = activeAudio.duration || 0;
+            const timeUntilEnd = duration - activeAudio.currentTime;
+
+            if (timeUntilEnd <= fadeDuration && timeUntilEnd > 0) {
+              isFading = true;
+              passiveAudio.currentTime = 0;
+              passiveAudio.volume = 0;
+              passiveAudio.play().catch(() => {});
+
+              const fadeInterval = setInterval(() => {
+                if (!shouldPlay()) {
+                  pauseAll();
+                  return;
+                }
+
+                const remaining = activeAudio.duration - activeAudio.currentTime;
+                const progress = Math.min(1, 1 - remaining / fadeDuration);
+                const easedProgress = progress * progress * (3 - 2 * progress);
+
+                activeAudio.volume = volume * (1 - easedProgress);
+                passiveAudio.volume = volume * easedProgress;
+
+                if (progress >= 1) {
+                  clearInterval(fadeInterval);
+                  fadeIntervals.delete(fadeInterval);
+                  activeAudio.pause();
+                  activeAudio.currentTime = 0;
+                  activeAudio.volume = 0;
+
+                  [activeAudio, passiveAudio] = [passiveAudio, activeAudio];
+                  activeAudio.volume = volume;
+                  passiveAudio.volume = 0;
+                  isFading = false;
+                }
+              }, 16);
+
+              fadeIntervals.add(fadeInterval);
             }
-          });
-        },
-        { threshold: 0.3 },
-      );
+          };
 
-      observer.observe(videoContainer);
+          audioA.addEventListener("timeupdate", fadeLoop);
+          audioB.addEventListener("timeupdate", fadeLoop);
 
-      const handleVisibilityChange = () => {
-        if (document.hidden) {
-          activeAudio.pause();
-          passiveAudio.pause();
-        } else {
-          const shouldPlay =
-            videoContainer.getBoundingClientRect().top >=
-            -videoContainer.offsetHeight * 0.3;
-          if (shouldPlay) activeAudio.play().catch(() => {});
+          const observer = new IntersectionObserver(
+            ([entry]) => {
+              isInView = !!entry?.isIntersecting;
+              syncPlayback();
+            },
+            { threshold: 0.3 },
+          );
+
+          observer.observe(videoContainer);
+
+          const dispose = () => {
+            isDisposed = true;
+            observer.disconnect();
+            pauseAll();
+            audioA.removeEventListener("timeupdate", fadeLoop);
+            audioB.removeEventListener("timeupdate", fadeLoop);
+            document.removeEventListener("visibilitychange", syncPlayback);
+            window.removeEventListener("focus", syncPlayback);
+            window.removeEventListener("blur", pauseAll);
+            window.removeEventListener("pagehide", dispose);
+            document.removeEventListener("astro:before-swap", dispose);
+          };
+
+          document.addEventListener("visibilitychange", syncPlayback);
+          window.addEventListener("focus", syncPlayback);
+          window.addEventListener("blur", pauseAll);
+          window.addEventListener("pagehide", dispose);
+          document.addEventListener("astro:before-swap", dispose, { once: true });
         }
-      };
-
-      document.addEventListener("visibilitychange", handleVisibilityChange);
-    }
-  </script>
-</>
+      </script>
+    )
+  }
+</div>
